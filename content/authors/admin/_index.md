@@ -41,7 +41,7 @@ superuser: true
 title: Irpan Chumaedi
 ---
 
-# Halo 
+# Halo 👋
 Nama saya Irpan Chumaedi, latar belakang pekerjaan saya adalah konsultan swasta yang bergerak di perencanaan bidang sumber daya air. Pekerjaan utama saya adalah melakukan analisa hidrologi serta pemodelan hidrolika. Contoh pekerjaan yang saya kerjakan seperti perencanaan drainase, irigasi, bendung, bendungan, dan bidang sumber daya air lainnya.
 
 *Website* ini dibuat sebagai penyaluran pikiran penulis tentang hal-hal yang telah dipelajari dan berharap ilmu tersebut bisa tersebar lebih luas. Juga sebagai bahan koreksi jika terdapat kesalahan.

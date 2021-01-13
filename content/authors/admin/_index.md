@@ -79,4 +79,4 @@ Karena saya bergerak di bidang hidrologi dan hidrolika, maka sebisa mungkin kont
 
 Oke, sedikit perkenalan dan gambaran umum keseluruhan dari *website* ini untuk sementara dicukupkan sampai disini. Akan diupdate sesuai dengan perubahan yang memang diperlukan. Akhir kata, selamat membaca.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+<!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->

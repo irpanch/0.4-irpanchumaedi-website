@@ -13,7 +13,7 @@ authors: []
 lastmod: '2021-04-09T17:51:38+07:00'
 featured: no
 image:
-  caption: ''
+  caption: 'Image credit: [**Fabio Franchino**](https://www.fabiofranchino.com/blog/i-love-markdown/)'
   focal_point: ''
   preview_only: no
 projects: []
@@ -24,6 +24,13 @@ projects: []
 Teks biasa atau *plain text* merupakan hal yang penting dalam dunia komunikasi, baik di dunia nyata maupun di dunia komputer. Apa yang ingin disampaikan harus tertulis dengan **jelas**. Kenapa? agar bisa dimengerti.
 
 Coba lihat diantara tulisan ini, mana yang lebih mudah dipahami?
+
+```{r, echo=FALSE,warning=FALSE}
+library(knitr)
+knitr::include_graphics('contoh_tulisan.png')
+```
+
+Gambar diatas merupakan screenshot [jawaban Quora](https://id.quora.com/Mengapa-tulisan-dokter-jelek-saat-menulis-resep) yang saya ambil. Yang kiri merupakan tulisan aslinya dan yang kanan setelah ditulis ulang. Jauh banget kan perbedaannya.
 
 ## Apa itu markdown?
 

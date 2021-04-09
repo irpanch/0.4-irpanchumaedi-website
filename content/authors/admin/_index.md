@@ -48,6 +48,7 @@ Nama saya Irpan Chumaedi, latar belakang pekerjaan saya adalah konsultan swasta 
 
 Bagi yang masih penasaran dengan apa yang biasa saya kerjakan bisa dilihat chanel [YouTube saya](https://www.youtube.com/irpanch "chanel youtube"). Di chanel tersebut saya upload beberapa proyek simulasi HEC-RAS yang pernah saya kerjakan.
 
+<!-- di hide dulu
 # Isi website 🕸
 Secara umum *website* ini terdiri dari empat kategori besar:
 
@@ -78,5 +79,6 @@ Karena saya bergerak di bidang hidrologi dan hidrolika, maka sebisa mungkin kont
 # Penutup 🧑
 
 Oke, sedikit perkenalan dan gambaran umum keseluruhan dari *website* ini untuk sementara dicukupkan sampai disini. Akan diupdate sesuai dengan perubahan yang memang diperlukan. Akhir kata, selamat membaca.
+ "di hide dulu" -->
 
 <!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->

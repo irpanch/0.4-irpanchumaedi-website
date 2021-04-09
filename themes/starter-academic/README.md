@@ -15,7 +15,7 @@ The Hugo **Academic Resumé Template** empowers you to create your job-winning o
 -   👉 [**Get Started**](https://wowchemy.com/docs/install/)
 -   📚 [View the **documentation**](https://wowchemy.com/docs/)
 -   💬 [Chat with the **Wowchemy community**](https://discord.gg/z8wNYzb) or [**Hugo community**](https://discourse.gohugo.io)
--   🐦 Twitter: [@wowchemy](<https://twitter.com/wowchemy>) [@GeorgeCushen](<https://twitter.com/GeorgeCushen>) [\#MadeWithWowchemy](https://twitter.com/search?q=(%23MadeWithWowchemy%20OR%20%23MadeWithAcademic)&src=typed_query)
+-   🐦 Twitter: [\@wowchemy](https://twitter.com/wowchemy) [\@GeorgeCushen](https://twitter.com/GeorgeCushen) [\#MadeWithWowchemy](https://twitter.com/search?q=(%23MadeWithWowchemy%20OR%20%23MadeWithAcademic)&src=typed_query)
 -   💡 [Request a **feature** or report a **bug** for *Wowchemy*](https://github.com/wowchemy/wowchemy-hugo-modules/issues)
 -   ⬆️ **Updating Wowchemy?** View the [Update Guide](https://wowchemy.com/docs/update/) and [Release Notes](https://wowchemy.com/updates/)
 
@@ -31,8 +31,6 @@ To help us develop this template and software sustainably under the MIT license,
 
 [![Screenshot](https://raw.githubusercontent.com/wowchemy/wowchemy-hugo-modules/master/academic.png)](https://wowchemy.com)
 
-```{=html}
 <!--
 [![Analytics](https://ga-beacon.appspot.com/UA-78646709-2/academic-kickstart/readme?pixel)](https://github.com/igrigorik/ga-beacon)
 -->
-```

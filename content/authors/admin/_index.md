@@ -42,11 +42,14 @@ title: Irpan Chumaedi
 ---
 
 # Halo 👋
+
 Nama saya Irpan Chumaedi, latar belakang pekerjaan saya adalah konsultan swasta yang bergerak di perencanaan bidang sumber daya air. Pekerjaan utama saya adalah melakukan analisa hidrologi serta pemodelan hidrolika. Contoh pekerjaan yang saya kerjakan seperti perencanaan drainase, irigasi, bendung, bendungan, dan bidang sumber daya air lainnya.
 
 *Website* ini dibuat sebagai penyaluran pikiran penulis tentang hal-hal yang telah dipelajari dan berharap ilmu tersebut bisa tersebar lebih luas. Juga sebagai bahan koreksi jika terdapat kesalahan.
 
 Bagi yang masih penasaran dengan apa yang biasa saya kerjakan bisa dilihat chanel [YouTube saya](https://www.youtube.com/irpanch "chanel youtube"). Di chanel tersebut saya upload beberapa proyek simulasi HEC-RAS yang pernah saya kerjakan.
+
+Salam kenal 🙂
 
 <!-- di hide dulu
 # Isi website 🕸

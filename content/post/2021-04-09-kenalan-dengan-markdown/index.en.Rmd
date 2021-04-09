@@ -1,0 +1,56 @@
+---
+title: Kenalan Dengan Markdown
+author: Irpan Chumaedi
+date: '2021-04-09'
+slug: kenalan-dengan-markdown
+categories:
+  - basic
+tags:
+  - markdown
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-04-09T17:51:38+07:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+## A little Background..
+
+Teks biasa atau *plain text* merupakan hal yang penting dalam dunia komunikasi, baik di dunia nyata maupun di dunia komputer. Apa yang ingin disampaikan harus tertulis dengan **jelas**. Kenapa? agar bisa dimengerti.
+
+Coba lihat diantara tulisan ini, mana yang lebih mudah dipahami?
+
+## Apa itu markdown?
+
+Secara teknis markdown adalah sintaks ringan untuk merubah teks biasa menjadi teks yang berformat.
+
+## Contoh penggunaan markdown
+
+Sintaksnya sederhana. Saya coba tabelkan beberapa penggunaannya seperti ini:
+
++-------------------------------+-------------------------------------------+-----------------------------------------+
+| Penggunaan                    | Sintaks                                   | Hasil                                   |
++:==============================+===========================================+=========================================+
+| Heading 1 dan seterusnya      | `# Heading 1`                             | # Heading 1                             |
+|                               |                                           |                                         |
+|                               | `## Heading 2`                            | ## Heading 2                            |
+|                               |                                           |                                         |
+|                               | `### Heading 3`                           | ### Heading 3                           |
++-------------------------------+-------------------------------------------+-----------------------------------------+
+| Menulis tebal (bold)          | `**tulisan tebal**`                       | **tulisan tebal**                       |
++-------------------------------+-------------------------------------------+-----------------------------------------+
+| Menulis miring (italic)       | `*tulisan miring*`                        | *tulisan miring*                        |
++-------------------------------+-------------------------------------------+-----------------------------------------+
+| Menulis coret (strikethrough) | `~~tulisan coret~~`                       | ~~tulisan coret~~                       |
++-------------------------------+-------------------------------------------+-----------------------------------------+
+| Link ke url                   | `[website ini keren!](irpanchumaedi.com`) | [website ini keren!](irpanchumaedi.com) |
++-------------------------------+-------------------------------------------+-----------------------------------------+
+
+## Referensi
+
+[Markdown - Wikipedia](https://en.wikipedia.org/wiki/Markdown)

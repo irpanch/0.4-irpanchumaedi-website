@@ -1,47 +1,40 @@
 ---
-active: false
-
 # An instance of the Featurette widget.
-# Documentation: https://wowchemy.com/docs/page-builder/
 widget: featurette
 
-# This file represents a page section.
+# Activate this widget
+active: true
+
 headless: true
 
 # Order that this section appears on the page.
 weight: 30
 
-title: Skills
-subtitle:
+title: Keahlian
+subtitle: Tools & Software yang Saya Gunakan
 
-# Showcase personal skills or business features.
-# - Add/remove as many `feature` blocks below as you like.
-# - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
-- description: 90%
-  icon: r-project
-  icon_pack: fab
-  name: R
-- description: 100%
+- description: Pemodelan banjir, profil muka air, dan aliran 1D/2D untuk sungai dan saluran drainase.
+  icon: water
+  icon_pack: fas
+  name: HEC-RAS
+- description: Pemodelan hujan-limpasan (rainfall-runoff) dan penelusuran banjir di DAS.
+  icon: cloud-rain
+  icon_pack: fas
+  name: HEC-HMS
+- description: Simulasi drainase perkotaan dan sistem jaringan saluran kompleks.
+  icon: city
+  icon_pack: fas
+  name: SWMM
+- description: Analisis spasial, delineasi DAS, pemetaan banjir, dan kartografi profesional.
+  icon: map
+  icon_pack: fas
+  name: QGIS & Global Mapper
+- description: Analisis statistik hidro-klimatologi, visualisasi data, dan otomasi laporan dengan R Markdown.
   icon: chart-line
   icon_pack: fas
-  name: Statistics
-- description: 10%
-  icon: camera-retro
+  name: R & ggplot2
+- description: Analisis data curah hujan satelit (GPM IMERG, GSMaP-MVK, ERA5) untuk validasi model.
+  icon: satellite
   icon_pack: fas
-  name: Photography
-
-# Uncomment to use emoji icons.
-#- icon = ":smile:"
-#  icon_pack = "emoji"
-#  name = "Emojiness"
-#  description = "100%"  
-
-# Uncomment to use custom SVG icons.
-# Place custom SVG icon in `assets/images/icon-pack/`, creating folders if necessary.
-# Reference the SVG icon name (without `.svg` extension) in the `icon` field.
-#- icon = "your-custom-icon-name"
-#  icon_pack = "custom"
-#  name = "Surfing"
-#  description = "90%"
----
+  name: Remote Sensing & GEE

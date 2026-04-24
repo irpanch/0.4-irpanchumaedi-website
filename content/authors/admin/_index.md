@@ -3,9 +3,16 @@ bio: Konsultan sumber daya air dengan spesialisasi analisis hidrologi, pemodelan
 
 education:
   courses:
-  - course: Teknik Sipil / Sumber Daya Air
-    institution: Universitas (Indonesia)
-    year: ''
+  - course: S2 Pengelolaan Sumber Daya Air
+    institution: Institut Teknologi Bandung
+    year: '2024'
+  - course: S1 Teknik Sipil
+    institution: Universitas Jenderal Achmad Yani
+    year: '2011'
+  - course: D3 Teknik Sipil
+    institution: Politeknik Negeri Bandung
+    year: '2005'
+
 
 email: "irpanch@gmail.com"
 

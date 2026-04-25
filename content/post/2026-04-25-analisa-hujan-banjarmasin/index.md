@@ -46,6 +46,6 @@ Terdapat 15 stasiun hujan di sekitar area WPG. Duabelas diantaranya bersumber da
 
 {{< figure src="matriks_ketersediaan_data.png" caption="Gambar 2. Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin "width="100%" >}}
 
-{{< figure src="jumlah_data_valid.png" caption=" Gambar 3.umlah Data Valid di Tiap Stasiun Hujan "width="100%" >}}
+{{< figure src="jumlah_data_valid.png" caption=" Gambar 3.Jumlah Data Valid di Tiap Stasiun Hujan "width="100%" >}}
 
 Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syarat. Dari 7 stasiun tersebut, 2 lokasi terdekat adalah Stasiun BMKG Syamsuddin Noor (33,7 km) dan BMKG Kalimantan Selatan (25 km).

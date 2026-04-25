@@ -44,8 +44,8 @@ Tahap F — Hidrograf Desain: Debit puncak Q2, Q5, Q10, Q20 per sub-DAS sebagai 
 ## Inventarisasi Stasiun Hujan
 Terdapat 15 stasiun hujan di sekitar area WPG. Duabelas diantaranya bersumber dari WS Kalimantan III, sedangkan tiga stasiun hujan bersumber dari BMKG. Gambar matriks ketersediaan tiap stasiun hujan serta jumlah data valid ditampilkan pada tabel berikut.
 
-![Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin](matriks_ketersediaan_data.png)
+{{< figure src="matriks_ketersediaan_data.png" caption="Gambar 2. Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin "width="100%" >}}
 
-![Jumlah Data Valid di Tiap Stasiun Hujan](jumlah_data_valid.png)
+{{< figure src="jumlah_data_valid.png" caption=" Gambar 3.umlah Data Valid di Tiap Stasiun Hujan "width="100%" >}}
 
 Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syarat. Dari 7 stasiun tersebut, 2 lokasi terdekat adalah Stasiun BMKG Syamsuddin Noor (33,7 km) dan BMKG Kalimantan Selatan (25 km).

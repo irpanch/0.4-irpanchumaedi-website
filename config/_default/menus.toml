@@ -22,3 +22,8 @@
   name = "Kontak"
   url = "#contact"
   weight = 50
+
+[[main]]
+  name = "Database"
+  url = "/database/"
+  weight = 45

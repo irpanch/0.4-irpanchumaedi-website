@@ -52,3 +52,23 @@ Terdapat 15 stasiun hujan di sekitar area WPG. Duabelas diantaranya bersumber da
 Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syarat. Dari 7 stasiun tersebut, 2 lokasi terdekat adalah Stasiun BMKG Syamsuddin Noor (33,7 km) dan BMKG Kalimantan Selatan (25 km).
 
 {{< figure src="peta_lokasi_sta_hujan.png" caption="Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo "width="100%" >}}
+
+**Tabel 1 Inventarisasi Stasiun Hujan di Sekitar WPG Sungai Sutoyo S Banjarmasin**
+| No | Stasiun | Wilayah | Sumber | Jarak ke WPG (Km) | Tahun Mulai | Tahun Akhir | n_HHMT | CH_Max | Status SNI |
+|----|---------|---------|--------|-------------------|-------------|-------------|--------|--------|------------|
+| 1 | Padang Panjang | Kab. Banjar | BWS Kal III/PSDA | 42 | 2022 | 2025 | 4 | 135 | <10 th (Tidak Layak) |
+| 2 | Ati'im | Kab. Banjar | BWS Kal III/PSDA | 63.2 | 2022 | 2025 | 3 | 128 | <10 th (Tidak Layak) |
+| 3 | Banjarmasin | Kota Banjarmasin | BWS Kal III/PSDA | 2.8 | 2022 | 2026 | 2 | 135.8 | <10 th (Tidak Layak) |
+| 4 | Gudang Tengah | Kab. Banjar | BWS Kal III/PSDA | 15.6 | 2020 | 2025 | 3 | 307.5 | <10 th (Tidak Layak) |
+| 5 | Aluh-Aluh | Kab. Banjar | BWS Kal III/PSDA | 16.4 | 2022 | 2025 | 3 | 98.8 | <10 th (Tidak Layak) |
+| 6 | Astambul | Kab. Banjar | BWS Kal III/PSDA | 28.9 | 2022 | 2025 | 1 | 74.8 | <10 th (Tidak Layak) |
+| 7 | Mengkauk | Kab. Banjar | BWS Kal III/PSDA | 60.8 | 2022 | 2025 | 3 | 102.2 | <10 th (Tidak Layak) |
+| 8 | Batu Tangga | Hulu Sungai Tengah | BWS Kal III/PSDA | 137 | 1995 | 2025 | 28 | 153 | 20-29 th (Cukup) |
+| 9 | Intangan | Hulu Sungai Tengah | BWS Kal III/PSDA | 123.7 | 1995 | 2025 | 26 | 188 | 20-29 th (Cukup) |
+| 10 | Kambat | Hulu Sungai Tengah | BWS Kal III/PSDA | 122.3 | 1995 | 2025 | 23 | 368 | 20-29 th (Cukup) |
+| 11 | Mangunang | Hulu Sungai Tengah | BWS Kal III/PSDA | 116.6 | 1995 | 2025 | 26 | 142 | 20-29 th (Cukup) |
+| 12 | Mo'ui | Hulu Sungai Tengah | BWS Kal III/PSDA | 110.9 | 1995 | 2025 | 22 | 180 | 20-29 th (Cukup) |
+| 13 | Kalimantan Selatan (BMKG) | Kab. Banjarbaru | BMKG | 25 | 1998 | 2025 | 27 | 255.3 | 20-29 th (Cukup) |
+| 14 | Syamsuddin Noor (BMKG) | Kota Banjarbaru | BMKG | 33.7 | 1998 | 2025 | 27 | 249 | 20-29 th (Cukup) |
+| 15 | Surgi Mufti (BMKG) | Kota Banjarmasin | BMKG | 3.5 | 1996 | 2014 | 19 | 168 | <20 th (Kurang) |
+*Keterangan: Stasiun dengan status ‘Tidak Layak’ memiliki data kurang dari 10 tahun sehingga tidak memenuhi persyaratan SNI 2415:2016. Stasiun ‘Cukup’ memiliki 20–29 tahun data*

@@ -17,7 +17,7 @@ Analisis hidrologi yang komprehensif menjadi pondasi perencanaan sistem drainase
 
 Analisis hidrologi dilaksanakan mengikuti alur kerja terstruktur enam tahap, dari pengumpulan data hingga hidrograf desain.
 
-![Alur Analisa Hidrologi](alur_metodologi.png)
+{{< figure src="alur_metodologi.png" caption="Gambar 1. Alur kerja analisis hidrologi enam tahap"width="100%" >}}
 
 Secara keseluruhan, analisa hidrologi dilakukan dengan melalui enam tahapan. Mulai dari pengumpulan data, koreksi bias GPM, hingga hidrograf desain. Keenam tahapan tersebut secara rinci adalah sebagai berikut:
 

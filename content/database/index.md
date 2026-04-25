@@ -5,7 +5,6 @@ summary: "Kumpulan data hidrologi per wilayah."
 date: 2026-04-26
 lastmod: 2026-04-26
 draft: false
-type: page
 share: false
 commentable: false
 editable: false

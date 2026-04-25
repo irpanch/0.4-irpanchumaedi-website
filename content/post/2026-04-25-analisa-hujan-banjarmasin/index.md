@@ -4,7 +4,8 @@ date: 2026-04-25
 summary: "Kota banjarmasin merupakan daerah yang rawan banjir."
 tags:
 - Hidrologi
-- HEC-HMS
+- SWMM
+- Data_satelit
 ---
 
 # Umum
@@ -46,6 +47,8 @@ Terdapat 15 stasiun hujan di sekitar area WPG. Duabelas diantaranya bersumber da
 
 {{< figure src="matriks_ketersediaan_data.png" caption="Gambar 2. Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin "width="100%" >}}
 
-{{< figure src="jumlah_data_valid.png" caption=" Gambar 3.Jumlah Data Valid di Tiap Stasiun Hujan "width="100%" >}}
+{{< figure src="jumlah_data_valid.png" caption=" Gambar 3. Jumlah Data Valid di Tiap Stasiun Hujan "width="100%" >}}
 
 Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syarat. Dari 7 stasiun tersebut, 2 lokasi terdekat adalah Stasiun BMKG Syamsuddin Noor (33,7 km) dan BMKG Kalimantan Selatan (25 km).
+
+{{< figure src="peta_lokasi_sta_hujan.png" caption="Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo "width="100%" >}}

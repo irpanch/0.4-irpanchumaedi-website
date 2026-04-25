@@ -34,8 +34,8 @@ editable: false
 .tab-btn.active { color: #1565c0; border-bottom: 3px solid #1565c0; }
 .tab-content { display: none; padding: 1.5rem 0; }
 .tab-content.active { display: block; }
-.db-section { margin-bottom: 2rem; }
-.db-section h3 { font-size: 1rem; margin-bottom: 0.8rem; color: #555; }
+.db-section { margin-bottom: 2.5rem; }
+.db-section h3 { font-size: 1rem; margin-bottom: 0.8rem; color: #555; border-left: 3px solid #1565c0; padding-left: 0.6rem; }
 .badge-soon {
   display: inline-block;
   background: #f0f0f0;
@@ -54,6 +54,14 @@ editable: false
   border-radius: 4px;
   font-weight: 600;
 }
+.info-box {
+  background: #f0f7ff;
+  border-left: 4px solid #1565c0;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
 </style>
 
 <div class="tab-container">
@@ -70,39 +78,67 @@ editable: false
 <!-- ════════════════════════════════════════ -->
 <div id="tab-kalsel" class="tab-content active">
 
+<div class="info-box">
+📌 Data curah hujan Kalimantan Selatan mencakup <strong>15 stasiun</strong> dari sumber BMKG dan BWS Kalimantan III/PSDA. Tersedia dalam format rekap bulanan dan harian, serta data satelit GPM IMERG.
+</div>
+
 <div class="db-section">
 
-### 📊 Data Curah Hujan
+### 📊 Data Stasiun BMKG
 
-| Dataset | Periode | Sumber | Format | Unduh |
-|---------|---------|--------|--------|-------|
-| CH Harian Stasiun Banjarmasin | 1996–2025 | BMKG | Excel | <span class="badge-soon">Segera hadir</span> |
-| CH Harian Stasiun Banjarbaru | 1998–2025 | BMKG | Excel | <span class="badge-soon">Segera hadir</span> |
-| CH Harian Stasiun Surgi Mufti | 1996–2014 | BMKG | Excel | <span class="badge-soon">Segera hadir</span> |
-| CH Harian Stasiun Batu Tangga | 1995–2025 | BWS Kal III | Excel | <span class="badge-soon">Segera hadir</span> |
-| CH Harian Stasiun Intangan | 1995–2025 | BWS Kal III | Excel | <span class="badge-soon">Segera hadir</span> |
-| Inventarisasi Stasiun Hujan Kalsel | - | Olahan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Stasiun | Kabupaten/Kota | Periode | Parameter | Format | Unduh |
+|---------|---------------|---------|-----------|--------|-------|
+| Kalimantan Selatan (Syamsudin Noor) | Kab. Banjarbaru | 1998–2025 | CH harian, max tahunan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Syamsudin Noor | Kota Banjarbaru | 1998–2025 | CH harian, max tahunan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Surgi Mufti | Kota Banjarmasin | 1996–2014 | CH harian | Excel | <span class="badge-soon">Segera hadir</span> |
+| Banjarmasin (manual) | Kota Banjarmasin | 2022–2026 | CH bulanan, max harian per bulan | Excel | <span class="badge-soon">Segera hadir</span> |
+
+<small>*Sumber: BMKG. Max CH = curah hujan harian maksimum per tahun (mm)*</small>
 
 </div>
 
 <div class="db-section">
 
-### 🗺️ Peta & Data Spasial
+### 📊 Data Stasiun BWS Kalimantan III / PSDA
 
-| Dataset | Format | Keterangan | Unduh |
-|---------|--------|-----------|-------|
-| Batas DAS Barito | Shapefile | Delineasi DEM DEMNAS | <span class="badge-soon">Segera hadir</span> |
-| Jaringan Sungai Kalsel | Shapefile | - | <span class="badge-soon">Segera hadir</span> |
+**Kabupaten Banjar**
+
+| Stasiun | Periode | Parameter | Format | Unduh |
+|---------|---------|-----------|--------|-------|
+| Aluh-Aluh | 2022–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Astambul | 2022–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Gudang Tengah | 2020–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Mengkauk | 2022–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Padang Panjang | 2022–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Ati'im | 2022–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+
+**Hulu Sungai Tengah**
+
+| Stasiun | Periode | Parameter | Format | Unduh |
+|---------|---------|-----------|--------|-------|
+| Batu Tangga | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Intangan | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Kambat | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Mangunang | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Mo'ui | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
+
+<small>*Sumber: BWS Kalimantan III/PSDA. CH = curah hujan (mm); hari hujan = jumlah hari dengan curah hujan > 0 mm*</small>
 
 </div>
 
 <div class="db-section">
 
-### 📄 Laporan & Dokumen
+### 📡 Data Satelit GPM IMERG
 
-| Dokumen | Tahun | Keterangan | Unduh |
-|---------|-------|-----------|-------|
-| Laporan Hidrologi WPG Banjarmasin | 2025 | Analisis GPM + BMKG | <span class="badge-soon">Segera hadir</span> |
+Data curah hujan harian dari satelit **GPM IMERG Final Run** (kombinasi microwave-IR), resolusi ~0.1° × 0.1°, sudah dirata-ratakan per area.
+
+| Dataset | Koordinat Bounding Box | Periode | Format | Unduh |
+|---------|----------------------|---------|--------|-------|
+| GPM Kalimantan Selatan | 114.79°E – 114.89°E, 3.51°S – 3.41°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
+| GPM Banjarmasin | 114.49°E – 114.69°E, 3.40°S – 3.20°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
+| GPM Syamsudin Noor | 114.66°E – 114.86°E, 3.54°S – 3.34°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
+
+<small>*Sumber: NASA GPM IMERG V07 via Giovanni. Satuan: mm/hari. Total ~10.000 baris data per file.*</small>
 
 </div>
 
@@ -113,23 +149,17 @@ editable: false
 <!-- ════════════════════════════════════════ -->
 <div id="tab-kaltim" class="tab-content">
 
-<div class="db-section">
-
-### 📊 Data Curah Hujan
-
-| Dataset | Periode | Sumber | Format | Unduh |
-|---------|---------|--------|--------|-------|
-| CH Harian Kutai Barat | - | BMKG | Excel | <span class="badge-soon">Segera hadir</span> |
-
+<div class="info-box">
+📌 Data hidrologi Kalimantan Timur akan segera tersedia. Mencakup wilayah Kutai Barat dan sekitarnya.
 </div>
 
 <div class="db-section">
 
-### 🗺️ Peta & Data Spasial
+### 📊 Data Curah Hujan
 
-| Dataset | Format | Keterangan | Unduh |
-|---------|--------|-----------|-------|
-| Batas DAS Mahakam Hulu | Shapefile | Delineasi DEM DEMNAS | <span class="badge-soon">Segera hadir</span> |
+| Stasiun | Wilayah | Periode | Format | Unduh |
+|---------|---------|---------|--------|-------|
+| Kutai Barat | Kab. Kutai Barat | - | Excel | <span class="badge-soon">Segera hadir</span> |
 
 </div>
 
@@ -150,23 +180,17 @@ editable: false
 <!-- ════════════════════════════════════════ -->
 <div id="tab-jabar" class="tab-content">
 
-<div class="db-section">
-
-### 📊 Data Curah Hujan
-
-| Dataset | Periode | Sumber | Format | Unduh |
-|---------|---------|--------|--------|-------|
-| CH Harian Bandung | - | BMKG | Excel | <span class="badge-soon">Segera hadir</span> |
-
+<div class="info-box">
+📌 Data hidrologi Jawa Barat akan segera tersedia. Mencakup wilayah Bandung dan sekitarnya.
 </div>
 
 <div class="db-section">
 
-### 🗺️ Peta & Data Spasial
+### 📊 Data Curah Hujan
 
-| Dataset | Format | Keterangan | Unduh |
-|---------|--------|-----------|-------|
-| Batas DAS Citarum | Shapefile | Delineasi DEM DEMNAS | <span class="badge-soon">Segera hadir</span> |
+| Stasiun | Wilayah | Periode | Format | Unduh |
+|---------|---------|---------|--------|-------|
+| Bandung | Kota Bandung | - | Excel | <span class="badge-soon">Segera hadir</span> |
 
 </div>
 

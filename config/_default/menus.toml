@@ -25,5 +25,5 @@
 
 [[main]]
   name = "Database"
-  url = "/database/"
+  url = "/database"
   weight = 45

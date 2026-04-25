@@ -1,13 +1,14 @@
 ---
 title: "Database Hidrologi Indonesia"
 subtitle: "Kumpulan data, template, dan tools hidrologi yang dapat diunduh gratis"
-summary: "Kumpulan data hidrologi per wilayah."
-date: 2026-04-26
-lastmod: 2026-04-26
+date: "2026-04-26"
 draft: false
 share: false
 commentable: false
 editable: false
+header:
+  caption: ""
+  image: ""
 ---
 
 > 💧 Semua data dan file di halaman ini **gratis untuk diunduh**. Jika bermanfaat, silakan bagikan ke rekan sejawat. Harap cantumkan sumber apabila digunakan dalam publikasi ilmiah.
@@ -44,15 +45,6 @@ editable: false
   border-radius: 4px;
   font-style: italic;
 }
-.badge-ready {
-  display: inline-block;
-  background: #e8f5e9;
-  color: #2e7d32;
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-weight: 600;
-}
 .info-box {
   background: #f0f7ff;
   border-left: 4px solid #1565c0;
@@ -72,9 +64,7 @@ editable: false
   <button class="tab-btn" onclick="showTab('template', this)">📐 Template & Tools</button>
 </div>
 
-<!-- ════════════════════════════════════════ -->
-<!-- TAB: KALIMANTAN SELATAN -->
-<!-- ════════════════════════════════════════ -->
+<!-- KALIMANTAN SELATAN -->
 <div id="tab-kalsel" class="tab-content active">
 
 <div class="info-box">
@@ -87,12 +77,12 @@ editable: false
 
 | Stasiun | Kabupaten/Kota | Periode | Parameter | Format | Unduh |
 |---------|---------------|---------|-----------|--------|-------|
-| Kalimantan Selatan (Syamsudin Noor) | Kab. Banjarbaru | 1998–2025 | CH harian, max tahunan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Kalimantan Selatan | Kab. Banjarbaru | 1998–2025 | CH harian, max tahunan | Excel | <span class="badge-soon">Segera hadir</span> |
 | Syamsudin Noor | Kota Banjarbaru | 1998–2025 | CH harian, max tahunan | Excel | <span class="badge-soon">Segera hadir</span> |
 | Surgi Mufti | Kota Banjarmasin | 1996–2014 | CH harian | Excel | <span class="badge-soon">Segera hadir</span> |
-| Banjarmasin (manual) | Kota Banjarmasin | 2022–2026 | CH bulanan, max harian per bulan | Excel | <span class="badge-soon">Segera hadir</span> |
+| Banjarmasin | Kota Banjarmasin | 2022–2026 | CH bulanan, max harian | Excel | <span class="badge-soon">Segera hadir</span> |
 
-<small>*Sumber: BMKG. Max CH = curah hujan harian maksimum per tahun (mm)*</small>
+<small>*Sumber: BMKG*</small>
 
 </div>
 
@@ -121,7 +111,7 @@ editable: false
 | Mangunang | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
 | Mo'ui | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | <span class="badge-soon">Segera hadir</span> |
 
-<small>*Sumber: BWS Kalimantan III/PSDA. CH = curah hujan (mm); hari hujan = jumlah hari dengan curah hujan > 0 mm*</small>
+<small>*Sumber: BWS Kalimantan III/PSDA*</small>
 
 </div>
 
@@ -129,23 +119,19 @@ editable: false
 
 ### 📡 Data Satelit GPM IMERG
 
-Data curah hujan harian dari satelit **GPM IMERG Final Run** (kombinasi microwave-IR), resolusi ~0.1° × 0.1°, sudah dirata-ratakan per area.
+| Dataset | Koordinat | Periode | Format | Unduh |
+|---------|-----------|---------|--------|-------|
+| GPM Kalimantan Selatan | 114.79°E–114.89°E, 3.51°S–3.41°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
+| GPM Banjarmasin | 114.49°E–114.69°E, 3.40°S–3.20°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
+| GPM Syamsudin Noor | 114.66°E–114.86°E, 3.54°S–3.34°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
 
-| Dataset | Koordinat Bounding Box | Periode | Format | Unduh |
-|---------|----------------------|---------|--------|-------|
-| GPM Kalimantan Selatan | 114.79°E – 114.89°E, 3.51°S – 3.41°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
-| GPM Banjarmasin | 114.49°E – 114.69°E, 3.40°S – 3.20°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
-| GPM Syamsudin Noor | 114.66°E – 114.86°E, 3.54°S – 3.34°S | 1998–2025 | CSV | <span class="badge-soon">Segera hadir</span> |
-
-<small>*Sumber: NASA GPM IMERG V07 via Giovanni. Satuan: mm/hari. Total ~10.000 baris data per file.*</small>
+<small>*Sumber: NASA GPM IMERG V07 via Giovanni. Satuan: mm/hari.*</small>
 
 </div>
 
 </div>
 
-<!-- ════════════════════════════════════════ -->
-<!-- TAB: KALIMANTAN TIMUR -->
-<!-- ════════════════════════════════════════ -->
+<!-- KALIMANTAN TIMUR -->
 <div id="tab-kaltim" class="tab-content">
 
 <div class="info-box">
@@ -162,21 +148,9 @@ Data curah hujan harian dari satelit **GPM IMERG Final Run** (kombinasi microwav
 
 </div>
 
-<div class="db-section">
-
-### 📄 Laporan & Dokumen
-
-| Dokumen | Tahun | Keterangan | Unduh |
-|---------|-------|-----------|-------|
-| Laporan Hidrologi Jalan Hauling PT Benanga | 2025 | Studi kelayakan | <span class="badge-soon">Segera hadir</span> |
-
 </div>
 
-</div>
-
-<!-- ════════════════════════════════════════ -->
-<!-- TAB: JAWA BARAT -->
-<!-- ════════════════════════════════════════ -->
+<!-- JAWA BARAT -->
 <div id="tab-jabar" class="tab-content">
 
 <div class="info-box">
@@ -195,9 +169,7 @@ Data curah hujan harian dari satelit **GPM IMERG Final Run** (kombinasi microwav
 
 </div>
 
-<!-- ════════════════════════════════════════ -->
-<!-- TAB: TEMPLATE & TOOLS -->
-<!-- ════════════════════════════════════════ -->
+<!-- TEMPLATE & TOOLS -->
 <div id="tab-template" class="tab-content">
 
 <div class="db-section">

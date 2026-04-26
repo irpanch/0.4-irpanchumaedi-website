@@ -25,6 +25,8 @@ categories: []
 | Surgi Mufti | Kota Banjarmasin | 1996–2014 | CH harian | Excel | Segera hadir |
 | Banjarmasin | Kota Banjarmasin | 2022–2026 | CH bulanan, max harian | Excel | Segera hadir |
 
+<small>*Sumber: BMKG Kalimantan Selatan. Satuan: mm/hari.*</small>
+
 ### 📊 Stasiun BWS Kalimantan III/PSDA — Kab. Banjar
 
 | Stasiun | Periode | Parameter | Format | Unduh |
@@ -36,6 +38,8 @@ categories: []
 | Padang Panjang | 2022–2025 | CH bulanan, max harian, hari hujan | Excel | Segera hadir |
 | Ati'im | 2022–2025 | CH bulanan, max harian, hari hujan | Excel | Segera hadir |
 
+<small>*Sumber: BBWS Kalimantan III/PSDA. Satuan: mm/hari.*</small>
+
 ### 📊 Stasiun BWS Kalimantan III/PSDA — Hulu Sungai Tengah
 
 | Stasiun | Periode | Parameter | Format | Unduh |
@@ -45,6 +49,8 @@ categories: []
 | Kambat | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | Segera hadir |
 | Mangunang | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | Segera hadir |
 | Mo'ui | 1995–2025 | CH bulanan, max harian, hari hujan | Excel | Segera hadir |
+
+<small>*Sumber: BBWS Kalimantan III/PSDA. Satuan: mm/hari.*</small>
 
 ### 📡 Data Satelit GPM IMERG
 

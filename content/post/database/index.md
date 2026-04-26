@@ -1,11 +1,13 @@
 ---
-widget: blank
-headless: true
-active: true
-weight: 10
-title: ""
-design:
-  columns: '1'
+title: "Database Hidrologi Indonesia"
+subtitle: "Kumpulan data, template, dan tools hidrologi yang dapat diunduh gratis"
+date: 2026-04-26
+lastmod: 2026-04-26
+draft: false
+featured: false
+authors: []
+tags: []
+categories: []
 ---
 
 > 💧 Semua data di halaman ini **gratis untuk diunduh**. Harap cantumkan sumber apabila digunakan dalam publikasi ilmiah.

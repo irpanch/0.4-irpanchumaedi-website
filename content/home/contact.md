@@ -24,6 +24,10 @@ content:
     icon_pack: fab
     name: LinkedIn
     link: 'https://www.linkedin.com/in/irpan-chumaedi-73992863/'
+  - icon: discord
+    icon_pack: fab
+    name: Discord
+    link: 'https://discord.gg/za2KPWJFKG'
 
 design:
   columns: '2'

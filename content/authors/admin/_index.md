@@ -5,7 +5,7 @@ education:
   courses:
   - course: S2 Pengelolaan Sumber Daya Air
     institution: Institut Teknologi Bandung
-    year: '2024'
+    year: '2020'
   - course: S1 Teknik Sipil
     institution: Universitas Jenderal Achmad Yani
     year: '2011'
@@ -44,6 +44,9 @@ social:
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/irpan-chumaedi-73992863/
+- icon: discord
+  icon_pack: fab
+  link: https://discord.gg/za2KPWJFKG
 
 superuser: true
 title: Irpan Chumaedi

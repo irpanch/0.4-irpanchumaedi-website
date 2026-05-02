@@ -47,7 +47,6 @@ social:
 - icon: discord
   icon_pack: fab
   link: https://discord.gg/za2KPWJFKG
-
 superuser: true
 title: Irpan Chumaedi
 ---

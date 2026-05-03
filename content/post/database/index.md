@@ -236,21 +236,18 @@ Data elevasi dan turunannya untuk seluruh Indonesia, bersumber dari DEM DEMNAS (
 <div class="db-section-header" id="das-sungai">
   <span class="db-section-icon">🌊</span>
   <span class="db-section-title">03 — DAS & Sungai</span>
-  <span class="db-section-size">1.5 GB · Shapefile & Raster</span>
+  <span class="db-section-size">1.5 GB · Shapefile, Raster & PDF</span>
 </div>
 
-Batas Daerah Aliran Sungai (DAS) dan jaringan sungai hasil delineasi DEM DEMNAS, dilengkapi data atribut hidrologi.
+Batas Daerah Aliran Sungai (DAS), jaringan sungai, dan peta Wilayah Sungai (WS) berkoordinat seluruh Indonesia.
 
-| Dataset | Cakupan | Sumber | Format | Unduh |
-|---------|---------|--------|--------|-------|
-| Batas DAS (WS Barito) | Kalimantan Selatan | Olahan DEMNAS | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Batas DAS (WS Mahakam) | Kalimantan Timur | Olahan DEMNAS | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Jaringan Sungai Kalsel | Kalimantan Selatan | RBI / Olahan | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Jaringan Sungai Kaltim | Kalimantan Timur | RBI / Olahan | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Flow Accumulation | Per DAS | Olahan DEMNAS | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| Flow Direction | Per DAS | Olahan DEMNAS | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
+| Dataset | Cakupan | Format | Status | Halaman |
+|---------|---------|--------|--------|---------|
+| Peta WS Berkoordinat | 35 wilayah seluruh Indonesia | PDF georeferensi | ✅ Tersedia | [→ Lihat & Unduh](/post/database-das-sungai/) |
+| Batas DAS (Shapefile) | Kalimantan Selatan & Timur | Shapefile | 🕐 Segera hadir | - |
+| Flow Direction / Accumulation | Per DAS | GeoTIFF | 🕐 Segera hadir | - |
 
-<small>*Delineasi DAS menggunakan metode D8 dari DEM DEMNAS via QGIS/WhiteboxTools.*</small>
+<small>*Peta WS berkoordinat dapat digunakan sebagai basemap di QGIS, Global Mapper, dan ArcGIS.*</small>
 
 ---
 

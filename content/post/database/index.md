@@ -80,6 +80,46 @@ featured: false
   font-weight: 600;
   font-size: 0.85rem;
 }
+
+.province-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem 0;
+}
+.province-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-left: 4px solid #2196F3;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.province-card:hover {
+  transform: translateY(-3px);
+  border-left-color: #4CAF50;
+  box-shadow: 0 5px 16px rgba(76,175,80,0.2);
+  text-decoration: none !important;
+}
+.province-card-flag { font-size: 1.6rem; margin-bottom: 0.4rem; }
+.province-card-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+.province-card-desc { font-size: 0.72rem; color: #888; margin-bottom: 0.5rem; }
+.province-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.province-tag {
+  font-size: 0.62rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  background: rgba(33,150,243,0.15);
+  color: #64B5F6;
+}
+.province-tag.ready {
+  background: rgba(76,175,80,0.15);
+  color: #81C784;
+}
+
 </style>
 
 <div class="db-grid">
@@ -123,7 +163,46 @@ featured: false
 
 ---
 
-## Detail Data per Kategori
+## 🗺️ Jelajah per Provinsi
+
+Data yang dikelompokkan berdasarkan wilayah — cocok untuk mencari data spesifik suatu daerah.
+
+<div class="province-grid">
+
+<a class="province-card" href="/post/database-kalimantan-selatan/">
+  <div class="province-card-flag">🏝️</div>
+  <div class="province-card-name">Kalimantan Selatan</div>
+  <div class="province-card-desc">15 stasiun hujan + GPM IMERG</div>
+  <div class="province-card-tags">
+    <span class="province-tag ready">✅ Data Hujan</span>
+    <span class="province-tag ready">✅ GPM IMERG</span>
+  </div>
+</a>
+
+<a class="province-card" href="/post/database-kalimantan-timur/">
+  <div class="province-card-flag">🏝️</div>
+  <div class="province-card-name">Kalimantan Timur</div>
+  <div class="province-card-desc">Kutai Barat & sekitarnya</div>
+  <div class="province-card-tags">
+    <span class="province-tag">🕐 Data Hujan</span>
+  </div>
+</a>
+
+<a class="province-card" href="/post/database-jawa-barat/">
+  <div class="province-card-flag">🏔️</div>
+  <div class="province-card-name">Jawa Barat</div>
+  <div class="province-card-desc">Bandung & sekitarnya</div>
+  <div class="province-card-tags">
+    <span class="province-tag">🕐 Data Hujan</span>
+  </div>
+</a>
+
+</div>
+
+
+---
+
+## 📦 Detail Data per Kategori
 
 ---
 

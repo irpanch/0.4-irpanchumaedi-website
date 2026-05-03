@@ -164,15 +164,6 @@ design:
     <span class="kur-module-badge badge-wip">🔧 Draf</span>
   </div>
 
-  <div class="kur-module">
-    <span class="kur-module-icon">🌧️</span>
-    <div class="kur-module-info">
-      <div class="kur-module-title">Keterbatasan Data Hujan di Indonesia</div>
-      <div class="kur-module-desc">Realita data BMKG yang terbatas, kerapatan stasiun yang tidak merata, dan alternatif data satelit sebagai solusi.</div>
-    </div>
-    <span class="kur-module-badge badge-wip">🔧 Draf</span>
-  </div>
-
 </div>
 </div>
 </div>
@@ -183,12 +174,21 @@ design:
   <div class="kur-phase-num">2</div>
   <div class="kur-phase-info">
     <div class="kur-phase-title">Pengumpulan & Rekap Data Hujan</div>
-    <div class="kur-phase-sub">BMKG · GPM Giovanni · Excel · R</div>
+    <div class="kur-phase-sub">Keterbatasan data · BMKG · GPM Giovanni · Excel · R</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
 </div>
 <div class="kur-body">
 <div class="kur-modules">
+
+  <div class="kur-module">
+    <span class="kur-module-icon">🌧️</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Keterbatasan Data Hujan di Indonesia</div>
+      <div class="kur-module-desc">Realita data BMKG yang terbatas, kerapatan stasiun yang tidak merata, dan mengapa kita perlu alternatif data satelit.</div>
+    </div>
+    <span class="kur-module-badge badge-wip">🔧 Draf</span>
+  </div>
 
   <div class="kur-module">
     <span class="kur-module-icon">🛰️</span>

@@ -159,6 +159,13 @@ featured: false
   <span class="db-card-badge">Shapefile · Vektor</span>
 </a>
 
+<a class="db-card" href="#topografi">
+  <div class="db-card-icon">📐</div>
+  <div class="db-card-title">Topografi</div>
+  <div class="db-card-size">Teristris & LiDAR</div>
+  <span class="db-card-badge">DXF · LAS · PDF</span>
+</a>
+
 </div>
 
 ---
@@ -332,6 +339,32 @@ Data vektor Rupa Bumi Indonesia (RBI) skala 1:25.000 dari Badan Informasi Geospa
 | Bangunan & Fasilitas | 1:25.000 | Per lembar peta | BIG | Shapefile | <span class="badge-soon">Segera hadir</span> |
 
 <small>*Sumber: Badan Informasi Geospasial (BIG). Data RBI dapat diakses juga melalui [Tanahair BIG](https://tanahair.indonesia.go.id).*</small>
+
+---
+
+<div class="db-section-header" id="topografi">
+  <span class="db-section-icon">📐</span>
+  <span class="db-section-title">Topografi — Pengukuran Teristris & LiDAR</span>
+  <span class="db-section-size">DXF · LAS · PDF</span>
+</div>
+
+Hasil pengukuran topografi lapangan secara teristris menggunakan total station dan waterpass, serta sebagian data LiDAR untuk area tertentu. Cocok untuk perencanaan teknis bangunan air, jembatan, dan infrastruktur lainnya.
+
+**Peta Topografi Teristris**
+
+| Lokasi | Luas Area | Skala | Peralatan | Format | Unduh |
+|--------|-----------|-------|-----------|--------|-------|
+| Sungai Akelamo — Pulau Obi | - | 1:1.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
+| Sungai Sutoyo — Banjarmasin | - | 1:1.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
+| Sungai Mahakam — Kutai Barat | - | 1:2.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
+
+**Data LiDAR**
+
+| Lokasi | Resolusi | Cakupan | Format | Unduh |
+|--------|----------|---------|--------|-------|
+| *(Segera diumumkan)* | - | - | LAS / LAZ | <span class="badge-soon">Segera hadir</span> |
+
+<small>*Catatan: Data topografi teristris merupakan hasil survei lapangan. Harap cantumkan sumber bila digunakan dalam perencanaan teknis atau publikasi ilmiah.*</small>
 
 ---
 

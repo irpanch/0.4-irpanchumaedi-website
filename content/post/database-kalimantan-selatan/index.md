@@ -17,8 +17,7 @@ featured: false
 |---------|----------|---------|-----------|--------|-------|
 | Kalimantan Selatan | Kab. Banjarbaru | 1998–2025 | CH harian, max tahunan | Excel | [Download](https://docs.google.com/spreadsheets/d/19fdIvKZVYfRkHScrwrR3MWL2O9On8akd/edit?usp=sharing&ouid=103243929196193937033&rtpof=true&sd=true) |
 | Syamsudin Noor | Kota Banjarbaru | 1998–2025 | CH harian, max tahunan | Excel | [Download](https://docs.google.com/spreadsheets/d/1dZ53OPgQDWxlXRSDPo2EwwGk5k3EFDQk/edit?usp=sharing&ouid=103243929196193937033&rtpof=true&sd=true) |
-| Surgi Mufti | Kota Banjarmasin | 1996–2014 | CH harian | Excel | Segera hadir |
-| Banjarmasin | Kota Banjarmasin | 2022–2026 | CH bulanan, max harian | Excel | Segera hadir |
+| Banjarmasin | Kota Banjarmasin | 2022–2026 | CH Harian, rekap bulanan, max harian, hari hujan | Excel | [Download](https://docs.google.com/spreadsheets/d/1Ej2wqXwz22tDGZRuCpxBKKBfmrllwPiD/edit?usp=sharing&ouid=103243929196193937033&rtpof=true&sd=true) |
 
 <small>*Sumber: BMKG*</small>
 

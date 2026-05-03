@@ -65,7 +65,8 @@ Data curah hujan harian dari satelit **GPM IMERG Final Run V07**, resolusi ~0.1�
 
 <small>*Sumber: NASA GPM IMERG V07 via Giovanni. Satuan: mm/hari. ±10.000 baris per file.*</small>
 
-[Raw data (pdf)](https://drive.google.com/drive/folders/16OafPWdgbWuGxctY4W1Jim0-bBQRDtgn?usp=sharing)
+Data hujan asli berupa pdf dapat diunduh [disini.](https://drive.google.com/drive/folders/16OafPWdgbWuGxctY4W1Jim0-bBQRDtgn?usp=sharing)
+
 ---
 
 📬 Ada pertanyaan atau request data lain? [Hubungi saya](/#contact).

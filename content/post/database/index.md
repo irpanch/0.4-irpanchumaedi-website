@@ -236,7 +236,7 @@ Data elevasi dan turunannya untuk seluruh Indonesia, bersumber dari DEM DEMNAS (
 <div class="db-section-header" id="topografi">
   <span class="db-section-icon">📐</span>
   <span class="db-section-title">Topografi — Pengukuran Teristris & LiDAR</span>
-  <span class="db-section-size">DXF · LAS · PDF</span>
+  <span class="db-section-size">DWG · DXF · DEM · GeoTIFF</span>
 </div>
 
 Hasil pengukuran topografi lapangan secara teristris menggunakan total station dan waterpass, serta sebagian data LiDAR untuk area tertentu. Cocok untuk perencanaan teknis bangunan air, jembatan, dan infrastruktur lainnya.

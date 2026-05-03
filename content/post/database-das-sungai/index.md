@@ -85,9 +85,9 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
 
 ## 📥 Unduh Semua Data
 
-<a class="dl-btn-main" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAizWMAAAAAAcVNBqi_6HSYsW-i0EjVMdA?e=g7p7a8" target="_blank">⬇ Buka Folder OneDrive — WS Berkoordinat Indonesia</a>
+<a class="dl-btn-main" href="https://1drv.ms/f/c/22f5ef4527203c63/IgCF8scklb1_TITQKfamjYcOAZIbqLVHvHR4D_WOICnEPd4?e=lIo7f8" target="_blank">⬇ Unduh Semua (35 Wilayah) — OneDrive</a>
 
-<small>*Folder berisi 35 subfolder per provinsi/pulau. Pilih wilayah yang dibutuhkan.*</small>
+<small>*Berisi 35 peta WS seluruh Indonesia. Pilih provinsi/wilayah yang dibutuhkan di dalam folder.*</small>
 
 ---
 

@@ -255,6 +255,18 @@ function togglePulau(header) {
 
 ---
 
-📬 Ada pertanyaan? [Hubungi saya](/#contact).
+---
+
+## 🤝 Berkontribusi untuk Database Ini
+
+Database ini dibangun dari pengalaman kerja lapangan dan semangat berbagi untuk komunitas hidrologi Indonesia. Jika kamu memiliki data yang belum tersedia di sini dan ingin berkontribusi, saya sangat terbuka!
+
+**Data yang dibutuhkan antara lain:**
+- Peta DAS atau WS wilayah yang belum tercakup
+- Data curah hujan stasiun observasi
+- Data debit sungai (AWLR)
+- Peta geologi, tutupan lahan, atau tanah regional
+
+> 💬 Hubungi saya melalui halaman **[Kontak](/#contact)** atau langsung via **[Discord](https://discord.gg/za2KPWJFKG)** untuk berdiskusi lebih lanjut. Kontributor akan dicantumkan sebagai sumber data.
 
 ← [Kembali ke Database Utama](/post/database/)

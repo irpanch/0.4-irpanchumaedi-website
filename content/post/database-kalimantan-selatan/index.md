@@ -68,6 +68,18 @@ Data hujan asli berupa pdf dapat diunduh [disini.](https://drive.google.com/driv
 
 ---
 
-📬 Ada pertanyaan atau request data lain? [Hubungi saya](/#contact).
+---
+
+## 🤝 Berkontribusi untuk Database Ini
+
+Database ini dibangun dari pengalaman kerja lapangan dan semangat berbagi untuk komunitas hidrologi Indonesia. Jika kamu memiliki data yang belum tersedia di sini dan ingin berkontribusi, saya sangat terbuka!
+
+**Data yang dibutuhkan antara lain:**
+- Data curah hujan stasiun observasi (BMKG, BWS, atau swasta)
+- Data debit sungai / tinggi muka air (AWLR)
+- Peta DAS, WS, atau jaringan sungai regional
+- Peta geologi, tutupan lahan, atau jenis tanah
+
+> 💬 Hubungi melalui halaman **[Kontak](/#contact)** atau langsung via **[Discord](https://discord.gg/za2KPWJFKG)**. Kontributor akan dicantumkan sebagai sumber data.
 
 ← [Kembali ke Database Utama](/post/database/)

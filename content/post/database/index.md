@@ -335,8 +335,14 @@ Hasil pengukuran topografi lapangan secara teristris menggunakan total station d
 
 ---
 
-## 📬 Request Data
+## 📬 Request & Kontribusi
 
-Tidak menemukan data yang dibutuhkan, atau ingin request wilayah/periode tertentu? Hubungi saya melalui halaman **[Kontak](/#contact)**.
+Tidak menemukan data yang dibutuhkan? Atau punya data yang ingin dibagikan ke komunitas?
+
+| | |
+|--|--|
+| 🔍 **Request data** | Hubungi via **[Kontak](/#contact)** atau **[Discord](https://discord.gg/za2KPWJFKG)** |
+| 🤝 **Kontribusi data** | Punya data curah hujan, debit, atau peta GIS? Mari berbagi — kontributor dicantumkan sebagai sumber |
+| 💬 **Diskusi** | Bergabung di komunitas Discord untuk diskusi hidrologi dan berbagi pengalaman lapangan |
 
 <small>*Catatan: Semua data merupakan hasil olahan mandiri atau bersumber dari instansi pemerintah yang bersifat terbuka (open data). Harap cantumkan sumber bila digunakan dalam publikasi ilmiah atau laporan teknis.*</small>

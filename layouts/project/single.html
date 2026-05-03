@@ -1,110 +1,12 @@
 {{- define "main" -}}
 
 <article class="article article-project">
-
   {{ partial "page_header.html" . }}
-
   <div class="article-container">
-
-    <!-- Floating TOC -->
-    <div id="toc-float" style="
-      position: fixed;
-      top: 80px;
-      right: 1.5rem;
-      width: 220px;
-      max-height: calc(100vh - 100px);
-      overflow-y: auto;
-      background: rgba(30,30,40,0.92);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 0.8rem;
-      z-index: 90;
-      font-size: 0.78rem;
-      backdrop-filter: blur(8px);
-      opacity: 0;
-      transform: translateX(10px);
-      transition: opacity 0.3s, transform 0.3s;
-      display: none;
-    ">
-      <div style="font-weight:700; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.6rem; padding-bottom:0.5rem; border-bottom:1px solid rgba(255,255,255,0.08);">
-        📋 Daftar Isi
-      </div>
-      <nav id="toc-nav"></nav>
-    </div>
-
-    <style>
-      #toc-nav a {
-        display: block;
-        padding: 0.25rem 0.4rem;
-        color: #aaa;
-        text-decoration: none;
-        border-radius: 4px;
-        line-height: 1.4;
-        transition: background 0.15s, color 0.15s;
-        border-left: 2px solid transparent;
-      }
-      #toc-nav a:hover { color: #fff; background: rgba(255,255,255,0.06); }
-      #toc-nav a.toc-active {
-        color: #64B5F6;
-        border-left-color: #64B5F6;
-        background: rgba(33,150,243,0.1);
-      }
-      #toc-nav a.toc-h2 { padding-left: 0.4rem; font-weight: 600; }
-      #toc-nav a.toc-h3 { padding-left: 1.2rem; font-size: 0.74rem; color: #888; }
-      #toc-float::-webkit-scrollbar { width: 3px; }
-      #toc-float::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
-      @media (max-width: 1300px) { #toc-float { display: none !important; } }
-    </style>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var toc = document.getElementById('toc-float');
-      var nav = document.getElementById('toc-nav');
-      var article = document.querySelector('.article-style');
-      if (!article) return;
-
-      var headings = article.querySelectorAll('h1, h2, h3');
-      if (headings.length < 2) return;
-
-      headings.forEach(function(h, i) {
-        if (!h.id) h.id = 'toc-' + i;
-        var a = document.createElement('a');
-        a.href = '#' + h.id;
-        a.textContent = h.textContent;
-        a.className = 'toc-' + h.tagName.toLowerCase();
-        a.addEventListener('click', function(e) {
-          e.preventDefault();
-          document.getElementById(h.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-        nav.appendChild(a);
-      });
-
-      toc.style.display = 'block';
-      setTimeout(function() {
-        toc.style.opacity = '1';
-        toc.style.transform = 'translateX(0)';
-      }, 300);
-
-      var links = nav.querySelectorAll('a');
-      window.addEventListener('scroll', function() {
-        var scrollPos = window.scrollY + 120;
-        var current = '';
-        headings.forEach(function(h) {
-          if (h.offsetTop <= scrollPos) current = h.id;
-        });
-        links.forEach(function(a) {
-          a.classList.toggle('toc-active', a.getAttribute('href') === '#' + current);
-        });
-      });
-    });
-    </script>
-
     <div class="article-style">
       {{ .Content }}
     </div>
-
     {{ partial "page_footer" . }}
-
     <div class="project-related-pages content-widget-hr">
       {{ $page := . }}
       {{ $project := .File.ContentBaseName }}
@@ -120,4 +22,123 @@
     </div>
   </div>
 </article>
+
+<style>
+#toc-float {
+  position: fixed;
+  top: 80px;
+  right: 1.5rem;
+  width: 220px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: rgba(30,30,40,0.95);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.8rem;
+  z-index: 9999;
+  font-size: 0.78rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#toc-float.toc-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+#toc-float .toc-title {
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+#toc-nav a {
+  display: block;
+  padding: 0.25rem 0.4rem;
+  color: #aaa;
+  text-decoration: none !important;
+  border-radius: 4px;
+  line-height: 1.4;
+  transition: background 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+#toc-nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+  text-decoration: none !important;
+}
+#toc-nav a.toc-active {
+  color: #64B5F6 !important;
+  border-left-color: #64B5F6;
+  background: rgba(33,150,243,0.1);
+}
+#toc-nav a.toc-h1 { padding-left: 0.4rem; font-weight: 700; }
+#toc-nav a.toc-h2 { padding-left: 0.4rem; font-weight: 600; }
+#toc-nav a.toc-h3 { padding-left: 1.2rem; font-size: 0.72rem; color: #888; }
+#toc-float::-webkit-scrollbar { width: 3px; }
+#toc-float::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+@media (max-width: 1300px) { #toc-float { display: none !important; } }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var article = document.querySelector('.article-style');
+  if (!article) return;
+
+  var headings = article.querySelectorAll('h1, h2, h3');
+  if (headings.length < 2) return;
+
+  // Buat TOC dan inject langsung ke body — bukan di dalam article
+  var toc = document.createElement('div');
+  toc.id = 'toc-float';
+  toc.innerHTML = '<div class="toc-title">📋 Daftar Isi</div><nav id="toc-nav"></nav>';
+  document.body.appendChild(toc);
+
+  var nav = toc.querySelector('#toc-nav');
+
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'toc-' + i;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.replace(/^#+\s*/, '');
+    a.className = 'toc-' + h.tagName.toLowerCase();
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(h.id);
+      if (target) {
+        var offset = 70;
+        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+    nav.appendChild(a);
+  });
+
+  // Tampilkan TOC setelah sedikit delay
+  setTimeout(function() {
+    toc.classList.add('toc-visible');
+  }, 400);
+
+  // Highlight aktif saat scroll
+  var links = nav.querySelectorAll('a');
+  function updateActive() {
+    var scrollPos = window.scrollY + 90;
+    var current = headings[0].id;
+    headings.forEach(function(h) {
+      if (h.offsetTop <= scrollPos) current = h.id;
+    });
+    links.forEach(function(a) {
+      a.classList.toggle('toc-active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+});
+</script>
+
 {{- end -}}

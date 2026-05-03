@@ -113,3 +113,69 @@ html {
 .featurette-icon:hover {
   transform: scale(1.15);
 }
+
+// =============================================
+// FLOATING BUTTONS — Back to Top & Back to DB
+// =============================================
+
+.float-buttons {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 999;
+}
+
+.float-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-decoration: none !important;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.2s;
+  pointer-events: none;
+}
+
+.float-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.float-btn-top {
+  background: #2196F3;
+  color: white !important;
+  box-shadow: 0 3px 12px rgba(33,150,243,0.4);
+}
+
+.float-btn-top:hover {
+  box-shadow: 0 5px 18px rgba(33,150,243,0.6);
+  transform: translateY(-2px) !important;
+}
+
+.float-btn-db {
+  background: #4CAF50;
+  color: white !important;
+  box-shadow: 0 3px 12px rgba(76,175,80,0.4);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.float-btn-db:hover {
+  box-shadow: 0 5px 18px rgba(76,175,80,0.6);
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 768px) {
+  .float-buttons { bottom: 1.2rem; right: 1rem; }
+  .float-btn { width: 40px; height: 40px; }
+}

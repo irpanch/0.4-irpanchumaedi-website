@@ -1,5 +1,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+
   // 1. Fade in saat scroll
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -20,11 +21,44 @@ document.addEventListener('DOMContentLoaded', function () {
     if (navbar) {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     }
+    // Tampilkan floating buttons setelah scroll 300px
+    var btns = document.querySelectorAll('.float-btn');
+    btns.forEach(function(btn) {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
   });
 
   // 3. Stagger delay pada skill cards
   document.querySelectorAll('.featurette').forEach(function(el, i) {
     el.style.transitionDelay = (i * 0.1) + 's';
   });
+
+  // 4. Inject floating buttons ke semua halaman
+  var isDbPage = window.location.pathname.indexOf('/post/database') === 0;
+  var container = document.createElement('div');
+  container.className = 'float-buttons';
+
+  // Tombol Back to Top (selalu ada)
+  var btnTop = document.createElement('button');
+  btnTop.className = 'float-btn float-btn-top';
+  btnTop.title = 'Kembali ke atas';
+  btnTop.innerHTML = '↑';
+  btnTop.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  container.appendChild(btnTop);
+
+  // Tombol Kembali ke Database (hanya di halaman database provinsi)
+  var isProvinsiPage = window.location.pathname.indexOf('/post/database-') === 0;
+  if (isProvinsiPage) {
+    var btnDb = document.createElement('a');
+    btnDb.className = 'float-btn float-btn-db';
+    btnDb.href = '/post/database/';
+    btnDb.title = 'Kembali ke Database Utama';
+    btnDb.innerHTML = '🗄️';
+    container.appendChild(btnDb);
+  }
+
+  document.body.appendChild(container);
 });
 </script>

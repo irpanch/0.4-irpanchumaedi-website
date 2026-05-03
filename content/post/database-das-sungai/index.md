@@ -87,18 +87,31 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
 
 <a class="dl-btn-main" href="https://1drv.ms/f/c/22f5ef4527203c63/IgCF8scklb1_TITQKfamjYcOAZIbqLVHvHR4D_WOICnEPd4?e=lIo7f8" target="_blank">⬇ Unduh Semua (35 Wilayah) — OneDrive</a>
 
-<small>*Berisi 35 peta WS seluruh Indonesia. Pilih provinsi/wilayah yang dibutuhkan di dalam folder.*</small>
+<small>*Berisi 35 peta WS seluruh Indonesia dalam dua kategori: per provinsi dan per sungai lintas provinsi.*</small>
 
 ---
 
-## 🗺️ Pilih Pulau / Wilayah
+## 📌 Panduan Memilih Data
+
+| | Peta Per Provinsi | Peta Per Sungai |
+|--|------------------|-----------------|
+| **Cakupan** | Satu provinsi | Lintas provinsi |
+| **Skala** | Lebih besar (detail) | Lebih kecil (regional) |
+| **Cocok untuk** | Analisis lokal, perencanaan detail | Analisis DAS lintas batas, studi regional |
+| **Jumlah file** | 31 peta provinsi | 4 peta pulau |
+
+---
+
+## 🗺️ Kategori 1 — Peta Per Provinsi
+
+Cakupan satu provinsi dengan skala lebih besar. Cocok untuk analisis hidrologi lokal dan perencanaan teknis.
 
 <div class="pulau-grid">
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Jawa</div><div class="pulau-count">5 wilayah · PDF</div></div>
+  <div class="pulau-info"><div class="pulau-name">Pulau Jawa</div><div class="pulau-count">4 provinsi · PDF</div></div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
@@ -106,14 +119,13 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
   <div class="provinsi-item"><span>Jawa Tengah & D.I. Yogyakarta</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Jawa Timur</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Banten</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sungai Pulau Jawa</span><span class="provinsi-badge">✅ PDF</span></div>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Sumatera</div><div class="pulau-count">9 wilayah · PDF</div></div>
+  <div class="pulau-info"><div class="pulau-name">Pulau Sumatera</div><div class="pulau-count">8 provinsi · PDF</div></div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
@@ -125,14 +137,13 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
   <div class="provinsi-item"><span>Bengkulu</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Sumatera Selatan</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Lampung</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sungai Pulau Sumatera</span><span class="provinsi-badge">✅ PDF</span></div>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Kalimantan</div><div class="pulau-count">5 wilayah · PDF</div></div>
+  <div class="pulau-info"><div class="pulau-name">Pulau Kalimantan</div><div class="pulau-count">4 provinsi · PDF</div></div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
@@ -140,14 +151,13 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
   <div class="provinsi-item"><span>Kalimantan Tengah</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Kalimantan Selatan</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Kalimantan Timur & Utara</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sungai Pulau Kalimantan</span><span class="provinsi-badge">✅ PDF</span></div>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Sulawesi</div><div class="pulau-count">7 wilayah · PDF</div></div>
+  <div class="pulau-info"><div class="pulau-name">Pulau Sulawesi</div><div class="pulau-count">6 provinsi · PDF</div></div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
@@ -157,14 +167,13 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
   <div class="provinsi-item"><span>Sulawesi Barat</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Sulawesi Selatan</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Sulawesi Tenggara</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sungai Pulau Sulawesi</span><span class="provinsi-badge">✅ PDF</span></div>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Kepulauan & Lainnya</div><div class="pulau-count">9 wilayah · PDF</div></div>
+  <div class="pulau-info"><div class="pulau-name">Kepulauan & Lainnya</div><div class="pulau-count">9 provinsi · PDF</div></div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
@@ -176,11 +185,26 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
   <div class="provinsi-item"><span>Maluku</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Maluku Utara</span><span class="provinsi-badge">✅ PDF</span></div>
   <div class="provinsi-item"><span>Papua Barat</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sungai-Sungai</span><span class="provinsi-badge">✅ PDF</span></div>
 </div>
 </div>
 
 </div>
+
+---
+
+## 🌊 Kategori 2 — Peta Per Sungai (Lintas Provinsi)
+
+Cakupan lintas provinsi dengan skala lebih kecil. Cocok untuk analisis DAS regional dan studi hidrologi skala besar.
+
+| Wilayah Sungai | Cakupan | Format | Unduh |
+|----------------|---------|--------|-------|
+| Sungai Pulau Jawa | Seluruh sungai utama Pulau Jawa | PDF | <span class="provinsi-badge">✅ PDF</span> |
+| Sungai Pulau Sumatera | Seluruh sungai utama Pulau Sumatera | PDF | <span class="provinsi-badge">✅ PDF</span> |
+| Sungai Pulau Kalimantan | Seluruh sungai utama Pulau Kalimantan | PDF | <span class="provinsi-badge">✅ PDF</span> |
+| Sungai Pulau Sulawesi | Seluruh sungai utama Pulau Sulawesi | PDF | <span class="provinsi-badge">✅ PDF</span> |
+| Sungai-Sungai (Nasional) | Jaringan sungai lintas pulau | PDF | <span class="provinsi-badge">✅ PDF</span> |
+
+<small>*Semua peta tersedia dalam satu folder — klik tombol unduh di atas untuk mengakses.*</small>
 
 <script>
 function togglePulau(header) {

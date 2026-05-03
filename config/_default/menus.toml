@@ -14,6 +14,11 @@
   weight = 30
 
 [[main]]
+  name = "Kurikulum"
+  url = "#kurikulum"
+  weight = 35
+
+[[main]]
   name = "Tulisan"
   url = "#posts"
   weight = 40

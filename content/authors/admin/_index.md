@@ -23,7 +23,6 @@ interests:
 - Kajian Lingkungan (AMDAL/ANDAL)
 - Remote Sensing & Data Satelit
 - Pemrograman R untuk Hidrologi
-- IoT & Sensor Hujan Otomatis (ARG)
 
 organizations:
 - name: Konsultan Swasta — Sumber Daya Air
@@ -55,7 +54,7 @@ title: Irpan Chumaedi
 
 Nama saya **Irpan Chumaedi**, konsultan swasta di bidang perencanaan sumber daya air. Pekerjaan utama saya meliputi analisis hidrologi, pemodelan hidrolika, dan penyusunan dokumen kajian lingkungan (AMDAL/ANDAL).
 
-Pengalaman saya mencakup berbagai jenis proyek seperti perencanaan **drainase**, **irigasi**, **bendung**, **bendungan**, analisis banjir, dan estimasi erosi-sedimentasi. Proyek yang pernah ditangani tersebar di berbagai wilayah Indonesia mulai dari Kalimantan, Sulawesi, Maluku Utara, hingga Sumatera.
+Pengalaman saya mencakup berbagai jenis proyek seperti perencanaan drainase, irigasi, bendung, bendungan, analisis banjir, dan estimasi erosi-sedimentasi. Proyek yang pernah ditangani tersebar di berbagai wilayah Indonesia mulai dari Kalimantan, Sulawesi, Maluku Utara, hingga Sumatera.
 
 Saya juga aktif mengembangkan *tools* berbasis **R** untuk otomasi analisis hidro-klimatologi, serta mengeksplorasi penggunaan data satelit (GPM IMERG, GSMaP, ERA5) sebagai alternatif data hujan lapangan.
 

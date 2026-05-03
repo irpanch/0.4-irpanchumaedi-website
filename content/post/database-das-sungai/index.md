@@ -13,12 +13,12 @@ featured: false
 
 Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari Kementerian PUPR dan BIG. Tersedia dalam format **PDF georeferensi** yang dapat langsung digunakan sebagai basemap di QGIS, Global Mapper, atau ArcGIS.
 
-> 📥 Semua data tersedia dalam **satu folder OneDrive** — pilih provinsi yang dibutuhkan setelah membuka folder.
+Tiap folder pulau berisi peta per provinsi **dan** peta sungai-sungai yang berada di wilayah tersebut.
 
 <style>
 .pulau-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
   margin: 1.5rem 0;
 }
@@ -27,6 +27,11 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px;
   overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.pulau-card:hover {
+  border-color: rgba(33,150,243,0.4);
+  box-shadow: 0 4px 16px rgba(33,150,243,0.1);
 }
 .pulau-header {
   display: flex;
@@ -38,173 +43,193 @@ Data peta **Wilayah Sungai (WS) berkoordinat** seluruh Indonesia, bersumber dari
   border-bottom: 1px solid rgba(255,255,255,0.06);
   transition: background 0.2s;
 }
-.pulau-header:hover { background: rgba(255,255,255,0.05); }
+.pulau-header:hover { background: rgba(255,255,255,0.04); }
+.pulau-header.open { border-bottom-color: rgba(33,150,243,0.3); }
 .pulau-icon { font-size: 1.4rem; }
 .pulau-info { flex: 1; }
 .pulau-name { font-weight: 700; font-size: 0.95rem; }
-.pulau-count { font-size: 0.72rem; color: #888; }
+.pulau-count { font-size: 0.72rem; color: #888; margin-top: 0.1rem; }
 .pulau-arrow { font-size: 0.8rem; color: #888; transition: transform 0.3s; }
 .pulau-header.open .pulau-arrow { transform: rotate(180deg); }
-.pulau-body { display: none; padding: 0.5rem 0; }
+.pulau-body { display: none; padding: 0.8rem 1rem; }
 .pulau-body.open { display: block; }
-.provinsi-item {
+.provinsi-list { list-style: none; margin: 0 0 0.8rem 0; padding: 0; }
+.provinsi-list li {
+  padding: 0.3rem 0;
+  font-size: 0.82rem;
+  color: #aaa;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.45rem 1rem;
-  font-size: 0.82rem;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  transition: background 0.15s;
+  gap: 0.4rem;
 }
-.provinsi-item:last-child { border-bottom: none; }
-.provinsi-item:hover { background: rgba(255,255,255,0.04); }
-.provinsi-badge {
-  font-size: 0.65rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  background: rgba(76,175,80,0.15);
-  color: #81C784;
-}
-.dl-btn-main {
-  display: inline-flex;
+.provinsi-list li:last-child { border-bottom: none; }
+.dl-btn {
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.7rem 1.4rem;
-  border-radius: 6px;
-  background: #1565C0;
-  color: white !important;
+  padding: 0.55rem 1rem;
+  border-radius: 5px;
+  background: rgba(33,150,243,0.15);
+  color: #64B5F6 !important;
   text-decoration: none !important;
+  font-size: 0.82rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: background 0.2s, transform 0.2s;
-  margin: 1rem 0;
-  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+  border: 1px solid rgba(33,150,243,0.25);
 }
-.dl-btn-main:hover { background: #1976D2; transform: translateY(-2px); }
+.dl-btn:hover {
+  background: rgba(33,150,243,0.28);
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
 </style>
 
-## 📥 Unduh Semua Data
-
-<a class="dl-btn-main" href="https://1drv.ms/f/c/22f5ef4527203c63/IgCF8scklb1_TITQKfamjYcOAZIbqLVHvHR4D_WOICnEPd4?e=lIo7f8" target="_blank">⬇ Unduh Semua (35 Wilayah) — OneDrive</a>
-
-<small>*Berisi 35 peta WS seluruh Indonesia dalam dua kategori: per provinsi dan per sungai lintas provinsi.*</small>
-
----
-
-## 📌 Panduan Memilih Data
-
-| | Peta Per Provinsi | Peta Per Sungai |
-|--|------------------|-----------------|
-| **Cakupan** | Satu provinsi | Lintas provinsi |
-| **Skala** | Lebih besar (detail) | Lebih kecil (regional) |
-| **Cocok untuk** | Analisis lokal, perencanaan detail | Analisis DAS lintas batas, studi regional |
-| **Jumlah file** | 31 peta provinsi | 4 peta pulau |
-
----
-
-## 🗺️ Kategori 1 — Peta Per Provinsi
-
-Cakupan satu provinsi dengan skala lebih besar. Cocok untuk analisis hidrologi lokal dan perencanaan teknis.
+## 🗺️ Unduh per Pulau
 
 <div class="pulau-grid">
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Jawa</div><div class="pulau-count">4 provinsi · PDF</div></div>
+  <div class="pulau-info">
+    <div class="pulau-name">Pulau Jawa</div>
+    <div class="pulau-count">Peta provinsi + sungai · PDF georeferensi</div>
+  </div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
-  <div class="provinsi-item"><span>Jawa Barat & DKI Jakarta</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Jawa Tengah & D.I. Yogyakarta</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Jawa Timur</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Banten</span><span class="provinsi-badge">✅ PDF</span></div>
+  <ul class="provinsi-list">
+    <li>📄 Jawa Barat & DKI Jakarta</li>
+    <li>📄 Jawa Tengah & D.I. Yogyakarta</li>
+    <li>📄 Jawa Timur</li>
+    <li>📄 Banten</li>
+    <li>📄 Sungai Kepulauan Seribu</li>
+    <li>📄 Sungai Kepulauan Karimunjawa</li>
+  </ul>
+  <a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgA-VNeVfcJTTKtbfWWBS67OAa7gFFT9UwTob8QaCUy2tUE?e=KtcEGY" target="_blank">⬇ Unduh Folder Pulau Jawa</a>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Sumatera</div><div class="pulau-count">8 provinsi · PDF</div></div>
+  <div class="pulau-info">
+    <div class="pulau-name">Pulau Kalimantan</div>
+    <div class="pulau-count">Peta provinsi + sungai · PDF georeferensi</div>
+  </div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
-  <div class="provinsi-item"><span>Aceh</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sumatera Utara</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sumatera Barat</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Riau</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Jambi</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Bengkulu</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sumatera Selatan</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Lampung</span><span class="provinsi-badge">✅ PDF</span></div>
+  <ul class="provinsi-list">
+    <li>📄 Kalimantan Barat</li>
+    <li>📄 Kalimantan Tengah</li>
+    <li>📄 Kalimantan Selatan</li>
+    <li>📄 Kalimantan Timur & Utara</li>
+    <li>📄 Sungai Segah Berau</li>
+  </ul>
+  <a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBhvq098MeeTblqDkJUzBcuAUWI3cag3KvJJx98Z-64N4U?e=mKmOgJ" target="_blank">⬇ Unduh Folder Pulau Kalimantan</a>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Kalimantan</div><div class="pulau-count">4 provinsi · PDF</div></div>
+  <div class="pulau-info">
+    <div class="pulau-name">Pulau Nusa Tenggara, Bali & Maluku</div>
+    <div class="pulau-count">Peta provinsi + sungai · PDF georeferensi</div>
+  </div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
-  <div class="provinsi-item"><span>Kalimantan Barat</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Kalimantan Tengah</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Kalimantan Selatan</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Kalimantan Timur & Utara</span><span class="provinsi-badge">✅ PDF</span></div>
+  <ul class="provinsi-list">
+    <li>📄 Bali</li>
+    <li>📄 Nusa Tenggara Barat</li>
+    <li>📄 NTT</li>
+    <li>📄 Maluku</li>
+    <li>📄 Maluku Utara</li>
+    <li>📄 Sungai Bali-Penda, Lombok, Sumbawa</li>
+    <li>📄 Sungai Benanain, Sumba, Omba, dll</li>
+    <li>📄 Sungai Ambon-Seram, Buru, Kei-Aru, dll</li>
+  </ul>
+  <a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgCRnJLtrjInTpgDj_29ufo8AaMT070ejJn9eqaqMifD8mg?e=9wFr1W" target="_blank">⬇ Unduh Folder Nusa Tenggara, Bali & Maluku</a>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Pulau Sulawesi</div><div class="pulau-count">6 provinsi · PDF</div></div>
+  <div class="pulau-info">
+    <div class="pulau-name">Pulau Papua</div>
+    <div class="pulau-count">Peta provinsi + sungai · PDF georeferensi</div>
+  </div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
-  <div class="provinsi-item"><span>Sulawesi Utara</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Gorontalo</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sulawesi Tengah</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sulawesi Barat</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sulawesi Selatan</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Sulawesi Tenggara</span><span class="provinsi-badge">✅ PDF</span></div>
+  <ul class="provinsi-list">
+    <li>📄 Papua Barat</li>
+    <li>📄 Papua (termasuk pemekaran)</li>
+    <li>📄 Sungai Einlanden-Digul-Eikuma</li>
+    <li>📄 Sungai Kamunda Sebyar</li>
+    <li>📄 Sungai Mamberand-Tami-Apauvar</li>
+    <li>📄 Sungai Wapoga-Mimika</li>
+  </ul>
+  <a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgDQfUcNLQgwRLJ4J1kdm22HAXUY9xvnYr9CfVMgdgWmt60?e=qz5VIk" target="_blank">⬇ Unduh Folder Pulau Papua</a>
 </div>
 </div>
 
 <div class="pulau-card">
 <div class="pulau-header" onclick="togglePulau(this)">
   <span class="pulau-icon">🏝️</span>
-  <div class="pulau-info"><div class="pulau-name">Kepulauan & Lainnya</div><div class="pulau-count">9 provinsi · PDF</div></div>
+  <div class="pulau-info">
+    <div class="pulau-name">Pulau Sulawesi</div>
+    <div class="pulau-count">Peta provinsi + sungai · PDF georeferensi</div>
+  </div>
   <span class="pulau-arrow">▼</span>
 </div>
 <div class="pulau-body">
-  <div class="provinsi-item"><span>Kepulauan Riau</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Bangka Belitung</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Bali</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Nusa Tenggara Barat</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>NTT</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Maluku</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Maluku Utara</span><span class="provinsi-badge">✅ PDF</span></div>
-  <div class="provinsi-item"><span>Papua Barat</span><span class="provinsi-badge">✅ PDF</span></div>
+  <ul class="provinsi-list">
+    <li>📄 Sulawesi Utara</li>
+    <li>📄 Gorontalo</li>
+    <li>📄 Sulawesi Tengah</li>
+    <li>📄 Sulawesi Barat</li>
+    <li>📄 Sulawesi Selatan</li>
+    <li>📄 Sulawesi Tenggara</li>
+  </ul>
+  <a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgCslAFkvEwbSLz-uxtpZlLrAfns8fumePp1yc9eW93zDzE?e=uDFfEO" target="_blank">⬇ Unduh Folder Pulau Sulawesi</a>
+</div>
+</div>
+
+<div class="pulau-card">
+<div class="pulau-header" onclick="togglePulau(this)">
+  <span class="pulau-icon">🏝️</span>
+  <div class="pulau-info">
+    <div class="pulau-name">Pulau Sumatera, Kepri & Bangka Belitung</div>
+    <div class="pulau-count">Peta provinsi + sungai · PDF georeferensi</div>
+  </div>
+  <span class="pulau-arrow">▼</span>
+</div>
+<div class="pulau-body">
+  <ul class="provinsi-list">
+    <li>📄 Aceh</li>
+    <li>📄 Sumatera Utara</li>
+    <li>📄 Sumatera Barat</li>
+    <li>📄 Riau</li>
+    <li>📄 Jambi</li>
+    <li>📄 Bengkulu</li>
+    <li>📄 Sumatera Selatan</li>
+    <li>📄 Lampung</li>
+    <li>📄 Kepulauan Riau</li>
+    <li>📄 Bangka & Belitung</li>
+    <li>📄 Sungai Kepulauan Riau, Bangka, Belitung</li>
+  </ul>
+  <a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgCEV37sQ-_iQ7HDyuEppWhgAbn7AmYCa05QasfOcaMdjTM?e=GpE2LL" target="_blank">⬇ Unduh Folder Sumatera, Kepri & Bangka Belitung</a>
 </div>
 </div>
 
 </div>
-
----
-
-## 🌊 Kategori 2 — Peta Per Sungai (Lintas Provinsi)
-
-Cakupan lintas provinsi dengan skala lebih kecil. Cocok untuk analisis DAS regional dan studi hidrologi skala besar.
-
-| Wilayah Sungai | Cakupan | Format | Unduh |
-|----------------|---------|--------|-------|
-| Sungai Pulau Jawa | Seluruh sungai utama Pulau Jawa | PDF | <span class="provinsi-badge">✅ PDF</span> |
-| Sungai Pulau Sumatera | Seluruh sungai utama Pulau Sumatera | PDF | <span class="provinsi-badge">✅ PDF</span> |
-| Sungai Pulau Kalimantan | Seluruh sungai utama Pulau Kalimantan | PDF | <span class="provinsi-badge">✅ PDF</span> |
-| Sungai Pulau Sulawesi | Seluruh sungai utama Pulau Sulawesi | PDF | <span class="provinsi-badge">✅ PDF</span> |
-| Sungai-Sungai (Nasional) | Jaringan sungai lintas pulau | PDF | <span class="provinsi-badge">✅ PDF</span> |
-
-<small>*Semua peta tersedia dalam satu folder — klik tombol unduh di atas untuk mengakses.*</small>
 
 <script>
 function togglePulau(header) {
@@ -222,9 +247,9 @@ function togglePulau(header) {
 | **Jenis data** | Peta Wilayah Sungai (WS) berkoordinat |
 | **Format** | PDF georeferensi |
 | **Penggunaan** | Basemap di QGIS, Global Mapper, ArcGIS |
-| **Cakupan** | 35 wilayah seluruh Indonesia |
+| **Cakupan** | Seluruh Indonesia (6 kelompok pulau) |
 | **Sumber** | Kementerian PUPR / BIG |
-| **Diperbarui** | April 2026 |
+| **Diperbarui** | Mei 2026 |
 
 <small>*Data bersumber dari instansi pemerintah dan bersifat terbuka. Harap cantumkan sumber bila digunakan dalam publikasi ilmiah atau laporan teknis.*</small>
 

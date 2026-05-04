@@ -56,7 +56,7 @@ Nama saya **Irpan Chumaedi**, konsultan swasta di bidang perencanaan sumber daya
 
 Pengalaman saya mencakup berbagai jenis proyek seperti perencanaan drainase, irigasi, bendung, bendungan, analisis banjir, dan estimasi erosi-sedimentasi. Proyek yang pernah ditangani tersebar di berbagai wilayah Indonesia mulai dari Kalimantan, Sulawesi, Maluku Utara, hingga Sumatera.
 
-Saya juga aktif mengembangkan *tools* berbasis **R** untuk otomasi analisis hidro-klimatologi, serta mengeksplorasi penggunaan data satelit (GPM IMERG, GSMaP, ERA5) sebagai alternatif data hujan lapangan.
+Fokus utama dari pembuatan website ini ada di pengumpulan [Database](https://www.irpanchumaedi.com/post/database/ "database geospasial dan hidrologi indonesia") dan juga membahas [kurikulum](https://www.irpanchumaedi.com/#kurikulum) seorang hidrologist dari awal hingga akhir. 
 
 Bagi yang ingin melihat contoh pekerjaan simulasi, silakan kunjungi [channel YouTube saya](https://www.youtube.com/irpanch "channel YouTube Irpan Chumaedi") 🎬.
 

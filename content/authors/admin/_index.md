@@ -56,6 +56,6 @@ Nama saya **Irpan Chumaedi**, konsultan swasta di bidang perencanaan sumber daya
 
 Pengalaman saya mencakup berbagai jenis proyek seperti perencanaan drainase, irigasi, bendung, bendungan, analisis banjir, dan estimasi erosi-sedimentasi. Proyek yang pernah ditangani tersebar di berbagai wilayah Indonesia mulai dari Kalimantan, Sulawesi, Maluku Utara, hingga Sumatera.
 
-Fokus utama dari pembuatan website ini ada di pengumpulan [Database](https://www.irpanchumaedi.com/post/database/ "database geospasial dan hidrologi indonesia") dan juga membahas [Kurikulum](https://www.irpanchumaedi.com/#kurikulum) pengalaman saya sebagai seorang hidrologist engineer. Website ini masih dalam tahap pengembangan, jadi *stay tuned* untuk materi dan data lain yang segara disiapkan. Sementara itu silahkan explore dulu atau bisa tonton [YouTube](https://www.youtube.com/irpanch "channel YouTube Irpan Chumaedi").  
+Fokus utama dari pembuatan website ini ada di pengumpulan [Database](https://www.irpanchumaedi.com/post/database/ "database geospasial dan hidrologi indonesia") dan juga membahas [Kurikulum](https://www.irpanchumaedi.com/#kurikulum) pengalaman saya sebagai seorang hidrologist engineer. Website ini masih dalam tahap pengembangan, jadi *stay tuned* untuk materi dan data lain yang segara disiapkan. Sementara itu silahkan explore dulu atau bisa tonton dulu beberapa video [YouTube](https://www.youtube.com/irpanch "channel YouTube Irpan Chumaedi") saya.  
 
-Salam kenal 🙂
+Terimakasih dan Salam kenal 🙂

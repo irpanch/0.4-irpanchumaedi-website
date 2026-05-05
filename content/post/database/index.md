@@ -243,9 +243,9 @@ Hasil pengukuran topografi lapangan secara teristris menggunakan total station d
 
 **Peta Topografi Teristris**
 
-| Lokasi | Luas Area | Skala | Peralatan | Format | Unduh |
+| Lokasi | Panjang pengukuran (km) | Skala | Peralatan | Format | Unduh |
 |--------|-----------|-------|-----------|--------|-------|
-| Sungai Akelamo — Pulau Obi | - | 1:1.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
+| Sungai Siak — Riau (2023) | ± 500 | 1:1.000 | Total Station | DWG, EXCEL | [Unduh](https://drive.google.com/drive/folders/1_T8GgchLglH24jEl1Q-Cy0JVR__lsy1O?usp=drive_link) |
 | Sungai Sutoyo — Banjarmasin | - | 1:1.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
 | Sungai Mahakam — Kutai Barat | - | 1:2.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
 
@@ -288,8 +288,9 @@ Data curah hujan harian dari stasiun observasi BMKG dan BWS, serta data satelit 
 | Provinsi | Stasiun | Data Tersedia | Halaman |
 |----------|---------|---------------|---------|
 | Kalimantan Selatan | 4 BMKG + 11 BWS + 3 GPM | ✅ Tersedia | [→ Lihat & Unduh](/post/database-kalimantan-selatan/) |
-| Kalimantan Timur | 1 stasiun | 🕐 Segera hadir | [→ Lihat](/post/database-kalimantan-timur/) |
-| Jawa Barat | 1 stasiun | 🕐 Segera hadir | [→ Lihat](/post/database-jawa-barat/) |
+| Kalimantan Timur | 17 stasiun hujan (2014-2023) | ✅ Tersedia | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgD_zVqU2ljzQaB6zAcorK3qAdQbjqA2AEuQYNto1oYmrIc?e=u3C8yR) |
+| Jawa Barat | 33 stasiun (2009-2017) | ✅ Tersedia | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAiDGUAAAAAAYnZqjJPdVFkgnoSpVepOUs?e=fKfwzg) |
+| Aceh| 3 stasiun (2007-2017) | ✅ Tersedia | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAiC2UAAAAAAWLp2EW5RwQtCjH4AmC2Szw?e=u1667x) |
 
 <small>*Format data: Excel (.xlsx) untuk data stasiun, CSV untuk data GPM IMERG, PDF untuk data arsip. Sumber: BMKG, BWS Kalimantan III/PSDA, NASA GPM IMERG V07.*</small>
 

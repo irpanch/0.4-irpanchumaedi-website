@@ -330,14 +330,14 @@ Data vektor RBI skala 1:25.000 dari BIG, dikelompokkan per wilayah kepulauan. Se
 
 | Wilayah | Ukuran | Status | Halaman |
 |---------|--------|--------|---------|
-| Jabar, DKI & Banten | 2.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
-| Jawa Tengah & DIY | 1.8 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
-| Jawa Timur | 113 MB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
-| Sumatera & Kepri | 4.1 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
-| Kalimantan | 7.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
-| Sulawesi | 2.0 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
-| Papua | 1.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
-| Nusa Tenggara, Bali & Maluku | 2.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Jabar, DKI & Banten | 2.2 GB | ✅ Tersedia| [→ Lihat & Unduh](/post/database-rbi/) |
+| Jawa Tengah & DIY | 1.8 GB | ✅ Tersedia | [→ Lihat & Unduh](/post/database-rbi/) |
+| Jawa Timur | 113 MB | ✅ Tersedia | [→ Lihat & Unduh](/post/database-rbi/) |
+| Sumatera & Kepri | 4.1 GB | ✅ Tersedia | [→ Lihat & Unduh](/post/database-rbi/) |
+| Kalimantan | 7.2 GB | ✅ Tersedia | [→ Lihat & Unduh](/post/database-rbi/) |
+| Sulawesi | 2.0 GB | ✅ Tersedia | [→ Lihat & Unduh](/post/database-rbi/) |
+| Papua | 1.2 GB | ✅ Tersedia | [→ Lihat & Unduh](/post/database-rbi/) |
+| Nusa Tenggara, Bali & Maluku | 2.2 GB | ✅ Tersedia | [→ Lihat & Unduh](/post/database-rbi/) |
 
 <small>*Sumber: Badan Informasi Geospasial (BIG). Total ~21 GB — unduh hanya wilayah yang dibutuhkan.*</small>
 

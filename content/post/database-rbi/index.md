@@ -154,49 +154,49 @@ Jaringan jalan · Jaringan sungai · Batas administrasi · Garis pantai · Kontu
       <td>🏝️ Jabar, DKI & Banten</td>
       <td>Jawa Barat, DKI Jakarta, Banten</td>
       <td><span class="size-badge">2.2 GB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAio_8BAAAAATeuYRSkCqW5uYn2SoSs8Tw?e=Q6yja4" target="_blank">⬇ Unduh</a></td>
     </tr>
     <tr>
       <td>🏝️ Jawa Tengah & DIY</td>
       <td>Jawa Tengah, D.I. Yogyakarta</td>
       <td><span class="size-badge">1.8 GB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAipv8BAAAAATAZMupuN39o8pX1ekjoUCs?e=vNcJeo" target="_blank">⬇ Unduh</a></td>
     </tr>
     <tr>
       <td>🏝️ Jawa Timur</td>
       <td>Jawa Timur</td>
       <td><span class="size-badge">113 MB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAip_8BAAAAATxN6lIK2skId-7BA74nii4?e=l6cqOb" target="_blank">⬇ Unduh</a></td>
     </tr>
     <tr>
       <td>🏝️ Sumatera & Kepri</td>
       <td>Aceh, Sumut, Sumbar, Riau, Jambi, Bengkulu, Sumsel, Lampung, Kepulauan Riau, Babel</td>
       <td><span class="size-badge">4.1 GB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAiq_8BAAAAAfWmW9ZFD5bFm8YFbbo0zws?e=jjOYBM" target="_blank">⬇ Unduh</a></td>
     </tr>
     <tr>
       <td>🏝️ Kalimantan</td>
       <td>Kalbar, Kalteng, Kalsel, Kaltim, Kaltara</td>
       <td><span class="size-badge">7.2 GB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAirf8BAAAAAdcdHS-lr1F9yd_jUQmEwX0?e=oX5oq1" target="_blank">⬇ Unduh</a></td>
     </tr>
     <tr>
       <td>🏝️ Sulawesi</td>
       <td>Sulut, Gorontalo, Sulteng, Sulbar, Sulsel, Sultra</td>
       <td><span class="size-badge">2.0 GB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAirv8BAAAAAVefC8AqjOd022Xjxl7PHbk?e=Mjz7vq" target="_blank">⬇ Unduh</a></td>
     </tr>
     <tr>
       <td>🏝️ Papua</td>
       <td>Papua Barat, Papua, Papua Selatan, Papua Tengah, Papua Pegunungan, Papua Barat Daya</td>
       <td><span class="size-badge">1.2 GB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAir_8BAAAAAdb8roLiZ68bnX-By2S51C4?e=NBs5BB" target="_blank">⬇ Unduh</a></td>
     </tr>
     <tr>
       <td>🏝️ Nusa Tenggara, Bali & Maluku</td>
       <td>Bali, NTB, NTT, Maluku, Maluku Utara</td>
       <td><span class="size-badge">2.2 GB</span></td>
-      <td><span class="dl-btn-soon">Segera hadir</span></td>
+      <td><a class="dl-btn" href="https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAidAACAAAAAfNU8wda8t6vmQ5jJ3h2IVc?e=Zw3XgP" target="_blank">⬇ Unduh</a></td>
     </tr>
   </tbody>
 </table>

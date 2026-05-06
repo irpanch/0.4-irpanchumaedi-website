@@ -320,18 +320,20 @@ Peta risiko bencana Indonesia dari inaRISK BNPB, mencakup bahaya banjir, longsor
   <span class="db-section-size">21 GB · Shapefile</span>
 </div>
 
-Data vektor Rupa Bumi Indonesia (RBI) skala 1:25.000 dari Badan Informasi Geospasial (BIG), mencakup berbagai layer tematik.
+Data vektor RBI skala 1:25.000 dari BIG, dikelompokkan per wilayah kepulauan. Setiap folder berisi layer lengkap: jalan, sungai, administrasi, pantai, kontur, dan bangunan.
 
-| Dataset | Skala | Cakupan | Sumber | Format | Unduh |
-|---------|-------|---------|--------|--------|-------|
-| Jaringan Jalan | 1:25.000 | Per lembar peta | BIG | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Jaringan Sungai | 1:25.000 | Per lembar peta | BIG | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Batas Administrasi | 1:25.000 | Per lembar peta | BIG | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Garis Pantai | 1:25.000 | Per lembar peta | BIG | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Kontur | 1:25.000 | Per lembar peta | BIG | Shapefile | <span class="badge-soon">Segera hadir</span> |
-| Bangunan & Fasilitas | 1:25.000 | Per lembar peta | BIG | Shapefile | <span class="badge-soon">Segera hadir</span> |
+| Wilayah | Ukuran | Status | Halaman |
+|---------|--------|--------|---------|
+| Jabar, DKI & Banten | 2.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Jawa Tengah & DIY | 1.8 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Jawa Timur | 113 MB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Sumatera & Kepri | 4.1 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Kalimantan | 7.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Sulawesi | 2.0 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Papua | 1.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
+| Nusa Tenggara, Bali & Maluku | 2.2 GB | 🕐 Segera hadir | [→ Lihat & Unduh](/post/database-rbi/) |
 
-<small>*Sumber: Badan Informasi Geospasial (BIG). Data RBI dapat diakses juga melalui [Tanahair BIG](https://tanahair.indonesia.go.id).*</small>
+<small>*Sumber: Badan Informasi Geospasial (BIG). Total ~21 GB — unduh hanya wilayah yang dibutuhkan.*</small>
 
 
 

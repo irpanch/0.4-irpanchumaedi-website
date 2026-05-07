@@ -124,7 +124,7 @@ featured: false
 
 <div class="db-grid">
 
-<a class="db-card" href="#terrain">
+<a class="db-card" href="/post/database-terrain/">
   <div class="db-card-icon">🏔️</div>
   <div class="db-card-title">Terrain</div>
   <div class="db-card-size">7.5 GB</div>

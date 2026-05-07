@@ -1,5 +1,5 @@
 ---
-title: "Peta Risiko Bencana inaRISK BNPB"
+title: "Peta Risiko Bencana inaRISK BNPB - PDF Georeference"
 subtitle: "Peta bahaya banjir, banjir bandang, dan kekeringan seluruh provinsi Indonesia — sumber: inaRISK BNPB"
 date: 2026-05-07
 lastmod: 2026-05-07
@@ -9,7 +9,7 @@ tags: ["database", "risiko bencana", "banjir", "inaRISK", "BNPB"]
 ---
 
 > 🗺️ Data bersumber dari **inaRISK BNPB** (inarisk.bnpb.go.id). File tersedia dalam format **PDF** per provinsi
-> mencakup 3 jenis bahaya: **Banjir**, **Banjir Bandang**, dan **Kekeringan**.
+> mencakup 3 jenis bahaya: **Banjir**, **Banjir Bandang**, dan **Kekeringan**. Meskipun dalam format PDF, file ini dapat dibuka langsung oleh program GIS dan terkoordinat karena sudah ter-georeference.
 > Harap cantumkan sumber BNPB apabila digunakan dalam laporan atau publikasi.
 
 <div style="margin:1.5rem 0;">

@@ -152,11 +152,11 @@ featured: false
   <span class="db-card-badge">Excel · CSV</span>
 </a>
 
-<a class="db-card" href="#risiko-bencana">
+<a class="db-card" href="/post/database-risiko-bencana/">
   <div class="db-card-icon">⚠️</div>
   <div class="db-card-title">Risiko Bencana</div>
-  <div class="db-card-size">1.3 GB</div>
-  <span class="db-card-badge">Raster · inaRISK</span>
+  <div class="db-card-size">~900 MB · 92 file</div>
+  <span class="db-card-badge">PDF · inaRISK BNPB</span>
 </a>
 
 <a class="db-card" href="#rbi">
@@ -304,19 +304,14 @@ Data curah hujan harian dari stasiun observasi BMKG dan BWS, serta data satelit 
 <div class="db-section-header" id="risiko-bencana">
   <span class="db-section-icon">⚠️</span>
   <span class="db-section-title">08 — Risiko Bencana</span>
-  <span class="db-section-size">1.3 GB · GeoTIFF</span>
+  <span class="db-section-size">~900 MB · 92 file PDF</span>
 </div>
 
-Peta risiko bencana Indonesia dari inaRISK BNPB, mencakup bahaya banjir, kekeringan, dan bencana lainnya dalam format raster siap pakai.
+Peta bahaya inaRISK BNPB per provinsi dalam format PDF, mencakup **Banjir**, **Banjir Bandang**, dan **Kekeringan** untuk 34 provinsi Indonesia (92 dari 102 file tersedia).
 
-| Dataset | Kelas Bahaya | Cakupan | Sumber | Format | Unduh |
-|---------|-------------|---------|--------|--------|-------|
-| Bahaya Banjir | Rendah / Sedang / Tinggi | Indonesia | inaRISK BNPB | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| Bahaya Tanah Longsor | Rendah / Sedang / Tinggi | Indonesia | inaRISK BNPB | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| Bahaya Banjir Bandang | Rendah / Sedang / Tinggi | Indonesia | inaRISK BNPB | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| Indeks Risiko Bencana | Multi-bahaya | Indonesia | inaRISK BNPB | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
+➡️ **[Lihat daftar lengkap & unduh di halaman Risiko Bencana →](/post/database-risiko-bencana/)**
 
-<small>*Sumber: inaRISK BNPB (Badan Nasional Penanggulangan Bencana). Data diunduh melalui portal inaRISK.*</small>
+<small>*Sumber: inaRISK BNPB (Badan Nasional Penanggulangan Bencana). Diakses Maret–April 2026. Format PDF per provinsi.*</small>
 
 ---
 

@@ -3,9 +3,10 @@
 // =============================================
 
 // --- 1. FADE IN saat scroll (semua section) ---
+// Catatan: article TIDAK disertakan di sini karena menyebabkan
+// halaman kosong di mobile jika JS .is-visible tidak terpicu.
 .home-section,
 .wg-hero,
-article,
 .card {
   opacity: 0;
   transform: translateY(30px);
@@ -14,10 +15,19 @@ article,
 
 .home-section.is-visible,
 .wg-hero.is-visible,
-article.is-visible,
 .card.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+// Article: pakai CSS animation langsung tanpa bergantung JS
+@keyframes articleFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+article {
+  animation: articleFadeIn 0.6s ease-out forwards;
 }
 
 // --- 2. NAVBAR smooth shadow saat scroll ---

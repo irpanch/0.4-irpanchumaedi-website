@@ -27,13 +27,13 @@ tags: ["database", "terrain", "DEMNAS", "sumatera"]
             border-radius:8px;padding:1rem 1.2rem;margin-bottom:1.5rem;">
   <div style="font-weight:700;margin-bottom:0.5rem;">📥 Cara Mengunduh DEMNAS</div>
   <ol style="margin:0;padding-left:1.3rem;font-size:0.87rem;line-height:1.8;">
-    <li>Cari kode NLP tile yang dibutuhkan pada tabel di bawah (gunakan kolom Kabupaten/Provinsi sebagai panduan)</li>
+    <li>Cari kode NLP pada tabel di bawah — ketik nama kabupaten atau provinsi di kotak pencarian</li>
     <li>Buka portal BIG: <a href="https://tanahair.indonesia.go.id/portal-web/unduh/demnas" target="_blank" style="color:#64B5F6;">tanahair.indonesia.go.id/portal-web/unduh/demnas</a></li>
-    <li>Login atau daftar akun BIG terlebih dahulu (gratis)</li>
-    <li>Cari tile menggunakan nama lokasi atau zoom ke wilayah yang diinginkan</li>
+    <li>Login atau daftar akun BIG (gratis)</li>
+    <li>Cari tile menggunakan nama lokasi atau zoom ke wilayah yang diinginkan di peta</li>
     <li>Klik kotak tile → klik <strong>Unduh DEMNAS</strong></li>
   </ol>
-  <div style="margin-top:0.7rem;">
+  <div style="margin-top:0.8rem;display:flex;gap:8px;flex-wrap:wrap;">
     <a href="https://tanahair.indonesia.go.id/portal-web/unduh/demnas" target="_blank"
        style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;
               background:#1565C0;color:#fff;border-radius:5px;text-decoration:none;
@@ -44,14 +44,13 @@ tags: ["database", "terrain", "DEMNAS", "sumatera"]
        target="_blank"
        style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;
               background:rgba(255,255,255,0.07);color:#aaa;border:1px solid rgba(255,255,255,0.15);
-              border-radius:5px;text-decoration:none;font-weight:600;font-size:0.85rem;margin-left:8px;">
+              border-radius:5px;text-decoration:none;font-weight:600;font-size:0.85rem;">
       📄 Panduan PDF
     </a>
   </div>
 </div>
 
-<input id="cari-tile"
-  type="text"
+<input id="cari-tile" type="text"
   placeholder="🔍 Cari kode NLP, kabupaten, atau provinsi..."
   oninput="filterTabel(this.value)"
   style="width:100%;max-width:500px;padding:8px 14px;border-radius:6px;
@@ -1129,6 +1128,6 @@ function filterTabel(kata) {
 
 ---
 
-**Sumber:** Badan Informasi Geospasial (BIG) — [tanahair.indonesia.go.id](https://tanahair.indonesia.go.id)  
+**Sumber:** BIG — [tanahair.indonesia.go.id](https://tanahair.indonesia.go.id)  
 **Format:** GeoTIFF · WGS84 · Data administrasi: BIG Batas Desa
 

@@ -219,17 +219,8 @@ Data yang dikelompokkan berdasarkan wilayah — cocok untuk mencari data spesifi
   <span class="db-section-size">7.5 GB · GeoTIFF</span>
 </div>
 
-Data elevasi dan turunannya untuk seluruh Indonesia, bersumber dari DEM DEMNAS (BIG) dan SRTM NASA resolusi 8.3m dan 30m.
+Data elevasi dan turunannya untuk seluruh Indonesia, bersumber dari DEM DEMNAS (BIG). Sebagian data yang saya gunakan dalam pekerjaan dapat diunduh [disini.](https://www.irpanchumaedi.com/post/database-terrain/)
 
-| Dataset | Resolusi | Cakupan | Sumber | Format | Unduh |
-|---------|----------|---------|--------|--------|-------|
-| DEM DEMNAS | 8.3 m | Per lembar peta | BIG | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| DEM SRTM | 30 m | Indonesia | NASA | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| Slope (Kemiringan Lereng) | 8.3 m | Per lembar peta | Olahan DEMNAS | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| Aspect (Arah Lereng) | 8.3 m | Per lembar peta | Olahan DEMNAS | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-| Hillshade | 8.3 m | Per lembar peta | Olahan DEMNAS | GeoTIFF | <span class="badge-soon">Segera hadir</span> |
-
-<small>*Sumber utama: Badan Informasi Geospasial (BIG) dan NASA SRTM. DEM DEMNAS merupakan DEM nasional resolusi tinggi Indonesia.*</small>
 
 ---
 

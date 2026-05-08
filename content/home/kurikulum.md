@@ -2,7 +2,7 @@
 widget: blank
 headless: true
 active: true
-weight: 55
+weight: 60
 title: ""
 design:
   columns: '1'

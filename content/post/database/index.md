@@ -135,7 +135,7 @@ featured: false
   <div class="db-card-icon">📐</div>
   <div class="db-card-title">Topografi</div>
   <div class="db-card-size">Teristris & LiDAR</div>
-  <span class="db-card-badge">DXF · LAS · PDF</span>
+  <span class="db-card-badge">DWG · DEM · Excel </span>
 </a>
 
 <a class="db-card" href="#das-sungai">
@@ -215,7 +215,7 @@ Data yang dikelompokkan berdasarkan wilayah — cocok untuk mencari data spesifi
 
 <div class="db-section-header" id="terrain">
   <span class="db-section-icon">🏔️</span>
-  <span class="db-section-title">01 — Terrain</span>
+  <span class="db-section-title">Terrain</span>
   <span class="db-section-size">7.5 GB · GeoTIFF</span>
 </div>
 
@@ -227,16 +227,16 @@ Data elevasi dan turunannya untuk seluruh Indonesia, bersumber dari DEM DEMNAS (
 <div class="db-section-header" id="topografi">
   <span class="db-section-icon">📐</span>
   <span class="db-section-title">Topografi — Pengukuran Teristris & LiDAR</span>
-  <span class="db-section-size">DWG · DXF · DEM · GeoTIFF</span>
+  <span class="db-section-size">DWG · DEM · GeoTIFF</span>
 </div>
 
 Hasil pengukuran topografi lapangan secara teristris menggunakan total station dan waterpass, serta sebagian data LiDAR untuk area tertentu. Cocok untuk perencanaan teknis bangunan air, jembatan, dan infrastruktur lainnya.
 
 **Peta Topografi Teristris**
 
-| Lokasi | Panjang pengukuran (km) | Skala | Peralatan | Format | Unduh |
+| Lokasi | Panjang pengukuran | Skala | Peralatan | Format | Unduh |
 |--------|-----------|-------|-----------|--------|-------|
-| Sungai Siak — Riau (2023) | ± 500 | 1:1.000 | Total Station | DWG, EXCEL | [Unduh](https://drive.google.com/drive/folders/1_T8GgchLglH24jEl1Q-Cy0JVR__lsy1O?usp=drive_link) |
+| Sungai Siak — Riau (2023) | ± 500 (km) | 1:1.000 | Total Station | DWG, EXCEL | [Unduh](https://drive.google.com/drive/folders/1_T8GgchLglH24jEl1Q-Cy0JVR__lsy1O?usp=drive_link) |
 | Sungai Sutoyo — Banjarmasin | - | 1:1.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
 | Sungai Mahakam — Kutai Barat | - | 1:2.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
 
@@ -252,7 +252,7 @@ Hasil pengukuran topografi lapangan secara teristris menggunakan total station d
 
 <div class="db-section-header" id="das-sungai">
   <span class="db-section-icon">🌊</span>
-  <span class="db-section-title">03 — DAS & Sungai</span>
+  <span class="db-section-title">DAS & Sungai</span>
   <span class="db-section-size">1.5 GB · Shapefile, Raster & PDF</span>
 </div>
 
@@ -270,7 +270,7 @@ Batas Daerah Aliran Sungai (DAS), jaringan sungai, dan peta Wilayah Sungai (WS) 
 
 <div class="db-section-header" id="data-hujan">
   <span class="db-section-icon">🌧️</span>
-  <span class="db-section-title">04 — Data Hujan</span>
+  <span class="db-section-title">Data Hujan</span>
   <span class="db-section-size">247 MB · Excel & CSV</span>
 </div>
 
@@ -294,7 +294,7 @@ Data curah hujan harian dari stasiun observasi BMKG dan BWS, serta data satelit 
 
 <div class="db-section-header" id="risiko-bencana">
   <span class="db-section-icon">⚠️</span>
-  <span class="db-section-title">08 — Risiko Bencana</span>
+  <span class="db-section-title">Risiko Bencana</span>
   <span class="db-section-size">~900 MB · 92 file PDF</span>
 </div>
 
@@ -308,7 +308,7 @@ Peta bahaya inaRISK BNPB per provinsi dalam format PDF, mencakup **Banjir**, **B
 
 <div class="db-section-header" id="rbi">
   <span class="db-section-icon">🗺️</span>
-  <span class="db-section-title">09 — RBI (Rupa Bumi Indonesia)</span>
+  <span class="db-section-title">RBI (Rupa Bumi Indonesia)</span>
   <span class="db-section-size">21 GB · Shapefile</span>
 </div>
 

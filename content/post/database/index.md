@@ -290,6 +290,8 @@ Data curah hujan harian dari stasiun observasi BMKG dan BWS, serta data satelit 
 
 <small>*Format data: Excel (.xlsx) untuk data stasiun, CSV untuk data GPM IMERG, PDF untuk data arsip. Sumber: BMKG, BWS Kalimantan III/PSDA, NASA GPM IMERG V07.*</small>
 
+*Lokasi pos hujan berdasarkan database BMKG dalam bentuk kmz (bisa dibuka dengan Google Earth atau program GIS lainnya) bisa dilihat [disini.](https://1drv.ms/u/c/22f5ef4527203c63/IQBjPCAnRe_1IIAig58AAAAAASHr3rIlQFw_ypxhinxV9pc?e=xjeFGK)*
+
 ---
 
 <div class="db-section-header" id="risiko-bencana">

@@ -244,7 +244,7 @@ Hasil pengukuran topografi lapangan secara teristris menggunakan total station d
 
 | Lokasi | Resolusi | Cakupan | Format | Unduh |
 |--------|----------|---------|--------|-------|
-| *(Segera diumumkan)* | - | - | LAS / LAZ | <span class="badge-soon">Segera hadir</span> |
+| Sungai Sail - Pekanbaru | 0.5 m | - | tiff | [Unduh](https://drive.google.com/drive/folders/1U559v4WqyskKILnbm1mdTI2JpJyfblOL?usp=sharing) |
 
 <small>*Catatan: Data topografi teristris merupakan hasil survei lapangan. Harap cantumkan sumber bila digunakan dalam perencanaan teknis atau publikasi ilmiah.*</small>
 

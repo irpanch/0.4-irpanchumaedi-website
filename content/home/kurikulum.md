@@ -181,7 +181,7 @@ design:
 <div class="kur-body">
 <div class="kur-modules">
 
-  <a class="kur-module" href="/post/materi-keterbatasan-data-hujan/">
+  <a class="kur-module" href="/materi/keterbatasan-data-hujan/" target="_blank">
     <span class="kur-module-icon">🌧️</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Keterbatasan Data Hujan di Indonesia</div>

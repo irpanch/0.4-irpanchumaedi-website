@@ -32,8 +32,3 @@
   name = "Database"
   url = "/post/database/"
   weight = 45
-
-[[main]]
-  name = "Materi"
-  url = "/post/#materi"
-  weight = 43

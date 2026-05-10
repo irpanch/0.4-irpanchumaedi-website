@@ -32,12 +32,24 @@ melengkapi atau menggantikan data pos hujan dalam kondisi tertentu.
             padding:14px 28px;background:#1565C0;color:#fff;
             border-radius:8px;text-decoration:none;font-weight:700;
             font-size:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.2);">
-    📖 Baca Artikel Lengkap
+    📖 Buka Artikel Interaktif
   </a>
   <p style="margin-top:0.75rem;font-size:0.82rem;color:#888;">
-    Artikel interaktif — tersedia peta Leaflet, grafik Plotly, dan slider validasi
+    Peta Leaflet · Grafik interaktif · Slider validasi GPM IMERG
   </p>
 </div>
+
+---
+
+## Preview Artikel
+
+<iframe
+  src="/materi/keterbatasan-data-hujan/"
+  width="100%"
+  height="700px"
+  style="border:1px solid rgba(255,255,255,0.1);border-radius:8px;margin-top:1rem;"
+  loading="lazy">
+</iframe>
 
 ---
 

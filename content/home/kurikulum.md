@@ -181,14 +181,14 @@ design:
 <div class="kur-body">
 <div class="kur-modules">
 
-  <div class="kur-module">
+  <a class="kur-module" href="/materi/keterbatasan-data-hujan/" target="_blank">
     <span class="kur-module-icon">🌧️</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Keterbatasan Data Hujan di Indonesia</div>
-      <div class="kur-module-desc">Realita data BMKG yang terbatas, kerapatan stasiun yang tidak merata, dan mengapa kita perlu alternatif data satelit.</div>
+      <div class="kur-module-desc">Realita data BMKG yang terbatas, kerapatan stasiun yang tidak merata, dan mengapa kita perlu alternatif data satelit. Termasuk peta interaktif 6.487 stasiun BMKG dan simulasi validasi GPM IMERG.</div>
     </div>
-    <span class="kur-module-badge badge-wip">🔧 Draf</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">🛰️</span>

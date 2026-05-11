@@ -138,7 +138,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">1</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Fondasi — Data & Tools</div>
+    <div class="kur-phase-title">Fondasi — Data & Tools  (0 dari 2) </div>
     <div class="kur-phase-sub">Kenapa R? · Sumber data · Keterbatasan data Indonesia</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
@@ -173,7 +173,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">2</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Pengumpulan & Rekap Data Hujan</div>
+    <div class="kur-phase-title">Pengumpulan & Rekap Data Hujan (1 dari 5) </div>
     <div class="kur-phase-sub">Keterbatasan data · BMKG · GPM Giovanni · Excel · R</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
@@ -235,7 +235,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">3</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Analisis Hidrologi</div>
+    <div class="kur-phase-title">Analisis Hidrologi (0 dari 5) </div>
     <div class="kur-phase-sub">Kalibrasi · Frekuensi · IDF · Limpasan · Erosi</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
@@ -288,15 +288,6 @@ design:
     <span class="kur-module-badge badge-soon">📅 Segera</span>
   </div>
 
-  <div class="kur-module">
-    <span class="kur-module-icon">🏔️</span>
-    <div class="kur-module-info">
-      <div class="kur-module-title">Estimasi Erosi & Sedimentasi (USLE)</div>
-      <div class="kur-module-desc">Perhitungan laju erosi dengan Universal Soil Loss Equation — faktor R, K, LS, C, dan P dari data lapangan.</div>
-    </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
-
 </div>
 </div>
 </div>
@@ -306,7 +297,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">4</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Pemodelan Hidrolika — HEC-RAS</div>
+    <div class="kur-phase-title">Pemodelan Hidrolika — HEC-RAS (0 dari 6) </div>
     <div class="kur-phase-sub">1D · 2D · Steady · Unsteady · Flood Mapping</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
@@ -368,7 +359,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">5</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Output Profesional — Laporan & Presentasi</div>
+    <div class="kur-phase-title">Output Profesional — Laporan & Presentasi (0 dari 3)</div>
     <div class="kur-phase-sub">Quarto · R Markdown · Excel · Word · PowerPoint</div>
   </div>
   <span class="kur-phase-arrow">▼</span>

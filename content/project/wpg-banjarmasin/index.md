@@ -51,7 +51,8 @@ Terdapat 15 stasiun hujan di sekitar area WPG. Duabelas diantaranya bersumber da
 
 Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syarat. Dari 7 stasiun tersebut, 2 lokasi terdekat adalah Stasiun BMKG Syamsuddin Noor (33,7 km) dan BMKG Kalimantan Selatan (25 km).
 
-**Tabel 1 Inventarisasi Stasiun Hujan di Sekitar WPG Sungai Sutoyo S Banjarmasin**
+<center><small><b> Tabel 1 Inventarisasi Stasiun Hujan di Sekitar WPG Sungai Sutoyo S Banjarmasin </b></small></center>
+
 | No | Stasiun | Wilayah | Sumber | Jarak (Km) | Mulai | Akhir | n | CH Max | Status SNI |
 |----|---------|---------|--------|-----------|-------|-------|---|--------|------------|
 | 1 | Padang Panjang | Kab. Banjar | BWS Kal III/PSDA | 42 | 2022 | 2025 | 4 | 135 | <10 th (Tidak Layak) |
@@ -75,15 +76,62 @@ Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syar
 ## Plotting Jarak Tapak Proyek Terhadap Lokasi Stasiun Hujan
 Selain terhadap kelengkapan data hujan, jarak stasiun hujan juga sangat berpengaruh terhadap analisa yang akan digunakan. Semakin dekat maka akan semakin baik. Hasil plotting bisa dilihat sebagai berikut
 
-{{< figure src="peta_lokasi_sta_hujan.png" caption="Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo "width="100%" >}}
+{{< figure src="peta_lokasi_sta_hujan.png" caption="Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo "width="80%" >}}
 
 Dari 15 stasiun tersebut hanya ada 2 Lokasi yang paling lengkap dan paling dekat, yaitu Stasiun BMKG Syamsuddin Noor dan Stasiun BMKG Kalimantan Selatan.
 Meskipun begitu, karena jarak Lokasi stasiun hujan terhadap area pekerjaan masih sekitar 25 – 33 Km maka diperlukan data satelit untuk bisa menghitung curah hujan spesifik yang berada di area pekerjaan.
 
 
 # Tambahan data Satelit (GPM) 
+Data GPM IMERG V07 dipilih karena menggunakan radar presipitasi aktif (DPR, dual frequency precipitation radar) sebagai kalibrator, menghasilkan akurasi deteksi kejadian hujan harian yang lebih baik di wilayah tropis dibandingkan produk berbasis inframerah seperti CHIRPS atau PERSIANN. Validasi independen di Kalimantan dan wilayah Indonesia lainnya menunjukkan performa konsisten pada skala harian dengan nilai RMSE dan CSI yang kompetitif. Selain itu, GPM IMERG telah diadopsi secara resmi oleh BNPB dalam sistem inaRISK sebagai referensi klimatologis nasional. Overlay grid GPM dengan lokasi pekerjaan dan stasiun BMKG sebagai referensi diperlihatkan sebagai berikut.
+
+{{< figure src="grid-gpm.png" caption="Gambar 5. Overlay Lokasi WPG dengan Pos Hujan dan Grid GPM "width="80%" >}}
+
+Dari hasil plotting time series data tahunan dan bulanan, data hujan satelit memiliki trend yang serupa. Namun jika dibandingkan HHMT, maka data satelit hampir semua nya underestimate. Terutama di tahun 2021 Ketika terjadi hujan ekstrim di dua stasiun BMKG. Untuk itu diperlukan **koreksi bias**.
+
+{{< figure src="plot-data-bulanan.png" caption="Gambar 6. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM "width="80%" >}}
+
+{{< figure src="plot-data-tahunan.png" caption="Gambar 7. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM "width="80%" >}}
+
+{{< figure src="plot-data-hhmt.png" caption="Gambar 8. Plot Data HHMT antara Pos Hujan BMKG dan Grid GPM "width="80%" >}}
 
 ## Koreksi Bias
+
+Data satelit GPM IMERG mengandung bias sistematis dibandingkan pengukuran ground station. Koreksi bias difokuskan pada Hujan Harian Maksimum Tahunan (HHMT) — parameter utama analisis frekuensi banjir. Empat metode koreksi (monthly scaling (M1), HHMT direct scaling (M2), quantile mapping (M3), sampai year-specific scalling (M4)) dievaluasi menggunakan data 1998–2025 dan tujuh metriks validasi (PBIAS, RMSE, MAE, R, R2, NSE, dan KGE) dijadikan acuan sebagai filter metode koreksi mana yang paling baik.
+
+Validasi data curah hujan satelit tidak dapat dilakukan dengan satu metrik tunggal karena setiap metrik mengukur dimensi kesalahan yang berbeda. Penggunaan beberapa metrik secara bersamaan memastikan tidak ada aspek kualitas data yang terlewat dari evaluasi. Tujuh metrik yang digunakan dalam proyek ini mencakup empat dimensi utama:
+
+<center><small><b> Tabel 2 Empat dimensi evaluasi dan metrik terkait</b> </small></center>
+
+| **Dimensi**         | **Metrik** | **Aspek yang Diukur**                                                |
+| ------------------- | ---------- | -------------------------------------------------------------------- |
+| **Bias Sistematik** | PBIAS      | Apakah GPM over- atau underestimate secara konsisten?                |
+| **Magnitudo Error** | RMSE, MAE  | Seberapa besar rata-rata kesalahan absolut antara GPM dan observasi? |
+| **Korelasi Linear** | R, R²      | Seberapa kuat hubungan linear antara GPM dan observasi?              |
+| **Efisiensi Model** | NSE, KGE   | Seberapa baik GPM dibandingkan baseline (rata-rata observasi)?       |
+
+<center><small><b> Tabel 3 Perbandingan Metrik Validasi Koreksi Bias HHMT — M0 sampai M4 </b> </small></center>
+
+| **No.** | **Metode**                   | **Keterangan**                       | **PBIAS<br>(%)** | **RMSE<br>(mm)** | **MAE<br>(mm)** | **R**     | **R²**    | **NSE**   | **KGE**   | **Kategori<br>NSE/PBIAS/KGE** |
+| ------- | ---------------------------- | ------------------------------------ | ---------------- | ---------------- | --------------- | --------- | --------- | --------- | --------- | ----------------------------- |
+| 1       | **M0 — GPM Raw**             | Tanpa koreksi — baseline             | \-31.9           | 47.439           | 38.721          | 0.373     | 0.139     | \-1.062   | 0.206     | **TM/TM/TM**                  |
+| 2       | **M1 — Monthly Scaling**     | CF per bulan dari data BMKG tersedia | \-27.0           | 43.701           | 34.499          | 0.383     | 0.147     | \-0.750   | 0.252     | **TM/TM/M**                   |
+| 3       | **M2 — HHMT Direct Scaling** | CF global HHMT tunggal               | 3.5              | 36.468           | 24.177          | 0.373     | 0.139     | \-0.218   | 0.371     | **TM/SB/M**                   |
+| 4       | **M3 — Quantile Mapping**    | Pemetaan distribusi empiris          | 3.5              | 39.001           | 26.843          | 0.350     | 0.123     | \-0.394   | 0.347     | **TM/SB/M**                   |
+| 5       | **M4 — Year-Specific**       | Fk per tahun (Year-Specific Scaling) | **3.5**          | **15.789**       | **11.136**      | **0.900** | **0.811** | **0.772** | **0.879** | **SB/SB/SB**                  |
+
+<small>
+KETERANGAN KATEGORI (Moriasi et al. 2007 & Gupta et al. 2009):
+
+NSE  :  >0.75=SB (Sangat Baik)  |  0.65–0.75=B (Baik)  |  0.50–0.65=M (Memuaskan)  |  <0.50=TM (Tidak Memuaskan)
+
+PBIAS:  <10%=SB  |  10–15%=B  |  15–25%=M  |  >25%=TM          
+
+KGE:  >0.75=SB  |  0.50–0.75=B  |  0.25–0.50=M  |  <0.25=TM
+										
+▣  M4 = Dipilih karena terbaik dari semua sisi validasi metrik								
+</small>
+
 
 # Analisis Frekuensi
 

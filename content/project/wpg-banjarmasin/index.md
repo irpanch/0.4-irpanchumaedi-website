@@ -132,6 +132,9 @@ KGE:  >0.75=SB  |  0.50–0.75=B  |  0.25–0.50=M  |  <0.25=TM
 ▣  M4 = Dipilih karena terbaik dari semua sisi validasi metrik								
 </small>
 
+Perbandingan antara GPM RAW (tanpa koreksi) dengan GPM hasil koreksi bias serta dengan nilai validasi metriknya dapat dilihat dalam gambar berikut. 
+
+{{< figure src="koreksi-bias-gpm.png" caption="Gambar 9. Perbandingan antara GPM RAW dengan GPM Hasil koreksi bias "width="100%" >}}
 
 # Analisis Frekuensi
 

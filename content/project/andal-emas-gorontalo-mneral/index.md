@@ -1,6 +1,6 @@
 ---
 title: "ANDAL Kegiatan Pertambangan Emas DMP - Kab. Bone Bolango, Provinsi Gorontalo "
-summary: "Kajian hidrologi untuk kegiatan pertambangan EMAS PT Gorontalo Mineral di Kecamatan Suwawa Timur, Kecamatan Bone Raya, Kecamatan Bulawa, Kecamatan Pinogu, Kabupaten Bone Bolango, Provinsi Gorontalo"
+summary: "Kajian hidrologi untuk kegiatan pertambangan emas PT Gorontalo Mineral di Kecamatan Suwawa Timur, Kecamatan Bone Raya, Kecamatan Bulawa, Kecamatan Pinogu, Kabupaten Bone Bolango, Provinsi Gorontalo"
 tags:
 - Hidrologi
 - HEC-RAS

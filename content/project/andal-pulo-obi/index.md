@@ -1,6 +1,6 @@
 ---
 title: "ANDAL PSN-KIO — Hidrologi & Sedimentasi (Pulau Obi)"
-summary: "Penyusunan ANDAL BAB VI untuk proyek strategis nasional di Pulau Obi, Maluku Utara, mencakup analisis erosi USLE, debit banjir rancangan, dan dampak sedimentasi."
+summary: "Penyusunan ANDAL untuk proyek strategis nasional di Pulau Obi, Maluku Utara, mencakup analisis erosi USLE, debit banjir rancangan, dan dampak sedimentasi."
 tags:
 - AMDAL
 - Sedimentasi

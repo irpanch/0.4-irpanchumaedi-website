@@ -26,6 +26,14 @@ PT Gorontalo Minerals akan melakukan Rencana Kegiatan Pertambangan Emas DMP di K
 - Perhitungan debit limpasan air permukaan dengan metode rasional
 - Permodelan potensi genangan banjir pada saat rona awal dan kondisi terbangun
 
+{{< figure src="lokasi stasiun hujan.png" caption="Gambar 1. Lokasi Stasiun Hujan  "width="90%" >}}
+
+{{< figure src="Catchment Area Awal Tambang.jpg" caption="Gambar 2. Catchment Area Awal Tambang  "width="90%" >}}
+
+{{< figure src="Catchment Area Akhir Tambang.png" caption="Gambar 3. Catchment Area Akhir Tambang  "width="90%" >}}
+
+{{< figure src="Pola Arah Aliran Sungai Di Sekitar Tapak Proyek.png" caption="Gambar 4. Pola Arah Aliran Sungai Di Sekitar Tapak Proyek  "width="90%" >}}
+
 ## Software yang Digunakan
 
 `HEC-RAS` · `HEC-HMS` · `QGIS` · `Global Mapper` · `R`

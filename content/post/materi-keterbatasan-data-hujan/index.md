@@ -161,9 +161,9 @@ Geser slider untuk mensimulasikan **koreksi bias** pada data GPM IMERG. Metrik v
   var imerg = [195,200,215,150,85,40,18,18,28,105,175,215,
                180,195,235,135,75,32,16,18,38,115,190,200,
                205,185,225,142,80,46,20,16,32,108,180,210];
-  var bln   = ["Jan'20","Feb","Mar","Apr","Mei","Jun","Jul","Ags","Sep","Okt","Nov","Des",
-               "Jan'21","Feb","Mar","Apr","Mei","Jun","Jul","Ags","Sep","Okt","Nov","Des",
-               "Jan'22","Feb","Mar","Apr","Mei","Jun","Jul","Ags","Sep","Okt","Nov","Des"];
+  var bln   = ["Jan'20","Feb'20","Mar'20","Apr'20","Mei'20","Jun'20","Jul'20","Ags'20","Sep'20","Okt'20","Nov'20","Des'20",
+               "Jan'21","Feb'21","Mar'21","Apr'21","Mei'21","Jun'21","Jul'21","Ags'21","Sep'21","Okt'21","Nov'21","Des'21",
+               "Jan'22","Feb'22","Mar'22","Apr'22","Mei'22","Jun'22","Jul'22","Ags'22","Sep'22","Okt'22","Nov'22","Des'22"];
 
   function hitung(sim) {
     var n=obs.length, mo=0, ms=0;

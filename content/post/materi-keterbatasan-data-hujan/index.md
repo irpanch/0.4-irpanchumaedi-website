@@ -9,6 +9,24 @@ tags: ["hidrologi", "GPM IMERG", "data hujan", "validasi", "BMKG", "tutorial"]
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+/* Fix tile misalignment karena konflik CSS Hugo theme */
+#peta-bmkg { z-index: 0; }
+#peta-bmkg img {
+  max-width: none !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  transform: none;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  transition: none !important;
+}
+#peta-bmkg .leaflet-tile {
+  width: 256px !important;
+  height: 256px !important;
+}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
 
@@ -32,6 +50,9 @@ Berdasarkan inventarisasi BMKG, terdapat **6.487 stasiun hujan** aktif di seluru
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
     attribution:'© OpenStreetMap © CARTO', maxZoom:18
   }).addTo(map);
+  // Fix tile misalignment - invalidate setelah render
+  setTimeout(function(){ map.invalidateSize(); }, 300);
+  setTimeout(function(){ map.invalidateSize(); }, 800);
   var warna = {"Pos Hujan Kerjasama":"#2196F3","aaws":"#E53935","UPT":"#43A047"};
   data.forEach(function(d) {
     var c = warna[d.j]||"#999";

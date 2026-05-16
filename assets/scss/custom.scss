@@ -189,3 +189,23 @@ html {
   .float-buttons { bottom: 1.2rem; right: 1rem; }
   .float-btn { width: 40px; height: 40px; }
 }
+
+// =============================================
+// FIX: Leaflet map dalam artikel Hugo
+// Bootstrap & Wowchemy tidak mengatur max-width
+// pada img secara global, tapi ada beberapa
+// selector yang perlu di-override agar tile
+// Leaflet tidak berubah ukuran
+// =============================================
+.leaflet-container img,
+.leaflet-tile-container img {
+  max-width: none !important;
+  max-height: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: none !important;
+  display: inline !important;
+  animation: none !important;
+}

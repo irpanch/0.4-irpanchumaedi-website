@@ -56,11 +56,11 @@ copyright = ""
 #   rel = "manifest"
 
 # # Configure the Markdown renderer.
-# [markup]
-#   defaultMarkdownHandler = "goldmark"
-#   [markup.goldmark]
-#     [markup.goldmark.renderer]
-#       unsafe = true  # Enable user to embed HTML snippets in Markdown content.
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Enable user to embed HTML snippets in Markdown content.
 #   [markup.highlight]
 #     codeFences = false  # Disable Hugo's code highlighter as it conflicts with Academic's highligher.
 #   [markup.tableOfContents]

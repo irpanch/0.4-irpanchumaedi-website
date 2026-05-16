@@ -10,21 +10,29 @@ tags: ["hidrologi", "GPM IMERG", "data hujan", "validasi", "BMKG", "tutorial"]
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <style>
-/* Fix tile misalignment karena konflik CSS Hugo theme */
+/* Fix konflik CSS Hugo theme dengan Leaflet tiles */
+/* PENTING: jangan override transform — Leaflet pakai transform untuk posisi tile */
 #peta-bmkg { z-index: 0; }
 #peta-bmkg img {
   max-width: none !important;
   max-height: none !important;
-  width: auto !important;
-  height: auto !important;
-  transform: none;
   box-shadow: none !important;
   border-radius: 0 !important;
   transition: none !important;
+  display: inline !important;
 }
+/* Pastikan container Leaflet tidak terpengaruh flex/grid parent */
+#peta-bmkg .leaflet-container {
+  font-family: inherit;
+}
+#peta-bmkg .leaflet-tile-container img,
 #peta-bmkg .leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
   width: 256px !important;
   height: 256px !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -212,7 +220,7 @@ Geser slider untuk mensimulasikan **koreksi bias** pada data GPM IMERG. Metrik v
 
   function update(bias) {
     var sim = imerg.map(function(v){return Math.round(v*bias*10)/10;});
-    Plotly.update('plot-hidrograf',{y:[sim]},[],[1]);
+    Plotly.restyle('plot-hidrograf', {'y': [sim]}, [1]);
     var m = hitung(sim);
     document.getElementById('val-nse').textContent   = m.nse.toFixed(3);
     document.getElementById('val-kge').textContent   = m.kge.toFixed(3);

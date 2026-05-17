@@ -146,19 +146,19 @@ design:
 <div class="kur-body">
 <div class="kur-modules">
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-pengguna-pembuat-kode/">
     <span class="kur-module-icon">🧱</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Filosofi: Pengguna vs Pembuat Kode</div>
       <div class="kur-module-desc">Analogi batu-bata — kamu tidak perlu tahu cara membuatnya, cukup tahu cara memakainya dengan benar.</div>
     </div>
-    <span class="kur-module-badge badge-wip">🔧 Draf</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">📊</span>
     <div class="kur-module-info">
-      <div class="kur-module-title">Mengapa R? — Ketika Excel Sudah Tidak Cukup</div>
+      <div class="kur-module-title">Mengenal R & RMarkdown: Instalasi dan Proyek Pertama</div>
       <div class="kur-module-desc">Kelebihan R untuk hidrologi: visualisasi ggplot2, multiple output, literate programming. Kurva belajar & solusinya dengan AI.</div>
     </div>
     <span class="kur-module-badge badge-wip">🔧 Draf</span>

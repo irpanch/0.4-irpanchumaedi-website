@@ -221,13 +221,13 @@ Kalau kamu seorang engineer, surveyor, analis, atau siapapun yang sehari-harinya
 
 Kita tidak belajar jadi programmer. Kita belajar bagaimana **alat bekerja untuk kita**, bukan sebaliknya.
 
-<div class="next-card" style="margin-top: 2rem; padding: 1.1rem 1.4rem; background: #f8f9ff; border: 1px solid #dde3f5; border-radius: 10px; display: flex; align-items: center; gap: 1rem;">
-<span class="next-arrow" style="font-size: 1.4rem; flex-shrink: 0;">➡️</span>
+<a href="/post/mengenal-r-rmarkdown/" style="display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1.1rem 1.4rem; background: #f8f9ff; border: 1px solid #dde3f5; border-radius: 10px; text-decoration: none; transition: box-shadow 0.2s ease, transform 0.2s ease;" onmouseover="this.style.boxShadow='0 4px 16px rgba(21,101,192,0.13)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)'">
+<span class="next-arrow" style="font-size: 1.4rem; flex-shrink: 0; color: #1565C0;">→</span>
 <div>
 <div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #1565C0; margin-bottom: 0.2rem;">Artikel Berikutnya dalam Seri Ini</div>
-<div style="font-size: 0.92rem; font-weight: 700; color: #1a1a2e;">Mengenal R & RMarkdown: Instalasi dan Proyek Pertama</div>
+<div style="font-size: 0.92rem; font-weight: 700; color: #1a1a2e;">Mengenal R &amp; RMarkdown: Instalasi dan Proyek Pertama</div>
 </div>
-</div>
+</a>
 
 ---
 

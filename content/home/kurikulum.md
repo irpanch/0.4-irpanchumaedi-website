@@ -236,7 +236,7 @@ design:
   <div class="kur-phase-num">3</div>
   <div class="kur-phase-info">
     <div class="kur-phase-title">Analisis Hidrologi (0 dari 5) </div>
-    <div class="kur-phase-sub">Kalibrasi · Frekuensi · IDF · Limpasan · Erosi</div>
+    <div class="kur-phase-sub">Kalibrasi · Frekuensi · IDF · Debit Banjir </div>
   </div>
   <span class="kur-phase-arrow">▼</span>
 </div>

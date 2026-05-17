@@ -9472,3 +9472,15 @@ html {
   .float-btn {
     width: 40px;
     height: 40px; } }
+
+.leaflet-container img,
+.leaflet-tile-container img {
+  max-width: none !important;
+  max-height: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: none !important;
+  display: inline !important;
+  animation: none !important; }

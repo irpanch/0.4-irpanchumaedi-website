@@ -199,14 +199,14 @@ design:
   <span class="kur-module-badge badge-done">✅ Tersedia</span>
 </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-download-bmkg/">
     <span class="kur-module-icon">📥</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Download Data Hujan BMKG</div>
       <div class="kur-module-desc">Cara mengakses data observasi BMKG, keterbatasannya, dan strategi mengisi data yang hilang (missing data).</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">📋</span>

@@ -370,7 +370,7 @@ Setelah berhasil menjalankan template ini, kamu sudah memiliki fondasi yang kuat
 
 <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem;">
 
-<a href="/post/filosofi-pengguna-vs-pembuat-kode/" style="display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 10px; text-decoration: none; transition: border-color 0.2s ease;" onmouseover="this.style.borderColor='#555'" onmouseout="this.style.borderColor='#1a2a3a'">
+<a href="/post/materi-pengguna-pembuat-kode/" style="display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 10px; text-decoration: none; transition: border-color 0.2s ease;" onmouseover="this.style.borderColor='#555'" onmouseout="this.style.borderColor='#1a2a3a'">
 <span style="font-size: 1.1rem; flex-shrink: 0; color: #555; display: inline-block; transform: scaleX(-1);">→</span>
 <div>
 <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #555; margin-bottom: 0.15rem;">Artikel Sebelumnya</div>

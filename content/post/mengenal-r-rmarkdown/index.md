@@ -56,9 +56,15 @@ image:
 
 Bayangkan kamu baru saja selesai mengumpulkan data curah hujan 25 tahun dari BMKG. Analisis frekuensi harus dikerjakan: hitung statistik, fit distribusi, uji KS, uji chi-kuadrat, buat kurva IDF. Lalu semua hasilnya harus masuk ke laporan Word yang rapi.
 
-Cara biasa: **2-4 jam** per stasiun, per proyek.
+*Tiba-tiba bos bilang: "Mas, data hujan yang kemarin kejauhan. ambil data ini ya, lokasi nya lebih dekat soalnya"*
 
-Cara yang akan kita pelajari hari ini: **klik satu tombol**, laporan jadi dalam 30 detik.
+*'Waduh, ngulang dari awal lagi dong--'*
+
+Hal ini sering saya alami dan dengan berat hati harus dikerjakan lagi dari awal. Memang sudah ada template excel dan word nya. Tapi menghabiskan waktu, belum lagi kita harus teliti jangan sampai ada kata "Papua" di proyek "Banjarmasin", **malu banget**. 
+
+Contoh kasus lainnya adalah ketika kita mengerjakan proses yang sama, tapi lokasinya saja yang berbeda. Data memang pasti berbeda juga, tapi proses analisis persis sama tok.
+
+Untuk mengerjakan ulang dengan cara biasa mungkin bisa menghabiskan **2-4 jam** per stasiun, per proyek. tapi dengan cara yang akan kita pelajari hari ini tinggal **klik satu tombol**, laporan bisa jadi dalam 30 detik.
 
 ---
 
@@ -372,13 +378,14 @@ Setelah berhasil menjalankan template ini, kamu sudah memiliki fondasi yang kuat
 </div>
 </a>
 
-<a href="/post/kustomisasi-template-rmarkdown/" style="display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 10px; text-decoration: none; transition: border-color 0.2s ease;" onmouseover="this.style.borderColor='#1E88E5'" onmouseout="this.style.borderColor='#1a2a3a'">
-<span class="arrow-bounce" style="font-size: 1.1rem; flex-shrink: 0; color: #1E88E5;">→</span>
+
+<div style="display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px dashed #2a2a3a; border-radius: 10px; opacity: 0.55; cursor: default;">
+<span style="font-size: 1.1rem; flex-shrink: 0; color: #444;">→</span>
 <div>
-<div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #1E88E5; margin-bottom: 0.15rem;">Artikel Berikutnya dalam Seri Ini</div>
-<div style="font-size: 0.85rem; font-weight: 700; color: #E8F0FF;">Kustomisasi Template: Adaptasi untuk Berbagai Proyek</div>
+<div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #444; margin-bottom: 0.15rem;">Segera Hadir</div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #555;">Kustomisasi Template: Adaptasi untuk Berbagai Proyek</div>
 </div>
-</a>
+</div>
 
 </div>
 

@@ -173,7 +173,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">2</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Pengumpulan & Rekap Data Hujan (2 dari 5) </div>
+    <div class="kur-phase-title">Pengumpulan & Rekap Data Hujan (3 dari 5) </div>
     <div class="kur-phase-sub">Keterbatasan data · BMKG · GPM Giovanni · Excel · R</div>
   </div>
   <span class="kur-phase-arrow">▼</span>

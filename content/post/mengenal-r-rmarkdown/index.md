@@ -50,7 +50,7 @@ image:
 .arrow-bounce { display: inline-block; animation: arrowBounce 1.3s ease-in-out infinite; }
 </style>
 
-> *Artikel ini adalah bagian dari seri **Fondasi Data & Tools**. Sebelum membaca ini, pastikan sudah membaca [Filosofi: Pengguna vs. Pembuat Kode](https://www.irpanchumaedi.com/post/materi-pengguna-pembuat-kode/).*
+> *Artikel ini adalah bagian dari seri **Fondasi Data & Tools**. Sebelum membaca ini, pastikan sudah membaca [Filosofi: Pengguna vs. Pembuat Kode](href="/post/materi-pengguna-pembuat-kode/).*
 
 ---
 

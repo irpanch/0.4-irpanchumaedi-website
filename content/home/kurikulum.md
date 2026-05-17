@@ -139,7 +139,7 @@ design:
   <div class="kur-phase-num">1</div>
   <div class="kur-phase-info">
     <div class="kur-phase-title">Fondasi — Data & Tools  (2 dari 2) </div>
-    <div class="kur-phase-sub">Kenapa R? · Sumber data · Keterbatasan data Indonesia</div>
+    <div class="kur-phase-sub">Filosofi dan pencerahan dari tools yang tidak biasa tapi luar biasa</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
 </div>

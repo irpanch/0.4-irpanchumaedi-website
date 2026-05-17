@@ -138,7 +138,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">1</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Fondasi — Data & Tools  (0 dari 2) </div>
+    <div class="kur-phase-title">Fondasi — Data & Tools  (2 dari 2) </div>
     <div class="kur-phase-sub">Kenapa R? · Sumber data · Keterbatasan data Indonesia</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
@@ -155,14 +155,14 @@ design:
     <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/mengenal-r-rmarkdown/">
     <span class="kur-module-icon">📊</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Mengenal R & RMarkdown: Instalasi dan Proyek Pertama</div>
       <div class="kur-module-desc">Kelebihan R untuk hidrologi: visualisasi ggplot2, multiple output, literate programming. Kurva belajar & solusinya dengan AI.</div>
     </div>
-    <span class="kur-module-badge badge-wip">🔧 Draf</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
 </div>
 </div>

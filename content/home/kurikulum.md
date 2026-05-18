@@ -208,14 +208,14 @@ design:
     <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-visualisasi-data-hujan-excel/">
     <span class="kur-module-icon">📋</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Rekap & Visualisasi Data Hujan dengan Excel</div>
       <div class="kur-module-desc">Template Excel siap pakai untuk rekap data harian, bulanan, dan tahunan — lengkap dengan grafik otomatis.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">📈</span>

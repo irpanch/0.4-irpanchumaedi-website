@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekap & Visualisasi Data Hujan dengan Excel | irpanchumaedi.com</title>
+<meta name="description" content="Panduan lengkap rekap dan visualisasi data hujan menggunakan Microsoft Excel. Studi kasus Sta. Hujan Cemara Bandung 2000–2025.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue-dark: #0a2540;
+    --blue: #185fa5;
+    --blue-mid: #378add;
+    --blue-light: #85b7eb;
+    --blue-pale: #e6f1fb;
+    --green-dark: #1d6f42;
+    --green: #1d9e75;
+    --green-light: #639922;
+    --green-pale: #eaf3de;
+    --amber: #ef9f27;
+    --amber-dark: #ba7517;
+    --amber-pale: #faeeda;
+    --red: #e24b4a;
+    --red-dark: #a32d2d;
+    --red-pale: #fcebeb;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f6f9; color: var(--gray-900); line-height: 1.6; font-size: 15px; }
+
+  /* LAYOUT */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+  .page-wrap { padding-bottom: 4rem; }
+
+  /* STICKY PROGRESS NAV */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--gray-200); box-shadow: var(--shadow); }
+  .sticky-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; gap: 1rem; height: 52px; }
+  .sticky-title { font-size: 13px; font-weight: 600; color: var(--blue-dark); white-space: nowrap; }
+  .progress-track { flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue-mid), var(--green)); border-radius: 2px; width: 0%; transition: width 0.4s ease; }
+  .sticky-pct { font-size: 12px; color: var(--gray-500); min-width: 32px; }
+
+  /* HERO */
+  .hero { background: var(--blue-dark); color: #fff; padding: 3rem 1.5rem 2.5rem; position: relative; overflow: hidden; border-radius: 0 0 var(--radius) var(--radius); margin-bottom: 2rem; }
+  .hero::before { content:''; position:absolute; top:-80px; right:-60px; width:300px; height:300px; border-radius:50%; background:rgba(55,138,221,0.12); }
+  .hero::after  { content:''; position:absolute; bottom:-100px; left:10%; width:250px; height:250px; border-radius:50%; background:rgba(29,158,117,0.10); }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; }
+  .hero-breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  .hero-breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+  .hero-badge { display: inline-block; background: rgba(55,138,221,0.25); color: var(--blue-light); font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-bottom: 0.75rem; letter-spacing: 0.04em; }
+  .hero h1 { font-size: clamp(22px,4vw,30px); font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.55); }
+  .hero-meta-item svg { width:14px; height:14px; }
+
+  /* SECTION NAV PILLS */
+  .nav-scroll { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 2rem; scrollbar-width: none; }
+  .nav-scroll::-webkit-scrollbar { display: none; }
+  .nav-pill { flex-shrink: 0; font-size: 12px; padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--gray-300); background: #fff; color: var(--gray-600); cursor: pointer; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .nav-pill:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+  .nav-pill.active { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; }
+
+  /* STAT CARDS */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 2rem; }
+  .stat-card { background: #fff; border-radius: var(--radius); padding: 1.1rem 1.25rem; box-shadow: var(--shadow); border-top: 3px solid transparent; }
+  .stat-card.blue { border-top-color: var(--blue-mid); }
+  .stat-card.green { border-top-color: var(--green); }
+  .stat-card.amber { border-top-color: var(--amber); }
+  .stat-card.red { border-top-color: var(--red); }
+  .stat-val { font-size: 26px; font-weight: 700; line-height: 1.1; }
+  .stat-val.blue { color: var(--blue); }
+  .stat-val.green { color: var(--green-light); }
+  .stat-val.amber { color: var(--amber-dark); }
+  .stat-val.red { color: var(--red-dark); }
+  .stat-lbl { font-size: 11px; color: var(--gray-500); margin-top: 3px; }
+
+  /* SECTION */
+  .section { margin-bottom: 3rem; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
+  .section-num { width: 32px; height: 32px; border-radius: 50%; background: var(--blue-dark); color: #fff; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 19px; font-weight: 700; color: var(--gray-900); }
+
+  /* CARD */
+  .card { background: #fff; border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
+  .card-blue { border-left: 4px solid var(--blue-mid); }
+  .card-green { border-left: 4px solid var(--green); }
+  .card-amber { border-left: 4px solid var(--amber); }
+  .card-red { border-left: 4px solid var(--red); }
+  .card-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray-500); margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* INFO / WARN BOX */
+  .info-box { display: flex; gap: 10px; background: var(--blue-pale); border: 1px solid #b5d4f4; border-radius: var(--radius-sm); padding: 0.9rem 1rem; font-size: 13px; color: #0c447c; margin: 1rem 0; line-height: 1.55; }
+  .warn-box { display: flex; gap: 10px; background: var(--amber-pale); border: 1px solid #fac775; border-radius: var(--radius-sm); padding: 0.9rem 1rem; font-size: 13px; color: var(--amber-dark); margin: 1rem 0; line-height: 1.55; }
+  .success-box { display: flex; gap: 10px; background: var(--green-pale); border: 1px solid #c0dd97; border-radius: var(--radius-sm); padding: 0.9rem 1rem; font-size: 13px; color: #27500a; margin: 1rem 0; line-height: 1.55; }
+  .box-icon { font-size: 18px; flex-shrink: 0; line-height: 1.3; }
+
+  /* STEP FLOW */
+  .step-flow { margin: 1rem 0; }
+  .step-item { display: flex; gap: 14px; margin-bottom: 0; }
+  .step-line { display: flex; flex-direction: column; align-items: center; }
+  .step-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--blue-mid); color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-dot.green { background: var(--green-dark); }
+  .step-connector { width: 2px; background: var(--gray-200); flex: 1; min-height: 16px; margin: 3px 0; }
+  .step-body { padding-bottom: 20px; flex: 1; }
+  .step-title { font-size: 14px; font-weight: 600; color: var(--gray-800); margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+  /* FORMULA BOX */
+  .formula { background: #1e2d3d; border-radius: var(--radius-sm); padding: 10px 14px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; color: #64b5f6; margin: 8px 0; overflow-x: auto; }
+  .formula .comment { color: #78909c; }
+  .formula .kw { color: #80cbc4; }
+  .formula .str { color: #a5d6a7; }
+
+  /* EXCEL MOCKUP */
+  .excel-wrap { border: 1px solid var(--gray-300); border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 1rem; }
+  .excel-bar { background: #1d6f42; padding: 6px 12px; font-size: 12px; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 8px; }
+  .excel-bar .dot { width:10px; height:10px; border-radius:50%; }
+  .excel-grid { overflow-x: auto; }
+  .excel-table { border-collapse: collapse; font-size: 12px; min-width: 500px; width: 100%; }
+  .excel-table .col-head { background: var(--gray-100); padding: 5px 10px; text-align: center; font-size: 11px; color: var(--gray-500); border-right: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-300); font-weight: 500; }
+  .excel-table .row-num { background: var(--gray-100); padding: 4px 8px; text-align: center; font-size: 11px; color: var(--gray-400); border-right: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); min-width: 32px; }
+  .excel-table td { padding: 5px 10px; border-right: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); font-family: 'Consolas', monospace; white-space: nowrap; }
+  .excel-table .header-row td { background: var(--gray-100); font-weight: 600; font-family: inherit; color: var(--gray-700); }
+  .excel-table .highlight-row { background: rgba(55,138,221,0.06); }
+  .excel-table .missing { color: var(--red); font-weight: 600; }
+  .excel-table .ok { color: var(--green-light); }
+  .excel-table .formula-cell { color: var(--blue); }
+  .excel-tabs { display: flex; background: var(--gray-100); border-top: 1px solid var(--gray-300); overflow-x: auto; }
+  .excel-tab { padding: 6px 14px; font-size: 11px; color: var(--gray-500); cursor: pointer; white-space: nowrap; border-right: 1px solid var(--gray-200); transition: all 0.2s; }
+  .excel-tab:hover { background: var(--gray-200); color: var(--gray-700); }
+  .excel-tab.active { background: #1d6f42; color: #fff; }
+
+  /* PIVOT TABLE */
+  .pivot-wrap { overflow-x: auto; margin-bottom: 1rem; }
+  .pivot-tbl { border-collapse: collapse; font-size: 12px; min-width: 600px; width: 100%; }
+  .pivot-tbl th { background: #1d6f42; color: #fff; padding: 7px 10px; text-align: center; border: 1px solid #15532e; font-weight: 600; font-size: 11px; }
+  .pivot-tbl td { padding: 5px 9px; border: 1px solid var(--gray-200); text-align: right; font-family: 'Consolas', monospace; font-size: 12px; }
+  .pivot-tbl td.year { text-align: center; font-family: inherit; font-weight: 600; background: var(--gray-100); }
+  .pivot-tbl tr.avg-row td { background: #fff8f0; color: var(--amber-dark); font-weight: 600; }
+  .pivot-tbl tr.total-row td { background: #f0f7f4; color: #1d6f42; font-weight: 600; }
+  .pivot-tbl td.hl { background: rgba(55,138,221,0.12); font-weight: 600; }
+  .pivot-tbl td.hl-red { background: rgba(226,75,74,0.10); color: var(--red-dark); font-weight: 700; }
+
+  /* MONTH BARS */
+  .month-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .month-lbl { font-size: 12px; color: var(--gray-600); width: 30px; flex-shrink: 0; }
+  .bar-track { flex: 1; background: var(--gray-200); border-radius: 4px; height: 22px; position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; color: #fff; font-weight: 600; transition: width 1.2s cubic-bezier(0.25,1,0.5,1); width: 0%; }
+  .bar-val { font-size: 12px; color: var(--gray-600); width: 40px; text-align: right; flex-shrink: 0; }
+
+  /* CHART */
+  .chart-card { background: #fff; border-radius: var(--radius); padding: 1.25rem 1.5rem 1rem; box-shadow: var(--shadow); margin-bottom: 1.25rem; }
+  .chart-title { font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 0.5rem; }
+  .chart-sub { font-size: 11px; color: var(--gray-400); margin-bottom: 1rem; }
+  .chart-wrap { position: relative; width: 100%; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 11px; color: var(--gray-500); }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+  /* VIS TYPE */
+  .vis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+  .vis-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: var(--radius); padding: 1rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+  .vis-card:hover { border-color: var(--blue-mid); box-shadow: var(--shadow); }
+  .vis-card.sel { border-color: var(--blue-mid); background: var(--blue-pale); }
+  .vis-icon { font-size: 30px; margin-bottom: 6px; }
+  .vis-name { font-size: 13px; font-weight: 600; color: var(--gray-800); }
+  .vis-use { font-size: 11px; color: var(--gray-500); margin-top: 3px; }
+  .vis-detail { background: #fff; border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: var(--shadow); border-left: 4px solid var(--blue-mid); min-height: 100px; margin-bottom: 1rem; }
+  .vis-detail h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .vis-detail p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+  .vis-detail .use-tag { font-size: 11px; color: var(--gray-500); margin-top: 8px; }
+
+  /* TIPS */
+  .tip-list { list-style: none; }
+  .tip-list li { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--gray-100); font-size: 13px; color: var(--gray-700); line-height: 1.6; }
+  .tip-list li:last-child { border-bottom: none; }
+  .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* TAG */
+  .tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin: 2px; font-weight: 500; }
+  .tag-blue { background: var(--blue-pale); color: #0c447c; }
+  .tag-green { background: var(--green-pale); color: #27500a; }
+  .tag-amber { background: var(--amber-pale); color: var(--amber-dark); }
+  .tag-red { background: var(--red-pale); color: var(--red-dark); }
+
+  /* DATA TABLE */
+  .data-tbl-wrap { overflow-x: auto; margin-bottom: 1rem; }
+  .data-tbl { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 400px; }
+  .data-tbl th { background: var(--gray-100); padding: 8px 12px; text-align: left; font-size: 12px; color: var(--gray-600); border-bottom: 2px solid var(--gray-300); font-weight: 600; }
+  .data-tbl td { padding: 7px 12px; border-bottom: 1px solid var(--gray-100); }
+  .data-tbl tr:hover td { background: #f8f9fa; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 500; }
+  .badge-ok { background: var(--green-pale); color: #27500a; }
+  .badge-err { background: var(--red-pale); color: var(--red-dark); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--gray-200); margin: 2rem 0; }
+
+  /* ANIMATE */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  .anim-in { opacity: 0; }
+  .anim-in.visible { animation: fadeUp 0.5s ease forwards; }
+
+  /* FOOTER */
+  .page-footer { background: var(--blue-dark); color: rgba(255,255,255,0.6); text-align: center; font-size: 12px; padding: 1.5rem; margin-top: 3rem; border-radius: var(--radius) var(--radius) 0 0; }
+  .page-footer a { color: rgba(255,255,255,0.5); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero { padding: 2rem 1rem 1.5rem; }
+    .hero h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav">
+  <div class="sticky-inner">
+    <span class="sticky-title">📊 Rekap & Visualisasi Data Hujan</span>
+    <div class="progress-track"><div class="progress-fill" id="progBar"></div></div>
+    <span class="sticky-pct" id="progPct">0%</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-breadcrumb">
+      <a href="/">irpanchumaedi.com</a> › <a href="/kurikulum">Kurikulum</a> › Rekap & Visualisasi Data Hujan
+    </div>
+    <div class="hero-badge">📘 Modul Analisis Hidrologi</div>
+    <h1>Rekap & Visualisasi Data Hujan<br>dengan Microsoft Excel</h1>
+    <p class="hero-sub">Studi kasus: Sta. Hujan Cemara, Bandung · Periode 2000–2025</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        45 menit belajar
+      </span>
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        9.487 data harian
+      </span>
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        26 tahun pengamatan
+      </span>
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Tingkat: Dasar–Menengah
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+<div class="container">
+
+  <!-- NAV PILLS -->
+  <nav class="nav-scroll" aria-label="Navigasi seksi">
+    <a href="#s1" class="nav-pill active">1 · Pendahuluan</a>
+    <a href="#s2" class="nav-pill">2 · Struktur Data</a>
+    <a href="#s3" class="nav-pill">3 · Data Hilang</a>
+    <a href="#s4" class="nav-pill">4 · Pivot Table</a>
+    <a href="#s5" class="nav-pill">5 · Rekap Bulanan</a>
+    <a href="#s6" class="nav-pill">6 · Rekap Tahunan</a>
+    <a href="#s7" class="nav-pill">7 · Jenis Chart</a>
+    <a href="#s8" class="nav-pill">8 · Tips & Penutup</a>
+  </nav>
+
+  <!-- ============ SEKSI 1: PENDAHULUAN ============ -->
+  <section class="section anim-in" id="s1">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>Pendahuluan & Tujuan Pembelajaran</h2>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card blue">
+        <div class="stat-val blue" id="cnt1" data-target="9487">0</div>
+        <div class="stat-lbl">Data harian tersedia</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-val green" id="cnt2" data-target="26">0</div>
+        <div class="stat-lbl">Tahun pengamatan</div>
+      </div>
+      <div class="stat-card amber">
+        <div class="stat-val amber" id="cnt3" data-target="57595">0</div>
+        <div class="stat-lbl">mm curah hujan total</div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-val red" id="cnt4" data-target="4873">0</div>
+        <div class="stat-lbl">Hari hujan terdata</div>
+      </div>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-label">Mengapa rekap data hujan penting?</div>
+      <p>Data hujan harian mentah dari alat penakar (ARR/manual) menghasilkan ribuan baris angka yang sulit dibaca langsung. Rekap dan visualisasi mengubah data mentah menjadi informasi hidrologi yang berguna — mulai dari pola musiman, tahun basah-kering, hingga hujan ekstrem untuk desain bangunan air.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label" style="margin-bottom:12px;">Setelah mempelajari modul ini, kamu dapat:</div>
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div>
+          <div class="step-body">
+            <div class="step-title">Memahami struktur data hujan harian di Excel</div>
+            <div class="step-desc">Mengenali kolom Tanggal, Bulan, RR mentah, dan nilai terkoreksi — serta peran masing-masing dalam analisis.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div>
+          <div class="step-body">
+            <div class="step-title">Menangani data hilang & kode anomali (8888)</div>
+            <div class="step-desc">Menggunakan formula IF untuk memfilter nilai tidak valid tanpa merusak urutan tanggal.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div>
+          <div class="step-body">
+            <div class="step-title">Membuat rekap bulanan & tahunan dengan Pivot Table</div>
+            <div class="step-desc">Menghasilkan tabel pivot_sum (total), pivot_max (maks harian), dan pivot_hari_hjn (hari hujan).</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div>
+          <div class="step-body">
+            <div class="step-title">Membuat visualisasi yang informatif untuk laporan</div>
+            <div class="step-desc">Memilih jenis chart yang tepat dan menerapkan formatting profesional di Excel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <span class="box-icon">ℹ️</span>
+      <span>Data yang digunakan adalah Sta. Hujan Cemara, Bandung — salah satu stasiun BBWS Citarum dengan rekam data 26 tahun (2000–2025). Stasiun ini representatif untuk wilayah Bandung Raya yang termasuk daerah tangkapan air Sungai Citarum.</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ SEKSI 2: STRUKTUR DATA ============ -->
+  <section class="section anim-in" id="s2">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>Struktur Data Hujan Harian di Excel</h2>
+    </div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">File Excel terdiri dari <strong>5 sheet</strong> dengan fungsi berbeda. Sheet <code style="background:var(--gray-100); padding:1px 5px; border-radius:3px; font-size:12px;">data_harian</code> adalah basis utama yang berisi semua data mentah. Sheet lainnya merupakan hasil rekap (pivot).</p>
+
+    <div class="excel-wrap">
+      <div class="excel-bar">
+        <div class="dot" style="background:#ff5f57;"></div>
+        <div class="dot" style="background:#febc2e;"></div>
+        <div class="dot" style="background:#28c840;"></div>
+        <span style="margin-left:6px;">📊 sta_hujan_cemara_bandung_2000_2025.xlsx</span>
+      </div>
+      <div class="excel-grid">
+        <table class="excel-table">
+          <thead>
+            <tr>
+              <td class="col-head" style="width:32px;"></td>
+              <td class="col-head">A</td>
+              <td class="col-head">B</td>
+              <td class="col-head">C</td>
+              <td class="col-head" style="min-width:140px;">D</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="header-row">
+              <td class="row-num">1</td>
+              <td>Tanggal</td><td>Bulan</td><td>RR</td><td>Curah_hujan (mm)</td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="row-num">2</td>
+              <td>01/01/2000</td><td>Jan-00</td><td>2.8</td><td class="ok">2.8</td>
+            </tr>
+            <tr>
+              <td class="row-num">3</td>
+              <td>02/01/2000</td><td>Jan-00</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td class="row-num">4</td>
+              <td>03/01/2000</td><td>Jan-00</td><td>1.8</td><td class="ok">1.8</td>
+            </tr>
+            <tr style="background:#fff8f0;">
+              <td class="row-num">19</td>
+              <td>19/01/2000</td><td>Jan-00</td><td class="missing">8888</td><td class="missing">-</td>
+            </tr>
+            <tr>
+              <td class="row-num">20</td>
+              <td>20/01/2000</td><td>Jan-00</td><td>2</td><td class="ok">2</td>
+            </tr>
+            <tr>
+              <td class="row-num" style="color:var(--gray-300)">···</td>
+              <td style="color:var(--gray-300)">···</td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <td class="row-num">9488</td>
+              <td>31/12/2025</td><td>Des-25</td><td>12.5</td><td class="ok">12.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="excel-tabs">
+        <div class="excel-tab active">data_harian</div>
+        <div class="excel-tab">data_hari_hjn</div>
+        <div class="excel-tab">pivot_sum</div>
+        <div class="excel-tab">pivot_max</div>
+        <div class="excel-tab">pivot_hari_hjn</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Kolom A — Tanggal</div>
+        <p>Format tanggal Excel (<em>Date type</em>). Digunakan sebagai sumbu waktu pada chart dan field pengelompokan di Pivot Table. Pastikan format konsisten: DD/MM/YYYY.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Kolom B — Bulan</div>
+        <p>Format bulan-tahun. Dihasilkan dari formula:</p>
+        <div class="formula">=EOMONTH(A2, 0)</div>
+        <p>Berguna untuk grouping pivot per bulan kalender.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Kolom C — RR (Data Mentah)</div>
+        <p>Data mentah dari arsip/digitasi. Nilai <code style="color:var(--red); font-size:12px;">8888</code> = data tidak terukur. Nilai <code style="font-size:12px;">0</code> = tidak hujan (hari cerah).</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Kolom D — Curah_hujan (mm)</div>
+        <p>Data bersih setelah filter. Nilai 8888 diubah menjadi tanda <code style="font-size:12px;">"-"</code> (teks) agar tidak ikut perhitungan SUM/AVERAGE.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:0.5rem;">
+      <div class="card-label" style="margin-bottom:10px;">Fungsi masing-masing sheet:</div>
+      <div class="data-tbl-wrap">
+        <table class="data-tbl">
+          <thead><tr><th>Sheet</th><th>Fungsi</th><th>Field Values</th></tr></thead>
+          <tbody>
+            <tr><td><strong>data_harian</strong></td><td>Semua data harian mentah (9.487 baris)</td><td>Basis pivot</td></tr>
+            <tr><td><strong>data_hari_hjn</strong></td><td>Data harian — hanya hari dengan hujan &gt;0</td><td>Filter RR &gt; 0</td></tr>
+            <tr><td><strong>pivot_sum</strong></td><td>Total curah hujan bulanan per tahun (mm)</td><td>SUM</td></tr>
+            <tr><td><strong>pivot_max</strong></td><td>Hujan harian maksimum per bulan per tahun</td><td>MAX</td></tr>
+            <tr><td><strong>pivot_hari_hjn</strong></td><td>Jumlah hari hujan per bulan per tahun</td><td>COUNT</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ SEKSI 3: DATA HILANG ============ -->
+  <section class="section anim-in" id="s3">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>Menangani Data Hilang — Kode 8888</h2>
+    </div>
+
+    <div class="warn-box">
+      <span class="box-icon">⚠️</span>
+      <span>Kode <strong>8888</strong> adalah kode standar BMKG/BBWS yang berarti data tidak tersedia — akibat alat rusak, petugas tidak hadir, atau arsip hilang. Kode ini <strong>wajib difilter</strong> sebelum analisis statistik karena nilai 8888 akan merusak hasil SUM, AVERAGE, dan MAX.</span>
+    </div>
+
+    <div class="step-flow">
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot green">1</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Hitung jumlah data hilang dengan COUNTIF</div>
+          <div class="step-desc">Gunakan untuk mengetahui berapa data yang perlu ditangani sebelum analisis.</div>
+          <div class="formula">=COUNTIF(C:C, 8888) <span class="comment">→ jumlah baris dengan kode 8888</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot green">2</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Buat kolom Curah_hujan (mm) dengan formula IF</div>
+          <div class="step-desc">Ganti kode 8888 dengan tanda "-" (teks), sehingga Excel tidak menghitungnya sebagai angka. Nilai 0 (tidak hujan) tetap dipertahankan.</div>
+          <div class="formula">=IF(C2=8888, <span class="str">"-"</span>, C2) <span class="comment">→ isi di D2, salin ke seluruh kolom</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot green">3</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Verifikasi dengan ISNUMBER</div>
+          <div class="step-desc">Pastikan sel yang berisi "-" tidak terbaca sebagai angka oleh Excel.</div>
+          <div class="formula">=ISNUMBER(D2) <span class="comment">→ TRUE = valid, FALSE = data hilang/teks</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot green">4</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Hitung persentase data hilang per tahun</div>
+          <div class="step-desc">Wajib dicantumkan dalam laporan kualitas data sebelum analisis frekuensi atau pemodelan.</div>
+          <div class="formula">=COUNTIFS(B:B, <span class="str">">=01/01/2010"</span>, B:B, <span class="str">"<=31/12/2010"</span>, C:C, 8888) / 365 * 100<br><span class="comment">→ % data hilang tahun 2010</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:0.5rem;">
+      <div class="card-label" style="margin-bottom:10px;">Perbandingan sebelum dan sesudah filter:</div>
+      <div class="data-tbl-wrap">
+        <table class="data-tbl">
+          <thead><tr><th>Baris</th><th>Tanggal</th><th>RR (Mentah)</th><th>Curah_hujan (mm)</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>01/01/2000</td><td>2.8</td><td style="color:var(--green-light); font-weight:600;">2.8</td><td><span class="badge badge-ok">✓ Valid</span></td></tr>
+            <tr><td>3</td><td>02/01/2000</td><td>0</td><td>0</td><td><span class="badge badge-ok">✓ Tidak hujan</span></td></tr>
+            <tr style="background:#fff8f0;"><td>19</td><td>19/01/2000</td><td style="color:var(--red); font-weight:700;">8888</td><td style="color:var(--red);">-</td><td><span class="badge badge-err">⚠ Data hilang</span></td></tr>
+            <tr><td>20</td><td>20/01/2000</td><td>2</td><td style="color:var(--green-light); font-weight:600;">2</td><td><span class="badge badge-ok">✓ Valid</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <span class="box-icon">💡</span>
+      <span>Fungsi Excel <strong>SUM, AVERAGE, dan MAX</strong> secara otomatis mengabaikan nilai teks "-". Namun untuk menghitung <em>jumlah data valid</em>, gunakan <code style="font-size:12px;">COUNT</code> (hanya angka) bukan <code style="font-size:12px;">COUNTA</code> (termasuk teks).</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ SEKSI 4: PIVOT TABLE ============ -->
+  <section class="section anim-in" id="s4">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>Membuat Rekap dengan Pivot Table</h2>
+    </div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Pivot Table adalah fitur paling efisien di Excel untuk merekap ribuan baris data harian menjadi tabel ringkasan bulanan × tahunan hanya dalam hitungan detik, tanpa formula manual.</p>
+
+    <div class="step-flow">
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green-dark);">1</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Klik sel mana saja dalam tabel data_harian</div>
+          <div class="step-desc">Pastikan tidak ada baris kosong di antara header baris 1 dan data. Excel akan otomatis mendeteksi range tabel.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green-dark);">2</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Insert → PivotTable → New Worksheet</div>
+          <div class="step-desc">Buat di sheet baru untuk kerapian. Beri nama sheet yang informatif: <em>pivot_sum</em>, <em>pivot_max</em>, atau <em>pivot_hari_hjn</em>.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green-dark);">3</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Atur field di panel PivotTable Fields</div>
+          <div class="step-desc">Susun field sesuai kebutuhan rekap:</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px;">
+            <div style="background:var(--gray-100); border-radius:6px; padding:10px; font-size:12px;"><strong style="color:var(--blue);">ROWS</strong><br>→ Kolom <em>Tanggal</em> (group by Year)</div>
+            <div style="background:var(--gray-100); border-radius:6px; padding:10px; font-size:12px;"><strong style="color:var(--green-light);">COLUMNS</strong><br>→ Kolom <em>Tanggal</em> (group by Month)</div>
+            <div style="background:var(--gray-100); border-radius:6px; padding:10px; font-size:12px;"><strong style="color:var(--amber-dark);">VALUES</strong><br>→ <em>Curah_hujan (mm)</em></div>
+            <div style="background:var(--gray-100); border-radius:6px; padding:10px; font-size:12px;"><strong style="color:var(--red-dark);">SUMMARIZE BY</strong><br>→ Sum / Max / Count</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green-dark);">4</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Buat 3 Pivot Table terpisah untuk 3 variabel:</div>
+          <div style="margin-top:8px;">
+            <span class="tag tag-blue">pivot_sum → Total bulanan (mm)</span>
+            <span class="tag tag-green">pivot_max → Hujan maks harian (mm)</span>
+            <span class="tag tag-amber">pivot_hari_hjn → Hari hujan (hari)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-label" style="margin-bottom:8px; font-size:12px;">Contoh hasil pivot_sum — Total Curah Hujan Bulanan (mm):</div>
+    <div class="pivot-wrap">
+      <table class="pivot-tbl">
+        <thead>
+          <tr><th>Tahun</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>Mei</th><th>Jun</th><th>Jul</th><th>Agt</th><th>Sep</th><th>Okt</th><th>Nov</th><th>Des</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="year">2000</td><td>261</td><td>141</td><td>136</td><td>259</td><td>240</td><td>47</td><td>80</td><td>20</td><td>45</td><td>152</td><td>317</td><td>71</td><td class="hl">1769</td></tr>
+          <tr><td class="year">2005</td><td>168</td><td>417</td><td>308</td><td>214</td><td>191</td><td>201</td><td>76</td><td>64</td><td>145</td><td>115</td><td>226</td><td>205</td><td class="hl">2329</td></tr>
+          <tr style="background:#fff5f5;"><td class="year">2010</td><td>353</td><td>557</td><td>531</td><td>93</td><td>345</td><td>132</td><td>221</td><td>106</td><td>424</td><td>292</td><td>401</td><td>238</td><td class="hl-red">3694</td></tr>
+          <tr><td class="year">2025</td><td>226</td><td>131</td><td>274</td><td>233</td><td>319</td><td>147</td><td>113</td><td>212</td><td>218</td><td>256</td><td>220</td><td>196</td><td class="hl">2544</td></tr>
+          <tr class="avg-row"><td class="year">Rata-rata</td><td>200</td><td>223</td><td>263</td><td>262</td><td>196</td><td>99</td><td>75</td><td>50</td><td>96</td><td>173</td><td>314</td><td>267</td><td class="hl">2215</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box">
+      <span class="box-icon">ℹ️</span>
+      <span>Pivot Table bersifat <strong>dinamis</strong>: jika data sumber berubah, cukup klik kanan → Refresh untuk memperbarui semua nilai. Tidak perlu mengubah formula secara manual.</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ SEKSI 5: REKAP BULANAN ============ -->
+  <section class="section anim-in" id="s5">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>Visualisasi Rekap Bulanan</h2>
+    </div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Rata-rata curah hujan bulanan selama 26 tahun (2000–2025) menunjukkan pola musim hujan dan kemarau yang khas untuk Kota Bandung.</p>
+
+    <div id="monthBars" style="margin-bottom:1.5rem;"></div>
+
+    <div class="chart-card">
+      <div class="chart-title">Rata-rata Curah Hujan Bulanan (mm) — Sta. Cemara, Bandung 2000–2025</div>
+      <div class="chart-sub">Garis putus-putus oranye = rata-rata per bulan (184 mm)</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="chartMonthly" role="img" aria-label="Bar chart rata-rata curah hujan bulanan Sta. Cemara Bandung. November tertinggi 314mm, Agustus terendah 50mm.">Rata-rata: Jan 200, Feb 223, Mar 263, Apr 262, Mei 196, Jun 99, Jul 75, Agt 50, Sep 96, Okt 173, Nov 314, Des 267 mm.</canvas>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item"><div class="legend-sq" style="background:#185fa5;"></div>Musim Hujan (&gt;200 mm)</div>
+        <div class="legend-item"><div class="legend-sq" style="background:#378add;"></div>Peralihan (100–200 mm)</div>
+        <div class="legend-item"><div class="legend-sq" style="background:#85b7eb;"></div>Musim Kemarau (&lt;100 mm)</div>
+        <div class="legend-item"><div style="width:20px; border-top:2px dashed var(--amber); margin-top:5px;"></div> Rata-rata (184 mm)</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card-blue">
+        <div class="card-label">🌧️ Musim Hujan (Nov–Apr)</div>
+        <p>Curah hujan >150 mm/bulan. Puncaknya di <strong>November (314 mm)</strong> dan Desember (267 mm). Dipicu oleh monsun barat dan konvergensi zona ITCZ di ekuator.</p>
+      </div>
+      <div class="card card-amber">
+        <div class="card-label">☀️ Musim Kemarau (Jun–Sep)</div>
+        <p>Curah hujan terendah di <strong>Agustus (50 mm)</strong>. Dipicu oleh monsun timur yang membawa massa udara kering dari Australia. Bandung termasuk tipe hujan Monsonal (tipe A).</p>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <span class="box-icon">📊</span>
+      <span>Di Excel: Pilih baris rata-rata dari pivot_sum (row Average) → <strong>Insert → Bar/Column Chart → Clustered Column</strong>. Tambahkan series kedua berisi nilai konstan 184 sebagai garis rata-rata. Ubah tipe chart series kedua ke Line.</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ SEKSI 6: REKAP TAHUNAN ============ -->
+  <section class="section anim-in" id="s6">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>Visualisasi Rekap Tahunan</h2>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card red">
+        <div class="stat-val red">3.694</div>
+        <div class="stat-lbl">mm · Tahun terbasa (2010)</div>
+      </div>
+      <div class="stat-card amber">
+        <div class="stat-val amber">1.702</div>
+        <div class="stat-lbl">mm · Tahun terkering (2006)</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-val blue">2.215</div>
+        <div class="stat-lbl">mm · Rata-rata tahunan</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-val green">122.9</div>
+        <div class="stat-lbl">mm · Hujan maks 1 hari (2010)</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Curah Hujan Tahunan (mm) — Sta. Cemara, Bandung 2000–2025</div>
+      <div class="chart-sub">Merah = tahun ekstrem basah (&gt;3000 mm) · Oranye = tahun kering (&lt;1800 mm) · Garis hijau = rata-rata 2215 mm</div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="chartAnnual" role="img" aria-label="Bar chart curah hujan tahunan 2000-2025. Tertinggi 2010 (3694mm), terendah 2006 (1702mm).">Tahunan: 2000=1769, 2001=2449, 2002=1926, 2003=1879, 2004=1929, 2005=2329, 2006=1702, 2007=2178, 2008=1978, 2009=2098, 2010=3694, 2011=1789, 2012=2511, 2013=2290, 2014=1955, 2015=1913, 2016=3406, 2017=2224, 2018=2188, 2019=2032, 2020=2367, 2021=2189, 2022=2377, 2023=1738, 2024=2142, 2025=2544 mm.</canvas>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item"><div class="legend-sq" style="background:#a32d2d;"></div>Ekstrem basah</div>
+        <div class="legend-item"><div class="legend-sq" style="background:#378add;"></div>Normal</div>
+        <div class="legend-item"><div class="legend-sq" style="background:#ef9f27;"></div>Kering</div>
+        <div class="legend-item"><div style="width:20px; border-top:2px dashed var(--green); margin-top:5px;"></div> Rata-rata (2215 mm)</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Jumlah Hari Hujan per Tahun — Sta. Cemara, Bandung 2000–2025</div>
+      <div class="chart-sub">Dihitung dari Pivot Count pada data_hari_hjn (curah hujan &gt; 0 mm)</div>
+      <div class="chart-wrap" style="height:240px;">
+        <canvas id="chartDays" role="img" aria-label="Line chart hari hujan per tahun 2000-2025. Tertinggi 2010 dan 2016 (254 hari), terendah 2015 (134 hari).">Hari hujan: 2000=190, 2001=206, 2002=157, 2003=171, 2004=175, 2005=212, 2006=159, 2007=181, 2008=176, 2009=176, 2010=254, 2011=178, 2012=182, 2013=183, 2014=169, 2015=134, 2016=254, 2017=192, 2018=193, 2019=188, 2020=205, 2021=195, 2022=215, 2023=168, 2024=195, 2025=209 hari.</canvas>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <span class="box-icon">🔬</span>
+      <span>Tahun <strong>2010</strong> dan <strong>2016</strong> merupakan tahun basah ekstrem di Bandung — berkorelasi dengan fenomena <strong>La Niña</strong> yang meningkatkan intensitas monsun barat dan curah hujan di Jawa Barat. Pola ini mudah teridentifikasi dari chart tahunan sebagai outlier ke atas.</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ SEKSI 7: JENIS CHART ============ -->
+  <section class="section anim-in" id="s7">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>Memilih Jenis Chart yang Tepat</h2>
+    </div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Setiap jenis chart punya kekuatan dan ketepatan konteks yang berbeda. Klik kartu di bawah untuk melihat detail dan cara membuat di Excel.</p>
+
+    <div class="vis-grid">
+      <div class="vis-card sel" id="vc0" onclick="selectVis(0)">
+        <div class="vis-icon">📊</div>
+        <div class="vis-name">Bar / Column</div>
+        <div class="vis-use">Perbandingan antar periode</div>
+      </div>
+      <div class="vis-card" id="vc1" onclick="selectVis(1)">
+        <div class="vis-icon">📈</div>
+        <div class="vis-name">Line Chart</div>
+        <div class="vis-use">Tren & deret waktu</div>
+      </div>
+      <div class="vis-card" id="vc2" onclick="selectVis(2)">
+        <div class="vis-icon">🟦</div>
+        <div class="vis-name">Heatmap</div>
+        <div class="vis-use">Pola bulan × tahun</div>
+      </div>
+      <div class="vis-card" id="vc3" onclick="selectVis(3)">
+        <div class="vis-icon">🔵</div>
+        <div class="vis-name">Scatter Plot</div>
+        <div class="vis-use">Korelasi dua variabel</div>
+      </div>
+    </div>
+
+    <div class="vis-detail" id="visDetail"></div>
+
+    <div class="chart-card">
+      <div class="chart-title">Contoh: Heatmap Curah Hujan Bulanan (Conditional Formatting Excel)</div>
+      <div class="chart-sub">Makin biru gelap = curah hujan makin tinggi · Data: Sta. Cemara Bandung 2000–2025</div>
+      <div style="overflow-x:auto;">
+        <div id="heatmapGrid" style="min-width:520px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ SEKSI 8: TIPS ============ -->
+  <section class="section anim-in" id="s8">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>Tips Formatting & Penutup</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-label" style="margin-bottom:10px;">Tips membuat chart data hujan yang profesional:</div>
+      <ul class="tip-list">
+        <li>
+          <span class="tip-icon">📝</span>
+          <span><strong>Judul & satuan selalu wajib.</strong> Contoh: "Curah Hujan Bulanan Sta. Cemara Bandung (mm)" — tanpa satuan, grafik tidak dapat diinterpretasi oleh pembaca laporan.</span>
+        </li>
+        <li>
+          <span class="tip-icon">📏</span>
+          <span><strong>Tambahkan garis rata-rata sebagai referensi.</strong> Insert series kedua berisi nilai konstan rata-rata, ubah ke Line chart. Berguna untuk membandingkan tahun basah vs kering secara visual.</span>
+        </li>
+        <li>
+          <span class="tip-icon">🎨</span>
+          <span><strong>Heatmap dengan Conditional Formatting.</strong> Pilih range pivot_sum → Home → Conditional Formatting → Color Scale (biru ke merah). Otomatis mewarnai sel berdasarkan nilai — pola musiman langsung terlihat.</span>
+        </li>
+        <li>
+          <span class="tip-icon">🖌️</span>
+          <span><strong>Gunakan skema warna yang konsisten.</strong> Biru untuk curah hujan, merah-oranye untuk anomali/ekstrem. Tetap konsisten di seluruh dokumen laporan agar mudah dipahami.</span>
+        </li>
+        <li>
+          <span class="tip-icon">🔢</span>
+          <span><strong>Data label secukupnya.</strong> Untuk bar chart tahunan, cukup tampilkan label di bar tertinggi dan terendah — terlalu banyak label justru membuat grafik sulit dibaca.</span>
+        </li>
+        <li>
+          <span class="tip-icon">🔗</span>
+          <span><strong>Gunakan Named Range agar chart lebih fleksibel.</strong> Beri nama range (Formulas → Name Manager) sehingga mudah dirujuk dan chart otomatis ikut jika range diperluas.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-label">Rangkuman alur kerja lengkap</div>
+      <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:13px;">
+        <span class="tag tag-blue">① Data harian mentah</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-blue">② Filter 8888</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-green">③ Pivot Table</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-green">④ Rekap bulanan/tahunan</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-amber">⑤ Visualisasi chart</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-amber">⑥ Interpretasi &amp; laporan</span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <span class="box-icon">📚</span>
+      <span>Untuk analisis lanjutan, data rekap ini dapat digunakan sebagai input analisis frekuensi curah hujan (return period 2–100 tahun), uji konsistensi (RAPS/kurva massa ganda), atau validasi data satelit GPM IMERG.</span>
+    </div>
+
+    <div style="background:var(--blue-dark); color:#fff; border-radius:var(--radius); padding:1.5rem; text-align:center; margin-top:1.5rem;">
+      <div style="font-size:18px; font-weight:700; margin-bottom:6px;">Materi selesai! 🎉</div>
+      <p style="font-size:13px; color:rgba(255,255,255,0.65); margin-bottom:1rem;">Ada pertanyaan tentang rekap & visualisasi data hujan?</p>
+      <a href="https://www.irpanchumaedi.com/kontak" style="display:inline-block; background:var(--blue-mid); color:#fff; font-size:13px; font-weight:600; padding:8px 20px; border-radius:20px; text-decoration:none;">Hubungi saya →</a>
+    </div>
+  </section>
+
+</div><!-- /container -->
+</div><!-- /page-wrap -->
+
+<footer class="page-footer">
+  <p>© 2025 <a href="https://www.irpanchumaedi.com">irpanchumaedi.com</a> · Materi Hidrologi Indonesia</p>
+  <p style="margin-top:4px; font-size:11px;">Data: Sta. Hujan Cemara, Bandung · Sumber: BBWS Citarum</p>
+</footer>
+
+<script>
+/* ---- DATA ---- */
+const annualData = [1769,2449,1926,1879,1929,2329,1702,2178,1978,2098,3694,1789,2511,2290,1955,1913,3406,2224,2188,2032,2367,2189,2377,1738,2142,2544];
+const annualYears = ['2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+const monthlyAvg = [200,223,263,262,196,99,75,50,96,173,314,267];
+const monthLabels = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+const daysData = [190,206,157,171,175,212,159,181,176,176,254,178,182,183,169,134,254,192,193,188,205,195,215,168,195,209];
+
+/* Partial pivot data for heatmap (mm) */
+const heatmapData = {
+  years: ['2000','2002','2005','2010','2015','2016','2020','2025'],
+  months: ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'],
+  values: [
+    [261,141,136,259,240,47,80,20,45,152,317,71],
+    [365,81,344,184,55,54,122,38,10,21,196,457],
+    [168,417,308,214,191,201,76,64,145,115,226,205],
+    [353,557,531,93,345,132,221,106,424,292,401,238],
+    [167,180,265,231,208,50,0,7,43,35,419,307],
+    [392,194,376,523,318,139,182,129,286,362,443,62],
+    [208,337,291,271,292,30,64,42,36,327,207,262],
+    [226,131,274,233,319,147,113,212,218,256,220,196],
+  ]
+};
+
+/* ---- PROGRESS BAR ---- */
+function updateProgress() {
+  const el = document.documentElement;
+  const scrollTop = window.scrollY;
+  const scrollHeight = document.body.scrollHeight - window.innerHeight;
+  const pct = scrollHeight > 0 ? Math.round((scrollTop / scrollHeight) * 100) : 0;
+  document.getElementById('progBar').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+  highlightNav();
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+/* ---- NAV HIGHLIGHT ---- */
+function highlightNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const pills = document.querySelectorAll('.nav-pill');
+  let active = 0;
+  sections.forEach((s, i) => {
+    if (s.getBoundingClientRect().top < 100) active = i;
+  });
+  pills.forEach((p, i) => p.classList.toggle('active', i === active));
+}
+
+/* ---- SCROLL ANIMATE ---- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.id === 's1') startCounters();
+      if (e.target.id === 's5') { buildMonthBars(); setTimeout(buildMonthlyChart, 400); }
+      if (e.target.id === 's6') { setTimeout(buildAnnualChart, 300); setTimeout(buildDaysChart, 500); }
+      if (e.target.id === 's7') { setTimeout(buildHeatmap, 300); selectVis(0); }
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.anim-in').forEach(el => io.observe(el));
+
+/* ---- COUNTER ---- */
+let countersStarted = false;
+function startCounters() {
+  if (countersStarted) return; countersStarted = true;
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = +el.dataset.target;
+    let cur = 0;
+    const dur = 1500;
+    const step = target / (dur / 16);
+    const iv = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = Math.round(cur).toLocaleString('id');
+      if (cur >= target) clearInterval(iv);
+    }, 16);
+  });
+}
+
+/* ---- MONTH BARS ---- */
+let barsBuilt = false;
+function buildMonthBars() {
+  if (barsBuilt) return; barsBuilt = true;
+  const max = Math.max(...monthlyAvg);
+  const colors = monthlyAvg.map(v => v > 200 ? '#185fa5' : v > 150 ? '#378add' : v > 80 ? '#85b7eb' : '#b5d4f4');
+  const c = document.getElementById('monthBars');
+  if (!c) return;
+  c.innerHTML = '';
+  monthLabels.forEach((m, i) => {
+    const pct = (monthlyAvg[i] / max * 100).toFixed(1);
+    const div = document.createElement('div');
+    div.className = 'month-bar-row';
+    div.innerHTML = `<span class="month-lbl">${m}</span><div class="bar-track"><div class="bar-fill" style="width:0%; background:${colors[i]};">${monthlyAvg[i]}</div></div><span class="bar-val">${monthlyAvg[i]}</span>`;
+    c.appendChild(div);
+    setTimeout(() => { div.querySelector('.bar-fill').style.width = pct + '%'; }, i * 70 + 150);
+  });
+}
+
+/* ---- CHARTS ---- */
+const charts = {};
+function buildMonthlyChart() {
+  if (charts.monthly) return;
+  const ctx = document.getElementById('chartMonthly'); if (!ctx) return;
+  charts.monthly = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: monthLabels,
+      datasets: [
+        { label: 'Rata-rata bulanan (mm)', data: monthlyAvg, backgroundColor: monthlyAvg.map(v => v > 200 ? '#185fa5' : v > 100 ? '#378add' : '#85b7eb'), borderRadius: 5 },
+        { label: 'Rata-rata tahunan (184 mm)', data: Array(12).fill(184), type: 'line', borderColor: '#ef9f27', borderWidth: 2, borderDash: [6,4], pointRadius: 0, fill: false }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + ' mm' } } },
+      scales: { y: { beginAtZero: true, title: { display: true, text: 'mm' }, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 11 }, autoSkip: false } } },
+      animation: { duration: 900 }
+    }
+  });
+}
+
+function buildAnnualChart() {
+  if (charts.annual) return;
+  const ctx = document.getElementById('chartAnnual'); if (!ctx) return;
+  charts.annual = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: annualYears,
+      datasets: [
+        { label: 'Curah Hujan Tahunan (mm)', data: annualData, backgroundColor: annualData.map(v => v > 3000 ? '#a32d2d' : v < 1800 ? '#ef9f27' : '#378add'), borderRadius: 3 },
+        { label: 'Rata-rata (2215 mm)', data: Array(26).fill(2215), type: 'line', borderColor: '#1d9e75', borderWidth: 2, borderDash: [6,4], pointRadius: 0, fill: false }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw.toLocaleString('id') + ' mm' } } },
+      scales: { y: { min: 1200, title: { display: true, text: 'mm' }, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 10 }, autoSkip: false, maxRotation: 45 } } },
+      animation: { duration: 1000 }
+    }
+  });
+}
+
+function buildDaysChart() {
+  if (charts.days) return;
+  const ctx = document.getElementById('chartDays'); if (!ctx) return;
+  charts.days = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: annualYears,
+      datasets: [{ label: 'Hari hujan (hari)', data: daysData, borderColor: '#639922', backgroundColor: 'rgba(99,153,34,0.10)', borderWidth: 2.5, pointRadius: 4, pointBackgroundColor: '#639922', fill: true, tension: 0.3 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + ' hari' } } },
+      scales: { y: { min: 100, title: { display: true, text: 'hari' }, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 10 }, autoSkip: false, maxRotation: 45 } } },
+      animation: { duration: 1000 }
+    }
+  });
+}
+
+/* ---- HEATMAP ---- */
+function buildHeatmap() {
+  const c = document.getElementById('heatmapGrid'); if (!c) return;
+  const maxVal = 560, minVal = 0;
+  const pct = v => (v - minVal) / (maxVal - minVal);
+  const col = p => {
+    const r = Math.round(7 + p * (24 - 7));
+    const g = Math.round(63 + p * (95 - 63));
+    const b = Math.round(133 + p * (165 - 133));
+    const alpha = 0.15 + p * 0.85;
+    return `rgba(${r},${g},${b},${alpha})`;
+  };
+  const colText = p => p > 0.5 ? '#fff' : '#1e3a5f';
+  let html = `<table style="border-collapse:collapse; font-size:11px; width:100%;">`;
+  html += `<thead><tr><th style="padding:5px 8px; background:#1d6f42; color:#fff; border:1px solid #15532e; font-size:10px;">Tahun</th>`;
+  heatmapData.months.forEach(m => { html += `<th style="padding:5px 6px; background:#1d6f42; color:#fff; border:1px solid #15532e; font-size:10px;">${m}</th>`; });
+  html += `</tr></thead><tbody>`;
+  heatmapData.years.forEach((yr, yi) => {
+    html += `<tr><td style="padding:5px 8px; background:#f5f5f5; font-weight:600; border:1px solid #e0e0e0; text-align:center;">${yr}</td>`;
+    heatmapData.values[yi].forEach(v => {
+      const p = pct(v); const bg = col(p); const fg = colText(p);
+      html += `<td style="padding:5px 6px; background:${bg}; color:${fg}; border:1px solid rgba(0,0,0,0.06); text-align:right; font-family:monospace;">${v}</td>`;
+    });
+    html += `</tr>`;
+  });
+  html += `</tbody></table>`;
+  c.innerHTML = html;
+}
+
+/* ---- VIS SELECTOR ---- */
+const visDetails = [
+  { title:'Bar / Column Chart — Perbandingan Curah Hujan', color:'#378add', desc:'Jenis chart paling umum untuk laporan hidrologi. Digunakan untuk membandingkan curah hujan antar bulan atau antar tahun dalam satu tampilan. <br><br>📌 Di Excel: Pilih range data → <strong>Insert → Bar/Column Chart → Clustered Column</strong>. Tambahkan trendline atau garis rata-rata sebagai series kedua.', use:'✓ Cocok untuk: rekap bulanan, rekap tahunan, perbandingan antar stasiun' },
+  { title:'Line Chart — Tren & Deret Waktu', color:'#639922', desc:'Menampilkan tren perubahan sepanjang waktu. Tambahkan <em>trendline polynomial</em> untuk melihat apakah curah hujan cenderung meningkat atau menurun (indikasi perubahan iklim). <br><br>📌 Di Excel: <strong>Insert → Line Chart → Line with Markers</strong>. Klik kanan chart → Add Trendline → Polynomial.', use:'✓ Cocok untuk: hari hujan tahunan, tren jangka panjang, debit harian, data monitoring' },
+  { title:'Heatmap — Pola Musiman (Conditional Formatting)', color:'#ef9f27', desc:'Teknik paling efektif untuk menampilkan pola bulanan × tahunan sekaligus dalam satu tabel berwarna. Biru = kering, merah = basah. Pola El Niño (kering) dan La Niña (basah) langsung terlihat. <br><br>📌 Di Excel: Pilih range pivot_sum → <strong>Home → Conditional Formatting → Color Scale</strong>. Pilih 3-Color Scale (biru-putih-merah).', use:'✓ Cocok untuk: matriks bulan-tahun, deteksi anomali El Niño/La Niña, laporan AMDAL' },
+  { title:'Scatter Plot — Korelasi Dua Variabel', color:'#e24b4a', desc:'Digunakan untuk analisis korelasi, misalnya curah hujan vs hari hujan, atau curah hujan obs vs satelit (GPM IMERG). Tambahkan <em>trendline linear</em> dan nilai R² untuk menunjukkan kekuatan korelasi. <br><br>📌 Di Excel: <strong>Insert → Scatter Chart</strong>. Klik kanan → Add Trendline → Display R-squared.', use:'✓ Cocok untuk: korelasi hujan-debit, validasi data satelit vs observasi, analisis regresi' }
+];
+
+function selectVis(i) {
+  document.querySelectorAll('.vis-card').forEach((c, idx) => c.classList.toggle('sel', idx === i));
+  const d = visDetails[i];
+  document.getElementById('visDetail').innerHTML = `<h3 style="color:${d.color};">${d.title}</h3><p style="font-size:13px; color:#495057; line-height:1.7; margin:8px 0;">${d.desc}</p><div class="use-tag">${d.use}</div>`;
+  document.getElementById('visDetail').style.borderLeftColor = d.color;
+}
+selectVis(0);
+
+/* ---- INIT PROGRESS ---- */
+updateProgress();
+</script>
+</body>
+</html>

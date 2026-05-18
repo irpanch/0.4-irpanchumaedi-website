@@ -54,7 +54,7 @@ title: Irpan Chumaedi
 
 Nama saya **Irpan Chumaedi**, konsultan swasta di bidang perencanaan sumber daya air. Pekerjaan utama saya meliputi analisis hidrologi, pemodelan hidrolika, dan penyusunan dokumen kajian lingkungan (AMDAL/ANDAL).
 
-Pengalaman saya mencakup berbagai jenis proyek seperti perencanaan drainase, irigasi, bendung, bendungan, analisis banjir, dan estimasi erosi-sedimentasi. Proyek yang pernah ditangani tersebar di berbagai wilayah Indonesia mulai dari Kalimantan, Sulawesi, Maluku Utara, hingga Sumatera.
+Pengalaman saya mencakup berbagai jenis proyek seperti perencanaan drainase, irigasi, bendung, bendungan, dan analisis banjir. Proyek yang pernah ditangani tersebar di berbagai wilayah Indonesia mulai dari Kalimantan, Sulawesi, Maluku Utara, hingga Sumatera.
 
 Fokus utama dari pembuatan website ini ada di pengumpulan [Database](https://www.irpanchumaedi.com/post/database/ "database geospasial dan hidrologi indonesia") hidrologi dan juga membahas mengenai pembelajaran atau [kurikulum](https://www.irpanchumaedi.com/#kurikulum) dari pengalaman saya sebagai seorang *hidrologist engineer*. 
 

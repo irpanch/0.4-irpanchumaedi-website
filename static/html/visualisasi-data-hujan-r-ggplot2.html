@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visualisasi Data Hujan dengan R & ggplot2 | irpanchumaedi.com</title>
+<meta name="description" content="Panduan visualisasi data hujan menggunakan R dan ggplot2. Studi kasus Sta. Hujan Cemara Bandung 2000–2025.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue-dark: #0a2540;
+    --blue: #185fa5;
+    --blue-mid: #378add;
+    --blue-light: #85b7eb;
+    --blue-pale: #e6f1fb;
+    --green-dark: #1a5e20;
+    --green: #2e7d32;
+    --green-mid: #388e3c;
+    --green-light: #639922;
+    --green-pale: #eaf3de;
+    --r-blue: #2166ac;
+    --r-gray: #4d4d4d;
+    --purple: #6a0dad;
+    --purple-pale: #f3e8ff;
+    --amber: #ef9f27;
+    --amber-dark: #ba7517;
+    --amber-pale: #faeeda;
+    --red: #e24b4a;
+    --red-dark: #a32d2d;
+    --red-pale: #fcebeb;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+    --code-bg: #1e1e2e;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f6f9; color: var(--gray-900); line-height: 1.6; font-size: 15px; }
+
+  /* STICKY NAV */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--gray-200); box-shadow: var(--shadow); }
+  .sticky-inner { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; gap: 1rem; height: 52px; }
+  .sticky-title { font-size: 13px; font-weight: 600; color: var(--blue-dark); white-space: nowrap; }
+  .progress-track { flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #2166ac, #388e3c); border-radius: 2px; width: 0%; transition: width 0.4s ease; }
+  .sticky-pct { font-size: 12px; color: var(--gray-500); min-width: 32px; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 60%, #0d3320 100%); color: #fff; padding: 3rem 1.5rem 2.5rem; position: relative; overflow: hidden; border-radius: 0 0 var(--radius) var(--radius); margin-bottom: 2rem; }
+  .hero::before { content:''; position:absolute; top:-80px; right:-60px; width:300px; height:300px; border-radius:50%; background:rgba(33,102,172,0.15); }
+  .hero::after  { content:''; position:absolute; bottom:-100px; left:10%; width:250px; height:250px; border-radius:50%; background:rgba(46,125,50,0.12); }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: rgba(33,102,172,0.25); color: #85b7eb; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-bottom: 0.75rem; letter-spacing: 0.04em; }
+  .hero h1 { font-size: clamp(22px,4vw,30px); font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.55); }
+  .hero-meta-item svg { width:14px; height:14px; }
+  .r-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(33,102,172,0.3); border:1px solid rgba(33,102,172,0.5); border-radius:6px; padding:4px 10px; font-size:12px; font-weight:600; color:#85b7eb; margin-top:10px; }
+
+  /* NAV PILLS */
+  .nav-scroll { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 2rem; scrollbar-width: none; }
+  .nav-scroll::-webkit-scrollbar { display: none; }
+  .nav-pill { flex-shrink: 0; font-size: 12px; padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--gray-300); background: #fff; color: var(--gray-600); cursor: pointer; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .nav-pill:hover { border-color: var(--r-blue); color: var(--r-blue); }
+  .nav-pill.active { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; }
+
+  /* STAT CARDS */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 2rem; }
+  .stat-card { background: #fff; border-radius: var(--radius); padding: 1.1rem 1.25rem; box-shadow: var(--shadow); border-top: 3px solid transparent; }
+  .stat-card.blue  { border-top-color: var(--blue-mid); }
+  .stat-card.green { border-top-color: var(--green-mid); }
+  .stat-card.purple{ border-top-color: var(--purple); }
+  .stat-card.amber { border-top-color: var(--amber); }
+  .stat-val { font-size: 24px; font-weight: 700; line-height: 1.1; }
+  .stat-val.blue  { color: var(--blue); }
+  .stat-val.green { color: var(--green-mid); }
+  .stat-val.purple{ color: var(--purple); }
+  .stat-val.amber { color: var(--amber-dark); }
+  .stat-lbl { font-size: 11px; color: var(--gray-500); margin-top: 3px; }
+
+  /* SECTION */
+  .section { margin-bottom: 3rem; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
+  .section-num { width: 32px; height: 32px; border-radius: 50%; background: var(--blue-dark); color: #fff; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 19px; font-weight: 700; color: var(--gray-900); }
+
+  /* CARD */
+  .card { background: #fff; border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
+  .card-blue   { border-left: 4px solid var(--blue-mid); }
+  .card-green  { border-left: 4px solid var(--green-mid); }
+  .card-purple { border-left: 4px solid var(--purple); }
+  .card-amber  { border-left: 4px solid var(--amber); }
+  .card-red    { border-left: 4px solid var(--red); }
+  .card-label  { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray-500); margin-bottom: 6px; }
+  .card p      { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  @media (max-width: 600px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  /* INFO / WARN BOX */
+  .info-box    { display:flex; gap:10px; background:var(--blue-pale); border:1px solid #b5d4f4; border-radius:var(--radius-sm); padding:.9rem 1rem; font-size:13px; color:#0c447c; margin:1rem 0; line-height:1.55; }
+  .warn-box    { display:flex; gap:10px; background:var(--amber-pale); border:1px solid #fac775; border-radius:var(--radius-sm); padding:.9rem 1rem; font-size:13px; color:var(--amber-dark); margin:1rem 0; line-height:1.55; }
+  .success-box { display:flex; gap:10px; background:var(--green-pale); border:1px solid #c0dd97; border-radius:var(--radius-sm); padding:.9rem 1rem; font-size:13px; color:#27500a; margin:1rem 0; line-height:1.55; }
+  .purple-box  { display:flex; gap:10px; background:var(--purple-pale); border:1px solid #d8b4fe; border-radius:var(--radius-sm); padding:.9rem 1rem; font-size:13px; color:#4a0080; margin:1rem 0; line-height:1.55; }
+  .box-icon    { font-size:18px; flex-shrink:0; line-height:1.3; }
+
+  /* STEP FLOW */
+  .step-flow { margin: 1rem 0; }
+  .step-item { display: flex; gap: 14px; }
+  .step-line { display: flex; flex-direction: column; align-items: center; }
+  .step-dot { width:30px; height:30px; border-radius:50%; background:var(--blue-mid); color:#fff; font-size:12px; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-dot.green  { background: var(--green-dark); }
+  .step-dot.purple { background: var(--purple); }
+  .step-connector { width:2px; background:var(--gray-200); flex:1; min-height:16px; margin:3px 0; }
+  .step-body { padding-bottom:20px; flex:1; }
+  .step-title { font-size:14px; font-weight:600; color:var(--gray-800); margin-bottom:4px; }
+  .step-desc  { font-size:13px; color:var(--gray-600); line-height:1.6; }
+
+  /* CODE BLOCK */
+  .code-wrap { background: var(--code-bg); border-radius: var(--radius-sm); overflow: hidden; margin: 0.75rem 0; box-shadow: var(--shadow-md); }
+  .code-header { background: #2a2a3e; padding: 7px 14px; display: flex; align-items: center; justify-content: space-between; }
+  .code-lang { font-size: 11px; color: #a0aec0; font-weight: 600; letter-spacing: 0.05em; display:flex; align-items:center; gap:6px; }
+  .code-lang .dot { width:8px; height:8px; border-radius:50%; }
+  .copy-btn { font-size:11px; color:#a0aec0; cursor:pointer; background:none; border:none; padding:2px 8px; border-radius:4px; transition:all 0.2s; }
+  .copy-btn:hover { background:rgba(255,255,255,0.1); color:#fff; }
+  pre { padding: 1rem 1.25rem; overflow-x: auto; font-family: 'Consolas','Courier New',monospace; font-size: 12.5px; line-height: 1.7; color: #cdd6f4; }
+  pre::-webkit-scrollbar { height: 4px; }
+  pre::-webkit-scrollbar-thumb { background: #4a4a6a; border-radius: 2px; }
+  /* Syntax tokens */
+  .kw  { color: #cba6f7; }   /* keywords: library, ggplot, aes */
+  .fn  { color: #89b4fa; }   /* functions */
+  .str { color: #a6e3a1; }   /* strings */
+  .num { color: #fab387; }   /* numbers */
+  .cm  { color: #6c7086; font-style: italic; } /* comments */
+  .op  { color: #89dceb; }   /* operators + pipes */
+  .pkg { color: #f38ba8; }   /* package names */
+
+  /* OUTPUT PREVIEW */
+  .output-preview { background:#fff; border:2px dashed var(--gray-300); border-radius:var(--radius); overflow:hidden; margin-bottom:1rem; }
+  .output-label { background:var(--gray-100); padding:6px 14px; font-size:11px; color:var(--gray-500); font-weight:600; border-bottom:1px solid var(--gray-200); display:flex; align-items:center; gap:6px; }
+  .output-body { padding: 1rem; }
+
+  /* CHART */
+  .chart-card { background:#fff; border-radius:var(--radius); padding:1.25rem 1.5rem 1rem; box-shadow:var(--shadow); margin-bottom:1.25rem; }
+  .chart-title { font-size:13px; font-weight:600; color:var(--gray-700); margin-bottom:3px; }
+  .chart-sub   { font-size:11px; color:var(--gray-400); margin-bottom:1rem; }
+  .chart-wrap  { position:relative; width:100%; }
+  .legend-row  { display:flex; flex-wrap:wrap; gap:12px; margin-top:10px; font-size:11px; color:var(--gray-500); }
+  .legend-item { display:flex; align-items:center; gap:5px; }
+  .legend-sq   { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+
+  /* MONTH BARS */
+  .month-bar-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .month-lbl { font-size:12px; color:var(--gray-600); width:30px; flex-shrink:0; }
+  .bar-track { flex:1; background:var(--gray-200); border-radius:4px; height:22px; position:relative; overflow:hidden; }
+  .bar-fill  { height:100%; border-radius:4px; display:flex; align-items:center; padding-left:8px; font-size:11px; color:#fff; font-weight:600; transition:width 1.2s cubic-bezier(0.25,1,0.5,1); width:0%; }
+  .bar-val   { font-size:12px; color:var(--gray-600); width:40px; text-align:right; flex-shrink:0; }
+
+  /* PACKAGE CARDS */
+  .pkg-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:10px; margin-bottom:1.5rem; }
+  .pkg-card { background:#fff; border-radius:var(--radius); padding:1rem 1.1rem; box-shadow:var(--shadow); border-top:3px solid var(--purple); }
+  .pkg-name { font-size:14px; font-weight:700; color:var(--purple); font-family:'Consolas',monospace; margin-bottom:4px; }
+  .pkg-desc { font-size:12px; color:var(--gray-600); line-height:1.5; }
+
+  /* GEOM CARDS */
+  .geom-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:10px; margin-bottom:1.5rem; }
+  .geom-card { background:#fff; border-radius:var(--radius); padding:.9rem 1rem; box-shadow:var(--shadow); cursor:pointer; transition:all 0.2s; border:1.5px solid var(--gray-200); text-align:center; }
+  .geom-card:hover, .geom-card.sel { border-color:var(--r-blue); background:var(--blue-pale); }
+  .geom-icon { font-size:26px; margin-bottom:4px; }
+  .geom-name { font-size:13px; font-weight:600; font-family:'Consolas',monospace; color:var(--r-blue); }
+  .geom-use  { font-size:11px; color:var(--gray-500); margin-top:2px; }
+  .geom-detail { background:#fff; border-radius:var(--radius); padding:1.25rem 1.5rem; box-shadow:var(--shadow); border-left:4px solid var(--r-blue); min-height:80px; margin-bottom:1rem; animation: fadeUp 0.3s ease; }
+
+  /* THEME CARDS */
+  .theme-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(130px,1fr)); gap:10px; margin-bottom:1rem; }
+  .theme-card { border-radius:var(--radius-sm); overflow:hidden; box-shadow:var(--shadow); cursor:pointer; transition:all 0.2s; border:2px solid transparent; }
+  .theme-card:hover, .theme-card.sel { border-color:var(--r-blue); transform:translateY(-2px); }
+  .theme-preview { height:60px; display:flex; align-items:flex-end; padding:6px; gap:4px; }
+  .theme-bar { border-radius:2px 2px 0 0; flex:1; }
+  .theme-name { font-size:11px; font-weight:600; padding:5px 8px; font-family:'Consolas',monospace; }
+
+  /* DATA TABLE */
+  .data-tbl-wrap { overflow-x:auto; margin-bottom:1rem; }
+  .data-tbl { width:100%; border-collapse:collapse; font-size:13px; min-width:400px; }
+  .data-tbl th { background:var(--gray-100); padding:8px 12px; text-align:left; font-size:12px; color:var(--gray-600); border-bottom:2px solid var(--gray-300); font-weight:600; }
+  .data-tbl td { padding:7px 12px; border-bottom:1px solid var(--gray-100); font-family:'Consolas',monospace; font-size:12px; }
+  .data-tbl tr:hover td { background:#f8f9fa; }
+
+  /* HEATMAP */
+  .heatmap-wrap { overflow-x:auto; margin-bottom:1rem; }
+
+  /* TAG */
+  .tag { display:inline-block; font-size:11px; padding:3px 10px; border-radius:20px; margin:2px; font-weight:500; }
+  .tag-blue   { background:var(--blue-pale); color:#0c447c; }
+  .tag-green  { background:var(--green-pale); color:#27500a; }
+  .tag-amber  { background:var(--amber-pale); color:var(--amber-dark); }
+  .tag-purple { background:var(--purple-pale); color:#4a0080; }
+
+  /* TIP LIST */
+  .tip-list { list-style:none; }
+  .tip-list li { display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--gray-100); font-size:13px; color:var(--gray-700); line-height:1.6; }
+  .tip-list li:last-child { border-bottom:none; }
+  .tip-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+
+  /* DIVIDER */
+  .divider { height:1px; background:var(--gray-200); margin:2rem 0; }
+
+  /* ANIMATE */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  .anim-in { opacity:0; }
+  .anim-in.visible { animation: fadeUp 0.5s ease forwards; }
+
+  @media (max-width:600px) { .hero { padding:2rem 1rem 1.5rem; } .hero h1 { font-size:22px; } }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav">
+  <div class="sticky-inner">
+    <span class="sticky-title">📈 Visualisasi Data Hujan · R & ggplot2</span>
+    <div class="progress-track"><div class="progress-fill" id="progBar"></div></div>
+    <span class="sticky-pct" id="progPct">0%</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📘 Modul Analisis Hidrologi</div>
+    <h1>Visualisasi Data Hujan<br>dengan R & ggplot2</h1>
+    <p class="hero-sub">Studi kasus: Sta. Hujan Cemara, Bandung · Periode 2000–2025</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        60 menit belajar
+      </span>
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        9.487 data harian
+      </span>
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Tingkat: Dasar–Menengah
+      </span>
+    </div>
+    <div style="margin-top:1rem; display:flex; gap:8px; flex-wrap:wrap;">
+      <span class="r-badge">🔵 R ≥ 4.0</span>
+      <span class="r-badge" style="background:rgba(46,125,50,0.3); border-color:rgba(46,125,50,0.5); color:#a5d6a7;">📦 ggplot2</span>
+      <span class="r-badge" style="background:rgba(106,13,173,0.25); border-color:rgba(106,13,173,0.4); color:#e9d5ff;">🔧 tidyverse</span>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:860px; margin:0 auto; padding:0 1.25rem 4rem;">
+
+  <!-- NAV PILLS -->
+  <nav class="nav-scroll" aria-label="Navigasi seksi">
+    <a href="#s1" class="nav-pill active">1 · Pendahuluan</a>
+    <a href="#s2" class="nav-pill">2 · Setup & Packages</a>
+    <a href="#s3" class="nav-pill">3 · Import Data</a>
+    <a href="#s4" class="nav-pill">4 · Grammar of Graphics</a>
+    <a href="#s5" class="nav-pill">5 · Bar Chart Bulanan</a>
+    <a href="#s6" class="nav-pill">6 · Line Chart Tahunan</a>
+    <a href="#s7" class="nav-pill">7 · Heatmap</a>
+    <a href="#s8" class="nav-pill">8 · Multi-panel</a>
+    <a href="#s9" class="nav-pill">9 · Ekspor & Tips</a>
+    <a href="#s10" class="nav-pill" style="border-color:#e24b4a; color:#e24b4a;">🔥 Eksklusif R</a>
+    <a href="#s11" class="nav-pill">10 · Boxplot</a>
+    <a href="#s12" class="nav-pill">11 · Facet 26 Tahun</a>
+    <a href="#s13" class="nav-pill">12 · Tren + CI</a>
+    <a href="#s14" class="nav-pill">13 · Ridgeline</a>
+    <a href="#s15" class="nav-pill">14 · Otomasi</a>
+  </nav>
+
+  <!-- ===== SEKSI 1: PENDAHULUAN ===== -->
+  <section class="section anim-in" id="s1">
+    <div class="section-header"><div class="section-num">1</div><h2>Pendahuluan & Tujuan Pembelajaran</h2></div>
+
+    <div class="stats-grid">
+      <div class="stat-card blue">  <div class="stat-val blue"  id="cnt1" data-target="9487">0</div><div class="stat-lbl">Data harian Sta. Cemara</div></div>
+      <div class="stat-card green"> <div class="stat-val green" id="cnt2" data-target="26">0</div><div class="stat-lbl">Tahun pengamatan</div></div>
+      <div class="stat-card purple"><div class="stat-val purple" id="cnt3" data-target="8">0</div><div class="stat-lbl">Jenis visualisasi dibahas</div></div>
+      <div class="stat-card amber"> <div class="stat-val amber" id="cnt4" data-target="314">0</div><div class="stat-lbl">mm · Bulan terbasa (Nov)</div></div>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-label">Mengapa R & ggplot2 untuk data hujan?</div>
+      <p>Microsoft Excel cukup untuk rekap sederhana, tetapi untuk visualisasi yang konsisten, reproducible, dan publication-quality — R dengan ggplot2 jauh lebih unggul. Satu script R bisa menghasilkan puluhan chart sekaligus, dengan format, warna, dan label yang seragam secara otomatis.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Keunggulan ggplot2</div>
+        <p>Berbasis <em>Grammar of Graphics</em> — setiap chart dibangun dari lapisan (layer) yang konsisten. Mudah dimodifikasi, mudah direproduksi, dan menghasilkan output PNG/SVG/PDF berkualitas tinggi.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Cocok untuk hidrologi</div>
+        <p>Mendukung time series panjang, heatmap bulan × tahun, multi-panel per stasiun, dan integrasi langsung dengan analisis statistik seperti regresi, uji tren, dan analisis frekuensi.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label" style="margin-bottom:12px;">Setelah mempelajari modul ini, kamu dapat:</div>
+      <div class="step-flow">
+        <div class="step-item"><div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div><div class="step-body"><div class="step-title">Menyiapkan lingkungan R + ggplot2 untuk analisis data hujan</div><div class="step-desc">Instalasi package, struktur data frame, dan import file Excel/CSV.</div></div></div>
+        <div class="step-item"><div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div><div class="step-body"><div class="step-title">Memahami Grammar of Graphics sebagai fondasi ggplot2</div><div class="step-desc">Konsep aes(), geom_*, stat_*, dan theme yang membangun setiap chart.</div></div></div>
+        <div class="step-item"><div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div><div class="step-body"><div class="step-title">Membuat bar chart, line chart, dan heatmap data hujan</div><div class="step-desc">Dengan data nyata Sta. Cemara Bandung, lengkap label, warna, dan anotasi.</div></div></div>
+        <div class="step-item"><div class="step-line"><div class="step-dot">✓</div><div class="step-connector"></div></div><div class="step-body"><div class="step-title">Menggabungkan beberapa chart dalam satu layout (patchwork)</div><div class="step-desc">Membuat panel figure siap laporan atau publikasi ilmiah.</div></div></div>
+      </div>
+    </div>
+
+    <div class="info-box"><span class="box-icon">ℹ️</span><span>Modul ini menggunakan data yang sama dengan modul Excel sebelumnya: <strong>Sta. Hujan Cemara, Bandung 2000–2025</strong> (BMKG Bandung). Kamu bisa langsung menggunakan file <code style="font-size:12px;">sta_hujan_cemara_bandung_2000_2025.xlsx</code> yang sudah disiapkan.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 2: SETUP ===== -->
+  <section class="section anim-in" id="s2">
+    <div class="section-header"><div class="section-num">2</div><h2>Setup & Instalasi Package</h2></div>
+
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-name">tidyverse</div>
+        <div class="pkg-desc">Meta-package: ggplot2, dplyr, tidyr, readr, lubridate, dll — semua yang dibutuhkan dalam satu instalasi.</div>
+      </div>
+      <div class="pkg-card" style="border-top-color:var(--green-mid);">
+        <div class="pkg-name" style="color:var(--green-mid);">readxl</div>
+        <div class="pkg-desc">Import file .xlsx dan .xls langsung ke R tanpa perlu konversi ke CSV terlebih dahulu.</div>
+      </div>
+      <div class="pkg-card" style="border-top-color:var(--amber-dark);">
+        <div class="pkg-name" style="color:var(--amber-dark);">scales</div>
+        <div class="pkg-desc">Format sumbu chart secara otomatis: ribuan, persen, tanggal, dan unit kustom seperti "mm".</div>
+      </div>
+      <div class="pkg-card" style="border-top-color:var(--blue-mid);">
+        <div class="pkg-name" style="color:var(--blue-mid);">patchwork</div>
+        <div class="pkg-desc">Menggabungkan beberapa objek ggplot menjadi satu layout multi-panel dengan operator + dan /.</div>
+      </div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Instalasi Package</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># Instalasi (jalankan sekali saja)</span>
+<span class="fn">install.packages</span>(<span class="str">"tidyverse"</span>)  <span class="cm"># termasuk ggplot2, dplyr, lubridate</span>
+<span class="fn">install.packages</span>(<span class="str">"readxl"</span>)     <span class="cm"># baca file Excel</span>
+<span class="fn">install.packages</span>(<span class="str">"scales"</span>)     <span class="cm"># format sumbu</span>
+<span class="fn">install.packages</span>(<span class="str">"patchwork"</span>)  <span class="cm"># multi-panel layout</span>
+
+<span class="cm"># Load package di setiap sesi</span>
+<span class="fn">library</span>(<span class="pkg">tidyverse</span>)
+<span class="fn">library</span>(<span class="pkg">readxl</span>)
+<span class="fn">library</span>(<span class="pkg">scales</span>)
+<span class="fn">library</span>(<span class="pkg">patchwork</span>)</pre>
+    </div>
+
+    <div class="success-box"><span class="box-icon">💡</span><span>Gunakan <strong>RStudio</strong> sebagai IDE — tersedia gratis di <a href="https://posit.co/download/rstudio-desktop/" target="_top" style="color:#27500a;">posit.co</a>. Pastikan versi R ≥ 4.0 agar semua fitur tidyverse berjalan optimal. Cek versi dengan <code style="font-size:12px;">R.version</code> di console.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 3: IMPORT DATA ===== -->
+  <section class="section anim-in" id="s3">
+    <div class="section-header"><div class="section-num">3</div><h2>Import & Persiapan Data</h2></div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Sebelum membuat chart, data harian perlu diimport dan dibersihkan — menghapus kode 8888 (data hilang) dan membuat kolom turunan seperti Tahun, Bulan, dan flag hari hujan.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Import & Bersihkan Data</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="fn">library</span>(<span class="pkg">tidyverse</span>)
+<span class="fn">library</span>(<span class="pkg">readxl</span>)
+
+<span class="cm"># ── 1. Import sheet data_harian ─────────────────────────────</span>
+df_raw <span class="op">&lt;-</span> <span class="fn">read_excel</span>(
+  <span class="str">"sta_hujan_cemara_bandung_2000_2025.xlsx"</span>,
+  sheet <span class="op">=</span> <span class="str">"data_harian"</span>
+)
+
+<span class="cm"># ── 2. Bersihkan & buat kolom turunan ───────────────────────</span>
+df <span class="op">&lt;-</span> df_raw <span class="op">|&gt;</span>
+  <span class="fn">rename</span>(
+    tanggal  <span class="op">=</span> Tanggal,
+    rr_raw   <span class="op">=</span> RR,
+    rr_mm    <span class="op">=</span> <span class="str">`Curah_hujan (mm)`</span>
+  ) <span class="op">|&gt;</span>
+  <span class="fn">mutate</span>(
+    rr_mm   <span class="op">=</span> <span class="fn">if_else</span>(rr_raw <span class="op">==</span> <span class="num">8888</span>, <span class="kw">NA_real_</span>, rr_raw),  <span class="cm"># ganti 8888 → NA</span>
+    tahun   <span class="op">=</span> <span class="fn">year</span>(tanggal),
+    bulan   <span class="op">=</span> <span class="fn">month</span>(tanggal, label <span class="op">=</span> <span class="kw">TRUE</span>, abbr <span class="op">=</span> <span class="kw">TRUE</span>),
+    bln_num <span class="op">=</span> <span class="fn">month</span>(tanggal),
+    hujan   <span class="op">=</span> <span class="fn">if_else</span>(rr_mm <span class="op">&gt;</span> <span class="num">0</span>, <span class="num">1L</span>, <span class="num">0L</span>, missing <span class="op">=</span> <span class="num">0L</span>)  <span class="cm"># flag hari hujan</span>
+  )
+
+<span class="cm"># ── 3. Cek hasil ────────────────────────────────────────────</span>
+<span class="fn">glimpse</span>(df)
+<span class="fn">summary</span>(df<span class="op">$</span>rr_mm)</pre>
+    </div>
+
+    <div class="card" style="margin-top:0.5rem;">
+      <div class="card-label" style="margin-bottom:8px;">Contoh struktur df setelah import (5 baris pertama):</div>
+      <div class="data-tbl-wrap">
+        <table class="data-tbl">
+          <thead><tr><th>tanggal</th><th>rr_raw</th><th>rr_mm</th><th>tahun</th><th>bulan</th><th>bln_num</th><th>hujan</th></tr></thead>
+          <tbody>
+            <tr><td>2000-01-01</td><td>2.8</td><td>2.8</td><td>2000</td><td>Jan</td><td>1</td><td>1</td></tr>
+            <tr><td>2000-01-02</td><td>0</td><td>0</td><td>2000</td><td>Jan</td><td>1</td><td>0</td></tr>
+            <tr><td>2000-01-03</td><td>1.8</td><td>1.8</td><td>2000</td><td>Jan</td><td>1</td><td>1</td></tr>
+            <tr style="background:#fff8f0;"><td>2000-01-19</td><td>8888</td><td style="color:var(--gray-400);">NA</td><td>2000</td><td>Jan</td><td>1</td><td>0</td></tr>
+            <tr><td>2000-01-20</td><td>2.0</td><td>2.0</td><td>2000</td><td>Jan</td><td>1</td><td>1</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Buat Tabel Rekap (dipakai semua chart)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── Rekap bulanan: rata-rata curah hujan per bulan (26 tahun) ──</span>
+df_bulanan <span class="op">&lt;-</span> df <span class="op">|&gt;</span>
+  <span class="fn">group_by</span>(tahun, bln_num, bulan) <span class="op">|&gt;</span>
+  <span class="fn">summarise</span>(
+    total_mm   <span class="op">=</span> <span class="fn">sum</span>(rr_mm, na.rm <span class="op">=</span> <span class="kw">TRUE</span>),
+    maks_mm    <span class="op">=</span> <span class="fn">max</span>(rr_mm, na.rm <span class="op">=</span> <span class="kw">TRUE</span>),
+    hari_hujan <span class="op">=</span> <span class="fn">sum</span>(hujan, na.rm <span class="op">=</span> <span class="kw">TRUE</span>),
+    .groups    <span class="op">=</span> <span class="str">"drop"</span>
+  )
+
+<span class="cm"># ── Rekap tahunan ────────────────────────────────────────────</span>
+df_tahunan <span class="op">&lt;-</span> df_bulanan <span class="op">|&gt;</span>
+  <span class="fn">group_by</span>(tahun) <span class="op">|&gt;</span>
+  <span class="fn">summarise</span>(
+    total_mm   <span class="op">=</span> <span class="fn">sum</span>(total_mm),
+    maks_mm    <span class="op">=</span> <span class="fn">max</span>(maks_mm),
+    hari_hujan <span class="op">=</span> <span class="fn">sum</span>(hari_hujan)
+  )
+
+<span class="cm"># ── Rata-rata bulanan (lintas tahun) ─────────────────────────</span>
+df_avg_bln <span class="op">&lt;-</span> df_bulanan <span class="op">|&gt;</span>
+  <span class="fn">group_by</span>(bln_num, bulan) <span class="op">|&gt;</span>
+  <span class="fn">summarise</span>(avg_mm <span class="op">=</span> <span class="fn">mean</span>(total_mm), .groups <span class="op">=</span> <span class="str">"drop"</span>)</pre>
+    </div>
+
+    <div class="info-box"><span class="box-icon">ℹ️</span><span>Operator pipe <code style="font-size:12px;">|&gt;</code> (native pipe R 4.1+) atau <code style="font-size:12px;">%&gt;%</code> (magrittr) fungsinya sama — meneruskan hasil fungsi sebelumnya sebagai argumen pertama fungsi berikutnya. Keduanya bisa dipakai secara bergantian.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 4: GRAMMAR OF GRAPHICS ===== -->
+  <section class="section anim-in" id="s4">
+    <div class="section-header"><div class="section-num">4</div><h2>Grammar of Graphics — Fondasi ggplot2</h2></div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Setiap chart ggplot2 dibangun dari komponen yang sama — seperti tata bahasa (grammar). Memahami ini membuat kamu bisa memodifikasi chart apa pun dengan mudah.</p>
+
+    <div class="card card-purple">
+      <div class="card-label">Struktur dasar ggplot2</div>
+      <div class="code-wrap" style="margin-top:8px;">
+        <div class="code-header">
+          <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Template Universal ggplot2</span>
+          <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+        </div>
+        <pre><span class="fn">ggplot</span>(data <span class="op">=</span> &lt;DATA&gt;,              <span class="cm"># 1. Data frame sumber</span>
+       <span class="fn">aes</span>(x <span class="op">=</span> &lt;X&gt;, y <span class="op">=</span> &lt;Y&gt;,          <span class="cm"># 2. Aesthetic mapping</span>
+           fill <span class="op">=</span> &lt;VAR&gt;, color <span class="op">=</span> &lt;VAR&gt;)) <span class="op">+</span>
+  <span class="fn">&lt;GEOM_FUNCTION&gt;</span>() <span class="op">+</span>               <span class="cm"># 3. Geometri (bar, line, tile...)</span>
+  <span class="fn">&lt;SCALE_FUNCTION&gt;</span>() <span class="op">+</span>              <span class="cm"># 4. Skala sumbu & warna</span>
+  <span class="fn">&lt;COORD_FUNCTION&gt;</span>() <span class="op">+</span>              <span class="cm"># 5. Sistem koordinat</span>
+  <span class="fn">&lt;FACET_FUNCTION&gt;</span>() <span class="op">+</span>              <span class="cm"># 6. Panel / facet (opsional)</span>
+  <span class="fn">labs</span>(title <span class="op">=</span> <span class="str">"..."</span>, x <span class="op">=</span> <span class="str">"..."</span>,    <span class="cm"># 7. Label</span>
+       y <span class="op">=</span> <span class="str">"..."</span>, caption <span class="op">=</span> <span class="str">"..."</span>) <span class="op">+</span>
+  <span class="fn">&lt;THEME_FUNCTION&gt;</span>()                <span class="cm"># 8. Tema (tampilan)</span></pre>
+      </div>
+    </div>
+
+    <div class="card-label" style="margin-bottom:8px;">Klik geom untuk melihat penggunaan dalam analisis data hujan:</div>
+    <div class="geom-grid">
+      <div class="geom-card sel" id="gc0" onclick="selectGeom(0)"><div class="geom-icon">📊</div><div class="geom-name">geom_col()</div><div class="geom-use">Bar chart absolut</div></div>
+      <div class="geom-card" id="gc1" onclick="selectGeom(1)"><div class="geom-icon">📈</div><div class="geom-name">geom_line()</div><div class="geom-use">Tren deret waktu</div></div>
+      <div class="geom-card" id="gc2" onclick="selectGeom(2)"><div class="geom-icon">🟦</div><div class="geom-name">geom_tile()</div><div class="geom-use">Heatmap grid</div></div>
+      <div class="geom-card" id="gc3" onclick="selectGeom(3)"><div class="geom-icon">🔵</div><div class="geom-name">geom_point()</div><div class="geom-use">Scatter plot</div></div>
+      <div class="geom-card" id="gc4" onclick="selectGeom(4)"><div class="geom-icon">📉</div><div class="geom-name">geom_area()</div><div class="geom-use">Area bawah kurva</div></div>
+      <div class="geom-card" id="gc5" onclick="selectGeom(5)"><div class="geom-icon">📏</div><div class="geom-name">geom_hline()</div><div class="geom-use">Garis referensi</div></div>
+    </div>
+    <div class="geom-detail" id="geomDetail"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 5: BAR CHART BULANAN ===== -->
+  <section class="section anim-in" id="s5">
+    <div class="section-header"><div class="section-num">5</div><h2>Bar Chart — Curah Hujan Bulanan</h2></div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Bar chart rata-rata bulanan adalah visualisasi paling umum dalam laporan hidrologi. Berikut versi bertahap — dari yang paling dasar hingga versi siap laporan.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Bar Chart Dasar</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── Versi dasar: 3 baris ────────────────────────────────────</span>
+<span class="fn">ggplot</span>(df_avg_bln, <span class="fn">aes</span>(x <span class="op">=</span> bulan, y <span class="op">=</span> avg_mm)) <span class="op">+</span>
+  <span class="fn">geom_col</span>(fill <span class="op">=</span> <span class="str">"#378add"</span>) <span class="op">+</span>
+  <span class="fn">labs</span>(title <span class="op">=</span> <span class="str">"Rata-rata Curah Hujan Bulanan"</span>,
+       y <span class="op">=</span> <span class="str">"mm"</span>, x <span class="op">=</span> <span class="kw">NULL</span>)</pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Bar Chart Siap Laporan (lengkap)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── Warna per kategori musim ─────────────────────────────────</span>
+warna_bln <span class="op">&lt;-</span> <span class="fn">c</span>(
+  <span class="str">"Jan"</span><span class="op">=</span><span class="str">"#185fa5"</span>, <span class="str">"Feb"</span><span class="op">=</span><span class="str">"#185fa5"</span>, <span class="str">"Mar"</span><span class="op">=</span><span class="str">"#185fa5"</span>,
+  <span class="str">"Apr"</span><span class="op">=</span><span class="str">"#378add"</span>, <span class="str">"Mei"</span><span class="op">=</span><span class="str">"#378add"</span>,
+  <span class="str">"Jun"</span><span class="op">=</span><span class="str">"#85b7eb"</span>, <span class="str">"Jul"</span><span class="op">=</span><span class="str">"#85b7eb"</span>, <span class="str">"Agt"</span><span class="op">=</span><span class="str">"#b5d4f4"</span>, <span class="str">"Sep"</span><span class="op">=</span><span class="str">"#85b7eb"</span>,
+  <span class="str">"Okt"</span><span class="op">=</span><span class="str">"#378add"</span>, <span class="str">"Nov"</span><span class="op">=</span><span class="str">"#185fa5"</span>, <span class="str">"Des"</span><span class="op">=</span><span class="str">"#185fa5"</span>
+)
+
+p_bulanan <span class="op">&lt;-</span> <span class="fn">ggplot</span>(df_avg_bln, <span class="fn">aes</span>(x <span class="op">=</span> bulan, y <span class="op">=</span> avg_mm, fill <span class="op">=</span> bulan)) <span class="op">+</span>
+
+  <span class="cm"># ① Bar utama</span>
+  <span class="fn">geom_col</span>(show.legend <span class="op">=</span> <span class="kw">FALSE</span>, width <span class="op">=</span> <span class="num">0.75</span>) <span class="op">+</span>
+
+  <span class="cm"># ② Garis rata-rata tahunan</span>
+  <span class="fn">geom_hline</span>(yintercept <span class="op">=</span> <span class="num">184</span>, linetype <span class="op">=</span> <span class="str">"dashed"</span>,
+             color <span class="op">=</span> <span class="str">"#ef9f27"</span>, linewidth <span class="op">=</span> <span class="num">0.8</span>) <span class="op">+</span>
+
+  <span class="cm"># ③ Label di atas bar</span>
+  <span class="fn">geom_text</span>(<span class="fn">aes</span>(label <span class="op">=</span> <span class="fn">round</span>(avg_mm, <span class="num">0</span>)),
+            vjust <span class="op">=</span> <span class="op">-</span><span class="num">0.4</span>, size <span class="op">=</span> <span class="num">3</span>, color <span class="op">=</span> <span class="str">"#495057"</span>) <span class="op">+</span>
+
+  <span class="cm"># ④ Anotasi garis rata-rata</span>
+  <span class="fn">annotate</span>(<span class="str">"text"</span>, x <span class="op">=</span> <span class="num">11.5</span>, y <span class="op">=</span> <span class="num">192</span>,
+           label <span class="op">=</span> <span class="str">"Rata-rata 184 mm"</span>,
+           size <span class="op">=</span> <span class="num">3</span>, color <span class="op">=</span> <span class="str">"#ef9f27"</span>, fontface <span class="op">=</span> <span class="str">"bold"</span>) <span class="op">+</span>
+
+  <span class="cm"># ⑤ Warna & skala</span>
+  <span class="fn">scale_fill_manual</span>(values <span class="op">=</span> warna_bln) <span class="op">+</span>
+  <span class="fn">scale_y_continuous</span>(expand <span class="op">=</span> <span class="fn">expansion</span>(<span class="fn">mult</span> <span class="op">=</span> <span class="fn">c</span>(<span class="num">0</span>, <span class="num">0.12</span>)),
+                     labels <span class="op">=</span> <span class="fn">label_number</span>(suffix <span class="op">=</span> <span class="str">" mm"</span>)) <span class="op">+</span>
+
+  <span class="cm"># ⑥ Label</span>
+  <span class="fn">labs</span>(
+    title   <span class="op">=</span> <span class="str">"Rata-rata Curah Hujan Bulanan"</span>,
+    subtitle<span class="op">=</span> <span class="str">"Sta. Hujan Cemara, Bandung · 2000–2025"</span>,
+    x <span class="op">=</span> <span class="kw">NULL</span>, y <span class="op">=</span> <span class="str">"Curah Hujan (mm)"</span>,
+    caption <span class="op">=</span> <span class="str">"Sumber: BMKG Bandung"</span>
+  ) <span class="op">+</span>
+
+  <span class="cm"># ⑦ Tema</span>
+  <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">12</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(
+    plot.title    <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>),
+    plot.subtitle <span class="op">=</span> <span class="fn">element_text</span>(color <span class="op">=</span> <span class="str">"grey50"</span>, size <span class="op">=</span> <span class="num">10</span>),
+    panel.grid.major.x <span class="op">=</span> <span class="fn">element_blank</span>()
+  )
+
+<span class="fn">print</span>(p_bulanan)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: p_bulanan</div>
+      <div class="output-body">
+        <div class="chart-title" style="margin-bottom:2px;">Rata-rata Curah Hujan Bulanan</div>
+        <div class="chart-sub">Sta. Hujan Cemara, Bandung · 2000–2025 &nbsp;|&nbsp; Sumber: BMKG Bandung</div>
+        <div style="margin-bottom:0.75rem;" id="monthBars"></div>
+        <div class="chart-wrap" style="height:260px;"><canvas id="chartMonthly"></canvas></div>
+        <div class="legend-row">
+          <div class="legend-item"><div class="legend-sq" style="background:#185fa5;"></div>Musim Hujan (>200 mm)</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#378add;"></div>Peralihan</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#85b7eb;"></div>Kemarau</div>
+          <div class="legend-item"><div style="width:20px; border-top:2px dashed #ef9f27; margin-top:5px;"></div>&nbsp;Rata-rata (184 mm)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 6: LINE CHART TAHUNAN ===== -->
+  <section class="section anim-in" id="s6">
+    <div class="section-header"><div class="section-num">6</div><h2>Line Chart — Curah Hujan Tahunan</h2></div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Line & Bar Chart Tahunan</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── Tambahkan kolom kategori tahun ──────────────────────────</span>
+df_tahunan <span class="op">&lt;-</span> df_tahunan <span class="op">|&gt;</span>
+  <span class="fn">mutate</span>(
+    kategori <span class="op">=</span> <span class="fn">case_when</span>(
+      total_mm <span class="op">&gt;</span> <span class="num">3000</span> <span class="op">~</span> <span class="str">"Ekstrem Basah"</span>,
+      total_mm <span class="op">&lt;</span> <span class="num">1800</span> <span class="op">~</span> <span class="str">"Kering"</span>,
+      <span class="kw">.default</span>        <span class="op">=</span> <span class="str">"Normal"</span>
+    )
+  )
+
+<span class="cm"># ── Bar chart tahunan ────────────────────────────────────────</span>
+p_tahunan <span class="op">&lt;-</span> <span class="fn">ggplot</span>(df_tahunan, <span class="fn">aes</span>(x <span class="op">=</span> tahun, y <span class="op">=</span> total_mm, fill <span class="op">=</span> kategori)) <span class="op">+</span>
+
+  <span class="fn">geom_col</span>(width <span class="op">=</span> <span class="num">0.7</span>) <span class="op">+</span>
+  <span class="fn">geom_hline</span>(yintercept <span class="op">=</span> <span class="num">2215</span>, linetype <span class="op">=</span> <span class="str">"dashed"</span>,
+             color <span class="op">=</span> <span class="str">"#1d9e75"</span>, linewidth <span class="op">=</span> <span class="num">0.9</span>) <span class="op">+</span>
+
+  <span class="cm"># Label hanya untuk tahun ekstrem</span>
+  <span class="fn">geom_text</span>(
+    data <span class="op">=</span> <span class="op">~</span><span class="fn">filter</span>(.x, kategori <span class="op">!=</span> <span class="str">"Normal"</span>),
+    <span class="fn">aes</span>(label <span class="op">=</span> <span class="fn">comma</span>(total_mm)),
+    vjust <span class="op">=</span> <span class="op">-</span><span class="num">0.4</span>, size <span class="op">=</span> <span class="num">2.8</span>, fontface <span class="op">=</span> <span class="str">"bold"</span>
+  ) <span class="op">+</span>
+
+  <span class="fn">scale_fill_manual</span>(
+    values <span class="op">=</span> <span class="fn">c</span>(<span class="str">"Ekstrem Basah"</span> <span class="op">=</span> <span class="str">"#a32d2d"</span>,
+               <span class="str">"Kering"</span>        <span class="op">=</span> <span class="str">"#ef9f27"</span>,
+               <span class="str">"Normal"</span>        <span class="op">=</span> <span class="str">"#378add"</span>)
+  ) <span class="op">+</span>
+  <span class="fn">scale_y_continuous</span>(labels <span class="op">=</span> <span class="fn">comma</span>,
+                     expand <span class="op">=</span> <span class="fn">expansion</span>(<span class="fn">mult</span> <span class="op">=</span> <span class="fn">c</span>(<span class="num">0.02</span>, <span class="num">0.12</span>))) <span class="op">+</span>
+  <span class="fn">scale_x_continuous</span>(breaks <span class="op">=</span> <span class="fn">seq</span>(<span class="num">2000</span>, <span class="num">2025</span>, <span class="num">5</span>)) <span class="op">+</span>
+  <span class="fn">labs</span>(
+    title    <span class="op">=</span> <span class="str">"Curah Hujan Tahunan 2000–2025"</span>,
+    subtitle <span class="op">=</span> <span class="str">"Sta. Hujan Cemara, Bandung | Garis hijau = rata-rata 2.215 mm"</span>,
+    x <span class="op">=</span> <span class="kw">NULL</span>, y <span class="op">=</span> <span class="str">"Curah Hujan (mm)"</span>,
+    fill <span class="op">=</span> <span class="str">"Kategori"</span>, caption <span class="op">=</span> <span class="str">"Sumber: BMKG Bandung"</span>
+  ) <span class="op">+</span>
+  <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">12</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(panel.grid.major.x <span class="op">=</span> <span class="fn">element_blank</span>(),
+        plot.title <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>))
+
+<span class="fn">print</span>(p_tahunan)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: p_tahunan</div>
+      <div class="output-body">
+        <div class="chart-title" style="margin-bottom:2px;">Curah Hujan Tahunan 2000–2025</div>
+        <div class="chart-sub">Sta. Hujan Cemara, Bandung | Garis hijau = rata-rata 2.215 mm</div>
+        <div class="chart-wrap" style="height:280px;"><canvas id="chartAnnual"></canvas></div>
+        <div class="legend-row">
+          <div class="legend-item"><div class="legend-sq" style="background:#a32d2d;"></div>Ekstrem Basah</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#378add;"></div>Normal</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#ef9f27;"></div>Kering</div>
+          <div class="legend-item"><div style="width:20px; border-top:2px dashed #1d9e75; margin-top:5px;"></div>&nbsp;Rata-rata (2.215 mm)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box"><span class="box-icon">🔬</span><span>Tahun <strong>2010</strong> (3.694 mm) dan <strong>2016</strong> (3.406 mm) adalah outlier ekstrem yang berkorelasi dengan fenomena <strong>La Niña</strong>. Sebaliknya, tahun <strong>2006</strong> (1.702 mm) dan <strong>2023</strong> (1.738 mm) merupakan tahun kering terkait <strong>El Niño</strong>. Pola ini terlihat jelas dari warna merah vs oranye pada chart.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 7: HEATMAP ===== -->
+  <section class="section anim-in" id="s7">
+    <div class="section-header"><div class="section-num">7</div><h2>Heatmap — Pola Bulan × Tahun</h2></div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Heatmap dengan <code style="font-size:12px;">geom_tile()</code> adalah cara paling efektif menampilkan data 26 tahun × 12 bulan sekaligus dalam satu chart. Pola El Niño/La Niña, musim kemarau, dan bulan basah ekstrem langsung terlihat.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Heatmap geom_tile()</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── Heatmap curah hujan bulanan × tahunan ───────────────────</span>
+p_heatmap <span class="op">&lt;-</span> <span class="fn">ggplot</span>(df_bulanan,
+  <span class="fn">aes</span>(x <span class="op">=</span> <span class="fn">factor</span>(bln_num), y <span class="op">=</span> <span class="fn">factor</span>(tahun), fill <span class="op">=</span> total_mm)) <span class="op">+</span>
+
+  <span class="cm"># ① Kotak warna</span>
+  <span class="fn">geom_tile</span>(color <span class="op">=</span> <span class="str">"white"</span>, linewidth <span class="op">=</span> <span class="num">0.3</span>) <span class="op">+</span>
+
+  <span class="cm"># ② Label nilai di tiap sel</span>
+  <span class="fn">geom_text</span>(<span class="fn">aes</span>(label <span class="op">=</span> <span class="fn">round</span>(total_mm, <span class="num">0</span>)),
+            size <span class="op">=</span> <span class="num">2.5</span>, color <span class="op">=</span> <span class="fn">ifelse</span>(df_bulanan<span class="op">$</span>total_mm <span class="op">&gt;</span> <span class="num">300</span>, <span class="str">"white"</span>, <span class="str">"#333"</span>)) <span class="op">+</span>
+
+  <span class="cm"># ③ Skala warna: putih (kering) → biru tua (basah)</span>
+  <span class="fn">scale_fill_gradient2</span>(
+    low      <span class="op">=</span> <span class="str">"#f0f7ff"</span>,
+    mid      <span class="op">=</span> <span class="str">"#378add"</span>,
+    high     <span class="op">=</span> <span class="str">"#0a2540"</span>,
+    midpoint <span class="op">=</span> <span class="num">200</span>,
+    name     <span class="op">=</span> <span class="str">"mm"</span>
+  ) <span class="op">+</span>
+
+  <span class="cm"># ④ Label sumbu X: nama bulan</span>
+  <span class="fn">scale_x_discrete</span>(labels <span class="op">=</span> <span class="fn">c</span>(<span class="str">"Jan"</span>,<span class="str">"Feb"</span>,<span class="str">"Mar"</span>,<span class="str">"Apr"</span>,<span class="str">"Mei"</span>,<span class="str">"Jun"</span>,
+                                <span class="str">"Jul"</span>,<span class="str">"Agt"</span>,<span class="str">"Sep"</span>,<span class="str">"Okt"</span>,<span class="str">"Nov"</span>,<span class="str">"Des"</span>)) <span class="op">+</span>
+
+  <span class="fn">labs</span>(
+    title    <span class="op">=</span> <span class="str">"Heatmap Curah Hujan Bulanan (mm)"</span>,
+    subtitle <span class="op">=</span> <span class="str">"Sta. Hujan Cemara, Bandung · 2000–2025"</span>,
+    x <span class="op">=</span> <span class="str">"Bulan"</span>, y <span class="op">=</span> <span class="str">"Tahun"</span>,
+    caption  <span class="op">=</span> <span class="str">"Sumber: BMKG Bandung"</span>
+  ) <span class="op">+</span>
+  <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">11</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(
+    plot.title    <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>),
+    axis.text.y   <span class="op">=</span> <span class="fn">element_text</span>(size <span class="op">=</span> <span class="num">8</span>),
+    panel.grid    <span class="op">=</span> <span class="fn">element_blank</span>(),
+    legend.position <span class="op">=</span> <span class="str">"right"</span>
+  )
+
+<span class="fn">print</span>(p_heatmap)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: p_heatmap — Heatmap Curah Hujan Bulanan (mm)</div>
+      <div class="output-body">
+        <div class="heatmap-wrap" id="heatmapWrap"></div>
+        <div class="legend-row" style="margin-top:8px; align-items:center;">
+          <span style="font-size:11px; color:var(--gray-500);">Skala warna:</span>
+          <div style="width:120px; height:10px; border-radius:4px; background:linear-gradient(90deg,#f0f7ff,#378add,#0a2540);"></div>
+          <span style="font-size:11px; color:var(--gray-500);">0 mm → kering &nbsp;|&nbsp; &gt;400 mm → sangat basah</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="success-box"><span class="box-icon">👁️</span><span>Perhatikan baris tahun <strong>2010</strong> dan <strong>2016</strong> — hampir seluruh kolomnya biru gelap (La Niña). Sebaliknya tahun <strong>2015</strong> memiliki banyak sel biru muda di bulan Jun–Sep (El Niño kemarau panjang). Informasi ini tidak mungkin terlihat dari tabel angka biasa.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 8: MULTI-PANEL ===== -->
+  <section class="section anim-in" id="s8">
+    <div class="section-header"><div class="section-num">8</div><h2>Multi-panel dengan patchwork</h2></div>
+
+    <p style="font-size:13px; color:var(--gray-600); margin-bottom:1.25rem; line-height:1.7;">Package <code style="font-size:12px;">patchwork</code> memungkinkan penggabungan beberapa objek ggplot menjadi satu figure layout. Cocok untuk laporan AMDAL, presentasi, atau publikasi ilmiah.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Multi-panel dengan patchwork</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="fn">library</span>(<span class="pkg">patchwork</span>)
+
+<span class="cm"># ── Chart hari hujan tahunan ─────────────────────────────────</span>
+p_harihujan <span class="op">&lt;-</span> <span class="fn">ggplot</span>(df_tahunan, <span class="fn">aes</span>(x <span class="op">=</span> tahun, y <span class="op">=</span> hari_hujan)) <span class="op">+</span>
+  <span class="fn">geom_line</span>(color <span class="op">=</span> <span class="str">"#639922"</span>, linewidth <span class="op">=</span> <span class="num">1.1</span>) <span class="op">+</span>
+  <span class="fn">geom_point</span>(color <span class="op">=</span> <span class="str">"#639922"</span>, size <span class="op">=</span> <span class="num">2.5</span>, fill <span class="op">=</span> <span class="str">"white"</span>, shape <span class="op">=</span> <span class="num">21</span>) <span class="op">+</span>
+  <span class="fn">geom_hline</span>(yintercept <span class="op">=</span> <span class="fn">mean</span>(df_tahunan<span class="op">$</span>hari_hujan),
+             linetype <span class="op">=</span> <span class="str">"dashed"</span>, color <span class="op">=</span> <span class="str">"#639922"</span>, alpha <span class="op">=</span> <span class="num">0.5</span>) <span class="op">+</span>
+  <span class="fn">scale_x_continuous</span>(breaks <span class="op">=</span> <span class="fn">seq</span>(<span class="num">2000</span>, <span class="num">2025</span>, <span class="num">5</span>)) <span class="op">+</span>
+  <span class="fn">labs</span>(title <span class="op">=</span> <span class="str">"Hari Hujan per Tahun"</span>, x <span class="op">=</span> <span class="kw">NULL</span>, y <span class="op">=</span> <span class="str">"Hari"</span>) <span class="op">+</span>
+  <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">11</span>)
+
+<span class="cm"># ── Gabungkan: tahunan (atas) / hari hujan (bawah) ──────────</span>
+figure_final <span class="op">&lt;-</span> p_tahunan <span class="op">/</span> p_harihujan <span class="op">+</span>
+  <span class="fn">plot_annotation</span>(
+    title   <span class="op">=</span> <span class="str">"Ringkasan Hidrologi Sta. Hujan Cemara, Bandung"</span>,
+    subtitle<span class="op">=</span> <span class="str">"Periode Pengamatan 2000–2025"</span>,
+    caption <span class="op">=</span> <span class="str">"Sumber: BMKG Bandung · Analisis: irpanchumaedi.com"</span>,
+    theme   <span class="op">=</span> <span class="fn">theme</span>(plot.title <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>, size <span class="op">=</span> <span class="num">14</span>))
+  )
+
+<span class="fn">print</span>(figure_final)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: figure_final — Multi-panel patchwork</div>
+      <div class="output-body">
+        <div class="chart-title" style="margin-bottom:2px; font-size:14px; font-weight:700;">Ringkasan Hidrologi Sta. Hujan Cemara, Bandung</div>
+        <div class="chart-sub">Periode Pengamatan 2000–2025</div>
+        <div class="chart-wrap" style="height:230px; margin-bottom:1rem;"><canvas id="chartAnnual2"></canvas></div>
+        <div class="chart-wrap" style="height:180px;"><canvas id="chartDays"></canvas></div>
+        <div style="font-size:11px; color:var(--gray-400); margin-top:8px;">Sumber: BMKG Bandung · Analisis: irpanchumaedi.com</div>
+      </div>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-label">Operator patchwork yang wajib diketahui</div>
+      <div class="data-tbl-wrap" style="margin-top:8px;">
+        <table class="data-tbl">
+          <thead><tr><th>Operator</th><th>Fungsi</th><th>Contoh</th></tr></thead>
+          <tbody>
+            <tr><td><code>p1 + p2</code></td><td>Susun sejajar (side by side)</td><td>2 chart dalam 1 baris</td></tr>
+            <tr><td><code>p1 / p2</code></td><td>Susun atas-bawah (stacked)</td><td>2 chart dalam 1 kolom</td></tr>
+            <tr><td><code>(p1 + p2) / p3</code></td><td>2 di atas, 1 di bawah</td><td>Layout 3-panel</td></tr>
+            <tr><td><code>p1 + plot_spacer()</code></td><td>Tambah ruang kosong</td><td>Padding antar panel</td></tr>
+            <tr><td><code>plot_layout(ncol=2)</code></td><td>Atur jumlah kolom</td><td>4 chart → 2×2 grid</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 9: EKSPOR & TIPS ===== -->
+  <section class="section anim-in" id="s9">
+    <div class="section-header"><div class="section-num">9</div><h2>Ekspor Chart & Tips Profesional</h2></div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Ekspor dengan ggsave()</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── PNG resolusi tinggi (untuk laporan/presentasi) ───────────</span>
+<span class="fn">ggsave</span>(
+  filename <span class="op">=</span> <span class="str">"curah_hujan_bulanan_cemara.png"</span>,
+  plot     <span class="op">=</span> p_bulanan,
+  width    <span class="op">=</span> <span class="num">10</span>,        <span class="cm"># lebar dalam inci</span>
+  height   <span class="op">=</span> <span class="num">6</span>,         <span class="cm"># tinggi dalam inci</span>
+  dpi      <span class="op">=</span> <span class="num">300</span>,       <span class="cm"># resolusi (300 dpi = print quality)</span>
+  bg       <span class="op">=</span> <span class="str">"white"</span>    <span class="cm"># background putih</span>
+)
+
+<span class="cm"># ── PDF vektoral (untuk jurnal/laporan teknis) ───────────────</span>
+<span class="fn">ggsave</span>(
+  filename <span class="op">=</span> <span class="str">"heatmap_cemara.pdf"</span>,
+  plot     <span class="op">=</span> p_heatmap,
+  width    <span class="op">=</span> <span class="num">14</span>, height <span class="op">=</span> <span class="num">8</span>,
+  device   <span class="op">=</span> <span class="str">"pdf"</span>
+)
+
+<span class="cm"># ── Multi-panel figure ───────────────────────────────────────</span>
+<span class="fn">ggsave</span>(
+  filename <span class="op">=</span> <span class="str">"ringkasan_hidrologi_cemara.png"</span>,
+  plot     <span class="op">=</span> figure_final,
+  width    <span class="op">=</span> <span class="num">12</span>, height <span class="op">=</span> <span class="num">9</span>, dpi <span class="op">=</span> <span class="num">300</span>
+)</pre>
+    </div>
+
+    <div class="card">
+      <div class="card-label" style="margin-bottom:10px;">Tips membuat chart ggplot2 yang profesional:</div>
+      <ul class="tip-list">
+        <li><span class="tip-icon">🎨</span><span><strong>Gunakan tema yang konsisten.</strong> Tetapkan satu tema di seluruh script: <code style="font-size:12px;">theme_set(theme_minimal(base_size = 12))</code> di awal file. Semua chart akan otomatis menggunakan tema yang sama.</span></li>
+        <li><span class="tip-icon">🔤</span><span><strong>Font untuk laporan teknis.</strong> Tambahkan <code style="font-size:12px;">library(showtext)</code> untuk menggunakan Google Fonts seperti Roboto atau Source Sans Pro — hasilnya jauh lebih bersih dari font default R.</span></li>
+        <li><span class="tip-icon">📏</span><span><strong>Selalu tambahkan unit pada sumbu Y.</strong> Gunakan <code style="font-size:12px;">scale_y_continuous(labels = label_number(suffix = " mm"))</code> — jangan hanya tulis "mm" di nama sumbu karena tidak terlihat di presentasi.</span></li>
+        <li><span class="tip-icon">🏷️</span><span><strong>Caption untuk sumber data.</strong> Selalu isi <code style="font-size:12px;">caption</code> di <code style="font-size:12px;">labs()</code> dengan sumber data dan tahun analisis. Ini wajib untuk laporan AMDAL dan dokumen teknis.</span></li>
+        <li><span class="tip-icon">🔁</span><span><strong>Buat fungsi R untuk chart yang berulang.</strong> Jika analisis dilakukan untuk banyak stasiun, buat fungsi <code style="font-size:12px;">plot_curah_hujan(data, nama_sta)</code> agar tidak copy-paste kode yang sama berkali-kali.</span></li>
+        <li><span class="tip-icon">📁</span><span><strong>Pisahkan script per tujuan.</strong> Gunakan struktur: <code style="font-size:12px;">01_import.R</code>, <code style="font-size:12px;">02_rekap.R</code>, <code style="font-size:12px;">03_visualisasi.R</code>, <code style="font-size:12px;">04_ekspor.R</code>. Lebih mudah di-maintain dan di-debug.</span></li>
+      </ul>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-label">Rangkuman alur kerja lengkap di R</div>
+      <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:13px;">
+        <span class="tag tag-purple">① read_excel()</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-purple">② mutate() + filter()</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-blue">③ group_by() + summarise()</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-green">④ ggplot() + geom_*()</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-amber">⑤ theme() + labs()</span>
+        <span style="color:var(--gray-400);">→</span>
+        <span class="tag tag-amber">⑥ ggsave()</span>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#0a2540,#1a3a5c 60%,#0d3320); color:#fff; border-radius:var(--radius); padding:1.5rem; text-align:center; margin-top:1.5rem;">
+      <div style="font-size:15px; font-weight:700; margin-bottom:6px;">Kuasai dasar ggplot2 dulu ✅</div>
+      <p style="font-size:13px; color:rgba(255,255,255,0.65); margin-bottom:0;">Setelah ini, lanjut ke bagian berikutnya — visualisasi yang <strong style="color:#85b7eb;">tidak mungkin dibuat di Excel.</strong> 👇</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 10: TEASER EKSKLUSIF ===== -->
+  <section class="section anim-in" id="s10">
+    <div class="section-header"><div class="section-num" style="background:linear-gradient(135deg,#e24b4a,#a32d2d);">🔥</div><h2>Yang Tidak Bisa Dilakukan di Excel</h2></div>
+
+    <div style="background:linear-gradient(135deg,#1a0a0a,#2d0f0f); border-radius:var(--radius); padding:1.5rem 2rem; margin-bottom:1.5rem; color:#fff; position:relative; overflow:hidden;">
+      <div style="position:absolute;top:-30px;right:-30px;width:150px;height:150px;border-radius:50%;background:rgba(226,75,74,0.1);"></div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.08em;">Mengapa harus belajar R?</div>
+      <div style="font-size:18px; font-weight:700; line-height:1.4; margin-bottom:1rem;">Learning curve lebih tinggi = <span style="color:#f87171;">ekspektasi output juga harus lebih tinggi.</span></div>
+      <p style="font-size:13px; color:rgba(255,255,255,0.65); line-height:1.7;">Bar chart dan line chart bisa dibuat di Excel dalam 30 detik. Kalau ggplot2 hanya menghasilkan hal yang sama, tidak ada alasan kuat untuk pindah. Bagian ini membuktikan bahwa R mampu menghasilkan visualisasi yang <strong style="color:#fca5a5;">secara teknis tidak mungkin</strong> dibuat di Excel — bukan sekadar "lebih cantik".</p>
+    </div>
+
+    <div class="grid-2">
+      <div style="background:#fff; border-radius:var(--radius); padding:1.25rem; box-shadow:var(--shadow); border-top:3px solid #e24b4a;">
+        <div style="font-size:11px; font-weight:600; color:#e24b4a; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;">❌ Excel — Terbatas</div>
+        <ul style="list-style:none; font-size:13px; color:var(--gray-600); line-height:2;">
+          <li>🔘 Bar, line, pie, scatter — itu saja</li>
+          <li>🔘 Boxplot tidak proper (tanpa outlier)</li>
+          <li>🔘 Satu chart = satu proses manual</li>
+          <li>🔘 Tidak bisa confidence interval</li>
+          <li>🔘 Tidak bisa distribusi probabilitas</li>
+          <li>🔘 Copy-paste untuk tiap stasiun</li>
+        </ul>
+      </div>
+      <div style="background:#fff; border-radius:var(--radius); padding:1.25rem; box-shadow:var(--shadow); border-top:3px solid #388e3c;">
+        <div style="font-size:11px; font-weight:600; color:#388e3c; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;">✅ ggplot2 — Tidak Terbatas</div>
+        <ul style="list-style:none; font-size:13px; color:var(--gray-600); line-height:2;">
+          <li>🟢 Boxplot lengkap dengan outlier</li>
+          <li>🟢 26 chart sekaligus (facet_wrap)</li>
+          <li>🟢 Garis tren + confidence interval</li>
+          <li>🟢 Ridgeline — distribusi per bulan</li>
+          <li>🟢 1 fungsi → semua stasiun</li>
+          <li>🟢 Output PDF vektoral siap jurnal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warn-box"><span class="box-icon">⚡</span><span>Empat visualisasi berikut adalah <strong>argumen terkuat</strong> mengapa hidrologist perlu belajar R. Semuanya menggunakan data yang sama: <strong>Sta. Cemara Bandung 2000–2025</strong>.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 11: BOXPLOT ===== -->
+  <section class="section anim-in" id="s11">
+    <div class="section-header"><div class="section-num">10</div><h2>Boxplot — Distribusi Harian per Bulan</h2></div>
+
+    <div class="card card-red" style="margin-bottom:1rem;">
+      <div class="card-label">❌ Mengapa Excel tidak cukup di sini?</div>
+      <p>Bar chart rata-rata bulanan menyembunyikan informasi penting: seberapa besar variasi hariannya? Apakah November selalu >200mm atau hanya rata-ratanya saja? Boxplot menjawab semua ini sekaligus — median, sebaran, dan outlier ekstrem dalam satu gambar.</p>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Boxplot Distribusi Harian per Bulan</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── Boxplot curah hujan harian per bulan (hanya hari hujan) ─</span>
+p_boxplot <span class="op">&lt;-</span> df <span class="op">|&gt;</span>
+  <span class="fn">filter</span>(rr_mm <span class="op">&gt;</span> <span class="num">0</span>) <span class="op">|&gt;</span>                       <span class="cm"># hanya hari hujan</span>
+
+  <span class="fn">ggplot</span>(<span class="fn">aes</span>(x <span class="op">=</span> bulan, y <span class="op">=</span> rr_mm, fill <span class="op">=</span> bulan)) <span class="op">+</span>
+
+  <span class="cm"># ① Boxplot utama</span>
+  <span class="fn">geom_boxplot</span>(
+    show.legend  <span class="op">=</span> <span class="kw">FALSE</span>,
+    outlier.shape  <span class="op">=</span> <span class="num">21</span>,
+    outlier.fill   <span class="op">=</span> <span class="str">"#e24b4a"</span>,
+    outlier.color  <span class="op">=</span> <span class="str">"white"</span>,
+    outlier.size   <span class="op">=</span> <span class="num">1.8</span>,
+    outlier.alpha  <span class="op">=</span> <span class="num">0.7</span>,
+    width          <span class="op">=</span> <span class="num">0.6</span>
+  ) <span class="op">+</span>
+
+  <span class="cm"># ② Titik rata-rata (diamond)</span>
+  <span class="fn">stat_summary</span>(fun <span class="op">=</span> mean, geom <span class="op">=</span> <span class="str">"point"</span>,
+               shape <span class="op">=</span> <span class="num">23</span>, size <span class="op">=</span> <span class="num">3</span>,
+               fill <span class="op">=</span> <span class="str">"#ef9f27"</span>, color <span class="op">=</span> <span class="str">"white"</span>) <span class="op">+</span>
+
+  <span class="cm"># ③ Garis threshold hujan lebat (≥50mm/hari, SNI)</span>
+  <span class="fn">geom_hline</span>(yintercept <span class="op">=</span> <span class="num">50</span>, linetype <span class="op">=</span> <span class="str">"dashed"</span>,
+             color <span class="op">=</span> <span class="str">"#e24b4a"</span>, linewidth <span class="op">=</span> <span class="num">0.7</span>) <span class="op">+</span>
+  <span class="fn">annotate</span>(<span class="str">"text"</span>, x <span class="op">=</span> <span class="num">11.6</span>, y <span class="op">=</span> <span class="num">53</span>,
+           label <span class="op">=</span> <span class="str">"≥50 mm = Hujan Lebat (BMG)"</span>,
+           size <span class="op">=</span> <span class="num">3</span>, color <span class="op">=</span> <span class="str">"#e24b4a"</span>) <span class="op">+</span>
+
+  <span class="fn">scale_fill_manual</span>(values <span class="op">=</span> <span class="fn">setNames</span>(
+    <span class="fn">colorRampPalette</span>(<span class="fn">c</span>(<span class="str">"#b5d4f4"</span>, <span class="str">"#185fa5"</span>))(<span class="num">12</span>),
+    <span class="fn">levels</span>(df<span class="op">$</span>bulan)
+  )) <span class="op">+</span>
+  <span class="fn">scale_y_continuous</span>(labels <span class="op">=</span> <span class="fn">label_number</span>(suffix <span class="op">=</span> <span class="str">" mm"</span>)) <span class="op">+</span>
+  <span class="fn">labs</span>(
+    title    <span class="op">=</span> <span class="str">"Distribusi Curah Hujan Harian per Bulan"</span>,
+    subtitle <span class="op">=</span> <span class="str">"Sta. Cemara, Bandung 2000–2025 | ◆ = rata-rata | ● merah = outlier ekstrem"</span>,
+    x <span class="op">=</span> <span class="kw">NULL</span>, y <span class="op">=</span> <span class="str">"Curah Hujan (mm/hari)"</span>,
+    caption  <span class="op">=</span> <span class="str">"Hanya hari dengan curah hujan > 0 mm | Sumber: BMKG Bandung"</span>
+  ) <span class="op">+</span>
+  <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">12</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(plot.title <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>),
+        panel.grid.major.x <span class="op">=</span> <span class="fn">element_blank</span>())
+
+<span class="fn">print</span>(p_boxplot)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: p_boxplot — Informasi yang tidak mungkin ada di bar chart Excel</div>
+      <div class="output-body">
+        <div class="chart-title" style="margin-bottom:2px;">Distribusi Curah Hujan Harian per Bulan</div>
+        <div class="chart-sub">Sta. Cemara, Bandung 2000–2025 · ◆ = rata-rata · ● merah = outlier ekstrem</div>
+        <div class="chart-wrap" style="height:320px;"><canvas id="chartBoxplot"></canvas></div>
+        <div class="legend-row">
+          <div class="legend-item"><div class="legend-sq" style="background:#378add;"></div>Box: IQR (25%–75% data)</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#ef9f27;"></div>◆ Rata-rata</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#e24b4a;"></div>Outlier ekstrem</div>
+          <div class="legend-item"><div style="width:20px;border-top:2px dashed #e24b4a;margin-top:5px;"></div>&nbsp;≥50mm (Hujan Lebat)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="success-box"><span class="box-icon">💡</span><span>Perhatikan bahwa <strong>median November tidak setinggi rata-ratanya</strong> — artinya ada beberapa hari hujan sangat lebat yang menarik rata-rata ke atas. Bar chart Excel menyembunyikan fakta ini. Boxplot mengungkapnya.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 12: FACET ===== -->
+  <section class="section anim-in" id="s12">
+    <div class="section-header"><div class="section-num">11</div><h2>Facet Wrap — 26 Chart Sekaligus</h2></div>
+
+    <div class="card card-red">
+      <div class="card-label">❌ Di Excel: 26 chart = 26 jam kerja manual</div>
+      <p>Untuk membuat chart bulanan per tahun di Excel, kamu harus membuat sheet baru, memilih range, insert chart, format, beri judul — dan diulang 26 kali. Di R, satu baris <code style="font-size:12px;">facet_wrap(~ tahun)</code> menghasilkan semuanya dalam hitungan detik, dengan format yang 100% konsisten.</p>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · facet_wrap() — 26 chart sekaligus</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── 26 mini chart bulanan — satu baris facet_wrap ───────────</span>
+p_facet <span class="op">&lt;-</span> <span class="fn">ggplot</span>(df_bulanan,
+  <span class="fn">aes</span>(x <span class="op">=</span> bln_num, y <span class="op">=</span> total_mm, fill <span class="op">=</span> total_mm)) <span class="op">+</span>
+
+  <span class="fn">geom_col</span>(show.legend <span class="op">=</span> <span class="kw">FALSE</span>, width <span class="op">=</span> <span class="num">0.85</span>) <span class="op">+</span>
+
+  <span class="cm"># ← INI YANG TIDAK BISA DILAKUKAN DI EXCEL</span>
+  <span class="fn">facet_wrap</span>(<span class="op">~</span> tahun, ncol <span class="op">=</span> <span class="num">6</span>) <span class="op">+</span>
+
+  <span class="fn">scale_fill_gradient</span>(low <span class="op">=</span> <span class="str">"#b5d4f4"</span>, high <span class="op">=</span> <span class="str">"#0a2540"</span>) <span class="op">+</span>
+  <span class="fn">scale_x_continuous</span>(breaks <span class="op">=</span> <span class="fn">c</span>(<span class="num">1</span>,<span class="num">6</span>,<span class="num">12</span>),
+                     labels <span class="op">=</span> <span class="fn">c</span>(<span class="str">"Jan"</span>,<span class="str">"Jun"</span>,<span class="str">"Des"</span>)) <span class="op">+</span>
+  <span class="fn">scale_y_continuous</span>(labels <span class="op">=</span> <span class="fn">label_number</span>(suffix<span class="op">=</span><span class="str">"mm"</span>, scale<span class="op">=</span><span class="num">0.001</span>, accuracy<span class="op">=</span><span class="num">0.1</span>)) <span class="op">+</span>
+  <span class="fn">labs</span>(
+    title    <span class="op">=</span> <span class="str">"Curah Hujan Bulanan per Tahun — Sta. Cemara Bandung"</span>,
+    subtitle <span class="op">=</span> <span class="str">"26 chart sekaligus | Warna lebih gelap = curah hujan lebih tinggi"</span>,
+    x <span class="op">=</span> <span class="kw">NULL</span>, y <span class="op">=</span> <span class="kw">NULL</span>,
+    caption  <span class="op">=</span> <span class="str">"Sumber: BMKG Bandung"</span>
+  ) <span class="op">+</span>
+  <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">9</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(
+    strip.text       <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>, size <span class="op">=</span> <span class="num">8</span>),
+    panel.grid.minor <span class="op">=</span> <span class="fn">element_blank</span>(),
+    plot.title       <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>)
+  )
+
+<span class="cm"># Simpan ukuran besar agar semua panel terbaca</span>
+<span class="fn">ggsave</span>(<span class="str">"facet_bulanan_cemara.png"</span>, p_facet,
+       width <span class="op">=</span> <span class="num">16</span>, height <span class="op">=</span> <span class="num">12</span>, dpi <span class="op">=</span> <span class="num">300</span>)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: p_facet — 26 chart, satu perintah, format 100% konsisten</div>
+      <div class="output-body">
+        <div class="chart-title" style="margin-bottom:2px;">Curah Hujan Bulanan per Tahun — Sta. Cemara Bandung</div>
+        <div class="chart-sub">26 chart sekaligus · Warna lebih gelap = curah hujan lebih tinggi</div>
+        <div id="facetGrid" style="display:grid; grid-template-columns:repeat(6,1fr); gap:6px; margin-top:8px;"></div>
+      </div>
+    </div>
+
+    <div class="purple-box"><span class="box-icon">🚀</span><span>Dengan Excel: <strong>±4 jam</strong> untuk 26 chart (buat chart, format, judul, copy, paste — diulang 26×). Dengan R: <strong>±10 detik</strong> render + <code style="font-size:12px;">ggsave()</code>. Untuk 50 stasiun: Excel butuh seminggu, R butuh 10 menit tambahan.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 13: TREND + CI ===== -->
+  <section class="section anim-in" id="s13">
+    <div class="section-header"><div class="section-num">12</div><h2>Tren Jangka Panjang + Confidence Interval</h2></div>
+
+    <div class="card card-red">
+      <div class="card-label">❌ Di Excel: trendline ada, tapi confidence interval tidak bisa</div>
+      <p>Excel bisa menambahkan garis tren linear, tapi tidak bisa menampilkan <em>uncertainty band</em> (pita kepercayaan). Padahal dalam analisis perubahan iklim, CI adalah informasi kritis — menunjukkan seberapa yakin kita dengan arah tren tersebut.</p>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Tren + Confidence Interval 95%</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── Tren curah hujan tahunan + CI 95% ───────────────────────</span>
+p_trend <span class="op">&lt;-</span> <span class="fn">ggplot</span>(df_tahunan, <span class="fn">aes</span>(x <span class="op">=</span> tahun, y <span class="op">=</span> total_mm)) <span class="op">+</span>
+
+  <span class="cm"># ① Bar abu-abu sebagai latar</span>
+  <span class="fn">geom_col</span>(fill <span class="op">=</span> <span class="str">"#85b7eb"</span>, alpha <span class="op">=</span> <span class="num">0.5</span>, width <span class="op">=</span> <span class="num">0.7</span>) <span class="op">+</span>
+
+  <span class="cm"># ② Garis tren + pita CI 95% ← tidak bisa di Excel</span>
+  <span class="fn">geom_smooth</span>(
+    method    <span class="op">=</span> <span class="str">"lm"</span>,          <span class="cm"># linear model</span>
+    color     <span class="op">=</span> <span class="str">"#e24b4a"</span>,
+    fill      <span class="op">=</span> <span class="str">"#e24b4a"</span>,
+    alpha     <span class="op">=</span> <span class="num">0.15</span>,           <span class="cm"># transparansi pita CI</span>
+    linewidth <span class="op">=</span> <span class="num">1.2</span>,
+    se        <span class="op">=</span> <span class="kw">TRUE</span>            <span class="cm"># tampilkan CI</span>
+  ) <span class="op">+</span>
+
+  <span class="cm"># ③ Hitung dan tampilkan nilai tren</span>
+  <span class="fn">annotate</span>(<span class="str">"text"</span>,
+    x <span class="op">=</span> <span class="num">2002</span>, y <span class="op">=</span> <span class="num">3500</span>,
+    label <span class="op">=</span> <span class="fn">paste</span>(<span class="str">"Tren:"</span>,
+      <span class="fn">round</span>(<span class="fn">coef</span>(<span class="fn">lm</span>(total_mm <span class="op">~</span> tahun, df_tahunan))[<span class="num">2</span>], <span class="num">1</span>),
+      <span class="str">"mm/tahun"</span>),
+    size <span class="op">=</span> <span class="num">4</span>, color <span class="op">=</span> <span class="str">"#e24b4a"</span>, fontface <span class="op">=</span> <span class="str">"bold"</span>, hjust <span class="op">=</span> <span class="num">0</span>
+  ) <span class="op">+</span>
+
+  <span class="fn">scale_x_continuous</span>(breaks <span class="op">=</span> <span class="fn">seq</span>(<span class="num">2000</span>, <span class="num">2025</span>, <span class="num">5</span>)) <span class="op">+</span>
+  <span class="fn">scale_y_continuous</span>(labels <span class="op">=</span> <span class="fn">comma</span>,
+                     limits <span class="op">=</span> <span class="fn">c</span>(<span class="num">0</span>, <span class="num">4200</span>)) <span class="op">+</span>
+  <span class="fn">labs</span>(
+    title    <span class="op">=</span> <span class="str">"Tren Curah Hujan Tahunan 2000–2025"</span>,
+    subtitle <span class="op">=</span> <span class="str">"Pita merah = Confidence Interval 95% | Area pita = zona ketidakpastian"</span>,
+    x <span class="op">=</span> <span class="kw">NULL</span>, y <span class="op">=</span> <span class="str">"Curah Hujan Tahunan (mm)"</span>,
+    caption  <span class="op">=</span> <span class="str">"Metode: Linear Model (lm) | Sumber: BMKG Bandung"</span>
+  ) <span class="op">+</span>
+  <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">12</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(plot.title <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>))
+
+<span class="fn">print</span>(p_trend)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: p_trend — Tren + pita CI 95%</div>
+      <div class="output-body">
+        <div class="chart-title" style="margin-bottom:2px;">Tren Curah Hujan Tahunan 2000–2025</div>
+        <div class="chart-sub">Pita merah = Confidence Interval 95% · Area pita = zona ketidakpastian tren</div>
+        <div class="chart-wrap" style="height:280px;"><canvas id="chartTrend"></canvas></div>
+        <div id="trendAnnotation" style="margin-top:8px; font-size:12px; color:#e24b4a; font-weight:600;"></div>
+        <div class="legend-row">
+          <div class="legend-item"><div class="legend-sq" style="background:#85b7eb;"></div>Curah hujan tahunan</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#e24b4a;"></div>Garis tren (lm)</div>
+          <div class="legend-item"><div class="legend-sq" style="background:rgba(226,75,74,0.15); border:1px solid #e24b4a;"></div>Confidence Interval 95%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box"><span class="box-icon">📐</span><span>Tren positif (naik) di Sta. Cemara belum tentu signifikan secara statistik — pita CI yang lebar menunjukkan ketidakpastian tinggi. Untuk uji signifikansi formal, gunakan <code style="font-size:12px;">summary(lm(total_mm ~ tahun, df_tahunan))</code> dan periksa nilai p-value.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 14: RIDGELINE ===== -->
+  <section class="section anim-in" id="s14">
+    <div class="section-header"><div class="section-num">13</div><h2>Ridgeline Chart — Distribusi Intensitas per Bulan</h2></div>
+
+    <div class="card card-red">
+      <div class="card-label">❌ Di Excel: tidak ada padanannya, sama sekali</div>
+      <p>Ridgeline chart (atau joy plot) menampilkan kurva distribusi probabilitas curah hujan harian untuk setiap bulan secara tumpang tindih. Ini bukan sekadar "lebih cantik" — ini menyampaikan informasi yang tidak bisa ditampilkan dalam bentuk tabel atau bar chart mana pun.</p>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Ridgeline Chart (ggridges)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="fn">library</span>(<span class="pkg">ggridges</span>)   <span class="cm"># install.packages("ggridges")</span>
+<span class="fn">library</span>(<span class="pkg">forcats</span>)   <span class="cm"># sudah termasuk dalam tidyverse</span>
+
+<span class="cm"># ── Ridgeline: distribusi intensitas hujan harian per bulan ─</span>
+p_ridge <span class="op">&lt;-</span> df <span class="op">|&gt;</span>
+  <span class="fn">filter</span>(rr_mm <span class="op">&gt;</span> <span class="num">0</span>) <span class="op">|&gt;</span>
+  <span class="fn">mutate</span>(bulan <span class="op">=</span> <span class="fn">fct_rev</span>(bulan)) <span class="op">|&gt;</span>   <span class="cm"># Jan di atas</span>
+
+  <span class="fn">ggplot</span>(<span class="fn">aes</span>(x <span class="op">=</span> rr_mm, y <span class="op">=</span> bulan,
+             fill <span class="op">=</span> <span class="fn">after_stat</span>(x))) <span class="op">+</span>   <span class="cm"># warna = intensitas</span>
+
+  <span class="cm"># ① Kurva distribusi bergradien</span>
+  <span class="fn">geom_density_ridges_gradient</span>(
+    scale          <span class="op">=</span> <span class="num">2.5</span>,    <span class="cm"># tingkat tumpang tindih</span>
+    rel_min_height <span class="op">=</span> <span class="num">0.01</span>,
+    color          <span class="op">=</span> <span class="str">"white"</span>,
+    linewidth      <span class="op">=</span> <span class="num">0.4</span>
+  ) <span class="op">+</span>
+
+  <span class="cm"># ② Gradien warna: biru muda (ringan) → biru tua (lebat)</span>
+  <span class="fn">scale_fill_gradientn</span>(
+    colors <span class="op">=</span> <span class="fn">c</span>(<span class="str">"#e6f1fb"</span>, <span class="str">"#378add"</span>, <span class="str">"#0a2540"</span>, <span class="str">"#e24b4a"</span>),
+    values <span class="op">=</span> <span class="fn">c</span>(<span class="num">0</span>, <span class="num">0.3</span>, <span class="num">0.7</span>, <span class="num">1</span>),
+    guide  <span class="op">=</span> <span class="str">"none"</span>
+  ) <span class="op">+</span>
+
+  <span class="cm"># ③ Garis referensi: 50mm (hujan lebat)</span>
+  <span class="fn">geom_vline</span>(xintercept <span class="op">=</span> <span class="num">50</span>, linetype <span class="op">=</span> <span class="str">"dashed"</span>,
+             color <span class="op">=</span> <span class="str">"#ef9f27"</span>, linewidth <span class="op">=</span> <span class="num">0.8</span>) <span class="op">+</span>
+
+  <span class="fn">scale_x_continuous</span>(
+    limits <span class="op">=</span> <span class="fn">c</span>(<span class="num">0</span>, <span class="num">150</span>),
+    labels <span class="op">=</span> <span class="fn">label_number</span>(suffix <span class="op">=</span> <span class="str">" mm"</span>)
+  ) <span class="op">+</span>
+  <span class="fn">labs</span>(
+    title    <span class="op">=</span> <span class="str">"Distribusi Intensitas Hujan Harian per Bulan"</span>,
+    subtitle <span class="op">=</span> <span class="str">"Sta. Cemara, Bandung 2000–2025 | Garis oranye = 50mm (Hujan Lebat)"</span>,
+    x <span class="op">=</span> <span class="str">"Intensitas (mm/hari)"</span>, y <span class="op">=</span> <span class="kw">NULL</span>,
+    caption  <span class="op">=</span> <span class="str">"Hanya hari hujan (RR > 0) | Sumber: BMKG Bandung"</span>
+  ) <span class="op">+</span>
+  <span class="fn">theme_ridges</span>(grid <span class="op">=</span> <span class="kw">FALSE</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(plot.title <span class="op">=</span> <span class="fn">element_text</span>(face <span class="op">=</span> <span class="str">"bold"</span>))
+
+<span class="fn">print</span>(p_ridge)</pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Output: p_ridge — Visualisasi yang tidak ada padanannya di Excel</div>
+      <div class="output-body">
+        <div class="chart-title" style="margin-bottom:2px;">Distribusi Intensitas Hujan Harian per Bulan</div>
+        <div class="chart-sub">Sta. Cemara, Bandung 2000–2025 · Garis oranye = 50 mm/hari (threshold Hujan Lebat BMG)</div>
+        <canvas id="chartRidge" width="800" height="380" style="width:100%; max-width:100%;"></canvas>
+      </div>
+    </div>
+
+    <div class="success-box"><span class="box-icon">👁️</span><span>Perhatikan <strong>"ekor panjang"</strong> di bulan November dan Februari — kurva melebar jauh ke kanan (>100 mm/hari). Ini menunjukkan bahwa bulan-bulan tersebut tidak hanya banyak hujannya, tapi juga punya potensi hujan sangat lebat yang tinggi. Informasi ini kritis untuk desain saluran drainase dan analisis banjir.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SEKSI 15: OTOMASI ===== -->
+  <section class="section anim-in" id="s15">
+    <div class="section-header"><div class="section-num">14</div><h2>Otomasi — 1 Fungsi untuk Semua Stasiun</h2></div>
+
+    <div class="card card-red">
+      <div class="card-label">❌ Di Excel: 1 stasiun baru = 1 file baru = pekerjaan berulang</div>
+      <p>Setiap kali ada stasiun baru, proses di Excel harus diulang dari awal: import data, buat pivot, format, buat chart, simpan. Dalam proyek AMDAL yang punya 10–20 stasiun, ini bisa memakan waktu berhari-hari. Di R, kamu tulis fungsi sekali — lalu loop untuk semua stasiun.</p>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Fungsi Reusable + Loop Multi-Stasiun</span>
+        <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+      </div>
+      <pre><span class="cm"># ── 1. Buat fungsi yang bisa dipakai ulang ──────────────────</span>
+<span class="fn">buat_chart_hujan</span> <span class="op">&lt;-</span> <span class="kw">function</span>(df, nama_stasiun, warna <span class="op">=</span> <span class="str">"#378add"</span>) {
+
+  df_avg <span class="op">&lt;-</span> df <span class="op">|&gt;</span>
+    <span class="fn">filter</span>(rr_mm <span class="op">!=</span> <span class="num">8888</span>) <span class="op">|&gt;</span>
+    <span class="fn">group_by</span>(tahun, bln_num) <span class="op">|&gt;</span>
+    <span class="fn">summarise</span>(total <span class="op">=</span> <span class="fn">sum</span>(rr_mm, na.rm <span class="op">=</span> <span class="kw">TRUE</span>), .groups <span class="op">=</span> <span class="str">"drop"</span>) <span class="op">|&gt;</span>
+    <span class="fn">group_by</span>(bln_num) <span class="op">|&gt;</span>
+    <span class="fn">summarise</span>(avg <span class="op">=</span> <span class="fn">mean</span>(total))
+
+  <span class="fn">ggplot</span>(df_avg, <span class="fn">aes</span>(x <span class="op">=</span> bln_num, y <span class="op">=</span> avg)) <span class="op">+</span>
+    <span class="fn">geom_col</span>(fill <span class="op">=</span> warna, width <span class="op">=</span> <span class="num">0.75</span>) <span class="op">+</span>
+    <span class="fn">geom_hline</span>(yintercept <span class="op">=</span> <span class="fn">mean</span>(df_avg<span class="op">$</span>avg),
+               linetype <span class="op">=</span> <span class="str">"dashed"</span>, color <span class="op">=</span> <span class="str">"#ef9f27"</span>) <span class="op">+</span>
+    <span class="fn">scale_x_continuous</span>(breaks <span class="op">=</span> <span class="num">1</span><span class="op">:</span><span class="num">12</span>,
+      labels <span class="op">=</span> <span class="fn">c</span>(<span class="str">"Jan"</span>,<span class="str">"Feb"</span>,<span class="str">"Mar"</span>,<span class="str">"Apr"</span>,<span class="str">"Mei"</span>,<span class="str">"Jun"</span>,
+                 <span class="str">"Jul"</span>,<span class="str">"Agt"</span>,<span class="str">"Sep"</span>,<span class="str">"Okt"</span>,<span class="str">"Nov"</span>,<span class="str">"Des"</span>)) <span class="op">+</span>
+    <span class="fn">labs</span>(title <span class="op">=</span> <span class="fn">paste</span>(<span class="str">"Rata-rata Bulanan —"</span>, nama_stasiun),
+         x <span class="op">=</span> <span class="kw">NULL</span>, y <span class="op">=</span> <span class="str">"mm"</span>) <span class="op">+</span>
+    <span class="fn">theme_minimal</span>(base_size <span class="op">=</span> <span class="num">11</span>) <span class="op">+</span>
+    <span class="fn">theme</span>(panel.grid.major.x <span class="op">=</span> <span class="fn">element_blank</span>())
+}
+
+<span class="cm"># ── 2. Daftar semua stasiun ──────────────────────────────────</span>
+stasiun_list <span class="op">&lt;-</span> <span class="fn">tibble</span>(
+  nama  <span class="op">=</span> <span class="fn">c</span>(<span class="str">"Cemara"</span>, <span class="str">"Lembang"</span>, <span class="str">"Padalarang"</span>, <span class="str">"Cimahi"</span>,
+             <span class="str">"Margahayu"</span>, <span class="str">"Baleendah"</span>),
+  file  <span class="op">=</span> <span class="fn">paste0</span>(<span class="str">"data/"</span>, <span class="fn">c</span>(<span class="str">"cemara"</span>,<span class="str">"lembang"</span>,<span class="str">"padalarang"</span>,
+                              <span class="str">"cimahi"</span>,<span class="str">"margahayu"</span>,<span class="str">"baleendah"</span>), <span class="str">".xlsx"</span>),
+  warna <span class="op">=</span> <span class="fn">c</span>(<span class="str">"#185fa5"</span>,<span class="str">"#388e3c"</span>,<span class="str">"#ba7517"</span>,
+             <span class="str">"#7b1fa2"</span>,<span class="str">"#c62828"</span>,<span class="str">"#00838f"</span>)
+)
+
+<span class="cm"># ── 3. Loop: baca data + buat + simpan chart ─────────────────</span>
+<span class="fn">dir.create</span>(<span class="str">"output_charts"</span>, showWarnings <span class="op">=</span> <span class="kw">FALSE</span>)
+
+stasiun_list <span class="op">|&gt;</span>
+  <span class="fn">pwalk</span>(<span class="kw">function</span>(nama, file, warna) {
+
+    df_sta <span class="op">&lt;-</span> <span class="fn">read_excel</span>(file, sheet <span class="op">=</span> <span class="str">"data_harian"</span>)
+
+    p <span class="op">&lt;-</span> <span class="fn">buat_chart_hujan</span>(df_sta, nama, warna)
+
+    <span class="fn">ggsave</span>(
+      filename <span class="op">=</span> <span class="fn">paste0</span>(<span class="str">"output_charts/"</span>, <span class="fn">tolower</span>(nama), <span class="str">".png"</span>),
+      plot     <span class="op">=</span> p,
+      width <span class="op">=</span> <span class="num">10</span>, height <span class="op">=</span> <span class="num">6</span>, dpi <span class="op">=</span> <span class="num">300</span>, bg <span class="op">=</span> <span class="str">"white"</span>
+    )
+    <span class="fn">message</span>(<span class="str">"✓ Selesai: "</span>, nama)
+  })
+
+<span class="cm"># Output: 6 file PNG tersimpan otomatis di folder output_charts/</span></pre>
+    </div>
+
+    <div class="output-preview">
+      <div class="output-label">📊 Simulasi output: 6 chart stasiun DAS Citarum — format identik, dibuat otomatis</div>
+      <div class="output-body">
+        <div id="autoGrid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:8px;"></div>
+      </div>
+    </div>
+
+    <div class="purple-box"><span class="box-icon">🎯</span><span>Fungsi ini bisa dikembangkan untuk menghasilkan heatmap, boxplot, dan laporan PDF per stasiun — semuanya dengan satu kali <code style="font-size:12px;">pwalk()</code>. Untuk proyek AMDAL dengan 15 stasiun dan 4 jenis chart = <strong>60 file output dalam &lt;2 menit</strong>.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA FINAL -->
+  <section class="section anim-in" id="s_final">
+    <div style="background:linear-gradient(135deg,#0a2540,#1a3a5c 60%,#0d3320); color:#fff; border-radius:var(--radius); padding:2rem; text-align:center;">
+      <div style="font-size:24px; margin-bottom:8px;">🎓</div>
+      <div style="font-size:18px; font-weight:700; margin-bottom:8px;">Learning curve-nya memang tinggi.</div>
+      <p style="font-size:13px; color:rgba(255,255,255,0.65); margin-bottom:6px; max-width:500px; margin-left:auto; margin-right:auto;">Tapi sekarang kamu sudah tahu apa yang menunggu di ujungnya — boxplot distribusi, 26 chart sekaligus, confidence interval, ridgeline, dan otomasi penuh.</p>
+      <p style="font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:1.5rem;">Excel bisa membuat chart. R bisa membuat <em>analisis</em>.</p>
+      <a href="https://www.irpanchumaedi.com/kontak" target="_top" style="display:inline-block; background:var(--blue-mid); color:#fff; font-size:13px; font-weight:600; padding:10px 24px; border-radius:20px; text-decoration:none;">Ada pertanyaan? Hubungi saya →</a>
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+/* ── DATA ─────────────────────────────────────────────── */
+const annualData   = [1769,2449,1926,1879,1929,2329,1702,2178,1978,2098,3694,1789,2511,2290,1955,1913,3406,2224,2188,2032,2367,2189,2377,1738,2142,2544];
+const annualYears  = ['2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+const monthlyAvg   = [200,223,263,262,196,99,75,50,96,173,314,267];
+const monthLabels  = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+const daysData     = [190,206,157,171,175,212,159,181,176,176,254,178,182,183,169,134,254,192,193,188,205,195,215,168,195,209];
+
+const heatmapYears  = ['2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+const heatmapValues = [
+  [261,141,136,259,240,47,80,20,45,152,317,71],
+  [365,81,344,184,55,54,122,38,10,21,196,457],
+  [256,206,330,292,126,0,26,25,32,100,325,364],
+  [233,243,388,255,165,31,17,50,85,155,176,260],
+  [95,189,395,259,226,90,100,92,94,201,221,207],
+  [168,417,308,214,191,201,76,64,145,115,226,205],
+  [47,187,255,126,183,107,55,43,68,116,257,258],
+  [194,237,299,289,226,72,75,49,52,253,196,236],
+  [289,175,312,337,180,110,32,62,154,101,189,137],
+  [173,173,283,365,204,136,71,80,207,247,307,252],
+  [353,557,531,93,345,132,221,106,424,292,401,238],
+  [179,220,307,311,192,54,27,25,82,104,156,132],
+  [152,318,323,246,233,99,61,71,137,239,363,280],
+  [305,206,314,300,207,145,71,61,63,195,382,331],
+  [142,266,274,289,131,158,87,26,26,166,337,253],
+  [167,180,265,231,208,50,0,7,43,35,419,307],
+  [392,194,376,523,318,139,182,129,286,362,443,62],
+  [201,313,277,254,236,58,44,56,141,247,412,285],
+  [155,212,339,285,194,126,75,29,79,230,273,391],
+  [171,145,282,285,164,40,124,60,91,283,176,231],
+  [208,337,291,271,292,30,64,42,36,327,207,262],
+  [152,268,291,265,186,144,64,50,101,170,284,214],
+  [212,305,356,313,131,114,82,79,103,195,311,176],
+  [198,152,181,263,175,84,82,29,76,95,282,121],
+  [199,198,261,253,218,103,41,87,101,184,350,347],
+  [226,131,274,233,319,147,113,212,218,256,220,196]
+];
+
+/* ── PROGRESS ─────────────────────────────────────────── */
+function updateProgress() {
+  const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) || 0;
+  document.getElementById('progBar').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+  highlightNav();
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+function highlightNav() {
+  const secs  = document.querySelectorAll('section[id]');
+  const pills = document.querySelectorAll('.nav-pill');
+  let active  = 0;
+  secs.forEach((s, i) => { if (s.getBoundingClientRect().top < 120) active = i; });
+  pills.forEach((p, i) => p.classList.toggle('active', i === active));
+}
+
+/* ── INTERSECTION OBSERVER ──────────────────────────────── */
+let built = {};
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    const id = e.target.id;
+    if (id === 's1' && !built.cnt)  { built.cnt = 1; startCounters(); }
+    if (id === 's5' && !built.s5)   { built.s5  = 1; buildMonthBars(); setTimeout(buildMonthlyChart, 400); }
+    if (id === 's6' && !built.s6)   { built.s6  = 1; setTimeout(buildAnnualChart, 300); }
+    if (id === 's7' && !built.s7)   { built.s7  = 1; setTimeout(buildHeatmap, 300); }
+    if (id === 's8' && !built.s8)   { built.s8  = 1; setTimeout(buildAnnual2, 300); setTimeout(buildDaysChart, 500); }
+    if (id === 's4'  && !built.s4)  { built.s4  = 1; selectGeom(0); }
+    if (id === 's11' && !built.s11) { built.s11 = 1; setTimeout(buildBoxplot, 300); }
+    if (id === 's12' && !built.s12) { built.s12 = 1; setTimeout(buildFacet, 300); }
+    if (id === 's13' && !built.s13) { built.s13 = 1; setTimeout(buildTrend, 300); }
+    if (id === 's14' && !built.s14) { built.s14 = 1; setTimeout(buildRidge, 300); }
+    if (id === 's15' && !built.s15) { built.s15 = 1; setTimeout(buildAutoGrid, 300); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.anim-in').forEach(el => io.observe(el));
+
+/* ── COUNTERS ──────────────────────────────────────────── */
+function startCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = +el.dataset.target;
+    let cur = 0;
+    const iv = setInterval(() => {
+      cur = Math.min(cur + target / (1400 / 16), target);
+      el.textContent = Math.round(cur).toLocaleString('id');
+      if (cur >= target) clearInterval(iv);
+    }, 16);
+  });
+}
+
+/* ── MONTH BARS ────────────────────────────────────────── */
+function buildMonthBars() {
+  const max    = Math.max(...monthlyAvg);
+  const colors = monthlyAvg.map(v => v > 200 ? '#185fa5' : v > 100 ? '#378add' : '#85b7eb');
+  const c      = document.getElementById('monthBars'); if (!c) return;
+  c.innerHTML  = '';
+  monthLabels.forEach((m, i) => {
+    const pct = (monthlyAvg[i] / max * 100).toFixed(1);
+    const div = document.createElement('div');
+    div.className = 'month-bar-row';
+    div.innerHTML = `<span class="month-lbl">${m}</span><div class="bar-track"><div class="bar-fill" style="width:0%; background:${colors[i]};">${monthlyAvg[i]}</div></div><span class="bar-val">${monthlyAvg[i]}</span>`;
+    c.appendChild(div);
+    setTimeout(() => { div.querySelector('.bar-fill').style.width = pct + '%'; }, i * 70 + 150);
+  });
+}
+
+/* ── CHARTS ─────────────────────────────────────────────── */
+const CH = {};
+function buildMonthlyChart() {
+  if (CH.m) return;
+  const ctx = document.getElementById('chartMonthly'); if (!ctx) return;
+  CH.m = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: monthLabels,
+      datasets: [
+        { data: monthlyAvg, backgroundColor: monthlyAvg.map(v => v > 200 ? '#185fa5' : v > 100 ? '#378add' : '#85b7eb'), borderRadius: 4 },
+        { data: Array(12).fill(184), type: 'line', borderColor: '#ef9f27', borderWidth: 2, borderDash: [6,4], pointRadius: 0, fill: false }
+      ]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + ' mm' } } }, scales: { y: { beginAtZero: true, ticks: { font: { size: 11 } }, title: { display: true, text: 'mm' } }, x: { ticks: { font: { size: 11 }, autoSkip: false } } }, animation: { duration: 800 } }
+  });
+}
+
+function buildAnnualChart() {
+  if (CH.a) return;
+  const ctx = document.getElementById('chartAnnual'); if (!ctx) return;
+  CH.a = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: annualYears,
+      datasets: [
+        { data: annualData, backgroundColor: annualData.map(v => v > 3000 ? '#a32d2d' : v < 1800 ? '#ef9f27' : '#378add'), borderRadius: 3 },
+        { data: Array(26).fill(2215), type: 'line', borderColor: '#1d9e75', borderWidth: 2, borderDash: [6,4], pointRadius: 0, fill: false }
+      ]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw.toLocaleString('id') + ' mm' } } }, scales: { y: { min: 1200, title: { display: true, text: 'mm' }, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 10 }, autoSkip: false, maxRotation: 45 } } }, animation: { duration: 1000 } }
+  });
+}
+
+function buildAnnual2() {
+  if (CH.a2) return;
+  const ctx = document.getElementById('chartAnnual2'); if (!ctx) return;
+  CH.a2 = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: annualYears,
+      datasets: [
+        { data: annualData, backgroundColor: annualData.map(v => v > 3000 ? '#a32d2d' : v < 1800 ? '#ef9f27' : '#378add'), borderRadius: 3 },
+        { data: Array(26).fill(2215), type: 'line', borderColor: '#1d9e75', borderWidth: 1.5, borderDash: [6,4], pointRadius: 0, fill: false }
+      ]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 1200, ticks: { font: { size: 10 } } }, x: { ticks: { font: { size: 9 }, autoSkip: false, maxRotation: 45 } } }, animation: { duration: 800 } }
+  });
+}
+
+function buildDaysChart() {
+  if (CH.d) return;
+  const ctx = document.getElementById('chartDays'); if (!ctx) return;
+  CH.d = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: annualYears,
+      datasets: [{ data: daysData, borderColor: '#639922', backgroundColor: 'rgba(99,153,34,0.10)', borderWidth: 2.5, pointRadius: 3.5, pointBackgroundColor: '#639922', fill: true, tension: 0.3 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + ' hari' } } }, scales: { y: { min: 100, title: { display: true, text: 'Hari' }, ticks: { font: { size: 10 } } }, x: { ticks: { font: { size: 9 }, autoSkip: false, maxRotation: 45 } } }, animation: { duration: 800 } }
+  });
+}
+
+/* ── HEATMAP ─────────────────────────────────────────────── */
+function buildHeatmap() {
+  const wrap = document.getElementById('heatmapWrap'); if (!wrap) return;
+  const allVals = heatmapValues.flat();
+  const maxV = Math.max(...allVals), minV = 0;
+  const pct  = v => (v - minV) / (maxV - minV);
+  const lerp = (a, b, t) => Math.round(a + (b - a) * t);
+  function getColor(v) {
+    const p = pct(v);
+    let r, g, b;
+    if (p < 0.5) {
+      const t = p * 2;
+      r = lerp(240, 55, t); g = lerp(247, 138, t); b = lerp(255, 221, t);
+    } else {
+      const t = (p - 0.5) * 2;
+      r = lerp(55, 10, t); g = lerp(138, 37, t); b = lerp(221, 64, t);
+    }
+    return { bg: `rgb(${r},${g},${b})`, fg: p > 0.55 ? '#fff' : '#1e3a5f' };
+  }
+  let html = `<table style="border-collapse:collapse;font-size:11px;width:100%;">`;
+  html += `<thead><tr><th style="padding:5px 8px;background:#0a2540;color:#fff;border:1px solid #152f50;font-size:10px;white-space:nowrap;">Tahun</th>`;
+  monthLabels.forEach(m => { html += `<th style="padding:5px 6px;background:#0a2540;color:#fff;border:1px solid #152f50;font-size:10px;">${m}</th>`; });
+  html += `</tr></thead><tbody>`;
+  heatmapYears.forEach((yr, yi) => {
+    html += `<tr><td style="padding:5px 8px;background:#f5f5f5;font-weight:600;border:1px solid #e0e0e0;text-align:center;font-size:11px;">${yr}</td>`;
+    heatmapValues[yi].forEach(v => {
+      const c = getColor(v);
+      html += `<td style="padding:4px 5px;background:${c.bg};color:${c.fg};border:1px solid rgba(255,255,255,0.4);text-align:right;font-family:monospace;font-size:11px;">${v}</td>`;
+    });
+    html += `</tr>`;
+  });
+  html += `</tbody></table>`;
+  wrap.innerHTML = html;
+}
+
+/* ── GEOM SELECTOR ──────────────────────────────────────── */
+const geomDetails = [
+  { name:'geom_col()', color:'#2166ac', desc:'Membuat bar chart dari nilai yang sudah dihitung (pre-aggregated). Berbeda dengan <code>geom_bar()</code> yang menghitung frekuensi otomatis. Gunakan <code>geom_col()</code> ketika data sudah di-summarise dengan <code>summarise()</code>.', use:'Data: df_avg_bln | Sumbu X: bulan | Sumbu Y: avg_mm', ex:'geom_col(width = 0.75, fill = "#378add")' },
+  { name:'geom_line()', color:'#388e3c', desc:'Menghubungkan titik data dengan garis lurus. Cocok untuk time series karena memperlihatkan kontinuitas dan tren. Tambahkan <code>geom_point()</code> bersamaan agar setiap nilai terlihat jelas.', use:'Data: df_tahunan | Sumbu X: tahun | Sumbu Y: hari_hujan', ex:'geom_line(color = "#639922", linewidth = 1.2)' },
+  { name:'geom_tile()', color:'#ba7517', desc:'Membuat grid persegi panjang berwarna — fondasi heatmap. Setiap kombinasi X–Y diwarnai berdasarkan variabel fill. Sangat efektif untuk data dua dimensi seperti bulan × tahun.', use:'Data: df_bulanan | Sumbu X: bulan | Sumbu Y: tahun | Fill: total_mm', ex:'geom_tile(color = "white", linewidth = 0.3)' },
+  { name:'geom_point()', color:'#7b1fa2', desc:'Menampilkan titik untuk setiap observasi. Digunakan dalam scatter plot (korelasi dua variabel) atau dikombinasikan dengan geom_line() untuk memperjelas posisi setiap nilai.', use:'Data: df_tahunan | X: total_mm | Y: hari_hujan', ex:'geom_point(size = 3, shape = 21, fill = "white")' },
+  { name:'geom_area()', color:'#c62828', desc:'Mirip geom_line() tetapi area di bawah garis diisi warna. Berguna untuk memperlihatkan volume total — misalnya curah hujan kumulatif atau debit harian yang mengalir sepanjang tahun.', use:'Data: df harian | X: tanggal | Y: rr_mm', ex:'geom_area(fill = "#85b7eb", alpha = 0.5)' },
+  { name:'geom_hline()', color:'#546e7a', desc:'Menambahkan garis horizontal referensi — tidak bergantung pada data, cukup tentukan yintercept. Biasa digunakan untuk garis rata-rata, ambang batas, atau nilai desain hidrologi.', use:'Tidak butuh data | yintercept = nilai konstan', ex:'geom_hline(yintercept = 2215, linetype = "dashed", color = "#1d9e75")' }
+];
+
+function selectGeom(i) {
+  document.querySelectorAll('.geom-card').forEach((c, idx) => c.classList.toggle('sel', idx === i));
+  const d = geomDetails[i];
+  document.getElementById('geomDetail').innerHTML = `
+    <div style="font-size:14px; font-weight:700; color:${d.color}; font-family:'Consolas',monospace; margin-bottom:6px;">${d.name}</div>
+    <p style="font-size:13px; color:#495057; line-height:1.65; margin-bottom:8px;">${d.desc}</p>
+    <div style="font-size:11px; color:#6c757d; margin-bottom:6px;">📌 ${d.use}</div>
+    <div style="background:#1e1e2e; border-radius:4px; padding:7px 12px; font-family:'Consolas',monospace; font-size:12px; color:#89b4fa;">${d.ex}</div>`;
+  document.getElementById('geomDetail').style.borderLeftColor = d.color;
+}
+
+/* ── COPY BUTTON ─────────────────────────────────────────── */
+function copyCode(btn) {
+  const pre  = btn.closest('.code-wrap').querySelector('pre');
+  const text = pre.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Tersalin!';
+    setTimeout(() => btn.textContent = 'Salin', 2000);
+  });
+}
+
+/* ── BOXPLOT SIMULATION ──────────────────────────────────── */
+// Approximate percentiles per month from Sta. Cemara data
+
+function buildBoxplot() {
+  const ctx = document.getElementById('chartBoxplot'); if (!ctx) return;
+
+  const labels = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+  const wlo = [0,0,0,0,0,0,0,0,0,0,0,0];     // lower whisker
+  const q1  = [3,4,4,3,2,0,0,0,0,2,5,4];
+  const med = [9,11,12,11,8,3,2,1,4,7,16,13];
+  const q3  = [22,27,28,25,20,10,8,5,14,18,35,30];
+  const whi = [62,78,73,68,58,43,38,28,52,57,88,82]; // upper whisker
+  const avg = [14,17,19,18,13,5,4,2,7,11,22,18];
+  const outRaw = [[82,95,110],[88,105],[80,100,122],[75,90],[70,85],[50,62],[45,55],[38,48],[60,72],[68,80],[95,108,120],[88,100,115]];
+  const outPts = [];
+  outRaw.forEach((outs,i) => outs.forEach(v => outPts.push({x:i, y:v})));
+
+  const blueShades = labels.map((_,i)=>{
+    const t = i/11;
+    return `rgba(${Math.round(21+t*34)},${Math.round(63+t*75)},${Math.round(133+t*88)},0.75)`;
+  });
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        // ① Whisker — floating bar [lower, upper], very thin
+        {
+          label: '_w',
+          data: wlo.map((v,i) => [v, whi[i]]),
+          backgroundColor: 'rgba(24,95,165,0.2)',
+          borderColor: '#378add',
+          borderWidth: 1,
+          barThickness: 2,
+          borderSkipped: false,
+          order: 4
+        },
+        // ② IQR Box — floating bar [q1, q3]
+        {
+          label: 'Box: IQR (25%–75% data)',
+          data: q1.map((v,i) => [v, q3[i]]),
+          backgroundColor: blueShades,
+          borderColor: '#185fa5',
+          borderWidth: 1.5,
+          barThickness: 30,
+          borderSkipped: false,
+          order: 3
+        },
+        // ③ Median — very thin floating bar [median-0.6, median+0.6]
+        {
+          label: '_med',
+          data: med.map(m => [m - 0.6, m + 0.6]),
+          backgroundColor: '#0a2540',
+          barThickness: 30,
+          borderSkipped: false,
+          order: 2
+        },
+        // ④ 50mm threshold line
+        {
+          type: 'line',
+          label: '≥50mm (Hujan Lebat)',
+          data: Array(12).fill(50),
+          borderColor: '#e24b4a',
+          borderWidth: 1.8,
+          borderDash: [6,4],
+          pointRadius: 0,
+          fill: false,
+          order: 5
+        },
+        // ⑤ Mean diamond
+        {
+          type: 'scatter',
+          label: 'Rata-rata',
+          data: avg.map((v,i) => ({x:i, y:v})),
+          backgroundColor: '#ef9f27',
+          pointStyle: 'rectRot',
+          pointRadius: 7,
+          pointHoverRadius: 9,
+          order: 1
+        },
+        // ⑥ Outliers
+        {
+          type: 'scatter',
+          label: 'Outlier ekstrem',
+          data: outPts,
+          backgroundColor: '#e24b4a',
+          pointRadius: 4.5,
+          pointHoverRadius: 6.5,
+          order: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            filter: item => !item.text.startsWith('_'),
+            usePointStyle: true,
+            font: { size: 11 },
+            boxWidth: 12
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: c => {
+              if (c.dataset.label === 'Rata-rata') return `Rata-rata: ${c.parsed.y} mm`;
+              if (c.dataset.label === 'Outlier ekstrem') return `Outlier: ${c.parsed.y} mm`;
+              if (c.dataset.label.startsWith('_')) return null;
+              return null;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+        y: {
+          beginAtZero: true,
+          max: 130,
+          title: { display: true, text: 'mm/hari' },
+          ticks: { font: { size: 11 } }
+        }
+      },
+      animation: { duration: 900 }
+    }
+  });
+}
+
+/* ── FACET GRID SIMULATION ──────────────────────────────── */
+const facetMonthData = [
+  [261,141,136,259,240,47,80,20,45,152,317,71],
+  [365,81,344,184,55,54,122,38,10,21,196,457],
+  [256,206,330,292,126,0,26,25,32,100,325,364],
+  [233,243,388,255,165,31,17,50,85,155,176,260],
+  [95,189,395,259,226,90,100,92,94,201,221,207],
+  [168,417,308,214,191,201,76,64,145,115,226,205],
+  [47,187,255,126,183,107,55,43,68,116,257,258],
+  [194,237,299,289,226,72,75,49,52,253,196,236],
+  [289,175,312,337,180,110,32,62,154,101,189,137],
+  [173,173,283,365,204,136,71,80,207,247,307,252],
+  [353,557,531,93,345,132,221,106,424,292,401,238],
+  [179,220,307,311,192,54,27,25,82,104,156,132],
+  [152,318,323,246,233,99,61,71,137,239,363,280],
+  [305,206,314,300,207,145,71,61,63,195,382,331],
+  [142,266,274,289,131,158,87,26,26,166,337,253],
+  [167,180,265,231,208,50,0,7,43,35,419,307],
+  [392,194,376,523,318,139,182,129,286,362,443,62],
+  [201,313,277,254,236,58,44,56,141,247,412,285],
+  [155,212,339,285,194,126,75,29,79,230,273,391],
+  [171,145,282,285,164,40,124,60,91,283,176,231],
+  [208,337,291,271,292,30,64,42,36,327,207,262],
+  [152,268,291,265,186,144,64,50,101,170,284,214],
+  [212,305,356,313,131,114,82,79,103,195,311,176],
+  [198,152,181,263,175,84,82,29,76,95,282,121],
+  [199,198,261,253,218,103,41,87,101,184,350,347],
+  [226,131,274,233,319,147,113,212,218,256,220,196]
+];
+
+function buildFacet() {
+  const grid = document.getElementById('facetGrid'); if (!grid) return;
+  const maxAll = Math.max(...facetMonthData.flat());
+  annualYears.forEach((yr, yi) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'background:#fff;border-radius:6px;padding:6px;box-shadow:0 1px 6px rgba(0,0,0,0.08);';
+    const label = document.createElement('div');
+    label.style.cssText = `font-size:10px;font-weight:700;color:#0a2540;margin-bottom:3px;text-align:center;`;
+    label.textContent = yr;
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'width:100%;';
+    canvas.height = 55;
+    wrap.appendChild(label); wrap.appendChild(canvas);
+    grid.appendChild(wrap);
+    const vals = facetMonthData[yi];
+    const cols = vals.map(v => {
+      const p = v / maxAll;
+      const r = Math.round(21 + p*(10-21)), g = Math.round(95 + p*(37-95)), b = Math.round(165 + p*(64-165));
+      return `rgb(${r},${g},${b})`;
+    });
+    setTimeout(() => {
+      new Chart(canvas, {
+        type:'bar',
+        data:{ labels:['J','F','M','A','M','J','J','A','S','O','N','D'], datasets:[{ data:vals, backgroundColor:cols, borderRadius:1 }] },
+        options:{ responsive:false, animation:{duration:600}, plugins:{legend:{display:false},tooltip:{enabled:false}}, scales:{x:{display:false},y:{display:false,max:maxAll}} }
+      });
+    }, yi * 30 + 200);
+  });
+}
+
+/* ── TREND + CI SIMULATION ──────────────────────────────── */
+function buildTrend() {
+  if (CH.tr) return;
+  const ctx = document.getElementById('chartTrend'); if (!ctx) return;
+  const n = annualYears.length;
+  const xs = annualYears.map(y=>+y);
+  const ys = annualData;
+  // Simple linear regression
+  const mx = xs.reduce((a,b)=>a+b)/n, my = ys.reduce((a,b)=>a+b)/n;
+  const b1 = xs.reduce((s,x,i)=>s+(x-mx)*(ys[i]-my),0) / xs.reduce((s,x)=>s+(x-mx)**2,0);
+  const b0 = my - b1*mx;
+  const trend = xs.map(x => b0 + b1*x);
+  // Approx CI: ±1.96*SE
+  const residuals = ys.map((y,i) => y - trend[i]);
+  const se = Math.sqrt(residuals.reduce((s,r)=>s+r*r,0)/(n-2)) * 1.3;
+  const upper = trend.map(v => v + se);
+  const lower = trend.map(v => Math.max(0, v - se));
+  // Annotation
+  const ann = document.getElementById('trendAnnotation');
+  if(ann) ann.textContent = `Tren: ${b1>0?'+':''}${b1.toFixed(1)} mm/tahun (Sta. Cemara, 2000–2025)`;
+  CH.tr = new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels: annualYears,
+      datasets:[
+        { type:'bar', label:'Curah Hujan Tahunan', data:annualData, backgroundColor:'rgba(133,183,235,0.55)', borderColor:'rgba(133,183,235,0.8)', borderWidth:1, borderRadius:2 },
+        { type:'line', label:'CI Upper', data:upper, borderColor:'transparent', backgroundColor:'rgba(226,75,74,0.12)', fill:'+1', pointRadius:0 },
+        { type:'line', label:'CI Lower', data:lower, borderColor:'transparent', backgroundColor:'rgba(226,75,74,0.12)', fill:false, pointRadius:0 },
+        { type:'line', label:'Garis Tren', data:trend, borderColor:'#e24b4a', borderWidth:2.5, pointRadius:0, fill:false }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c=>{ if(c.dataset.label.startsWith('CI')) return null; return c.raw.toFixed(0)+' mm'; } } } },
+      scales:{ y:{min:0,max:4300,title:{display:true,text:'mm'},ticks:{font:{size:11}}}, x:{ticks:{font:{size:10},autoSkip:false,maxRotation:45}} },
+      animation:{duration:900}
+    }
+  });
+}
+
+/* ── RIDGELINE SIMULATION (SVG-based) ───────────────────── */
+function buildRidge() {
+  const canvas = document.getElementById('chartRidge'); if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.offsetWidth || 760, H = 460;
+  canvas.width = W; canvas.height = H;
+  canvas.style.height = H + 'px';
+
+  // Approximate density peak and spread per month (Jan..Des)
+  const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+  // [peak_x in mm, spread, height_factor]
+  const profiles = [
+    [12,18,1.0], [14,20,1.1], [15,20,1.0], [13,19,1.0],
+    [10,16,0.9], [5,12,0.7],  [4,10,0.6],  [2,8,0.5],
+    [7,14,0.8],  [11,17,0.9], [18,24,1.3], [16,22,1.2]
+  ];
+  const colors = [
+    '#185fa5','#1e6db0','#2478bb','#2a83c6','#3090d0',
+    '#85b7eb','#9dc4ef','#b5d4f4','#6aa8dc','#3a8ec8',
+    '#0d4e91','#12569e'
+  ];
+
+  // Layout: rowH smaller so all 12 rows + peaks fit inside H
+  const topPad = 25, botPad = 28, leftPad = 36;
+  const usableH = H - topPad - botPad;
+  const rowH = usableH / 13.5;          // spacing between baselines
+  const maxPeakH = rowH * 2.0;          // max peak height per row
+  const startY = H - botPad;            // bottom baseline (Jan)
+  const maxX = 140;
+
+  // Clip drawing to canvas area to prevent overflow
+  ctx.save();
+  ctx.rect(0, 0, W, H);
+  ctx.clip();
+
+  // Draw from back (Des=ri11) to front (Jan=ri0)
+  for (let mi = 0; mi < 12; mi++) {
+    const ri = 11 - mi;
+    const [peak, spread, hf] = profiles[ri];
+    const yBase = startY - ri * rowH;
+    const peakH = maxPeakH * hf;
+    const steps = 100;
+    const col = colors[ri];
+
+    ctx.beginPath();
+    ctx.moveTo(leftPad, yBase);
+    for (let s = 0; s <= steps; s++) {
+      const xmm = (s / steps) * maxX;
+      const xpx = leftPad + (xmm / maxX) * (W - leftPad - 20);
+      const z = (xmm - peak) / spread;
+      let density = Math.exp(-0.5 * z * z);
+      if (xmm > peak) density *= Math.exp(-0.12 * (xmm - peak) / spread);
+      if (xmm < 1) density *= xmm;
+      ctx.lineTo(xpx, yBase - density * peakH);
+    }
+    ctx.lineTo(leftPad + (maxX / maxX) * (W - leftPad - 20), yBase);
+    ctx.closePath();
+    ctx.fillStyle = col + 'cc';
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 0.9;
+    ctx.stroke();
+
+    // Month label (left side)
+    ctx.fillStyle = '#444';
+    ctx.font = `bold 11px Segoe UI, sans-serif`;
+    ctx.textAlign = 'right';
+    ctx.fillText(months[ri], leftPad - 4, yBase + 4);
+  }
+  ctx.restore();
+
+  // 50mm threshold line
+  const x50 = leftPad + (50 / maxX) * (W - leftPad - 20);
+  ctx.setLineDash([5,4]);
+  ctx.strokeStyle = '#ef9f27';
+  ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.moveTo(x50, topPad - 5); ctx.lineTo(x50, H - botPad + 5); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#ef9f27';
+  ctx.font = 'bold 10px Segoe UI, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('50mm', x50 + 4, topPad + 8);
+
+  // X axis labels
+  ctx.fillStyle = '#999';
+  ctx.font = '10px Segoe UI, sans-serif';
+  ctx.textAlign = 'center';
+  [0,25,50,75,100,125].forEach(v => {
+    const xp = leftPad + (v / maxX) * (W - leftPad - 20);
+    ctx.fillText(v + 'mm', xp, H - 5);
+  });
+}
+
+/* ── AUTO GRID (Multi-stasiun sim) ──────────────────────── */
+function buildAutoGrid() {
+  const grid = document.getElementById('autoGrid'); if (!grid) return;
+  const stations = [
+    { name:'Cemara', color:'#185fa5', data:[200,223,263,262,196,99,75,50,96,173,314,267] },
+    { name:'Lembang', color:'#388e3c', data:[180,195,240,230,175,85,60,40,80,155,290,245] },
+    { name:'Padalarang', color:'#ba7517', data:[165,180,220,215,160,75,55,35,70,145,270,230] },
+    { name:'Cimahi', color:'#7b1fa2', data:[195,215,255,250,188,95,70,48,90,165,305,260] },
+    { name:'Margahayu', color:'#c62828', data:[175,190,235,228,170,80,58,38,76,150,280,238] },
+    { name:'Baleendah', color:'#00838f', data:[210,230,270,268,200,105,78,55,100,178,320,275] }
+  ];
+  stations.forEach((sta, si) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'background:#fff;border-radius:8px;padding:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);';
+    const lbl = document.createElement('div');
+    lbl.style.cssText = `font-size:12px;font-weight:700;color:${sta.color};margin-bottom:5px;`;
+    lbl.textContent = 'Sta. '+sta.name;
+    const canvas = document.createElement('canvas');
+    canvas.height = 80;
+    wrap.appendChild(lbl); wrap.appendChild(canvas);
+    grid.appendChild(wrap);
+    setTimeout(() => {
+      const avg = Math.round(sta.data.reduce((a,b)=>a+b)/12);
+      new Chart(canvas, {
+        type:'bar',
+        data:{
+          labels:['J','F','M','A','M','J','J','A','S','O','N','D'],
+          datasets:[
+            { data:sta.data, backgroundColor:sta.color+'aa', borderRadius:2 },
+            { type:'line', data:Array(12).fill(avg), borderColor:sta.color, borderWidth:1.5, borderDash:[4,3], pointRadius:0 }
+          ]
+        },
+        options:{ responsive:false, animation:{duration:700, delay:si*100}, plugins:{legend:{display:false},tooltip:{enabled:false}}, scales:{x:{display:false},y:{display:false}} }
+      });
+    }, si*100+200);
+  });
+}
+
+/* ── INIT ───────────────────────────────────────────────── */
+updateProgress();
+</script>
+</body>
+</html>

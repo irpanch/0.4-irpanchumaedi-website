@@ -217,14 +217,14 @@ design:
     <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-visualisasi-r-ggplot2/">
     <span class="kur-module-icon">📈</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Visualisasi Data Hujan dengan R & ggplot2</div>
       <div class="kur-module-desc">Hasil yang sama dengan Excel, tapi lebih fleksibel — plot heatmap, boxplot bulanan, dan tren tahunan dalam hitungan baris kode.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
 </div>
 </div>

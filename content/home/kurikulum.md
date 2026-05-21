@@ -243,14 +243,14 @@ design:
 <div class="kur-body">
 <div class="kur-modules">
 
-  <div class="kur-module" href="/post/materi-kalibrasi-data-gpm-bmkg/">
+  <a class="kur-module" href="/post/materi-kalibrasi-data-gpm-bmkg/">
     <span class="kur-module-icon">⚖️</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Kalibrasi Data GPM dengan Data BMKG</div>
       <div class="kur-module-desc">Validasi dan koreksi bias data satelit menggunakan data observasi — metode NSE, KGE, dan PBIAS dengan Excel & R.</div>
     </div>
     <span class="kur-module-badge badge-done">✅ Tersedia</span>
-  </div>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">📉</span>

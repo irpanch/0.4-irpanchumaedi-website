@@ -252,14 +252,14 @@ design:
     <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-analisa-frekuensi-hujan/">
     <span class="kur-module-icon">📉</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Analisis Frekuensi Curah Hujan</div>
       <div class="kur-module-desc">Distribusi Log Pearson III, Gumbel, dan Normal — uji Smirnov-Kolmogorov & Chi-Square, periode ulang 2–100 tahun.</div>
     </div>
     <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">⏱️</span>

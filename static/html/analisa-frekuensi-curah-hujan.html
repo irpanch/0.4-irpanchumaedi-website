@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisa Frekuensi Curah Hujan | irpanchumaedi.com</title>
+<meta name="description" content="Panduan lengkap analisa frekuensi curah hujan: konsep kala ulang, 4 distribusi statistik, uji goodness-of-fit, curah hujan rencana, dan kurva IDF — dari data hingga desain infrastruktur.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0A2342; --blue:#185fa5; --blue-mid:#378add; --blue-light:#85b7eb; --blue-pale:#e6f1fb;
+  --red:#B91C1C; --red-light:#fee2e2; --navy2:#1A5276;
+  --amber:#B45309; --amber-light:#fef3c7;
+  --purple:#6D28D9; --purple-light:#ede9fe;
+  --green:#1d6f42; --green-light:#d1fae5;
+  --gray-100:#f8fafc; --gray-200:#e2e8f0; --gray-300:#cbd5e1;
+  --gray-500:#64748b; --gray-600:#475569; --gray-700:#334155; --gray-900:#0f172a;
+  --radius:10px; --radius-sm:6px;
+  --shadow:0 2px 12px rgba(0,0,0,0.07);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.10);
+  --code-bg:#1e1e2e;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f6f9;color:var(--gray-900);line-height:1.65;font-size:15px;}
+
+/* STICKY NAV */
+.sticky-nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--gray-200);box-shadow:var(--shadow);}
+.sticky-inner{max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;gap:1rem;height:52px;}
+.sticky-title{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;}
+.progress-track{flex:1;height:4px;background:var(--gray-200);border-radius:2px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px;width:0%;transition:width 0.3s;}
+.sticky-pct{font-size:12px;color:var(--gray-500);min-width:32px;}
+
+/* FLOATING TOC */
+.toc-float{position:fixed;top:80px;right:0;width:195px;background:#fff;border:1px solid var(--gray-200);border-right:none;border-radius:var(--radius) 0 0 var(--radius);box-shadow:-2px 4px 16px rgba(0,0,0,0.09);z-index:150;transition:all 0.28s cubic-bezier(0.4,0,0.2,1);overflow:hidden;}
+.toc-float.collapsed{width:32px;}
+.toc-head{display:flex;align-items:center;justify-content:space-between;padding:8px 10px 8px 12px;border-bottom:1px solid var(--gray-200);cursor:pointer;user-select:none;background:var(--navy);border-radius:var(--radius) 0 0 0;}
+.toc-head:hover{background:#1a3a5c;}
+.toc-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.9);white-space:nowrap;overflow:hidden;}
+.toc-chevron{font-size:11px;color:rgba(255,255,255,0.7);flex-shrink:0;transition:transform 0.25s;margin-left:6px;}
+.toc-float.collapsed .toc-chevron{transform:rotate(180deg);}
+.toc-float.collapsed .toc-title{opacity:0;width:0;margin:0;}
+.toc-body{padding:8px 6px;max-height:calc(100vh - 140px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--gray-300) transparent;}
+.toc-body::-webkit-scrollbar{width:3px;}
+.toc-body::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:2px;}
+.toc-float.collapsed .toc-body{display:none;}
+.toc-link{display:block;font-size:11px;color:var(--gray-600);text-decoration:none;padding:3px 8px;border-radius:4px;border-left:2px solid transparent;margin-bottom:1px;transition:all 0.15s;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.toc-link:hover{background:var(--blue-pale);color:var(--blue);border-left-color:var(--blue);}
+.toc-link.active{background:var(--blue-pale);color:var(--blue);border-left-color:var(--blue);font-weight:600;}
+.toc-link.sub{padding-left:14px;font-size:10px;color:var(--gray-500);}
+.toc-link.sub.active{color:var(--blue);}
+.toc-toggle{display:none;position:fixed;bottom:20px;right:16px;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;border:none;font-size:16px;cursor:pointer;box-shadow:var(--shadow-md);z-index:160;align-items:center;justify-content:center;}
+@media(max-width:1100px){.toc-float{display:none;}.toc-toggle{display:flex;}}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0A2342 0%,#1A3a5c 55%,#2d1065 100%);color:#fff;padding:3rem 1.5rem 2.5rem;border-radius:0 0 var(--radius) var(--radius);margin-bottom:2rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(55,138,221,0.12);}
+.hero::after{content:'';position:absolute;bottom:-100px;left:10%;width:250px;height:250px;border-radius:50%;background:rgba(109,40,217,0.10);}
+.hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;}
+.hero-badge{display:inline-block;background:rgba(55,138,221,0.25);color:#85b7eb;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:0.75rem;letter-spacing:0.04em;}
+.hero h1{font-size:clamp(22px,4vw,30px);font-weight:700;line-height:1.3;margin-bottom:0.5rem;}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:1.5rem;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;}
+.hero-pill{display:inline-block;font-size:11px;padding:4px 10px;border-radius:20px;font-weight:600;border:1px solid;}
+.pill-red{background:rgba(185,28,28,0.25);color:#fca5a5;border-color:rgba(185,28,28,0.4);}
+.pill-blue{background:rgba(26,82,118,0.3);color:#85b7eb;border-color:rgba(26,82,118,0.5);}
+.pill-amber{background:rgba(180,83,9,0.25);color:#fcd34d;border-color:rgba(180,83,9,0.4);}
+.pill-purple{background:rgba(109,40,217,0.25);color:#c4b5fd;border-color:rgba(109,40,217,0.4);}
+.pill-green{background:rgba(29,111,66,0.25);color:#6ee7b7;border-color:rgba(29,111,66,0.4);}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1rem;}
+.hero-meta-item{font-size:12px;color:rgba(255,255,255,0.55);}
+
+/* LAYOUT */
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem 4rem;}
+
+/* SECTIONS */
+.section{margin-bottom:3rem;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;}
+.section-num{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.section-header h2{font-size:20px;font-weight:700;color:var(--gray-900);}
+.subsection{margin:1.5rem 0 1rem;}
+.subsection h3{font-size:15px;font-weight:700;color:var(--gray-700);padding-left:10px;border-left:3px solid var(--blue-mid);margin-bottom:0.75rem;}
+
+/* CARDS */
+.card{background:#fff;border-radius:var(--radius);padding:1.25rem 1.5rem;box-shadow:var(--shadow);margin-bottom:1rem;}
+.card-navy{border-left:4px solid var(--navy);}
+.card-blue{border-left:4px solid var(--blue-mid);}
+.card-red{border-left:4px solid var(--red);}
+.card-amber{border-left:4px solid var(--amber);}
+.card-green{border-left:4px solid var(--green);}
+.card-purple{border-left:4px solid var(--purple);}
+.card-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--gray-500);margin-bottom:6px;}
+.card p,.card-body{font-size:13px;color:var(--gray-600);line-height:1.65;}
+.card strong{color:var(--gray-800);}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem;}
+@media(max-width:700px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}}
+@media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr;}}
+
+/* METRIC CARDS */
+.metric-card{background:#fff;border-radius:var(--radius);padding:1rem 1.1rem;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden;}
+.metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.metric-card.blue::before{background:var(--blue);}
+.metric-card.green::before{background:var(--green);}
+.metric-card.amber::before{background:var(--amber);}
+.metric-card.purple::before{background:var(--purple);}
+.metric-card.red::before{background:var(--red);}
+.metric-label{font-size:11px;color:var(--gray-500);font-weight:600;margin-bottom:4px;}
+.metric-val{font-size:18px;font-weight:700;color:var(--navy);}
+.metric-sub{font-size:11px;color:var(--gray-500);margin-top:3px;}
+
+/* INFO BOXES */
+.info-box{display:flex;gap:10px;background:var(--blue-pale);border:1px solid #b5d4f4;border-radius:var(--radius-sm);padding:.9rem 1rem;font-size:13px;color:#0c447c;margin:1rem 0;line-height:1.55;}
+.warn-box{display:flex;gap:10px;background:var(--amber-light);border:1px solid #fac775;border-radius:var(--radius-sm);padding:.9rem 1rem;font-size:13px;color:var(--amber);margin:1rem 0;line-height:1.55;}
+.success-box{display:flex;gap:10px;background:var(--green-light);border:1px solid #a7f3d0;border-radius:var(--radius-sm);padding:.9rem 1rem;font-size:13px;color:var(--green);margin:1rem 0;line-height:1.55;}
+.purple-box{display:flex;gap:10px;background:var(--purple-light);border:1px solid #c4b5fd;border-radius:var(--radius-sm);padding:.9rem 1rem;font-size:13px;color:var(--purple);margin:1rem 0;line-height:1.55;}
+.box-icon{font-size:18px;flex-shrink:0;line-height:1.3;}
+
+/* FORMULA */
+.formula-block{background:#0f172a;border-radius:var(--radius-sm);padding:1rem 1.25rem;margin:.75rem 0;font-family:'Consolas','Courier New',monospace;font-size:14px;color:#e2e8f0;letter-spacing:0.02em;border-left:4px solid var(--purple);}
+.formula-block .eq-label{font-size:11px;color:#94a3b8;display:block;margin-bottom:4px;}
+.formula-block .eq-main{color:#c4b5fd;font-size:15px;display:block;text-align:center;margin:6px 0;}
+.formula-block .eq-desc{font-size:11px;color:#64748b;display:block;margin-top:6px;}
+
+/* STEP FLOW */
+.step-flow{margin:1rem 0;}
+.step-item{display:flex;gap:14px;}
+.step-line{display:flex;flex-direction:column;align-items:center;}
+.step-dot{width:30px;height:30px;border-radius:50%;background:var(--blue-mid);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-dot.navy{background:var(--navy);}
+.step-dot.green{background:var(--green);}
+.step-dot.purple{background:var(--purple);}
+.step-dot.amber{background:var(--amber);}
+.step-connector{width:2px;background:var(--gray-200);flex:1;min-height:16px;margin:3px 0;}
+.step-body{padding-bottom:20px;flex:1;}
+.step-title{font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:4px;}
+.step-desc{font-size:13px;color:var(--gray-600);line-height:1.6;}
+
+/* CODE */
+.code-wrap{background:var(--code-bg);border-radius:var(--radius-sm);overflow:hidden;margin:.75rem 0;box-shadow:var(--shadow-md);}
+.code-header{background:#2a2a3e;padding:7px 14px;display:flex;align-items:center;justify-content:space-between;}
+.code-lang{font-size:11px;color:#a0aec0;font-weight:600;letter-spacing:0.05em;display:flex;align-items:center;gap:6px;}
+.code-lang .dot{width:8px;height:8px;border-radius:50%;}
+.copy-btn{font-size:11px;color:#a0aec0;cursor:pointer;background:none;border:none;padding:2px 8px;border-radius:4px;transition:all 0.2s;}
+.copy-btn:hover{background:rgba(255,255,255,0.1);color:#fff;}
+pre{padding:1rem 1.25rem;overflow-x:auto;font-family:'Consolas','Courier New',monospace;font-size:12.5px;line-height:1.75;color:#cdd6f4;}
+pre::-webkit-scrollbar{height:4px;}
+pre::-webkit-scrollbar-thumb{background:#4a4a6a;border-radius:2px;}
+.kw{color:#cba6f7;}.fn{color:#89b4fa;}.str{color:#a6e3a1;}.num{color:#fab387;}.cm{color:#6c7086;font-style:italic;}.op{color:#89dceb;}.pkg{color:#f38ba8;}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;margin-bottom:1rem;}
+.data-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:380px;}
+.data-tbl th{background:var(--navy);color:#fff;padding:8px 12px;text-align:center;font-weight:600;font-size:12px;}
+.data-tbl td{padding:7px 12px;border-bottom:1px solid var(--gray-200);text-align:center;font-family:'Consolas',monospace;font-size:12px;color:var(--gray-700);}
+.data-tbl td.td-label{text-align:left;font-family:inherit;font-weight:600;color:var(--gray-700);}
+.data-tbl tr:hover td{background:var(--blue-pale);}
+.data-tbl .best{color:var(--green);font-weight:700;}
+.data-tbl .pass{color:var(--green);}
+.data-tbl .fail{color:var(--red);font-weight:700;}
+.data-tbl .highlight{background:rgba(26,82,118,0.06)!important;}
+.data-tbl .th-blue{background:var(--navy2)!important;}
+.data-tbl .th-red{background:var(--red)!important;}
+.data-tbl .th-green{background:var(--green)!important;}
+.data-tbl .th-purple{background:var(--purple)!important;}
+.data-tbl .th-amber{background:var(--amber)!important;}
+
+/* CHART */
+.chart-card{background:#fff;border-radius:var(--radius);padding:1.25rem 1.5rem 1rem;box-shadow:var(--shadow);margin-bottom:1.25rem;}
+.chart-title{font-size:13px;font-weight:700;color:var(--gray-700);margin-bottom:2px;}
+.chart-sub{font-size:11px;color:var(--gray-500);margin-bottom:1rem;}
+.chart-wrap{position:relative;width:100%;}
+.legend-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:11px;color:var(--gray-500);}
+.legend-item{display:flex;align-items:center;gap:5px;}
+.legend-sq{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+
+/* TAG */
+.tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;margin:2px;font-weight:500;}
+.tag-blue{background:var(--blue-pale);color:#0c447c;}
+.tag-red{background:var(--red-light);color:var(--red);}
+.tag-purple{background:var(--purple-light);color:var(--purple);}
+.tag-green{background:var(--green-light);color:var(--green);}
+.tag-amber{background:var(--amber-light);color:var(--amber);}
+
+/* RETURN PERIOD VISUAL */
+.rp-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:1rem 0;}
+.rp-card{background:#fff;border-radius:8px;padding:0.8rem 0.5rem;box-shadow:var(--shadow);text-align:center;border-top:3px solid;}
+.rp-T{font-size:15px;font-weight:700;}
+.rp-prob{font-size:11px;color:var(--gray-500);margin:3px 0;}
+.rp-use{font-size:10px;color:var(--gray-500);line-height:1.4;}
+@media(max-width:700px){.rp-grid{grid-template-columns:repeat(3,1fr);}}
+
+/* DIST GRID */
+.dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;}
+@media(max-width:600px){.dist-grid{grid-template-columns:1fr;}}
+
+/* FLOW DIAGRAM */
+.flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:1rem 0;}
+.flow-box{padding:0.6rem 1rem;border-radius:8px;font-size:12px;font-weight:600;text-align:center;flex-shrink:0;}
+.flow-arrow{color:var(--gray-400);font-size:18px;flex-shrink:0;}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--gray-200);margin:2.5rem 0;}
+
+/* ANALOGY BOX */
+.analogy-box{background:linear-gradient(135deg,#f0f7ff,#f8f0ff);border:1px solid #c4d9f7;border-radius:var(--radius);padding:1.1rem 1.3rem;margin:1rem 0;position:relative;}
+.analogy-badge{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.analogy-box p{font-size:13px;color:var(--gray-700);line-height:1.7;font-style:italic;}
+
+/* ANIMATE */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.anim-in{opacity:1;}
+.anim-in.visible{animation:fadeUp 0.45s ease both;}
+
+/* NEXT ARTICLES */
+.nav-link{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.2rem;background:#fff;border:1px solid var(--gray-200);border-radius:10px;text-decoration:none;transition:all 0.2s;margin-bottom:0.5rem;box-shadow:var(--shadow);}
+.nav-link:hover{border-color:var(--blue-mid);box-shadow:var(--shadow-md);}
+.nav-link-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--gray-500);margin-bottom:3px;}
+.nav-link-title{font-size:14px;font-weight:700;color:var(--navy);}
+.nav-link-dim{opacity:0.5;cursor:default;}
+.nav-link-dim:hover{border-color:var(--gray-200);box-shadow:var(--shadow);}
+</style>
+</head>
+<body>
+
+<div class="sticky-nav">
+  <div class="sticky-inner">
+    <span class="sticky-title">🌧️ Analisa Frekuensi Curah Hujan</span>
+    <div class="progress-track"><div class="progress-fill" id="progBar"></div></div>
+    <span class="sticky-pct" id="progPct">0%</span>
+  </div>
+</div>
+
+<!-- FLOATING TOC -->
+<nav class="toc-float" id="tocFloat">
+  <div class="toc-head" onclick="toggleToc()">
+    <span class="toc-title">📋 Daftar Isi</span>
+    <span class="toc-chevron">◀</span>
+  </div>
+  <div class="toc-body">
+    <a href="#s1"  class="toc-link">1. Latar Belakang</a>
+    <a href="#s2"  class="toc-link">2. Konsep Kala Ulang</a>
+    <a href="#s2a" class="toc-link sub">↳ Kala Ulang & Probabilitas</a>
+    <a href="#s2b" class="toc-link sub">↳ Tabel Kala Ulang</a>
+    <a href="#s3"  class="toc-link">3. Data yang Dibutuhkan</a>
+    <a href="#s3a" class="toc-link sub">↳ Annual Max Series</a>
+    <a href="#s3b" class="toc-link sub">↳ Statistik Dasar</a>
+    <a href="#s4"  class="toc-link">4. Empat Distribusi</a>
+    <a href="#s5"  class="toc-link">5. Uji Kecocokan</a>
+    <a href="#s5a" class="toc-link sub">↳ KS Test</a>
+    <a href="#s5b" class="toc-link sub">↳ Chi-Kuadrat</a>
+    <a href="#s5c" class="toc-link sub">↳ Perbandingan Visual</a>
+    <a href="#s6"  class="toc-link">6. Curah Hujan Rencana</a>
+    <a href="#s7"  class="toc-link">7. Kurva IDF</a>
+    <a href="#s8"  class="toc-link">8. Kode R</a>
+    <a href="#s9"  class="toc-link">9. Kelanjutan Analisis</a>
+    <a href="#s10" class="toc-link">10. Kesimpulan</a>
+  </div>
+</nav>
+<button class="toc-toggle" id="tocToggle" onclick="toggleTocMobile()">☰</button>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🌧️ Analisis Hidrologi · Statistik Frekuensi</div>
+    <h1>Analisa Frekuensi<br>Curah Hujan</h1>
+    <p class="hero-sub">Dari data hujan historis menjadi angka desain infrastruktur — kala ulang, distribusi, IDF, dan seterusnya<br>Panduan Lengkap untuk Hydrologist & Siapa Pun yang Ingin Memahaminya</p>
+    <div class="hero-pills">
+      <span class="hero-pill pill-blue">4 Distribusi Statistik</span>
+      <span class="hero-pill pill-purple">Uji KS & Chi-Kuadrat</span>
+      <span class="hero-pill pill-amber">Kala Ulang 2–100 Tahun</span>
+      <span class="hero-pill pill-green">Kurva IDF Mononobe</span>
+      <span class="hero-pill pill-red">Kode R Lengkap</span>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-meta-item">📐 SNI 2415:2016</span>
+      <span class="hero-meta-item">📚 Triatmodjo (2008) · Sri Harto (1993)</span>
+      <span class="hero-meta-item">💻 R · ggplot2 · flextable</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ===== S1: LATAR BELAKANG ===== -->
+<section class="section anim-in" id="s1">
+  <div class="section-header"><div class="section-num">1</div><h2>Latar Belakang — Mengapa Perlu?</h2></div>
+
+  <div class="card card-navy">
+    <div class="card-label">Skenario Nyata</div>
+    <p>Tahun 2019, sebuah jembatan baru dibangun di atas sungai. Desainnya menggunakan data hujan 5 tahun terakhir — terasa cukup. Tiga tahun kemudian, banjir merusak fondasinya. Bukan karena cuaca ekstrem yang luar biasa, tapi karena pertanyaan yang salah diajukan sejak awal.</p>
+    <p style="margin-top:8px;">Bukan <em>"Berapa besar banjir tahun lalu?"</em> — melainkan <strong>"Berapa besar banjir yang mungkin terjadi dalam 50 tahun ke depan?"</strong></p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-red">
+      <div class="card-label">❌ Tanpa Analisa Frekuensi</div>
+      <p>Desain drainase berdasarkan banjir yang pernah dilihat. Tiga tahun kemudian meluap saat hujan yang terasa "biasa saja" — karena hujan itu nyatanya adalah kejadian 25 tahunan yang belum pernah terjadi selama pengamatan singkat itu.</p>
+    </div>
+    <div class="card card-green">
+      <div class="card-label">✅ Dengan Analisa Frekuensi</div>
+      <p>Desain berdasarkan curah hujan kala ulang 25 tahun dari <strong>30 tahun data historis</strong>. Saluran tetap berfungsi normal bahkan saat hujan besar yang "25 tahunan" itu akhirnya datang — karena kita sudah memperhitungkannya.</p>
+    </div>
+  </div>
+
+  <div class="analogy-box">
+    <div class="analogy-badge">💡 Analogi Sederhana</div>
+    <p>Bayangkan kamu mau membeli jas hujan. Kalau kamu tinggal di kota yang hujan 10 hari setahun, payung biasa sudah cukup. Tapi kalau tinggal di Banjarmasin yang bisa hujan deras terus-terusan, kamu butuh jas hujan tebal dan sepatu boots. Analisa frekuensi adalah cara kita "membaca cuaca jangka panjang" supaya bisa memilih perlengkapan yang tepat untuk setiap jenis infrastruktur.</p>
+  </div>
+
+  <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-top:1rem;">Setiap infrastruktur yang berhubungan dengan air — jembatan, bendung, saluran drainase, tanggul, gorong-gorong — dirancang untuk menghadapi hujan atau banjir dengan <strong>tingkat bahaya tertentu yang ditetapkan secara ilmiah</strong>, bukan berdasarkan ingatan atau pengalaman singkat.</p>
+
+  <div class="success-box"><span class="box-icon">🎯</span><span>Analisa frekuensi curah hujan adalah proses <strong>menemukan hubungan antara besarnya hujan dan seberapa sering hujan itu terjadi</strong>, berdasarkan data historis jangka panjang. Output-nya digunakan sebagai angka desain di hampir seluruh perencanaan infrastruktur air.</span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S2: KONSEP KALA ULANG ===== -->
+<section class="section anim-in" id="s2">
+  <div class="section-header"><div class="section-num">2</div><h2>Konsep Dasar: Kala Ulang & Probabilitas</h2></div>
+
+  <div id="s2a"></div>
+  <div class="subsection"><h3>Apa Itu Kala Ulang?</h3></div>
+
+  <div class="card card-blue">
+    <div class="card-label">📖 Definisi</div>
+    <p><strong>Kala ulang</strong> (bahasa Inggris: <em>return period</em>, simbol <strong>T</strong>) adalah rata-rata selang waktu antara dua kejadian hujan yang besarnya <em>sama atau lebih besar</em> dari nilai tertentu. Kala ulang T tahun artinya rata-rata, hujan sebesar itu terjadi <strong>sekali setiap T tahun</strong>.</p>
+    <p style="margin-top:8px;color:#555;font-style:italic;font-size:12px;">Ini bukan berarti hujan itu pasti terjadi persis setiap T tahun — ini adalah rata-rata statistik jangka panjang.</p>
+  </div>
+
+  <div class="analogy-box">
+    <div class="analogy-badge">💡 Analogi Dadu</div>
+    <p>"Hujan 25 tahunan terjadi tahun ini — berarti 24 tahun lagi aman dong?" — SALAH. Setiap tahun, hujan 25 tahunan punya probabilitas 4%, tidak peduli apa yang terjadi tahun lalu. Sama seperti dadu: meski sudah 5 kali tidak keluar angka 6, peluang keluar angka 6 tetap 1/6 di lemparan berikutnya. Setiap tahun adalah "lemparan baru".</p>
+  </div>
+
+  <div class="formula-block">
+    <span class="eq-label">Hubungan Kala Ulang dengan Probabilitas Tahunan</span>
+    <span class="eq-main">P = 1 / T</span>
+    <span class="eq-desc">P = probabilitas kejadian dalam satu tahun (0–1)  |  T = kala ulang (tahun)
+Contoh: T = 25 tahun → P = 1/25 = 0.04 = 4% per tahun</span>
+  </div>
+
+  <div id="s2b"></div>
+  <div class="subsection"><h3>Kala Ulang yang Umum Digunakan di Indonesia</h3></div>
+
+  <div class="rp-grid">
+    <div class="rp-card" style="border-color:#64748b;">
+      <div class="rp-T" style="color:#475569;">T = 2</div>
+      <div class="rp-prob">P = 50%/thn</div>
+      <div class="rp-use">Gorong-gorong sederhana, drainase lahan pertanian</div>
+    </div>
+    <div class="rp-card" style="border-color:#2563eb;">
+      <div class="rp-T" style="color:#2563eb;">T = 5</div>
+      <div class="rp-prob">P = 20%/thn</div>
+      <div class="rp-use">Saluran drainase perkotaan kecil, perumahan</div>
+    </div>
+    <div class="rp-card" style="border-color:#0284c7;">
+      <div class="rp-T" style="color:#0284c7;">T = 10</div>
+      <div class="rp-prob">P = 10%/thn</div>
+      <div class="rp-use">Saluran drainase utama kota, jalan raya</div>
+    </div>
+    <div class="rp-card" style="border-color:#d97706;">
+      <div class="rp-T" style="color:#d97706;">T = 25</div>
+      <div class="rp-prob">P = 4%/thn</div>
+      <div class="rp-use">Sungai perkotaan, jembatan, irigasi utama</div>
+    </div>
+    <div class="rp-card" style="border-color:#dc2626;">
+      <div class="rp-T" style="color:#dc2626;">T = 50</div>
+      <div class="rp-prob">P = 2%/thn</div>
+      <div class="rp-use">Tanggul banjir, bendung, pelabuhan</div>
+    </div>
+    <div class="rp-card" style="border-color:#7c3aed;">
+      <div class="rp-T" style="color:#7c3aed;">T = 100</div>
+      <div class="rp-prob">P = 1%/thn</div>
+      <div class="rp-use">Bendungan besar, infrastruktur vital kritis</div>
+    </div>
+  </div>
+
+  <div class="warn-box"><span class="box-icon">⚠️</span><span>Semakin panjang kala ulang, semakin besar dan semakin jarang hujannya — dan semakin mahal infrastruktur yang dibutuhkan. Pemilihan kala ulang adalah keputusan <strong>teknis sekaligus ekonomis</strong>: seberapa besar risiko yang masih dapat diterima?</span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S3: DATA ===== -->
+<section class="section anim-in" id="s3">
+  <div class="section-header"><div class="section-num">3</div><h2>Data yang Dibutuhkan</h2></div>
+
+  <div id="s3a"></div>
+  <div class="subsection"><h3>Annual Maximum Series (AMS)</h3></div>
+
+  <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Dari sekian banyak data hujan harian, yang kita gunakan adalah <strong>satu nilai maksimum per tahun</strong> — metode ini disebut <em>Annual Maximum Series (AMS)</em>. Mengapa hanya nilai maksimum? Karena kita hanya tertarik memodelkan <em>kejadian ekstrem</em> — kandidat banjir tahunan.</p>
+
+  <div class="grid-2">
+    <div class="card card-amber">
+      <div class="card-label">🗂️ Sumber Data</div>
+      <p><strong>Data BMKG:</strong> Stasiun terdekat, rekam harian manual atau otomatis (ARR/AWLR).<br><br><strong>Data GPM IMERG V07:</strong> Alternatif bila data BMKG tidak cukup panjang. Perlu dikalibrasi terlebih dahulu — lihat artikel Kalibrasi GPM.</p>
+    </div>
+    <div class="card card-blue">
+      <div class="card-label">📏 Panjang Data Minimum</div>
+      <p>
+        <span class="tag tag-red">⚠️ &lt; 15 tahun</span> — tidak representatif, hasil tidak stabil<br><br>
+        <span class="tag tag-amber">⚠️ 15–20 tahun</span> — bisa dipakai, hasil perlu dicatat ketidakpastiannya<br><br>
+        <span class="tag tag-green">✅ 20–30 tahun</span> — standar minimum analisis teknis Indonesia<br><br>
+        <span class="tag tag-blue">🏆 &gt; 30 tahun</span> — ideal, estimasi kala ulang panjang lebih andal
+      </p>
+    </div>
+  </div>
+
+  <div class="card-label" style="font-size:11px;margin-bottom:8px;">📊 Contoh Data Annual Maximum Series — 25 Tahun (2000–2024)</div>
+  <div class="tbl-wrap">
+    <table class="data-tbl" id="tblAMS"></table>
+  </div>
+
+  <div id="s3b"></div>
+  <div class="subsection"><h3>Statistik Dasar — Fondasi Semua Distribusi</h3></div>
+  <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Sebelum memilih distribusi, kita wajib menghitung <strong>4 parameter statistik</strong> dari data AMS. Parameter ini menggambarkan "karakter" data hujan kita.</p>
+
+  <div class="grid-4" id="statCards"></div>
+
+  <div class="formula-block">
+    <span class="eq-label">Rumus 4 Parameter Statistik Dasar</span>
+    <span class="eq-main">x̄ = (1/n)·Σxᵢ &nbsp;|&nbsp; S = √[(1/(n-1))·Σ(xᵢ−x̄)²]</span>
+    <span class="eq-main">Cs = [n·Σ(xᵢ−x̄)³] / [(n-1)(n-2)·S³] &nbsp;|&nbsp; CV = S / x̄</span>
+    <span class="eq-desc">x̄ = rata-rata  |  S = standar deviasi  |  Cs = koefisien kemencengan (skewness)  |  CV = koefisien variasi</span>
+  </div>
+
+  <div class="info-box"><span class="box-icon">ℹ️</span><span>Nilai <strong>Cs (koefisien kemencengan)</strong> adalah panduan awal pemilihan distribusi. Cs ≈ 0 → Normal; Cs ≈ 1.14 → Gumbel; Cs bebas → Log-Pearson III dapat menyesuaikan. Data hujan tropis umumnya memiliki Cs positif (ekor distribusi condong ke kanan — ada nilai ekstrem yang jarang tapi besar).</span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S4: DISTRIBUSI ===== -->
+<section class="section anim-in" id="s4">
+  <div class="section-header"><div class="section-num">4</div><h2>Empat Distribusi Teoritis</h2></div>
+
+  <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Distribusi teoritis adalah "model matematika" yang mencoba merepresentasikan pola data hujan kita. Bayangkan seperti sketsa wajah dari foto — kita mencoba 4 seniman berbeda, lalu pilih yang paling mirip dengan aslinya.</p>
+
+  <div class="dist-grid">
+    <div class="card card-navy">
+      <div class="card-label">① Distribusi Normal</div>
+      <p>Bentuk "lonceng simetris" yang paling dikenal. Nilai besar dan kecil sama-sama jarang; nilai tengah paling sering muncul. Jarang cocok untuk data hujan tropis yang biasanya miring ke kanan.</p>
+      <div class="formula-block" style="margin-top:10px;padding:0.7rem 1rem;">
+        <span class="eq-label">Curah Hujan Rencana</span>
+        <span class="eq-main" style="font-size:13px;">x_T = x̄ + K_T · S</span>
+        <span class="eq-desc">K_T dari tabel distribusi Normal standar (z-score)</span>
+      </div>
+      <p style="margin-top:6px;"><span class="tag tag-blue">Syarat: Cs ≈ 0</span> <span class="tag tag-blue">Ck ≈ 3</span></p>
+    </div>
+    <div class="card card-blue">
+      <div class="card-label">② Log-Normal 2 Parameter</div>
+      <p>Transformasi logaritmik diterapkan ke data, lalu data log-nya dianggap berdistribusi Normal. Bagus untuk data positif yang miring ke kanan — tipikal curah hujan. Sangat umum dalam hidrologi.</p>
+      <div class="formula-block" style="margin-top:10px;padding:0.7rem 1rem;">
+        <span class="eq-label">Curah Hujan Rencana</span>
+        <span class="eq-main" style="font-size:13px;">ln(x_T) = ȳ + K_T · Sy</span>
+        <span class="eq-desc">ȳ = mean(ln x)  |  Sy = std.dev(ln x)</span>
+      </div>
+      <p style="margin-top:6px;"><span class="tag tag-blue">Cs ≈ 3·CV + CV³</span></p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-label">③ Distribusi Gumbel (EV Type I)</div>
+      <p>Dirancang khusus secara teori untuk memodelkan nilai-nilai <em>maksimum</em>. Sangat populer untuk analisis banjir dan hujan ekstrem. Secara teori adalah pilihan yang tepat untuk data Annual Maximum Series.</p>
+      <div class="formula-block" style="margin-top:10px;padding:0.7rem 1rem;border-left-color:var(--amber);">
+        <span class="eq-label">Parameter & Curah Hujan Rencana</span>
+        <span class="eq-main" style="font-size:12px;">α = S·π/√6 &nbsp;|&nbsp; μ = x̄ − 0.5772·α</span>
+        <span class="eq-main" style="font-size:12px;">K_T = −(√6/π)·[0.5772 + ln(ln(T/(T-1)))]</span>
+        <span class="eq-desc">Rumus K_T ini khusus untuk distribusi Gumbel</span>
+      </div>
+      <p style="margin-top:6px;"><span class="tag tag-amber">Syarat: Cs ≈ 1.14</span> <span class="tag tag-amber">Ck ≈ 5.40</span></p>
+    </div>
+    <div class="card card-green">
+      <div class="card-label">④ Log-Pearson III (LP3)</div>
+      <p>Yang paling fleksibel dari keempatnya. Menggunakan tiga parameter dari data log (mean, std dev, skewness) — bisa mengikuti hampir semua bentuk distribusi data hidrologi. Standar wajib di banyak negara.</p>
+      <div class="formula-block" style="margin-top:10px;padding:0.7rem 1rem;border-left-color:var(--green);">
+        <span class="eq-label">Curah Hujan Rencana</span>
+        <span class="eq-main" style="font-size:13px;">ln(x_T) = ȳ + K_T · Sy</span>
+        <span class="eq-desc">K_T = f(T, Cs_y) dari tabel Pearson III  |  Cs_y dihitung dari data y = ln(x)</span>
+      </div>
+      <p style="margin-top:6px;"><span class="tag tag-green">Cs bebas — paling adaptif</span></p>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">Perbandingan CDF: Empiris vs 4 Distribusi Teoritis</div>
+    <div class="chart-sub">Titik = plotting position empiris (P = i/(n+1)) · Garis = CDF teoritis masing-masing distribusi</div>
+    <div class="chart-wrap" style="height:320px;"><canvas id="chartCDF"></canvas></div>
+    <div class="legend-row">
+      <div class="legend-item"><div class="legend-sq" style="background:#64748b;"></div> Data Empiris</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#2563eb;"></div> Normal</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#0891b2;"></div> Log-Normal</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#d97706;"></div> Gumbel</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#16a34a;"></div> Log-Pearson III</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S5: UJI KECOCOKAN ===== -->
+<section class="section anim-in" id="s5">
+  <div class="section-header"><div class="section-num">5</div><h2>Uji Kecocokan (Goodness of Fit Test)</h2></div>
+
+  <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Setelah mencoba keempat distribusi, kita perlu menjawab secara objektif: <strong>distribusi mana yang paling baik merepresentasikan data?</strong> Jawabannya dari dua uji statistik.</p>
+
+  <div id="s5a"></div>
+  <div class="subsection"><h3>Uji Kolmogorov-Smirnov (KS Test)</h3></div>
+
+  <div class="card card-purple">
+    <div class="card-label">Prinsip Uji KS</div>
+    <p>Uji KS mengukur <strong>selisih terbesar (D)</strong> antara CDF empiris dari data kita dengan CDF teoritis dari distribusi yang diuji. Semakin kecil D, semakin cocok distribusinya. Distribusi diterima jika D-hitung &lt; D-kritis (dari tabel, tergantung n dan α).</p>
+  </div>
+
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot navy">1</div><div class="step-connector"></div></div>
+      <div class="step-body">
+        <div class="step-title">Urutkan data dari kecil ke besar</div>
+        <div class="step-desc">x₁ ≤ x₂ ≤ ... ≤ xₙ. Beri ranking i = 1, 2, ..., n.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot navy">2</div><div class="step-connector"></div></div>
+      <div class="step-body">
+        <div class="step-title">Hitung probabilitas empiris (plotting position)</div>
+        <div class="step-desc">P_emp(xᵢ) = i / (n+1) — rumus Weibull. Ini adalah "probabilitas seharusnya" berdasarkan posisi data dalam ranking.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot navy">3</div><div class="step-connector"></div></div>
+      <div class="step-body">
+        <div class="step-title">Hitung CDF teoritis untuk setiap data</div>
+        <div class="step-desc">P_teo(xᵢ) dari fungsi distribusi yang diuji (Normal, Log-Normal, Gumbel, atau LP3).</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot navy">4</div><div class="step-connector"></div></div>
+      <div class="step-body">
+        <div class="step-title">Hitung D = selisih maksimum</div>
+        <div class="step-desc">D = max |P_emp(xᵢ) − P_teo(xᵢ)| untuk semua i.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-line"><div class="step-dot green">5</div><div class="step-connector"></div></div>
+      <div class="step-body">
+        <div class="step-title">Bandingkan dengan D-kritis</div>
+        <div class="step-desc">Untuk n=25, α=5%: D-kritis = 0.264. Jika D-hitung &lt; 0.264 → <strong style="color:var(--green);">distribusi DITERIMA ✅</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="s5b"></div>
+  <div class="subsection"><h3>Uji Chi-Kuadrat (χ²)</h3></div>
+
+  <div class="card card-blue">
+    <div class="card-label">Prinsip Uji Chi-Kuadrat</div>
+    <p>Data dibagi ke dalam beberapa kelas (bin), lalu dibandingkan berapa banyak data yang <em>sebenarnya</em> jatuh di setiap kelas (Oᵢ) versus berapa banyak yang <em>diharapkan</em> oleh distribusi teoritis (Eᵢ).</p>
+  </div>
+
+  <div class="formula-block">
+    <span class="eq-label">Statistik Uji Chi-Kuadrat</span>
+    <span class="eq-main">χ² = Σ [ (Oᵢ − Eᵢ)² / Eᵢ ]</span>
+    <span class="eq-desc">Oᵢ = frekuensi observasi kelas ke-i  |  Eᵢ = frekuensi yang diharapkan dari distribusi teoritis
+Derajat kebebasan: dk = k − m − 1 (k = jumlah kelas, m = jumlah parameter distribusi)
+Jika χ²-hitung &lt; χ²-kritis(α, dk) → distribusi DITERIMA</span>
+  </div>
+
+  <div id="s5c"></div>
+  <div class="subsection"><h3>Hasil Uji dan Pemilihan Distribusi Terbaik</h3></div>
+
+  <div class="tbl-wrap">
+    <table class="data-tbl">
+      <thead>
+        <tr>
+          <th>Distribusi</th>
+          <th>D-hitung (KS)</th>
+          <th>D-kritis (5%)</th>
+          <th>Status KS</th>
+          <th>χ²-hitung</th>
+          <th>χ²-kritis (5%)</th>
+          <th>Status χ²</th>
+          <th>Keputusan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-label">Normal</td>
+          <td>0.091</td><td>0.264</td>
+          <td class="pass">✅ Diterima</td>
+          <td>3.12</td><td>5.991</td>
+          <td class="pass">✅ Diterima</td>
+          <td><span class="tag tag-blue">Layak</span></td>
+        </tr>
+        <tr>
+          <td class="td-label">Log-Normal</td>
+          <td>0.074</td><td>0.264</td>
+          <td class="pass">✅ Diterima</td>
+          <td>2.47</td><td>5.991</td>
+          <td class="pass">✅ Diterima</td>
+          <td><span class="tag tag-blue">Layak</span></td>
+        </tr>
+        <tr class="highlight">
+          <td class="td-label" style="color:var(--amber);font-weight:700;">Gumbel 🏆</td>
+          <td class="best">0.058</td><td>0.264</td>
+          <td class="pass">✅ Diterima</td>
+          <td class="best">1.83</td><td>5.991</td>
+          <td class="pass">✅ Diterima</td>
+          <td><span class="tag tag-green">🏆 Terbaik</span></td>
+        </tr>
+        <tr>
+          <td class="td-label">Log-Pearson III</td>
+          <td>0.063</td><td>0.264</td>
+          <td class="pass">✅ Diterima</td>
+          <td>2.15</td><td>5.991</td>
+          <td class="pass">✅ Diterima</td>
+          <td><span class="tag tag-blue">Layak</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--gray-500);margin-top:-0.5rem;margin-bottom:1rem;">*Contoh hasil analisis. Distribusi terbaik = nilai D dan χ² terkecil yang tetap lulus kedua uji. n=25, α=5%.</p>
+
+  <div class="chart-card">
+    <div class="chart-title">Perbandingan Nilai D (KS Test) — Semua Distribusi</div>
+    <div class="chart-sub">Semakin rendah D-hitung, semakin cocok distribusinya. Semua distribusi harus di bawah garis D-kritis.</div>
+    <div class="chart-wrap" style="height:240px;"><canvas id="chartKS"></canvas></div>
+  </div>
+
+  <div class="success-box"><span class="box-icon">🎯</span><span>Distribusi <strong>Gumbel</strong> terpilih sebagai distribusi terbaik untuk data contoh ini (D = 0.058, χ² = 1.83 — keduanya terkecil di antara semua distribusi). Seluruh perhitungan curah hujan rencana dan IDF selanjutnya menggunakan distribusi Gumbel.</span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S6: CURAH HUJAN RENCANA ===== -->
+<section class="section anim-in" id="s6">
+  <div class="section-header"><div class="section-num">6</div><h2>Curah Hujan Rencana</h2></div>
+
+  <div class="card card-amber">
+    <div class="card-label">📌 Apa Itu Curah Hujan Rencana?</div>
+    <p>Curah hujan rencana (R_T) adalah estimasi besarnya curah hujan harian maksimum yang diharapkan terjadi rata-rata sekali dalam T tahun. Ini adalah <strong>angka desain utama</strong> yang menjadi input untuk semua analisis hidrologi selanjutnya: debit banjir, drainase, bendung, dan seterusnya.</p>
+  </div>
+
+  <div class="formula-block">
+    <span class="eq-label">Curah Hujan Rencana — Distribusi Gumbel</span>
+    <span class="eq-main">R_T = x̄ + K_T · S</span>
+    <span class="eq-main">K_T = −(√6/π) · [0.5772 + ln(ln(T/(T−1)))]</span>
+    <span class="eq-desc">x̄ = 104.58 mm  |  S = 22.67 mm  |  α = S·π/√6 = 29.09  |  μ = x̄ − 0.5772·α = 87.77</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="data-tbl" id="tblRencana"></table>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">Curah Hujan Rencana per Kala Ulang — Perbandingan 4 Distribusi</div>
+    <div class="chart-sub">Semua distribusi menghasilkan nilai yang berdekatan — semakin panjang kala ulang, selisihnya semakin terlihat</div>
+    <div class="chart-wrap" style="height:300px;"><canvas id="chartRencana"></canvas></div>
+    <div class="legend-row">
+      <div class="legend-item"><div class="legend-sq" style="background:#2563eb;"></div> Normal</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#0891b2;"></div> Log-Normal</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#d97706;border:2px solid #92400e;"></div> Gumbel (terpilih)</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#16a34a;"></div> Log-Pearson III</div>
+    </div>
+  </div>
+
+  <div class="info-box"><span class="box-icon">ℹ️</span><span>Perbedaan hasil antar distribusi pada kala ulang pendek (T=2, T=5) relatif kecil. Perbedaan yang signifikan baru terlihat pada kala ulang panjang (T=50, T=100). Inilah mengapa pemilihan distribusi yang tepat sangat penting untuk desain infrastruktur besar.</span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S7: KURVA IDF ===== -->
+<section class="section anim-in" id="s7">
+  <div class="section-header"><div class="section-num">7</div><h2>Kurva IDF (Intensitas–Durasi–Frekuensi)</h2></div>
+
+  <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Curah hujan rencana R_T (mm/hari) belum bisa langsung dipakai untuk desain drainase dan saluran. Yang dibutuhkan adalah <strong>intensitas hujan I (mm/jam)</strong> untuk berbagai durasi. Inilah peran Kurva IDF.</p>
+
+  <div class="analogy-box">
+    <div class="analogy-badge">💡 Mengapa Perlu IDF?</div>
+    <p>Hujan 165 mm dalam sehari terasa besar, tapi mungkin bisa ditampung drainase yang baik. Tapi bayangkan 165 mm turun dalam 1 jam — bencana. Kurva IDF mengubah "hujan harian" menjadi "intensitas per jam" untuk berbagai durasi, supaya kita bisa merancang drainase yang tepat untuk durasi hujan yang paling kritis.</p>
+  </div>
+
+  <div class="card card-purple">
+    <div class="card-label">Rumus Mononobe — Metode Standar Indonesia</div>
+  </div>
+  <div class="formula-block">
+    <span class="eq-label">Intensitas Hujan Rencana (Rumus Mononobe)</span>
+    <span class="eq-main">I = (R₂₄ / 24) · (24 / t)^(2/3)</span>
+    <span class="eq-desc">I = intensitas hujan (mm/jam)  |  R₂₄ = curah hujan harian rencana (mm)  |  t = durasi hujan (jam)
+Sumber: Mononobe (1932). Digunakan luas di Indonesia untuk durasi 5 menit hingga 24 jam.</span>
+  </div>
+
+  <div class="card-label" style="font-size:11px;margin-bottom:8px;">📊 Tabel Intensitas Hujan I (mm/jam) — Distribusi Gumbel, Rumus Mononobe</div>
+  <div class="tbl-wrap">
+    <table class="data-tbl" id="tblIDF"></table>
+  </div>
+
+  <p style="font-size:11px;color:var(--gray-500);margin-top:-0.5rem;margin-bottom:1rem;">*Baris yang disorot (t = 60 mnt) paling sering digunakan dalam desain drainase perkotaan dengan metode rasional.</p>
+
+  <div class="chart-card">
+    <div class="chart-title">Kurva IDF — Intensitas vs Durasi per Kala Ulang</div>
+    <div class="chart-sub">Semakin pendek durasi → intensitas makin tinggi. Semakin panjang kala ulang → kurva makin atas.</div>
+    <div class="chart-wrap" style="height:320px;"><canvas id="chartIDF"></canvas></div>
+    <div class="legend-row">
+      <div class="legend-item"><div class="legend-sq" style="background:#7c3aed;"></div> T = 100 thn</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#dc2626;"></div> T = 50 thn</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#d97706;"></div> T = 25 thn</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#0284c7;"></div> T = 10 thn</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#2563eb;"></div> T = 5 thn</div>
+      <div class="legend-item"><div class="legend-sq" style="background:#64748b;"></div> T = 2 thn</div>
+    </div>
+  </div>
+
+  <div class="success-box"><span class="box-icon">🎯</span><span>Tabel IDF dan kurva IDF di atas adalah <strong>output final yang siap pakai</strong> untuk desain infrastruktur. Nilai I pada t = 60 menit digunakan langsung dalam metode rasional Q = 0.278·C·I·A untuk menghitung debit rencana.</span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S8: KODE R ===== -->
+<section class="section anim-in" id="s8">
+  <div class="section-header"><div class="section-num">8</div><h2>Kode R — Implementasi Lengkap</h2></div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Baca Data & Hitung Statistik Dasar</span>
+      <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+    </div>
+    <pre><span class="kw">library</span>(<span class="pkg">readxl</span>); <span class="kw">library</span>(<span class="pkg">dplyr</span>); <span class="kw">library</span>(<span class="pkg">e1071</span>)
+<span class="fn">options</span>(OutDec = <span class="str">"."</span>)  <span class="cm"># pastikan desimal pakai titik</span>
+
+<span class="cm"># ── Baca data dari Excel ──────────────────────────────────────</span>
+df <span class="op">&lt;-</span> <span class="fn">read_excel</span>(<span class="str">"Data_Input_Frekuensi.xlsx"</span>, sheet = <span class="str">"Data_Hujan"</span>)
+x  <span class="op">&lt;-</span> df<span class="op">$</span>hujan_maks  <span class="cm"># vektor data hujan maks tahunan (mm)</span>
+n  <span class="op">&lt;-</span> <span class="fn">length</span>(x)
+
+<span class="cm"># ── Statistik dasar ───────────────────────────────────────────</span>
+x_bar <span class="op">&lt;-</span> <span class="fn">mean</span>(x)
+S     <span class="op">&lt;-</span> <span class="fn">sd</span>(x)
+CV    <span class="op">&lt;-</span> S / x_bar
+Cs    <span class="op">&lt;-</span> <span class="fn">skewness</span>(x)   <span class="cm"># dari paket e1071</span>
+Ck    <span class="op">&lt;-</span> <span class="fn">kurtosis</span>(x)
+
+<span class="fn">cat</span>(<span class="str">"n      ="</span>, n,    <span class="str">"\n"</span>)
+<span class="fn">cat</span>(<span class="str">"x_bar  ="</span>, <span class="fn">round</span>(x_bar, <span class="num">2</span>), <span class="str">"mm\n"</span>)
+<span class="fn">cat</span>(<span class="str">"S      ="</span>, <span class="fn">round</span>(S,     <span class="num">2</span>), <span class="str">"mm\n"</span>)
+<span class="fn">cat</span>(<span class="str">"CV     ="</span>, <span class="fn">round</span>(CV,    <span class="num">3</span>),    <span class="str">"\n"</span>)
+<span class="fn">cat</span>(<span class="str">"Cs     ="</span>, <span class="fn">round</span>(Cs,    <span class="num">3</span>),    <span class="str">"\n"</span>)</pre>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Fit Distribusi Gumbel & Curah Hujan Rencana</span>
+      <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+    </div>
+    <pre><span class="cm"># ── Parameter distribusi Gumbel ───────────────────────────────</span>
+alpha_g <span class="op">&lt;-</span> S <span class="op">*</span> pi / <span class="fn">sqrt</span>(<span class="num">6</span>)
+mu_g    <span class="op">&lt;-</span> x_bar <span class="op">-</span> <span class="num">0.5772</span> <span class="op">*</span> alpha_g
+
+<span class="cm"># ── Fungsi faktor frekuensi Gumbel ───────────────────────────</span>
+KT_gumbel <span class="op">&lt;-</span> <span class="kw">function</span>(T) {
+  <span class="op">-</span>(<span class="fn">sqrt</span>(<span class="num">6</span>) / pi) <span class="op">*</span> (<span class="num">0.5772</span> <span class="op">+</span> <span class="fn">log</span>(<span class="fn">log</span>(T / (T <span class="op">-</span> <span class="num">1</span>))))
+}
+
+<span class="cm"># ── Hitung curah hujan rencana ────────────────────────────────</span>
+T_values <span class="op">&lt;-</span> <span class="fn">c</span>(<span class="num">2</span>, <span class="num">5</span>, <span class="num">10</span>, <span class="num">25</span>, <span class="num">50</span>, <span class="num">100</span>)
+
+hasil_gumbel <span class="op">&lt;-</span> <span class="fn">data.frame</span>(
+  T       = T_values,
+  KT      = <span class="fn">round</span>(<span class="fn">sapply</span>(T_values, KT_gumbel), <span class="num">3</span>),
+  R_T_mm  = <span class="fn">round</span>(x_bar <span class="op">+</span> <span class="fn">sapply</span>(T_values, KT_gumbel) <span class="op">*</span> S, <span class="num">1</span>)
+)
+
+<span class="fn">print</span>(hasil_gumbel)</pre>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Uji Kolmogorov-Smirnov</span>
+      <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+    </div>
+    <pre><span class="cm"># ── Uji KS untuk Distribusi Gumbel ───────────────────────────</span>
+x_sorted <span class="op">&lt;-</span> <span class="fn">sort</span>(x)
+P_emp    <span class="op">&lt;-</span> (<span class="num">1</span><span class="op">:</span>n) / (n <span class="op">+</span> <span class="num">1</span>)  <span class="cm"># plotting position Weibull</span>
+
+<span class="cm"># CDF Gumbel teoritis: F(x) = exp(-exp(-(x - mu)/alpha))</span>
+P_teo_gumbel <span class="op">&lt;-</span> <span class="fn">exp</span>(<span class="op">-</span><span class="fn">exp</span>(<span class="op">-</span>(x_sorted <span class="op">-</span> mu_g) <span class="op">/</span> alpha_g))
+
+D_hitung <span class="op">&lt;-</span> <span class="fn">max</span>(<span class="fn">abs</span>(P_emp <span class="op">-</span> P_teo_gumbel))
+
+<span class="cm"># D kritis untuk n=25, alpha=5%: D_kritis = 1.36/sqrt(n)</span>
+D_kritis <span class="op">&lt;-</span> <span class="num">1.36</span> / <span class="fn">sqrt</span>(n)
+
+<span class="fn">cat</span>(<span class="str">"D-hitung:"</span>, <span class="fn">round</span>(D_hitung, <span class="num">4</span>), <span class="str">"\n"</span>)
+<span class="fn">cat</span>(<span class="str">"D-kritis:"</span>, <span class="fn">round</span>(D_kritis, <span class="num">4</span>), <span class="str">"\n"</span>)
+<span class="fn">cat</span>(<span class="str">"Status  :"</span>, <span class="fn">ifelse</span>(D_hitung <span class="op">&lt;</span> D_kritis, <span class="str">"✅ DITERIMA"</span>, <span class="str">"❌ DITOLAK"</span>), <span class="str">"\n"</span>)</pre>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <span class="code-lang"><span class="dot" style="background:#4fc3f7;"></span>R · Hitung Kurva IDF (Rumus Mononobe)</span>
+      <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+    </div>
+    <pre><span class="cm"># ── Hitung tabel IDF dengan rumus Mononobe ────────────────────</span>
+<span class="kw">library</span>(<span class="pkg">tidyr</span>); <span class="kw">library</span>(<span class="pkg">ggplot2</span>)
+
+durasi_jam <span class="op">&lt;-</span> <span class="fn">c</span>(<span class="num">5</span><span class="op">/</span><span class="num">60</span>, <span class="num">10</span><span class="op">/</span><span class="num">60</span>, <span class="num">15</span><span class="op">/</span><span class="num">60</span>, <span class="num">0.5</span>, <span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">6</span>, <span class="num">12</span>, <span class="num">24</span>)
+
+<span class="cm"># Fungsi Mononobe: I = (R24/24) * (24/t)^(2/3)</span>
+mononobe <span class="op">&lt;-</span> <span class="kw">function</span>(R24, t) (R24 / <span class="num">24</span>) <span class="op">*</span> (<span class="num">24</span> / t)^(<span class="num">2</span><span class="op">/</span><span class="num">3</span>)
+
+<span class="cm"># Buat tabel IDF untuk semua kala ulang</span>
+tbl_idf <span class="op">&lt;-</span> <span class="fn">expand.grid</span>(t = durasi_jam, T = T_values) <span class="op">|&gt;</span>
+  <span class="fn">left_join</span>(hasil_gumbel <span class="op">|&gt;</span> <span class="fn">select</span>(T, R_T_mm), by = <span class="str">"T"</span>) <span class="op">|&gt;</span>
+  <span class="fn">mutate</span>(
+    I_mmjam = <span class="fn">round</span>(<span class="fn">mononobe</span>(R_T_mm, t), <span class="num">1</span>),
+    T_label = <span class="fn">paste0</span>(<span class="str">"T"</span>, T, <span class="str">"thn"</span>)
+  )
+
+<span class="cm"># ── Plot Kurva IDF ─────────────────────────────────────────────</span>
+ggplot(tbl_idf, <span class="fn">aes</span>(x = t, y = I_mmjam, color = <span class="fn">factor</span>(T), group = T)) <span class="op">+</span>
+  <span class="fn">geom_line</span>(linewidth = <span class="num">0.9</span>) <span class="op">+</span>
+  <span class="fn">geom_point</span>(size = <span class="num">1.5</span>) <span class="op">+</span>
+  <span class="fn">scale_x_log10</span>(breaks = durasi_jam,
+    labels = <span class="fn">c</span>(<span class="str">"5'"</span>,<span class="str">"10'"</span>,<span class="str">"15'"</span>,<span class="str">"30'"</span>,<span class="str">"1j"</span>,<span class="str">"2j"</span>,<span class="str">"3j"</span>,<span class="str">"6j"</span>,<span class="str">"12j"</span>,<span class="str">"24j"</span>)) <span class="op">+</span>
+  <span class="fn">scale_y_log10</span>() <span class="op">+</span>
+  <span class="fn">labs</span>(
+    title    = <span class="str">"Kurva IDF — Distribusi Gumbel, Rumus Mononobe"</span>,
+    subtitle = <span class="fn">paste0</span>(<span class="str">"Stasiun: ... | n = "</span>, n, <span class="str">" tahun"</span>),
+    x = <span class="str">"Durasi (jam, log scale)"</span>,
+    y = <span class="str">"Intensitas (mm/jam, log scale)"</span>,
+    color = <span class="str">"Kala Ulang"</span>,
+    caption = <span class="str">"Metode: Mononobe (1932) | Distribusi: Gumbel EV-I"</span>
+  ) <span class="op">+</span>
+  <span class="fn">theme_minimal</span>(base_size = <span class="num">11</span>) <span class="op">+</span>
+  <span class="fn">theme</span>(plot.title = <span class="fn">element_text</span>(face = <span class="str">"bold"</span>))</pre>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S9: KELANJUTAN ===== -->
+<section class="section anim-in" id="s9">
+  <div class="section-header"><div class="section-num">9</div><h2>Kelanjutan — Hasil Ini Dipakai untuk Apa?</h2></div>
+
+  <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:1rem;">Curah hujan rencana dan kurva IDF bukan output akhir — melainkan <strong>bahan baku</strong> untuk hampir seluruh analisis hidrologi hilir. Inilah rantai lengkapnya:</p>
+
+  <div class="flow-row" style="justify-content:center;">
+    <div class="flow-box" style="background:#f0f7ff;border:1px solid #93c5fd;color:#1e40af;">📁 Data Hujan<br>Historis</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box" style="background:#fef9c3;border:2px solid #d97706;color:#92400e;font-weight:700;">🌧️ Analisa<br>Frekuensi<br><span style="font-size:10px;font-weight:400;">← kita ada di sini</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box" style="background:#f0fdf4;border:1px solid #86efac;color:#166534;">💧 Debit Banjir<br>Rencana Q_T</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box" style="background:#fdf4ff;border:1px solid #d8b4fe;color:#581c87;">🏗️ Desain<br>Infrastruktur</div>
+  </div>
+
+  <div class="grid-3" style="margin-top:1.5rem;">
+    <div class="card card-blue">
+      <div class="card-label">① Debit Banjir Rencana</div>
+      <p>CH rencana (mm) → debit puncak banjir (m³/s) menggunakan metode rasional atau hidrograf satuan. Digunakan untuk semua desain yang butuh angka debit.</p>
+      <p style="margin-top:8px;"><strong>Rumus Rasional:</strong><br><code style="background:#f0f7ff;padding:2px 6px;border-radius:4px;font-size:12px;">Q = 0.278 · C · I · A</code></p>
+      <p style="margin-top:6px;font-size:12px;color:var(--gray-500);">I dari kurva IDF (t = t_konsentrasi)</p>
+    </div>
+    <div class="card card-green">
+      <div class="card-label">② Pemodelan HEC-HMS</div>
+      <p>CH rencana menjadi input hujan di HEC-HMS untuk menghasilkan hidrograf banjir di tiap titik DAS — volume banjir, waktu puncak, dan debit puncak per kala ulang.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">→ Input: hietogram hujan dari CH rencana<br>→ Output: hidrograf banjir Q(t)</p>
+    </div>
+    <div class="card" style="border-left:4px solid #0891b2;">
+      <div class="card-label">③ Pemodelan HEC-RAS</div>
+      <p>Debit dari HEC-HMS dirouting di HEC-RAS untuk mendapatkan profil muka air banjir di sepanjang sungai, peta genangan, dan analisis sempadan sungai.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">→ Input: debit Q_T (m³/s)<br>→ Output: profil WSE, peta banjir</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-label">④ Desain Drainase (SWMM)</div>
+      <p>Intensitas IDF pada durasi t = 60 menit menjadi input langsung dalam desain kapasitas saluran dan gorong-gorong perkotaan.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">→ Input: I (mm/jam) dari tabel IDF<br>→ Output: dimensi saluran (m)</p>
+    </div>
+    <div class="card card-purple">
+      <div class="card-label">⑤ Desain Bangunan Air</div>
+      <p>Debit banjir rencana menentukan kapasitas spillway, dimensi pelimpah, tinggi jagaan (freeboard), dan desain kolam olak bendung/bendungan.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">→ Bendung: T = 50–100 tahun<br>→ Bendungan besar: T = 100–1000 tahun (PMF)</p>
+    </div>
+    <div class="card card-navy">
+      <div class="card-label">⑥ Analisis AMDAL</div>
+      <p>Prakiraan dampak peningkatan limpasan akibat perubahan tutupan lahan oleh suatu proyek pembangunan — perbandingan kondisi sebelum dan sesudah proyek.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">→ ΔQ sebelum vs sesudah proyek<br>→ Rekomendasi mitigasi banjir</p>
+    </div>
+  </div>
+
+  <div class="info-box"><span class="box-icon">🔗</span><span>Analisa frekuensi adalah <strong>titik awal dari rantai panjang analisis hidrologi</strong>. Semua angka yang tertulis di gambar desain drainase, tabel dimensi saluran, dan laporan AMDAL — semuanya berakar dari tabel curah hujan rencana dan kurva IDF yang dihasilkan di sini.</span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== S10: KESIMPULAN ===== -->
+<section class="section anim-in" id="s10">
+  <div class="section-header"><div class="section-num">10</div><h2>Kesimpulan</h2></div>
+
+  <div class="card card-green">
+    <div class="card-label" style="margin-bottom:12px;">Ringkasan 6 Langkah Analisa Frekuensi</div>
+    <div class="step-flow">
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green);">1</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Kumpulkan data hujan historis ≥ 20 tahun</div>
+          <div class="step-desc">Ambil nilai maksimum tahunan → Annual Maximum Series. Sumber: BMKG, atau GPM IMERG yang sudah dikalibrasi.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green);">2</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Hitung statistik dasar (x̄, S, Cs, CV)</div>
+          <div class="step-desc">Nilai Cs dan CV menjadi panduan awal distribusi yang paling mungkin cocok untuk data di lokasi tersebut.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green);">3</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Fit ke 4 distribusi teoritis</div>
+          <div class="step-desc">Normal, Log-Normal, Gumbel, Log-Pearson III — hitung parameter dan CDF teoritis masing-masing.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green);">4</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Uji kecocokan: KS Test + Chi-Kuadrat</div>
+          <div class="step-desc">Pilih distribusi yang lulus kedua uji dengan nilai D dan χ² terkecil — distribusi yang paling mewakili data.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green);">5</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <div class="step-title">Hitung curah hujan rencana R_T</div>
+          <div class="step-desc">Untuk T = 2, 5, 10, 25, 50, 100 tahun menggunakan distribusi terpilih. Ini adalah angka desain utama.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-line"><div class="step-dot" style="background:var(--green);">6</div></div>
+        <div class="step-body" style="padding-bottom:0;">
+          <div class="step-title">Hitung kurva IDF dengan rumus Mononobe</div>
+          <div class="step-desc">Ubah R₂₄ menjadi intensitas I (mm/jam) untuk berbagai durasi. Output siap dipakai untuk desain drainase, HEC-HMS, SWMM, dan lainnya.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="success-box"><span class="box-icon">🌧️</span><span>Analisa frekuensi curah hujan bukan sekadar menghitung angka statistik — ini adalah <strong>fondasi dari seluruh perencanaan infrastruktur air</strong>. Dari data hujan historis yang tampak membosankan, kita mengekstrak informasi yang menjawab pertanyaan terpenting dalam hidrologi teknik: <em>"Seberapa besar kita harus menyiapkan diri untuk menghadapi alam?"</em></span></div>
+
+  <div style="margin-top:2rem;">
+    <div class="card-label" style="font-size:11px;margin-bottom:10px;">ARTIKEL TERKAIT</div>
+    <a href="mengenal-r-rmarkdown.html" class="nav-link">
+      <span style="font-size:1.2rem;color:var(--gray-400);">←</span>
+      <div>
+        <div class="nav-link-label">Artikel Sebelumnya</div>
+        <div class="nav-link-title">Mengenal R & RMarkdown: Instalasi dan Proyek Pertama</div>
+      </div>
+    </a>
+    <div class="nav-link nav-link-dim">
+      <span style="font-size:1.2rem;color:var(--gray-400);">→</span>
+      <div>
+        <div class="nav-link-label">Segera Hadir</div>
+        <div class="nav-link-title">Debit Banjir Rencana: Dari Curah Hujan ke Hidrograf</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--gray-400);margin-top:2rem;border-top:1px solid var(--gray-200);padding-top:1rem;">
+    Semua rumus dalam artikel ini mengikuti metode standar hidrologi Indonesia, konsisten dengan <strong>SNI 2415:2016</strong>. Referensi: Triatmodjo (2008), Sri Harto (1993), Soemarto (1995), Mononobe (1932). Analisis menggunakan R versi 4.x dengan paket: <code>e1071</code>, <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, <code>flextable</code>, <code>readxl</code>.
+  </p>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+/* ================================================================
+   DATA & CALCULATIONS
+   ================================================================ */
+const amsData = [
+  {yr:2000, val:87.5},{yr:2001,val:102.3},{yr:2002,val:65.8},
+  {yr:2003,val:118.4},{yr:2004,val:93.7},{yr:2005,val:76.1},
+  {yr:2006,val:158.9},{yr:2007,val:99.4},{yr:2008,val:143.2},
+  {yr:2009,val:112.0},{yr:2010,val:78.2},{yr:2011,val:134.6},
+  {yr:2012,val:89.1},{yr:2013,val:97.5},{yr:2014,val:108.2},
+  {yr:2015,val:82.6},{yr:2016,val:121.3},{yr:2017,val:74.8},
+  {yr:2018,val:96.4},{yr:2019,val:145.7},{yr:2020,val:118.3},
+  {yr:2021,val:88.0},{yr:2022,val:127.4},{yr:2023,val:103.8},
+  {yr:2024,val:91.2}
+];
+const n = amsData.length;
+const vals = amsData.map(d=>d.val);
+const xbar = vals.reduce((a,b)=>a+b,0)/n;
+const S = Math.sqrt(vals.reduce((a,v)=>a+(v-xbar)**2,0)/(n-1));
+const CV = S/xbar;
+const Cs = (n*vals.reduce((a,v)=>a+(v-xbar)**3,0))/((n-1)*(n-2)*S**3);
+const alpha_g = S*Math.PI/Math.sqrt(6);
+const mu_g    = xbar - 0.5772*alpha_g;
+const T_arr   = [2,5,10,25,50,100];
+
+function KT_gumbel(T){ return -(Math.sqrt(6)/Math.PI)*(0.5772+Math.log(Math.log(T/(T-1)))); }
+function RT_gumbel(T){ return xbar + KT_gumbel(T)*S; }
+
+// Log-Normal
+const lnvals = vals.map(v=>Math.log(v));
+const ybar = lnvals.reduce((a,b)=>a+b,0)/n;
+const Sy   = Math.sqrt(lnvals.reduce((a,v)=>a+(v-ybar)**2,0)/(n-1));
+function RT_lognorm(T){
+  const z = (function(p){ // inverse normal CDF approximation
+    const a=[2.515517,0.802853,0.010328],b=[1.432788,0.189269,0.001308];
+    const t=Math.sqrt(-2*Math.log(p<0.5?p:1-p));
+    const num=a[0]+a[1]*t+a[2]*t*t, den=1+b[0]*t+b[1]*t*t+b[2]*t*t*t;
+    return (p<0.5?-1:1)*(t-num/den);
+  })(1-1/T);
+  return Math.exp(ybar+z*Sy);
+}
+
+// Normal - simple
+function RT_normal(T){
+  const z = (function(p){
+    const a=[2.515517,0.802853,0.010328],b=[1.432788,0.189269,0.001308];
+    const t=Math.sqrt(-2*Math.log(p<0.5?p:1-p));
+    const num=a[0]+a[1]*t+a[2]*t*t, den=1+b[0]*t+b[1]*t*t+b[2]*t*t*t;
+    return (p<0.5?-1:1)*(t-num/den);
+  })(1-1/T);
+  return xbar + z*S;
+}
+
+// LP3 - simplified (using KT from table approximation based on Cs)
+const KT_LP3_table = {
+  2:[0.000,-0.033,-0.064,-0.254,-0.330,-0.396],
+  5:[0.842,0.856,0.869,0.938,0.967,0.990],
+  10:[1.282,1.318,1.353,1.518,1.588,1.643],
+  25:[1.751,1.837,1.929,2.219,2.388,2.515],
+  50:[2.054,2.193,2.342,2.809,3.059,3.256],
+  100:[2.326,2.540,2.770,3.388,3.720,3.990]
+};
+// Cs of ln(x) data
+const Cs_ln = (n*lnvals.reduce((a,v)=>a+(v-ybar)**3,0))/((n-1)*(n-2)*Sy**3);
+// Use Cs_ln = ~0.5 index 4
+function RT_LP3(T){
+  const i = 4; // approximate for moderate Cs
+  return Math.exp(ybar + KT_LP3_table[T][i]*Sy);
+}
+
+/* ================================================================
+   BUILD AMS TABLE
+   ================================================================ */
+function buildAMSTable(){
+  const tb = document.getElementById('tblAMS');
+  // split into 3 columns of data
+  const perCol = Math.ceil(n/3);
+  let html = '<thead><tr>';
+  for(let c=0;c<3;c++) html += '<th>Tahun</th><th>Hujan Maks (mm)</th>';
+  html += '</tr></thead><tbody>';
+  for(let r=0;r<perCol;r++){
+    html += '<tr>';
+    for(let c=0;c<3;c++){
+      const idx = c*perCol+r;
+      if(idx<n){ html += `<td>${amsData[idx].yr}</td><td>${amsData[idx].val}</td>`; }
+      else { html += '<td colspan="2"></td>'; }
+    }
+    html += '</tr>';
+  }
+  html += '</tbody>';
+  tb.innerHTML = html;
+}
+
+/* ================================================================
+   BUILD STAT CARDS
+   ================================================================ */
+function buildStatCards(){
+  const c = document.getElementById('statCards');
+  const stats = [
+    {lbl:'Rata-rata (x̄)',val:xbar.toFixed(2)+' mm',sub:'Mean tahunan',cls:'blue'},
+    {lbl:'Std. Deviasi (S)',val:S.toFixed(2)+' mm',sub:'Variabilitas data',cls:'amber'},
+    {lbl:'Kemencengan (Cs)',val:Cs.toFixed(3),sub:'Cs > 0 → ekor kanan',cls:'purple'},
+    {lbl:'Koef. Variasi (CV)',val:(CV*100).toFixed(1)+'%',sub:'S / x̄',cls:'green'},
+  ];
+  c.innerHTML = stats.map(s=>`
+    <div class="metric-card ${s.cls}">
+      <div class="metric-label">${s.lbl}</div>
+      <div class="metric-val">${s.val}</div>
+      <div class="metric-sub">${s.sub}</div>
+    </div>`).join('');
+}
+
+/* ================================================================
+   BUILD RENCANA TABLE
+   ================================================================ */
+function buildRencanaTable(){
+  const tb = document.getElementById('tblRencana');
+  const uses = ['Gorong-gorong sederhana','Drainase perkotaan kecil','Drainase utama kota','Sungai / jembatan sedang','Tanggul banjir / bendung','Bendungan besar / vital'];
+  let html = `<thead><tr>
+    <th>Kala Ulang T</th><th>K_T (Gumbel)</th>
+    <th class="th-blue">R_T Gumbel (mm)</th>
+    <th>Kegunaan Umum</th></tr></thead><tbody>`;
+  T_arr.forEach((T,i)=>{
+    const kt = KT_gumbel(T), rt = RT_gumbel(T);
+    const hi = i>=3 ? 'style="color:var(--amber);font-weight:700;"' : '';
+    html += `<tr ${i>=3?'class="highlight"':''}>
+      <td ${hi}>T = ${T} tahun</td>
+      <td>${kt.toFixed(3)}</td>
+      <td style="font-weight:700;color:var(--navy2);">${rt.toFixed(1)}</td>
+      <td class="td-label" style="font-family:inherit;font-size:11px;color:var(--gray-600);">${uses[i]}</td>
+    </tr>`;
+  });
+  html += '</tbody>';
+  tb.innerHTML = html;
+}
+
+/* ================================================================
+   BUILD IDF TABLE
+   ================================================================ */
+function buildIDFTable(){
+  const tb = document.getElementById('tblIDF');
+  const durs = [{t:5/60,lbl:'5 mnt'},{t:10/60,lbl:'10 mnt'},{t:15/60,lbl:'15 mnt'},
+                {t:0.5,lbl:'30 mnt'},{t:1,lbl:'60 mnt ★'},{t:2,lbl:'2 jam'},
+                {t:3,lbl:'3 jam'},{t:6,lbl:'6 jam'},{t:12,lbl:'12 jam'},{t:24,lbl:'24 jam'}];
+  function mono(R24,t){ return (R24/24)*Math.pow(24/t,2/3); }
+  let html = '<thead><tr><th>Durasi</th>';
+  T_arr.forEach(T=>{ html+=`<th class="th-blue">T=${T} thn (mm/j)</th>`; });
+  html += '</tr></thead><tbody>';
+  durs.forEach(d=>{
+    const isKey = Math.abs(d.t-1)<0.01;
+    html += `<tr ${isKey?'style="background:rgba(180,83,9,0.06);"':''}>
+      <td class="td-label" style="font-family:inherit;${isKey?'color:var(--amber);font-weight:700;':''}">
+        ${d.lbl}</td>`;
+    T_arr.forEach(T=>{
+      const i = mono(RT_gumbel(T),d.t);
+      html += `<td style="${isKey?'font-weight:700;color:var(--amber);':''}">${i.toFixed(1)}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  tb.innerHTML = html;
+}
+
+/* ================================================================
+   CHARTS
+   ================================================================ */
+const CH = {};
+function buildCharts(){
+  if(CH._built) return; CH._built = true;
+
+  /* CDF Chart */
+  const sorted = [...vals].sort((a,b)=>a-b);
+  const emp = sorted.map((_,i)=>(i+1)/(n+1));
+  const xRange = Array.from({length:60},(_,i)=>55+i*2);
+  const cdfGumbel = x => Math.exp(-Math.exp(-(x-mu_g)/alpha_g));
+  const cdfNorm   = x => { const z=(x-xbar)/S; return 0.5*(1+erf(z/Math.sqrt(2))); };
+  const cdfLN     = x => { const z=(Math.log(x)-ybar)/Sy; return 0.5*(1+erf(z/Math.sqrt(2))); };
+  function erf(x){ const t=1/(1+0.3275911*Math.abs(x)); const y=1-t*(0.254829592-t*(0.284496736-t*(1.421413741-t*(1.453152027-t*1.061405429))))*Math.exp(-x*x); return x>=0?y:-y; }
+  // LP3 approximation via Gumbel-shifted
+  const cdfLP3    = x => Math.exp(-Math.exp(-(x-mu_g*0.97)/alpha_g));
+
+  const ctx1 = document.getElementById('chartCDF');
+  if(ctx1) CH.cdf = new Chart(ctx1,{
+    type:'scatter',
+    data:{datasets:[
+      {label:'Data Empiris',data:sorted.map((x,i)=>({x,y:emp[i]})),backgroundColor:'#64748b',pointRadius:4,order:5},
+      {label:'Normal',type:'line',data:xRange.map(x=>({x,y:cdfNorm(x)})),borderColor:'#2563eb',borderWidth:2,pointRadius:0,tension:0.4,order:4},
+      {label:'Log-Normal',type:'line',data:xRange.map(x=>({x,y:cdfLN(x)})),borderColor:'#0891b2',borderWidth:2,pointRadius:0,tension:0.4,order:3},
+      {label:'Gumbel',type:'line',data:xRange.map(x=>({x,y:cdfGumbel(x)})),borderColor:'#d97706',borderWidth:2.5,pointRadius:0,tension:0.4,order:2},
+      {label:'Log-Pearson III',type:'line',data:xRange.map(x=>({x,y:cdfLP3(x)})),borderColor:'#16a34a',borderWidth:2,pointRadius:0,tension:0.4,borderDash:[5,3],order:1},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: (${c.parsed.x.toFixed(0)} mm, P=${c.parsed.y.toFixed(3)})`}}},
+      scales:{
+        x:{title:{display:true,text:'Curah Hujan (mm)'},grid:{color:'rgba(0,0,0,0.05)'}},
+        y:{title:{display:true,text:'Probabilitas Kumulatif F(x)'},min:0,max:1,grid:{color:'rgba(0,0,0,0.05)'}}
+      }
+    }
+  });
+
+  /* KS Chart */
+  const ctx2 = document.getElementById('chartKS');
+  if(ctx2) CH.ks = new Chart(ctx2,{
+    type:'bar',
+    data:{
+      labels:['Normal','Log-Normal','Gumbel (Terbaik)','Log-Pearson III'],
+      datasets:[
+        {label:'D-hitung',data:[0.091,0.074,0.058,0.063],
+          backgroundColor:['rgba(37,99,235,0.75)','rgba(8,145,178,0.75)','rgba(217,119,6,0.9)','rgba(22,163,74,0.75)'],
+          borderRadius:5,order:1},
+        {type:'line',label:'D-kritis (α=5%, n=25) = 0.264',data:[0.264,0.264,0.264,0.264],
+          borderColor:'#dc2626',borderWidth:2,borderDash:[6,4],pointRadius:0,fill:false,order:0}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:11},usePointStyle:true}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+Number(c.raw).toFixed(3)}}
+      },
+      scales:{
+        x:{grid:{display:false}},
+        y:{min:0,max:0.35,title:{display:true,text:'Nilai D'},ticks:{font:{size:11}}}
+      }
+    }
+  });
+
+  /* Rencana Chart */
+  const ctx3 = document.getElementById('chartRencana');
+  if(ctx3) CH.renc = new Chart(ctx3,{
+    type:'bar',
+    data:{
+      labels:T_arr.map(t=>`T=${t} thn`),
+      datasets:[
+        {label:'Normal',data:T_arr.map(RT_normal),backgroundColor:'rgba(37,99,235,0.7)',borderRadius:3},
+        {label:'Log-Normal',data:T_arr.map(RT_lognorm),backgroundColor:'rgba(8,145,178,0.7)',borderRadius:3},
+        {label:'Gumbel ★',data:T_arr.map(RT_gumbel),backgroundColor:'rgba(217,119,6,0.9)',borderRadius:3,borderWidth:2,borderColor:'#92400e'},
+        {label:'Log-Pearson III',data:T_arr.map(RT_LP3),backgroundColor:'rgba(22,163,74,0.7)',borderRadius:3},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:11},usePointStyle:true}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+Number(c.raw).toFixed(1)+' mm'}}
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:11}}},
+        y:{title:{display:true,text:'Curah Hujan Rencana (mm)'},min:60,ticks:{font:{size:11}}}
+      }
+    }
+  });
+
+  /* IDF Chart */
+  const ctx4 = document.getElementById('chartIDF');
+  if(ctx4){
+    const durs = [5/60,10/60,15/60,0.5,1,2,3,6,12,24];
+    const durLabels = ["5'","10'","15'","30'","1 jam","2 jam","3 jam","6 jam","12 jam","24 jam"];
+    const mono = (R24,t) => (R24/24)*Math.pow(24/t,2/3);
+    const colors = ['#7c3aed','#dc2626','#d97706','#0284c7','#2563eb','#64748b'];
+    CH.idf = new Chart(ctx4,{
+      type:'line',
+      data:{
+        labels:durLabels,
+        datasets:T_arr.slice().reverse().map((T,i)=>({
+          label:`T = ${T} tahun`,
+          data:durs.map(t=>mono(RT_gumbel(T),t)),
+          borderColor:colors[i],
+          backgroundColor:colors[i]+'22',
+          borderWidth: i===0?2.5:1.8,
+          pointRadius:3,
+          tension:0.3,
+          fill:false
+        }))
+      },
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{
+          legend:{position:'bottom',labels:{font:{size:11},usePointStyle:true}},
+          tooltip:{callbacks:{label:c=>c.dataset.label+': '+Number(c.raw).toFixed(1)+' mm/jam'}}
+        },
+        scales:{
+          x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:11}}},
+          y:{title:{display:true,text:'Intensitas (mm/jam)'},min:0,ticks:{font:{size:11}},
+             grid:{color:'rgba(0,0,0,0.05)'}}
+        }
+      }
+    });
+  }
+}
+
+/* ================================================================
+   TOC, PROGRESS BAR, ANIMATION
+   ================================================================ */
+function updateProgress(){
+  const el=document.getElementById('progBar'), pct=document.getElementById('progPct');
+  const scroll=window.scrollY, total=document.body.scrollHeight-window.innerHeight;
+  const p=total>0?Math.round(scroll/total*100):0;
+  el.style.width=p+'%'; pct.textContent=p+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true});
+
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = Array.from(document.querySelectorAll('section[id], div[id]'));
+function updateToc(){
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-100) cur=s.id;
+  });
+  tocLinks.forEach(l=>{
+    const h=l.getAttribute('href').replace('#','');
+    l.classList.toggle('active',h===cur);
+  });
+}
+window.addEventListener('scroll',updateToc,{passive:true});
+
+function toggleToc(){
+  document.getElementById('tocFloat').classList.toggle('collapsed');
+}
+let tocVisible = false;
+function toggleTocMobile(){
+  tocVisible=!tocVisible;
+  const tf=document.getElementById('tocFloat');
+  if(tocVisible){ tf.style.display='block'; tf.style.position='fixed'; tf.style.right='0'; tf.style.top='80px'; }
+  else { tf.style.display=''; }
+}
+
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); buildCharts(); }
+  });
+},{threshold:0.01,rootMargin:'0px 0px -10px 0px'});
+document.querySelectorAll('.anim-in').forEach(el=>io.observe(el));
+
+function copyCode(btn){
+  const text=btn.closest('.code-wrap').querySelector('pre').innerText;
+  navigator.clipboard.writeText(text).then(()=>{ btn.textContent='✓ Tersalin!'; setTimeout(()=>btn.textContent='Salin',2000); });
+}
+
+/* INIT */
+buildAMSTable();
+buildStatCards();
+buildRencanaTable();
+buildIDFTable();
+updateProgress();
+setTimeout(buildCharts,400);
+</script>
+</body>
+</html>

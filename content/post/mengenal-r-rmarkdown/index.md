@@ -149,7 +149,7 @@ Kamu hanya butuh **dua software** ini. Keduanya gratis.
 <div style="width: 36px; height: 36px; border-radius: 50%; background: #1565C0; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;" class="pulse-dot">1</div>
 <div>
 <div style="font-size: 0.9rem; font-weight: 700; color: #90CAF9; margin-bottom: 0.2rem;">Install R</div>
-<div style="font-size: 0.82rem; color: #666; line-height: 1.6;">Download dari <strong style="color: #90CAF9;">cran.r-project.org</strong> → pilih <em>Download R for Windows</em> → jalankan installer, klik Next terus sampai selesai.</div>
+<div style="font-size: 0.82rem; color: #666; line-height: 1.6;">Download dari <strong style="color: #90CAF9;">[cran.r-project.org](https://cran.r-project.org)</strong> → pilih <em>Download R for Windows atau sistem operasi yang kamu pakai</em> → jalankan installer, klik Next terus sampai selesai.</div>
 </div>
 </div>
 
@@ -157,7 +157,7 @@ Kamu hanya butuh **dua software** ini. Keduanya gratis.
 <div style="width: 36px; height: 36px; border-radius: 50%; background: #00838F; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;">2</div>
 <div>
 <div style="font-size: 0.9rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.2rem;">Install RStudio</div>
-<div style="font-size: 0.82rem; color: #666; line-height: 1.6;">Download dari <strong style="color: #80DEEA;">posit.co/download/rstudio-desktop</strong> → pilih versi gratis (RStudio Desktop) → install. RStudio adalah antarmuka visual untuk bekerja dengan R.</div>
+<div style="font-size: 0.82rem; color: #666; line-height: 1.6;">Download dari <strong style="color: #80DEEA;">[posit.co/download/rstudio-desktop](https://posit.co/download/rstudio-desktop)</strong> → pilih versi gratis (RStudio Desktop) → install. RStudio adalah antarmuka visual untuk bekerja dengan R.</div>
 </div>
 </div>
 

@@ -235,7 +235,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">3</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Analisis Hidrologi (1 dari 5) </div>
+    <div class="kur-phase-title">Analisis Hidrologi (2 dari 5) </div>
     <div class="kur-phase-sub">Kalibrasi · Frekuensi · IDF · Debit Banjir </div>
   </div>
   <span class="kur-phase-arrow">▼</span>
@@ -258,7 +258,7 @@ design:
       <div class="kur-module-title">Analisis Frekuensi Curah Hujan</div>
       <div class="kur-module-desc">Distribusi Log Pearson III, Gumbel, dan Normal — uji Smirnov-Kolmogorov & Chi-Square, periode ulang 2–100 tahun.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
   <div class="kur-module">

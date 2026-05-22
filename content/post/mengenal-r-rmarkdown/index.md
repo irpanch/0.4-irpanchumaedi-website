@@ -70,7 +70,7 @@ Untuk mengerjakan ulang dengan cara biasa mungkin bisa menghabiskan **2-4 jam** 
 
 ## Apa Itu R?
 
-R adalah bahasa pemrograman yang dirancang khusus untuk analisis statistik dan visualisasi data. Tapi jangan langsung takut dengan kata "pemrograman" — seperti yang sudah dibahas di artikel sebelumnya, kita tidak perlu menjadi programmer. Kita cukup menjadi **pengguna yang cerdas**.
+R adalah bahasa pemrograman yang dirancang khusus untuk analisis statistik dan visualisasi data. Tapi jangan langsung takut dengan kata "pemrograman" — seperti yang sudah dibahas di [artikel sebelumnya](https://www.irpanchumaedi.com/post/materi-pengguna-pembuat-kode/), kita tidak perlu menjadi programmer. Kita cukup menjadi **pengguna yang cerdas**.
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin: 1.8rem 0;">
 

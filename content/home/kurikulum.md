@@ -262,15 +262,6 @@ design:
   </a>
 
   <div class="kur-module">
-    <span class="kur-module-icon">⏱️</span>
-    <div class="kur-module-info">
-      <div class="kur-module-title">Kurva IDF — Intensitas, Durasi, Frekuensi</div>
-      <div class="kur-module-desc">Dari curah hujan harian ke intensitas hujan jam-jaman — metode Mononobe dan aplikasinya untuk desain drainase.</div>
-    </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
-
-  <div class="kur-module">
     <span class="kur-module-icon">🗺️</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Delineasi DAS & Overlay Peta dengan QGIS</div>

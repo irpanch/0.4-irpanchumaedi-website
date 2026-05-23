@@ -270,14 +270,14 @@ design:
     <span class="kur-module-badge badge-soon">📅 Segera</span>
   </div>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-perhitungan-debit-banjir/">
     <span class="kur-module-icon">🌊</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Perhitungan Debit Banjir Rancangan</div>
       <div class="kur-module-desc">Metode Rasional dan HSS Nakayasu — dari hujan rancangan ke hidrograf banjir untuk berbagai periode ulang.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
 </div>
 </div>

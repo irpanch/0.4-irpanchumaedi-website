@@ -15,7 +15,7 @@ featured: false
 
 | Stasiun | Kab/Kota | Periode | Parameter | Format | Unduh |
 |---------|----------|---------|-----------|--------|-------|
-| Bandung | Kota Bandung | - | CH harian | Excel | Segera hadir |
+| Geofisika Bandung | Kota Bandung | 2000-2025 | CH harian | Excel | [Download](https://1drv.ms/x/c/22f5ef4527203c63/IQCF8XwJQ0FlSbOszk5HB-tMAblXsphp4gsBaUdwiihCZ1c?e=wtUfab) |
 
 ---
 

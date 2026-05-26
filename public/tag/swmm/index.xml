@@ -1,0 +1,1505 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SWMM | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/swmm/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/swmm/index.xml" rel="self" type="application/rss+xml" />
+    <description>SWMM</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>SWMM</title>
+      <link>https://irpanblog2.netlify.app/tag/swmm/</link>
+    </image>
+    
+    <item>
+      <title>Analisa Hidrologi - Kota Banjarmasin (NUFReP)</title>
+      <link>https://irpanblog2.netlify.app/project/wpg-banjarmasin/</link>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/project/wpg-banjarmasin/</guid>
+      <description>&lt;h1 id=&#34;umum&#34;&gt;Umum&lt;/h1&gt;
+&lt;p&gt;Pekerjaan ini merupakan bagian dari proyek National Urban Flood Resilience Project (NUFReP), program kerja sama antara Pemerintah Republik Indonesia dan Bank Dunia dalam rangka meningkatkan ketahanan perkotaan terhadap banjir. Salah satu komponen strategis adalah pembangunan Wilayah Pengendalian Genangan (WPG) di kawasan Sungai Sutoyo S, Banjarmasin, Kalimantan Selatan.
+Kawasan WPG Sungai Sutoyo S mencakup dua sub-DAS utama: Sub-DAS Pelambuan (116,35 Ha) dan Sub-DAS Jafri Zamzam (342,49 Ha), dengan total luas catchment 458,84 Ha. Kawasan ini secara rutin terdampak banjir yang merugikan masyarakat, infrastruktur, dan kegiatan ekonomi.
+Analisis hidrologi yang komprehensif menjadi pondasi perencanaan sistem drainase dan pengendalian banjir, mencakup analisis frekuensi hujan, penyusunan kurva IDF, delineasi catchment, dan pemodelan hidrograf desain menggunakan SWMM.&lt;/p&gt;
+&lt;h2 id=&#34;metodologi&#34;&gt;Metodologi&lt;/h2&gt;
+&lt;p&gt;Analisis hidrologi dilaksanakan mengikuti alur kerja terstruktur enam tahap, dari pengumpulan data hingga hidrograf desain.&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-1-alur-kerja-analisis-hidrologi-enam-tahap&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/alur_metodologi_hu24a7eb6134e34426a04acc1d9284725f_137381_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 1. Alur kerja analisis hidrologi enam tahap&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/alur_metodologi_hu24a7eb6134e34426a04acc1d9284725f_137381_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;100%&#34; height=&#34;546&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 1. Alur kerja analisis hidrologi enam tahap
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Secara keseluruhan, analisa hidrologi dilakukan dengan melalui enam tahapan. Mulai dari pengumpulan data, koreksi bias GPM, hingga hidrograf desain. Keenam tahapan tersebut secara rinci adalah sebagai berikut:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tahap A&lt;/strong&gt; — Pengumpulan Data: Data hujan GPM IMERG V07, ground station BMKG (2 stasiun), DEM UAV 2026, dan peta tutupan lahan ESRI Land Cover&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tahap B&lt;/strong&gt; — Koreksi Bias GPM: Evaluasi 4 metode; dipilih Year-Specific Scaling (M4) berdasarkan metrik validasi terbaik&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tahap C&lt;/strong&gt; — Analisis Frekuensi &amp;amp; IDF: Annual Maximum Series (AMS), uji statistik SNI 7746:2012, distribusi Log-Pearson III, dan kurva IDF dengan pola jam-jaman Banjarmasin&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tahap D&lt;/strong&gt; — Delineasi Catchment: Pengolahan DEM UAV 2026 untuk delineasi 12 sub-DAS.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tahap E&lt;/strong&gt; — Pemodelan SWMM: Model limpasan dengan SCS Curve Number dan IDF sebagai input hujan&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tahap F&lt;/strong&gt; — Hidrograf Desain: Debit puncak Q2, Q5, Q10, Q20 per sub-DAS sebagai input pemodelan hidraulika HEC-RAS&lt;/p&gt;
+&lt;h2 id=&#34;perangkat-lunak&#34;&gt;Perangkat Lunak&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;R (tidyverse, readxl, sf, openxlsx, QMAP) — analisis statistik dan koreksi bias&lt;/li&gt;
+&lt;li&gt;QGIS 3.40.4 + WhiteboxTools — pengolahan DEM dan delineasi catchment&lt;/li&gt;
+&lt;li&gt;EPA SWMM — pemodelan limpasan permukaan&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;pengumpulan-data&#34;&gt;Pengumpulan Data&lt;/h1&gt;
+&lt;h2 id=&#34;inventarisasi-stasiun-hujan&#34;&gt;Inventarisasi Stasiun Hujan&lt;/h2&gt;
+&lt;p&gt;Terdapat 15 stasiun hujan di sekitar area WPG. Duabelas diantaranya bersumber dari WS Kalimantan III, sedangkan tiga stasiun hujan bersumber dari BMKG. Gambar matriks ketersediaan tiap stasiun hujan serta jumlah data valid ditampilkan pada tabel berikut.&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-2-matriks-ketersediaan-data-hujan-stasiun-di-sekitar-wpg-banjarmasin&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/matriks_ketersediaan_data_hua3289e0a5e81e79108b7d37392790211_69722_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 2. Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/matriks_ketersediaan_data_hua3289e0a5e81e79108b7d37392790211_69722_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;100%&#34; height=&#34;368&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 2. Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-3-jumlah-data-valid-di-tiap-stasiun-hujan&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/jumlah_data_valid_hu3c21736f2e418ab93652bef6652b7ea2_70012_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 3. Jumlah Data Valid di Tiap Stasiun Hujan&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/jumlah_data_valid_hu3c21736f2e418ab93652bef6652b7ea2_70012_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;100%&#34; height=&#34;553&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 3. Jumlah Data Valid di Tiap Stasiun Hujan
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syarat. Dari 7 stasiun tersebut, 2 lokasi terdekat adalah Stasiun BMKG Syamsuddin Noor (33,7 km) dan BMKG Kalimantan Selatan (25 km).&lt;/p&gt;
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 1 Inventarisasi Stasiun Hujan di Sekitar WPG Sungai Sutoyo S Banjarmasin &lt;/b&gt;&lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;No&lt;/th&gt;
+&lt;th&gt;Stasiun&lt;/th&gt;
+&lt;th&gt;Wilayah&lt;/th&gt;
+&lt;th&gt;Sumber&lt;/th&gt;
+&lt;th&gt;Jarak (Km)&lt;/th&gt;
+&lt;th&gt;Mulai&lt;/th&gt;
+&lt;th&gt;Akhir&lt;/th&gt;
+&lt;th&gt;n&lt;/th&gt;
+&lt;th&gt;CH Max&lt;/th&gt;
+&lt;th&gt;Status SNI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Padang Panjang&lt;/td&gt;
+&lt;td&gt;Kab. Banjar&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;td&gt;2022&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;135&lt;/td&gt;
+&lt;td&gt;&amp;lt;10 th (Tidak Layak)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Ati&amp;rsquo;im&lt;/td&gt;
+&lt;td&gt;Kab. Banjar&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;63.2&lt;/td&gt;
+&lt;td&gt;2022&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;128&lt;/td&gt;
+&lt;td&gt;&amp;lt;10 th (Tidak Layak)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Banjarmasin&lt;/td&gt;
+&lt;td&gt;Kota Banjarmasin&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;2.8&lt;/td&gt;
+&lt;td&gt;2022&lt;/td&gt;
+&lt;td&gt;2026&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;135.8&lt;/td&gt;
+&lt;td&gt;&amp;lt;10 th (Tidak Layak)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Gudang Tengah&lt;/td&gt;
+&lt;td&gt;Kab. Banjar&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;15.6&lt;/td&gt;
+&lt;td&gt;2020&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;307.5&lt;/td&gt;
+&lt;td&gt;&amp;lt;10 th (Tidak Layak)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;Aluh-Aluh&lt;/td&gt;
+&lt;td&gt;Kab. Banjar&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;16.4&lt;/td&gt;
+&lt;td&gt;2022&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;98.8&lt;/td&gt;
+&lt;td&gt;&amp;lt;10 th (Tidak Layak)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;Astambul&lt;/td&gt;
+&lt;td&gt;Kab. Banjar&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;28.9&lt;/td&gt;
+&lt;td&gt;2022&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;74.8&lt;/td&gt;
+&lt;td&gt;&amp;lt;10 th (Tidak Layak)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;Mengkauk&lt;/td&gt;
+&lt;td&gt;Kab. Banjar&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;60.8&lt;/td&gt;
+&lt;td&gt;2022&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;102.2&lt;/td&gt;
+&lt;td&gt;&amp;lt;10 th (Tidak Layak)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;Batu Tangga&lt;/td&gt;
+&lt;td&gt;Hulu Sungai Tengah&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;137&lt;/td&gt;
+&lt;td&gt;1995&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;28&lt;/td&gt;
+&lt;td&gt;153&lt;/td&gt;
+&lt;td&gt;20-29 th (Cukup)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;Intangan&lt;/td&gt;
+&lt;td&gt;Hulu Sungai Tengah&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;123.7&lt;/td&gt;
+&lt;td&gt;1995&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;td&gt;188&lt;/td&gt;
+&lt;td&gt;20-29 th (Cukup)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;Kambat&lt;/td&gt;
+&lt;td&gt;Hulu Sungai Tengah&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;122.3&lt;/td&gt;
+&lt;td&gt;1995&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;23&lt;/td&gt;
+&lt;td&gt;368&lt;/td&gt;
+&lt;td&gt;20-29 th (Cukup)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;Mangunang&lt;/td&gt;
+&lt;td&gt;Hulu Sungai Tengah&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;116.6&lt;/td&gt;
+&lt;td&gt;1995&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;td&gt;142&lt;/td&gt;
+&lt;td&gt;20-29 th (Cukup)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;Mo&amp;rsquo;ui&lt;/td&gt;
+&lt;td&gt;Hulu Sungai Tengah&lt;/td&gt;
+&lt;td&gt;BWS Kal III/PSDA&lt;/td&gt;
+&lt;td&gt;110.9&lt;/td&gt;
+&lt;td&gt;1995&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;td&gt;180&lt;/td&gt;
+&lt;td&gt;20-29 th (Cukup)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;Kal-Sel (BMKG)&lt;/td&gt;
+&lt;td&gt;Kab. Banjarbaru&lt;/td&gt;
+&lt;td&gt;BMKG&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;td&gt;1998&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;td&gt;255.3&lt;/td&gt;
+&lt;td&gt;20-29 th (Cukup)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;14&lt;/td&gt;
+&lt;td&gt;Syamsuddin Noor&lt;/td&gt;
+&lt;td&gt;Kota Banjarbaru&lt;/td&gt;
+&lt;td&gt;BMKG&lt;/td&gt;
+&lt;td&gt;33.7&lt;/td&gt;
+&lt;td&gt;1998&lt;/td&gt;
+&lt;td&gt;2025&lt;/td&gt;
+&lt;td&gt;27&lt;/td&gt;
+&lt;td&gt;249&lt;/td&gt;
+&lt;td&gt;20-29 th (Cukup)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;15&lt;/td&gt;
+&lt;td&gt;Surgi Mufti&lt;/td&gt;
+&lt;td&gt;Kota Banjarmasin&lt;/td&gt;
+&lt;td&gt;BMKG&lt;/td&gt;
+&lt;td&gt;3.5&lt;/td&gt;
+&lt;td&gt;1996&lt;/td&gt;
+&lt;td&gt;2014&lt;/td&gt;
+&lt;td&gt;19&lt;/td&gt;
+&lt;td&gt;168&lt;/td&gt;
+&lt;td&gt;&amp;lt;20 th (Kurang)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;small&gt;&lt;em&gt;Keterangan: Stasiun dengan status ‘Tidak Layak’ memiliki data kurang dari 10 tahun sehingga tidak memenuhi persyaratan SNI 2415:2016. Stasiun ‘Cukup’ memiliki 20–29 tahun data&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;h2 id=&#34;plotting-jarak-tapak-proyek-terhadap-lokasi-stasiun-hujan&#34;&gt;Plotting Jarak Tapak Proyek Terhadap Lokasi Stasiun Hujan&lt;/h2&gt;
+&lt;p&gt;Selain terhadap kelengkapan data hujan, jarak stasiun hujan juga sangat berpengaruh terhadap analisa yang akan digunakan. Semakin dekat maka akan semakin baik. Hasil plotting bisa dilihat sebagai berikut&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-4-peta-lokasi-stasiun-hujan-dan-area-wpg-soetoyo&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/peta_lokasi_sta_hujan_hu75ab2c9456d1866612a35adc1d13d5ab_402719_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/peta_lokasi_sta_hujan_hu75ab2c9456d1866612a35adc1d13d5ab_402719_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;80%&#34; height=&#34;2310&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Dari 15 stasiun tersebut hanya ada 2 Lokasi yang paling lengkap dan paling dekat, yaitu Stasiun BMKG Syamsuddin Noor dan Stasiun BMKG Kalimantan Selatan.
+Meskipun begitu, karena jarak Lokasi stasiun hujan terhadap area pekerjaan masih sekitar 25 – 33 Km maka diperlukan data satelit untuk bisa menghitung curah hujan spesifik yang berada di area pekerjaan.&lt;/p&gt;
+&lt;h1 id=&#34;tambahan-data-satelit-gpm&#34;&gt;Tambahan data Satelit (GPM)&lt;/h1&gt;
+&lt;p&gt;Data GPM IMERG V07 dipilih karena menggunakan radar presipitasi aktif (DPR, dual frequency precipitation radar) sebagai kalibrator, menghasilkan akurasi deteksi kejadian hujan harian yang lebih baik di wilayah tropis dibandingkan produk berbasis inframerah seperti CHIRPS atau PERSIANN. Validasi independen di Kalimantan dan wilayah Indonesia lainnya menunjukkan performa konsisten pada skala harian dengan nilai RMSE dan CSI yang kompetitif. Selain itu, GPM IMERG telah diadopsi secara resmi oleh BNPB dalam sistem inaRISK sebagai referensi klimatologis nasional. Overlay grid GPM dengan lokasi pekerjaan dan stasiun BMKG sebagai referensi diperlihatkan sebagai berikut.&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-5-overlay-lokasi-wpg-dengan-pos-hujan-dan-grid-gpm&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/grid-gpm_huba5c04e49189428deb45d58b790e7d24_402933_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 5. Overlay Lokasi WPG dengan Pos Hujan dan Grid GPM&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/grid-gpm_huba5c04e49189428deb45d58b790e7d24_402933_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;80%&#34; height=&#34;3000&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 5. Overlay Lokasi WPG dengan Pos Hujan dan Grid GPM
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Dari hasil plotting time series data tahunan dan bulanan, data hujan satelit memiliki trend yang serupa. Namun jika dibandingkan HHMT, maka data satelit hampir semua nya underestimate. Terutama di tahun 2021 Ketika terjadi hujan ekstrim di dua stasiun BMKG. Untuk itu diperlukan &lt;strong&gt;koreksi bias&lt;/strong&gt;.&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-6-plot-data-bulanan-antara-pos-hujan-bmkg-dan-grid-gpm&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/plot-data-bulanan_hu0c1c850c680602d43315568329c06e7c_268065_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 6. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/plot-data-bulanan_hu0c1c850c680602d43315568329c06e7c_268065_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;80%&#34; height=&#34;2400&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 6. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-7-plot-data-bulanan-antara-pos-hujan-bmkg-dan-grid-gpm&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/plot-data-tahunan_hu26b49eb14e96293597dab2543cf60d71_631941_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 7. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/plot-data-tahunan_hu26b49eb14e96293597dab2543cf60d71_631941_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;80%&#34; height=&#34;2000&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 7. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-8-plot-data-hhmt-antara-pos-hujan-bmkg-dan-grid-gpm&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/plot-data-hhmt_hu037f523c861a055fb9d9f1286807f84b_263784_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 8. Plot Data HHMT antara Pos Hujan BMKG dan Grid GPM&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/plot-data-hhmt_hu037f523c861a055fb9d9f1286807f84b_263784_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;80%&#34; height=&#34;2000&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 8. Plot Data HHMT antara Pos Hujan BMKG dan Grid GPM
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;koreksi-bias&#34;&gt;Koreksi Bias&lt;/h2&gt;
+&lt;p&gt;Data satelit GPM IMERG mengandung bias sistematis dibandingkan pengukuran ground station. Koreksi bias difokuskan pada Hujan Harian Maksimum Tahunan (HHMT) — parameter utama analisis frekuensi banjir. Empat metode koreksi (monthly scaling (M1), HHMT direct scaling (M2), quantile mapping (M3), sampai year-specific scalling (M4)) dievaluasi menggunakan data 1998–2025 dan tujuh metriks validasi (PBIAS, RMSE, MAE, R, R2, NSE, dan KGE) dijadikan acuan sebagai filter metode koreksi mana yang paling baik.&lt;/p&gt;
+&lt;p&gt;Validasi data curah hujan satelit tidak dapat dilakukan dengan satu metrik tunggal karena setiap metrik mengukur dimensi kesalahan yang berbeda. Penggunaan beberapa metrik secara bersamaan memastikan tidak ada aspek kualitas data yang terlewat dari evaluasi. Tujuh metrik yang digunakan dalam proyek ini mencakup empat dimensi utama:&lt;/p&gt;
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 2 Empat dimensi evaluasi dan metrik terkait&lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Dimensi&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Metrik&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Aspek yang Diukur&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Bias Sistematik&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;PBIAS&lt;/td&gt;
+&lt;td&gt;Apakah GPM over- atau underestimate secara konsisten?&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Magnitudo Error&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;RMSE, MAE&lt;/td&gt;
+&lt;td&gt;Seberapa besar rata-rata kesalahan absolut antara GPM dan observasi?&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Korelasi Linear&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;R, R²&lt;/td&gt;
+&lt;td&gt;Seberapa kuat hubungan linear antara GPM dan observasi?&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Efisiensi Model&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;NSE, KGE&lt;/td&gt;
+&lt;td&gt;Seberapa baik GPM dibandingkan baseline (rata-rata observasi)?&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 3 Perbandingan Metrik Validasi Koreksi Bias HHMT — M0 sampai M4 &lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;No.&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Metode&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Keterangan&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;PBIAS&lt;br&gt;(%)&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;RMSE&lt;br&gt;(mm)&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;MAE&lt;br&gt;(mm)&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;R&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;R²&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;NSE&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;KGE&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Kategori&lt;br&gt;NSE/PBIAS/KGE&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;M0 — GPM Raw&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Tanpa koreksi — baseline&lt;/td&gt;
+&lt;td&gt;-31.9&lt;/td&gt;
+&lt;td&gt;47.439&lt;/td&gt;
+&lt;td&gt;38.721&lt;/td&gt;
+&lt;td&gt;0.373&lt;/td&gt;
+&lt;td&gt;0.139&lt;/td&gt;
+&lt;td&gt;-1.062&lt;/td&gt;
+&lt;td&gt;0.206&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;TM/TM/TM&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;M1 — Monthly Scaling&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;CF per bulan dari data BMKG tersedia&lt;/td&gt;
+&lt;td&gt;-27.0&lt;/td&gt;
+&lt;td&gt;43.701&lt;/td&gt;
+&lt;td&gt;34.499&lt;/td&gt;
+&lt;td&gt;0.383&lt;/td&gt;
+&lt;td&gt;0.147&lt;/td&gt;
+&lt;td&gt;-0.750&lt;/td&gt;
+&lt;td&gt;0.252&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;TM/TM/M&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;M2 — HHMT Direct Scaling&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;CF global HHMT tunggal&lt;/td&gt;
+&lt;td&gt;3.5&lt;/td&gt;
+&lt;td&gt;36.468&lt;/td&gt;
+&lt;td&gt;24.177&lt;/td&gt;
+&lt;td&gt;0.373&lt;/td&gt;
+&lt;td&gt;0.139&lt;/td&gt;
+&lt;td&gt;-0.218&lt;/td&gt;
+&lt;td&gt;0.371&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;TM/SB/M&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;M3 — Quantile Mapping&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Pemetaan distribusi empiris&lt;/td&gt;
+&lt;td&gt;3.5&lt;/td&gt;
+&lt;td&gt;39.001&lt;/td&gt;
+&lt;td&gt;26.843&lt;/td&gt;
+&lt;td&gt;0.350&lt;/td&gt;
+&lt;td&gt;0.123&lt;/td&gt;
+&lt;td&gt;-0.394&lt;/td&gt;
+&lt;td&gt;0.347&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;TM/SB/M&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;M4 — Year-Specific&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Fk per tahun (Year-Specific Scaling)&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;3.5&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;15.789&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;11.136&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;0.900&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;0.811&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;0.772&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;0.879&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;SB/SB/SB&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;small&gt;
+KETERANGAN KATEGORI (Moriasi et al. 2007 &amp; Gupta et al. 2009):
+&lt;p&gt;NSE  :  &amp;gt;0.75=SB (Sangat Baik)  |  0.65–0.75=B (Baik)  |  0.50–0.65=M (Memuaskan)  |  &amp;lt;0.50=TM (Tidak Memuaskan)&lt;/p&gt;
+&lt;p&gt;PBIAS:  &amp;lt;10%=SB  |  10–15%=B  |  15–25%=M  |  &amp;gt;25%=TM&lt;/p&gt;
+&lt;p&gt;KGE:  &amp;gt;0.75=SB  |  0.50–0.75=B  |  0.25–0.50=M  |  &amp;lt;0.25=TM&lt;/p&gt;
+&lt;p&gt;▣  M4 = Dipilih karena terbaik dari semua sisi validasi metrik								
+&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Perbandingan antara GPM RAW (tanpa koreksi) dengan GPM hasil koreksi bias serta dengan nilai validasi metriknya dapat dilihat dalam gambar berikut.&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-9-perbandingan-antara-gpm-raw-dengan-gpm-hasil-koreksi-bias&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/koreksi-bias-gpm_hu61e9dd037462eff3242668323d9f8e15_397957_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 9. Perbandingan antara GPM RAW dengan GPM Hasil koreksi bias&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/koreksi-bias-gpm_hu61e9dd037462eff3242668323d9f8e15_397957_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;100%&#34; height=&#34;1889&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 9. Perbandingan antara GPM RAW dengan GPM Hasil koreksi bias
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;analisis-frekuensi-dan-uji-kesesuaian-goodness-of-fit&#34;&gt;Analisis Frekuensi dan Uji Kesesuaian (&lt;em&gt;goodness-of-fit&lt;/em&gt;)&lt;/h1&gt;
+&lt;p&gt;Analisis frekuensi hujan bertujuan untuk memperkirakan besaran hujan rencana dengan kala ulang tertentu (T) berdasarkan seri data historis Hujan Harian Maksimum Tahunan (HHMT). Metode ini berasumsi bahwa data HHMT merupakan sampel acak yang mengikuti salah satu distribusi probabilitas tertentu. Dalam analisis ini digunakan lima distribusi yang umum dipakai dalam hidrologi di Indonesia, sesuai SNI 2415:2016 dan SNI 7746:2012.
+Pemilihan distribusi yang paling sesuai dilakukan melalui dua uji kesesuaian statistik, sesuai SNI 7746:2012: uji Chi-Kuadrat dan uji Kolmogorov–Smirnov. Distribusi dengan nilai statistik uji terkecil (relatif terhadap nilai kritisnya) pada kedua uji ditetapkan sebagai distribusi terpilih.&lt;/p&gt;
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 4 Rekap Uji Kesesuaian di 5 Distribusi Hujan &lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Distribusi&lt;/th&gt;
+&lt;th&gt;Chi² Hitung&lt;/th&gt;
+&lt;th&gt;Chi² Kritis&lt;/th&gt;
+&lt;th&gt;Derajat&lt;br&gt;Bebas&lt;/th&gt;
+&lt;th&gt;Uji Chi-Sq&lt;/th&gt;
+&lt;th&gt;D_maks (KS)&lt;/th&gt;
+&lt;th&gt;D_kritis (KS)&lt;/th&gt;
+&lt;th&gt;Uji KS&lt;/th&gt;
+&lt;th&gt;Lolos&lt;br&gt;Kedua Uji&lt;/th&gt;
+&lt;th&gt;Ranking&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Log-Pearson III  (TERPILIH)&lt;/td&gt;
+&lt;td&gt;2.714286&lt;/td&gt;
+&lt;td&gt;3.841&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;0.084357&lt;/td&gt;
+&lt;td&gt;0.257&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;LOLOS&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GEV&lt;/td&gt;
+&lt;td&gt;3.071429&lt;/td&gt;
+&lt;td&gt;3.841&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;0.109532&lt;/td&gt;
+&lt;td&gt;0.257&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;LOLOS&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gumbel&lt;/td&gt;
+&lt;td&gt;4.857143&lt;/td&gt;
+&lt;td&gt;5.991&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;0.126584&lt;/td&gt;
+&lt;td&gt;0.257&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;LOLOS&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Log-Normal&lt;/td&gt;
+&lt;td&gt;4.857143&lt;/td&gt;
+&lt;td&gt;5.991&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;0.150318&lt;/td&gt;
+&lt;td&gt;0.257&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;LOLOS&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Normal&lt;/td&gt;
+&lt;td&gt;11.285714&lt;/td&gt;
+&lt;td&gt;5.991&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;DITOLAK&lt;/td&gt;
+&lt;td&gt;0.191136&lt;/td&gt;
+&lt;td&gt;0.257&lt;/td&gt;
+&lt;td&gt;DITERIMA&lt;/td&gt;
+&lt;td&gt;GAGAL&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-9-nilai-uji-kesesuaian----terhadap-nilai-kritis&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/uji-kesesuaian_hu22dff5fc746c1fc58558063709a7dd30_142442_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 9. Nilai Uji Kesesuaian - % Terhadap Nilai Kritis&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/uji-kesesuaian_hu22dff5fc746c1fc58558063709a7dd30_142442_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;80%&#34; height=&#34;1331&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 9. Nilai Uji Kesesuaian - % Terhadap Nilai Kritis
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 5 Hujan Rencana (mm/hari) Berdasarkan Semua Distribusi — Log-Pearson III Terpilih &lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Kala Ulang&lt;br&gt;(Tahun)&lt;/th&gt;
+&lt;th&gt;Periode&lt;br&gt;Ulang (T)&lt;/th&gt;
+&lt;th&gt;Normal&lt;br&gt;(mm)&lt;/th&gt;
+&lt;th&gt;Log-Normal&lt;br&gt;(mm)&lt;/th&gt;
+&lt;th&gt;Gumbel&lt;br&gt;(mm)&lt;/th&gt;
+&lt;th&gt;Log-Pearson III&lt;br&gt;(Terpilih, mm)&lt;/th&gt;
+&lt;th&gt;GEV&lt;br&gt;(mm)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;T = 2 tahun&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;114.33&lt;/td&gt;
+&lt;td&gt;110.15&lt;/td&gt;
+&lt;td&gt;108.47&lt;/td&gt;
+&lt;td&gt;105.52&lt;/td&gt;
+&lt;td&gt;107.26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T = 5 tahun&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;144.31&lt;/td&gt;
+&lt;td&gt;137.75&lt;/td&gt;
+&lt;td&gt;139.96&lt;/td&gt;
+&lt;td&gt;134.58&lt;/td&gt;
+&lt;td&gt;134.70&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T = 10 tahun&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;159.99&lt;/td&gt;
+&lt;td&gt;154.83&lt;/td&gt;
+&lt;td&gt;160.81&lt;/td&gt;
+&lt;td&gt;157.04&lt;/td&gt;
+&lt;td&gt;154.71&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T = 20 tahun&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;172.93&lt;/td&gt;
+&lt;td&gt;170.51&lt;/td&gt;
+&lt;td&gt;180.81&lt;/td&gt;
+&lt;td&gt;181.12&lt;/td&gt;
+&lt;td&gt;175.40&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T = 25 tahun&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;td&gt;176.70&lt;/td&gt;
+&lt;td&gt;175.37&lt;/td&gt;
+&lt;td&gt;187.15&lt;/td&gt;
+&lt;td&gt;189.32&lt;/td&gt;
+&lt;td&gt;182.29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T = 50 tahun&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;187.50&lt;/td&gt;
+&lt;td&gt;190.08&lt;/td&gt;
+&lt;td&gt;206.69&lt;/td&gt;
+&lt;td&gt;216.42&lt;/td&gt;
+&lt;td&gt;204.56&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T = 100 tahun&lt;/td&gt;
+&lt;td&gt;100&lt;/td&gt;
+&lt;td&gt;197.22&lt;/td&gt;
+&lt;td&gt;204.35&lt;/td&gt;
+&lt;td&gt;226.09&lt;/td&gt;
+&lt;td&gt;246.32&lt;/td&gt;
+&lt;td&gt;228.31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-10-kurva-frekuensi-hujan--5-distribusi-hujan&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/kurva-frekuensi-hujan_hu8d745bc8af567c4845e9f5c342d4eeed_248387_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 10. Kurva Frekuensi Hujan – 5 Distribusi Hujan&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/kurva-frekuensi-hujan_hu8d745bc8af567c4845e9f5c342d4eeed_248387_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;80%&#34; height=&#34;1332&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 10. Kurva Frekuensi Hujan – 5 Distribusi Hujan
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;deliniasi-subdas&#34;&gt;Deliniasi Subdas&lt;/h1&gt;
+&lt;p&gt;Delineasi catchment menggunakan DEM hasil survei topografi tahun 2026, diproses dengan program GIS. Resolusi hasil pengukuran topografi jauh lebih tinggi dibandingkan DEMNAS sehingga menghasilkan batas Sub DAS yang lebih akurat. Secara garis besar WPG Sungai Soetoyo ini merupakan bagian dari WPG Kota Banjarmasin dengan total 11 WPG yang tersebar. Lokasi WPG S. Soetoyo sendiri berada di sebelah barat yang berhubungan langsung dengan Sungai Barito. Peta area WPG Banjarmasin secara keseluruhan dan area WPG detail S. Soetoyo ditampilkan pada gambar berikut.&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-11-area-wpg-kota-banjarmasin--keseluruhan&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/area-wpg-keseluruhan_huc019c073c667e7a566036b9ee0d6484f_9594597_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 11. Area WPG Kota Banjarmasin – Keseluruhan&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/area-wpg-keseluruhan_huc019c073c667e7a566036b9ee0d6484f_9594597_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;90%&#34; height=&#34;2480&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 11. Area WPG Kota Banjarmasin – Keseluruhan
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-12-area-wpg-s-soetoyo&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/area-wpg-soetoyo_hu9b764694b627e71d194b52a552498552_5110901_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 12. Area WPG S. Soetoyo&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/area-wpg-soetoyo_hu9b764694b627e71d194b52a552498552_5110901_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;90%&#34; height=&#34;1262&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 12. Area WPG S. Soetoyo
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;permodelan-swmm&#34;&gt;Permodelan SWMM&lt;/h1&gt;
+&lt;p&gt;Storm Water Management Model (SWMM) digunakan untuk mengkonversi hujan rencana menjadi hidrograf debit di setiap titik keluar sub-DAS. Parameter utama model:
+•	Metode limpasan: SCS Curve Number (CN) — USDA TR-55, 1986
+•	Input hujan: Kurva IDF dari hasil analisis frekuensi
+•	Karakteristik sub-DAS: Luas, kemiringan, panjang saluran, CN per penggunaan lahan&lt;/p&gt;
+&lt;p&gt;Penentuan parameter model SWMM (Storm Water Management Model) pada area WPG Banjarmasin didasarkan pada karakteristik fisik lahan dan jenis tanah yang ada di wilayah tersebut. Wilayah Banjarmasin dan sekitarnya merupakan dataran rendah Kalimantan Selatan yang didominasi oleh tanah lempung berliat dengan drainase alami yang buruk, muka air tanah dangkal, serta banyak dijumpai lahan rawa dan gambut yang terkonversi. Kondisi ini secara hidrologis menempatkan jenis tanah di wilayah kajian pada klasifikasi Hydrologic Soil Group (HSG) Tipe C. Seluruh nilai parameter standar yang digunakan merujuk pada Hydrology National Engineering Handbook, Chapter 7 (USDA-NRCS, 2009) dan panduan hidrolika FHWA-SA-96-067 (McCuen et al., 1996).&lt;/p&gt;
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 6 Rekapitulasi Nilai Parameter SWMM – Area WPG Soetoyo - Kota Banjarmasin &lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter SWMM&lt;/th&gt;
+&lt;th&gt;Nilai Terpilih&lt;/th&gt;
+&lt;th&gt;Kategori / Dasar&lt;/th&gt;
+&lt;th&gt;Sumber&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Hydrologic Soil Group (HSG)&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;Tanah lempung berliat, drainase buruk, dominan di dataran rendah Kalimantan Selatan&lt;/td&gt;
+&lt;td&gt;NRCS TR-55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Curve Number (CN)&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;Residential – 1/8 ac or less (65% impervious), HSG C&lt;/td&gt;
+&lt;td&gt;NRCS NEH Ch. 7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manning&amp;rsquo;s n – Impervious (N-Imperv)&lt;/td&gt;
+&lt;td&gt;0,012&lt;/td&gt;
+&lt;td&gt;Smooth concrete (saluran beton halus)&lt;/td&gt;
+&lt;td&gt;FHWA-SA-96-067&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manning&amp;rsquo;s n – Pervious (N-Perv)&lt;/td&gt;
+&lt;td&gt;0,024&lt;/td&gt;
+&lt;td&gt;Cement rubble surface (permukaan berbatu/tanah terbuka)&lt;/td&gt;
+&lt;td&gt;FHWA-SA-96-067&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Depression Storage – Impervious (Dstore-Imperv)&lt;/td&gt;
+&lt;td&gt;1,27 mm&lt;/td&gt;
+&lt;td&gt;Impervious surfaces (0,05 in = 1,27 mm)&lt;/td&gt;
+&lt;td&gt;NRCS / FHWA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Depression Storage – Pervious (Dstore-Perv)&lt;/td&gt;
+&lt;td&gt;5,24 mm&lt;/td&gt;
+&lt;td&gt;Lawns/pasture (0,20 in = 5,08 mm dibulatkan 5,24 mm)&lt;/td&gt;
+&lt;td&gt;NRCS / FHWA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;hidrograf-desain-dan-debit-puncak-per-sub-das&#34;&gt;Hidrograf Desain dan Debit puncak per Sub-DAS&lt;/h1&gt;
+&lt;p&gt;Hasil dari running permodelan SWMM dengan input dan parameter yamg telah ditentukan berupa hidrograf debit banjir ditampilkan sebagai berikut&lt;/p&gt;
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-13-hidrograf-debit-pada-masing-masing-subdas-q2&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/hidrograf-q2_hu252a14b0f74c551ef537fcd3aa63258b_315263_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 13. Hidrograf Debit Pada Masing-masing Subdas (Q2)&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/hidrograf-q2_hu252a14b0f74c551ef537fcd3aa63258b_315263_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;90%&#34; height=&#34;935&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 13. Hidrograf Debit Pada Masing-masing Subdas (Q2)
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-gambar-14-hidrograf-debit-pada-masing-masing-subdas-q5&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/hidrograf-q5_hu6c1842bef1d0aed9a8aecfb27a67fdef_316576_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Gambar 14. Hidrograf Debit Pada Masing-masing Subdas (Q5)&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://irpanblog2.netlify.app/project/wpg-banjarmasin/hidrograf-q5_hu6c1842bef1d0aed9a8aecfb27a67fdef_316576_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;90%&#34; height=&#34;926&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Gambar 14. Hidrograf Debit Pada Masing-masing Subdas (Q5)
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 7 Rekapitulasi Debit Puncak per Sub-DAS (m³/s) — SWMM Output &lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;No&lt;/th&gt;
+&lt;th&gt;Kode&lt;/th&gt;
+&lt;th&gt;Nama&lt;/th&gt;
+&lt;th&gt;Q2&lt;/th&gt;
+&lt;th&gt;Q5&lt;/th&gt;
+&lt;th&gt;Q10&lt;/th&gt;
+&lt;th&gt;Q20&lt;/th&gt;
+&lt;th&gt;Q25&lt;/th&gt;
+&lt;th&gt;Q50&lt;/th&gt;
+&lt;th&gt;Q100&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;subdas_anak_pelambuan_kiri_1&lt;/td&gt;
+&lt;td&gt;1.53&lt;/td&gt;
+&lt;td&gt;2.03&lt;/td&gt;
+&lt;td&gt;2.41&lt;/td&gt;
+&lt;td&gt;2.81&lt;/td&gt;
+&lt;td&gt;2.95&lt;/td&gt;
+&lt;td&gt;3.40&lt;/td&gt;
+&lt;td&gt;3.89&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;subdas_anak_pelambuan_kiri_2&lt;/td&gt;
+&lt;td&gt;0.54&lt;/td&gt;
+&lt;td&gt;0.71&lt;/td&gt;
+&lt;td&gt;0.85&lt;/td&gt;
+&lt;td&gt;0.99&lt;/td&gt;
+&lt;td&gt;1.03&lt;/td&gt;
+&lt;td&gt;1.19&lt;/td&gt;
+&lt;td&gt;1.36&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;subdas_anak_pelambuan_kiri_3&lt;/td&gt;
+&lt;td&gt;2.06&lt;/td&gt;
+&lt;td&gt;2.72&lt;/td&gt;
+&lt;td&gt;3.23&lt;/td&gt;
+&lt;td&gt;3.76&lt;/td&gt;
+&lt;td&gt;3.94&lt;/td&gt;
+&lt;td&gt;4.55&lt;/td&gt;
+&lt;td&gt;5.21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;subdas_anak_pelambuan_kn_1&lt;/td&gt;
+&lt;td&gt;3.48&lt;/td&gt;
+&lt;td&gt;4.80&lt;/td&gt;
+&lt;td&gt;5.83&lt;/td&gt;
+&lt;td&gt;6.92&lt;/td&gt;
+&lt;td&gt;7.29&lt;/td&gt;
+&lt;td&gt;8.51&lt;/td&gt;
+&lt;td&gt;9.85&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;subdas_anak_pelambuan_kn_2&lt;/td&gt;
+&lt;td&gt;1.66&lt;/td&gt;
+&lt;td&gt;2.20&lt;/td&gt;
+&lt;td&gt;2.61&lt;/td&gt;
+&lt;td&gt;3.05&lt;/td&gt;
+&lt;td&gt;3.20&lt;/td&gt;
+&lt;td&gt;3.69&lt;/td&gt;
+&lt;td&gt;4.23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;subdas_jafri_zamzam_ki_1&lt;/td&gt;
+&lt;td&gt;2.32&lt;/td&gt;
+&lt;td&gt;3.25&lt;/td&gt;
+&lt;td&gt;3.97&lt;/td&gt;
+&lt;td&gt;4.75&lt;/td&gt;
+&lt;td&gt;5.01&lt;/td&gt;
+&lt;td&gt;5.87&lt;/td&gt;
+&lt;td&gt;6.81&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;G&lt;/td&gt;
+&lt;td&gt;subdas_jafri_zamzam_ki_2&lt;/td&gt;
+&lt;td&gt;2.54&lt;/td&gt;
+&lt;td&gt;3.54&lt;/td&gt;
+&lt;td&gt;4.30&lt;/td&gt;
+&lt;td&gt;5.11&lt;/td&gt;
+&lt;td&gt;5.39&lt;/td&gt;
+&lt;td&gt;6.29&lt;/td&gt;
+&lt;td&gt;7.27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;subdas_jafri_zamzam_ki_3&lt;/td&gt;
+&lt;td&gt;3.03&lt;/td&gt;
+&lt;td&gt;4.33&lt;/td&gt;
+&lt;td&gt;5.38&lt;/td&gt;
+&lt;td&gt;6.52&lt;/td&gt;
+&lt;td&gt;6.92&lt;/td&gt;
+&lt;td&gt;8.21&lt;/td&gt;
+&lt;td&gt;9.65&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;subdas_jafri_zamzam_ki_4&lt;/td&gt;
+&lt;td&gt;2.81&lt;/td&gt;
+&lt;td&gt;4.04&lt;/td&gt;
+&lt;td&gt;5.04&lt;/td&gt;
+&lt;td&gt;6.13&lt;/td&gt;
+&lt;td&gt;6.51&lt;/td&gt;
+&lt;td&gt;7.76&lt;/td&gt;
+&lt;td&gt;9.15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;J&lt;/td&gt;
+&lt;td&gt;subdas_jafri_zamzam_kn_1&lt;/td&gt;
+&lt;td&gt;0.96&lt;/td&gt;
+&lt;td&gt;1.32&lt;/td&gt;
+&lt;td&gt;1.60&lt;/td&gt;
+&lt;td&gt;1.90&lt;/td&gt;
+&lt;td&gt;2.00&lt;/td&gt;
+&lt;td&gt;2.33&lt;/td&gt;
+&lt;td&gt;2.69&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;K&lt;/td&gt;
+&lt;td&gt;subdas_jafri_zamzam_kn_2&lt;/td&gt;
+&lt;td&gt;3.22&lt;/td&gt;
+&lt;td&gt;4.45&lt;/td&gt;
+&lt;td&gt;5.38&lt;/td&gt;
+&lt;td&gt;6.37&lt;/td&gt;
+&lt;td&gt;6.70&lt;/td&gt;
+&lt;td&gt;7.79&lt;/td&gt;
+&lt;td&gt;8.99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;L&lt;/td&gt;
+&lt;td&gt;subdas_jafri_zamzam_kn_3&lt;/td&gt;
+&lt;td&gt;1.89&lt;/td&gt;
+&lt;td&gt;2.60&lt;/td&gt;
+&lt;td&gt;3.13&lt;/td&gt;
+&lt;td&gt;3.70&lt;/td&gt;
+&lt;td&gt;3.89&lt;/td&gt;
+&lt;td&gt;4.52&lt;/td&gt;
+&lt;td&gt;5.21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 8 Rekapitulasi Debit Puncak per DAS (m³/s) di Outlet  &lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;No&lt;/th&gt;
+&lt;th&gt;Subdas&lt;/th&gt;
+&lt;th&gt;Q2&lt;/th&gt;
+&lt;th&gt;Q5&lt;/th&gt;
+&lt;th&gt;Q10&lt;/th&gt;
+&lt;th&gt;Q20&lt;/th&gt;
+&lt;th&gt;Q25&lt;/th&gt;
+&lt;th&gt;Q50&lt;/th&gt;
+&lt;th&gt;Q100&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Pelambuan&lt;/td&gt;
+&lt;td&gt;9.27&lt;/td&gt;
+&lt;td&gt;12.47&lt;/td&gt;
+&lt;td&gt;14.92&lt;/td&gt;
+&lt;td&gt;17.53&lt;/td&gt;
+&lt;td&gt;18.41&lt;/td&gt;
+&lt;td&gt;21.34&lt;/td&gt;
+&lt;td&gt;24.54&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Jafri Zamzam&lt;/td&gt;
+&lt;td&gt;16.76&lt;/td&gt;
+&lt;td&gt;23.53&lt;/td&gt;
+&lt;td&gt;28.81&lt;/td&gt;
+&lt;td&gt;34.48&lt;/td&gt;
+&lt;td&gt;36.42&lt;/td&gt;
+&lt;td&gt;42.77&lt;/td&gt;
+&lt;td&gt;49.78&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;perbandingan-dengan-studi-terdahulu&#34;&gt;Perbandingan dengan Studi Terdahulu&lt;/h1&gt;
+&lt;p&gt;Pada tahun 2023, Balai Teknik Sungai telah melakukan kajian hidrologi di lokasi yang sama. Perbandingan dengan pekerjaan TSC (&lt;em&gt;Technical Support Consultant&lt;/em&gt;) tahun 2026 ini disampaikan dalam tabel matriks berikut&lt;/p&gt;
+&lt;center&gt;&lt;small&gt;&lt;b&gt; Tabel 9 Perbandingan Studi Hidrologi &lt;/b&gt; &lt;/small&gt;&lt;/center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;Balai teknik sungai, 2023&lt;/th&gt;
+&lt;th&gt;TSC, 2026&lt;/th&gt;
+&lt;th&gt;Selisih (%)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Total Luas Subdas (Ha)&lt;/td&gt;
+&lt;td&gt;456.2&lt;/td&gt;
+&lt;td&gt;458.84&lt;/td&gt;
+&lt;td&gt;0.58%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Data hujan&lt;/td&gt;
+&lt;td&gt;Surgi Mufti (18 Tahun)&lt;/td&gt;
+&lt;td&gt;GPM Koreksi (28 Tahun)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hujan Rencana R5 (mm/hari)&lt;/td&gt;
+&lt;td&gt;95.691&lt;/td&gt;
+&lt;td&gt;134.58&lt;/td&gt;
+&lt;td&gt;40.64%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Distribusi Hujan&lt;/td&gt;
+&lt;td&gt;Mononobe (5 Jam)&lt;/td&gt;
+&lt;td&gt;Mononobe (5 Jam)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intensitas Hujan R5 (mm/jam)&lt;/td&gt;
+&lt;td&gt;55.96&lt;/td&gt;
+&lt;td&gt;78.701&lt;/td&gt;
+&lt;td&gt;40.64%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Model Hidrologi&lt;/td&gt;
+&lt;td&gt;SWMM&lt;/td&gt;
+&lt;td&gt;SWMM&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Curve Number&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Debit Q5 JZZ (m3/dtk)&lt;/td&gt;
+&lt;td&gt;18.27&lt;/td&gt;
+&lt;td&gt;23.53&lt;/td&gt;
+&lt;td&gt;28.77%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Debit Q5 Pelambuan (m3/dtk)&lt;/td&gt;
+&lt;td&gt;9.38&lt;/td&gt;
+&lt;td&gt;12.47&lt;/td&gt;
+&lt;td&gt;32.94%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Pada kajian TSC 2026 ini nilai curah hujan rencana R5 lebih besar dari kajian 2023 (naik ~40%), dikarenakan adanya penambahan data curah hujan ekstrim di tahun 2021 (252.1 mm/hari).  Oleh karena itu nilai debit pada masing-masing ruas Sungai juga mengalami peningkatan ~30% dibandingkan pada kajian balai Teknik Sungai 2023 meskipun luasan DAS yang hampir mirip dan digunakan metode distribusi hujan yang sama (mononobe 5 jam).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

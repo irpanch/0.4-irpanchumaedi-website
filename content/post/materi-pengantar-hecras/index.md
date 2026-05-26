@@ -1,6 +1,6 @@
 ---
 title: "Pengantar HEC-RAS - Konsep dan Interface"
-date: 2026-05-27
+date: 2026-05-26
 slug: "materi-pengantar-hecras"
 summary: "Memahami apa itu HEC-RAS, kapan dan mengapa digunakan, serta bagaimana alur kerja dari input data geometri hingga output profil muka air."
 tags: ["Pemodelan Hidrolika", "1D Model", "2D Model", "steady flow", "unsteady flow"]

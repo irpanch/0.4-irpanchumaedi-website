@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sedimentasi | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/sedimentasi/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/sedimentasi/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sedimentasi</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>Sedimentasi</title>
+      <link>https://irpanblog2.netlify.app/tag/sedimentasi/</link>
+    </image>
+    
+    <item>
+      <title>ANDAL PSN-KIO — Hidrologi &amp; Sedimentasi (Pulau Obi)</title>
+      <link>https://irpanblog2.netlify.app/project/andal-pulo-obi/</link>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/project/andal-pulo-obi/</guid>
+      <description>&lt;h2 id=&#34;deskripsi-proyek&#34;&gt;Deskripsi Proyek&lt;/h2&gt;
+&lt;p&gt;Proyek ini merupakan penyusunan dokumen &lt;strong&gt;ANDAL (Analisis Dampak Lingkungan)&lt;/strong&gt; untuk Proyek Strategis Nasional (PSN) di Pulau Obi, Maluku Utara. Bagian hidrologi mencakup prakiraan dampak pada komponen air permukaan, erosi, dan sedimentasi akibat kegiatan pertambangan nikel.&lt;/p&gt;
+&lt;h2 id=&#34;lingkup-pekerjaan&#34;&gt;Lingkup Pekerjaan&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Analisis erosi dengan metode &lt;strong&gt;USLE&lt;/strong&gt; (Universal Soil Loss Equation)&lt;/li&gt;
+&lt;li&gt;Estimasi Sediment Delivery Ratio (SDR) dan laju sedimentasi&lt;/li&gt;
+&lt;li&gt;Debit banjir rancangan Sungai Akelamo dengan HEC-HMS&lt;/li&gt;
+&lt;li&gt;Penyusunan narasi dampak sesuai PP No. 22 Tahun 2021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;software-yang-digunakan&#34;&gt;Software yang Digunakan&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;HEC-HMS&lt;/code&gt; · &lt;code&gt;QGIS&lt;/code&gt; · &lt;code&gt;Global Mapper&lt;/code&gt; · &lt;code&gt;R&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

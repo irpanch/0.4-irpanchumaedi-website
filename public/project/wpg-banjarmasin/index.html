@@ -1,0 +1,2968 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Irpan Chumaedi">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Kota banjarmasin merupakan daerah yang rawan banjir. Keterbatasan data di tengah lokasi yang rawan bencana menjadikan tantangan tersendiri untuk memperoleh hasil analisa yang relevan dan akurat.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://irpanblog2.netlify.app/project/wpg-banjarmasin/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.0fb8277805f3281de542f2093a1c4a87.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://irpanblog2.netlify.app/project/wpg-banjarmasin/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Irpan Chumaedi">
+  <meta property="og:url" content="https://irpanblog2.netlify.app/project/wpg-banjarmasin/">
+  <meta property="og:title" content="Analisa Hidrologi - Kota Banjarmasin (NUFReP) | Irpan Chumaedi">
+  <meta property="og:description" content="Kota banjarmasin merupakan daerah yang rawan banjir. Keterbatasan data di tengah lokasi yang rawan bencana menjadikan tantangan tersendiri untuk memperoleh hasil analisa yang relevan dan akurat."><meta property="og:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2026-04-25T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2026-04-25T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://irpanblog2.netlify.app/project/wpg-banjarmasin/"
+  },
+  "headline": "Analisa Hidrologi - Kota Banjarmasin (NUFReP)",
+  
+  "datePublished": "2026-04-25T00:00:00Z",
+  "dateModified": "2026-04-25T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Irpan Chumaedi"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Irpan Chumaedi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Kota banjarmasin merupakan daerah yang rawan banjir. Keterbatasan data di tengah lokasi yang rawan bencana menjadikan tantangan tersendiri untuk memperoleh hasil analisa yang relevan dan akurat."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.home-section, article, .card').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  
+  window.addEventListener('scroll', function() {
+    var navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    
+    var btns = document.querySelectorAll('.float-btn');
+    btns.forEach(function(btn) {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+  });
+
+  
+  document.querySelectorAll('.featurette').forEach(function(el, i) {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
+
+  
+  var isDbPage = window.location.pathname.indexOf('/post/database') === 0;
+  var container = document.createElement('div');
+  container.className = 'float-buttons';
+
+  
+  var btnTop = document.createElement('button');
+  btnTop.className = 'float-btn float-btn-top';
+  btnTop.title = 'Kembali ke atas';
+  btnTop.innerHTML = '↑';
+  btnTop.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  container.appendChild(btnTop);
+
+  
+  var isProvinsiPage = window.location.pathname.indexOf('/post/database-') === 0;
+  if (isProvinsiPage) {
+    var btnDb = document.createElement('a');
+    btnDb.className = 'float-btn float-btn-db';
+    btnDb.href = '/post/database/';
+    btnDb.title = 'Kembali ke Database Utama';
+    btnDb.innerHTML = '🗄️';
+    container.appendChild(btnDb);
+  }
+
+  document.body.appendChild(container);
+});
+</script>
+
+
+  <title>Analisa Hidrologi - Kota Banjarmasin (NUFReP) | Irpan Chumaedi</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.1df0392aab543464b23a85146803aaf2.js"></script>
+
+  
+
+<aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Tentang</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#skills"><span>Keahlian</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Proyek</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#kurikulum"><span>Kurikulum</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Tulisan</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/database/"><span>Database</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Kontak</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article article-project">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Analisa Hidrologi - Kota Banjarmasin (NUFReP)</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Apr 25, 2026
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+  <div class="article-container">
+    <div class="article-style">
+      <h1 id="umum">Umum</h1>
+<p>Pekerjaan ini merupakan bagian dari proyek National Urban Flood Resilience Project (NUFReP), program kerja sama antara Pemerintah Republik Indonesia dan Bank Dunia dalam rangka meningkatkan ketahanan perkotaan terhadap banjir. Salah satu komponen strategis adalah pembangunan Wilayah Pengendalian Genangan (WPG) di kawasan Sungai Sutoyo S, Banjarmasin, Kalimantan Selatan.
+Kawasan WPG Sungai Sutoyo S mencakup dua sub-DAS utama: Sub-DAS Pelambuan (116,35 Ha) dan Sub-DAS Jafri Zamzam (342,49 Ha), dengan total luas catchment 458,84 Ha. Kawasan ini secara rutin terdampak banjir yang merugikan masyarakat, infrastruktur, dan kegiatan ekonomi.
+Analisis hidrologi yang komprehensif menjadi pondasi perencanaan sistem drainase dan pengendalian banjir, mencakup analisis frekuensi hujan, penyusunan kurva IDF, delineasi catchment, dan pemodelan hidrograf desain menggunakan SWMM.</p>
+<h2 id="metodologi">Metodologi</h2>
+<p>Analisis hidrologi dilaksanakan mengikuti alur kerja terstruktur enam tahap, dari pengumpulan data hingga hidrograf desain.</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-1-alur-kerja-analisis-hidrologi-enam-tahap">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/alur_metodologi_hu24a7eb6134e34426a04acc1d9284725f_137381_2000x2000_fit_lanczos_2.png" data-caption="Gambar 1. Alur kerja analisis hidrologi enam tahap">
+
+
+  <img data-src="/project/wpg-banjarmasin/alur_metodologi_hu24a7eb6134e34426a04acc1d9284725f_137381_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="100%" height="546">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 1. Alur kerja analisis hidrologi enam tahap
+  </figcaption>
+
+
+</figure>
+
+<p>Secara keseluruhan, analisa hidrologi dilakukan dengan melalui enam tahapan. Mulai dari pengumpulan data, koreksi bias GPM, hingga hidrograf desain. Keenam tahapan tersebut secara rinci adalah sebagai berikut:</p>
+<p><strong>Tahap A</strong> — Pengumpulan Data: Data hujan GPM IMERG V07, ground station BMKG (2 stasiun), DEM UAV 2026, dan peta tutupan lahan ESRI Land Cover</p>
+<p><strong>Tahap B</strong> — Koreksi Bias GPM: Evaluasi 4 metode; dipilih Year-Specific Scaling (M4) berdasarkan metrik validasi terbaik</p>
+<p><strong>Tahap C</strong> — Analisis Frekuensi &amp; IDF: Annual Maximum Series (AMS), uji statistik SNI 7746:2012, distribusi Log-Pearson III, dan kurva IDF dengan pola jam-jaman Banjarmasin</p>
+<p><strong>Tahap D</strong> — Delineasi Catchment: Pengolahan DEM UAV 2026 untuk delineasi 12 sub-DAS.</p>
+<p><strong>Tahap E</strong> — Pemodelan SWMM: Model limpasan dengan SCS Curve Number dan IDF sebagai input hujan</p>
+<p><strong>Tahap F</strong> — Hidrograf Desain: Debit puncak Q2, Q5, Q10, Q20 per sub-DAS sebagai input pemodelan hidraulika HEC-RAS</p>
+<h2 id="perangkat-lunak">Perangkat Lunak</h2>
+<ul>
+<li>R (tidyverse, readxl, sf, openxlsx, QMAP) — analisis statistik dan koreksi bias</li>
+<li>QGIS 3.40.4 + WhiteboxTools — pengolahan DEM dan delineasi catchment</li>
+<li>EPA SWMM — pemodelan limpasan permukaan</li>
+</ul>
+<h1 id="pengumpulan-data">Pengumpulan Data</h1>
+<h2 id="inventarisasi-stasiun-hujan">Inventarisasi Stasiun Hujan</h2>
+<p>Terdapat 15 stasiun hujan di sekitar area WPG. Duabelas diantaranya bersumber dari WS Kalimantan III, sedangkan tiga stasiun hujan bersumber dari BMKG. Gambar matriks ketersediaan tiap stasiun hujan serta jumlah data valid ditampilkan pada tabel berikut.</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-2-matriks-ketersediaan-data-hujan-stasiun-di-sekitar-wpg-banjarmasin">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/matriks_ketersediaan_data_hua3289e0a5e81e79108b7d37392790211_69722_2000x2000_fit_lanczos_2.png" data-caption="Gambar 2. Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin">
+
+
+  <img data-src="/project/wpg-banjarmasin/matriks_ketersediaan_data_hua3289e0a5e81e79108b7d37392790211_69722_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="100%" height="368">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 2. Matriks Ketersediaan Data Hujan Stasiun di Sekitar WPG Banjarmasin
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-3-jumlah-data-valid-di-tiap-stasiun-hujan">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/jumlah_data_valid_hu3c21736f2e418ab93652bef6652b7ea2_70012_2000x2000_fit_lanczos_2.png" data-caption="Gambar 3. Jumlah Data Valid di Tiap Stasiun Hujan">
+
+
+  <img data-src="/project/wpg-banjarmasin/jumlah_data_valid_hu3c21736f2e418ab93652bef6652b7ea2_70012_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="100%" height="553">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 3. Jumlah Data Valid di Tiap Stasiun Hujan
+  </figcaption>
+
+
+</figure>
+
+<p>Berdasarkan SNI 2415:2016 (minimal 20 tahun data), hanya 7 stasiun memenuhi syarat. Dari 7 stasiun tersebut, 2 lokasi terdekat adalah Stasiun BMKG Syamsuddin Noor (33,7 km) dan BMKG Kalimantan Selatan (25 km).</p>
+<center><small><b> Tabel 1 Inventarisasi Stasiun Hujan di Sekitar WPG Sungai Sutoyo S Banjarmasin </b></small></center>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Stasiun</th>
+<th>Wilayah</th>
+<th>Sumber</th>
+<th>Jarak (Km)</th>
+<th>Mulai</th>
+<th>Akhir</th>
+<th>n</th>
+<th>CH Max</th>
+<th>Status SNI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Padang Panjang</td>
+<td>Kab. Banjar</td>
+<td>BWS Kal III/PSDA</td>
+<td>42</td>
+<td>2022</td>
+<td>2025</td>
+<td>4</td>
+<td>135</td>
+<td>&lt;10 th (Tidak Layak)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ati&rsquo;im</td>
+<td>Kab. Banjar</td>
+<td>BWS Kal III/PSDA</td>
+<td>63.2</td>
+<td>2022</td>
+<td>2025</td>
+<td>3</td>
+<td>128</td>
+<td>&lt;10 th (Tidak Layak)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Banjarmasin</td>
+<td>Kota Banjarmasin</td>
+<td>BWS Kal III/PSDA</td>
+<td>2.8</td>
+<td>2022</td>
+<td>2026</td>
+<td>2</td>
+<td>135.8</td>
+<td>&lt;10 th (Tidak Layak)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gudang Tengah</td>
+<td>Kab. Banjar</td>
+<td>BWS Kal III/PSDA</td>
+<td>15.6</td>
+<td>2020</td>
+<td>2025</td>
+<td>3</td>
+<td>307.5</td>
+<td>&lt;10 th (Tidak Layak)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Aluh-Aluh</td>
+<td>Kab. Banjar</td>
+<td>BWS Kal III/PSDA</td>
+<td>16.4</td>
+<td>2022</td>
+<td>2025</td>
+<td>3</td>
+<td>98.8</td>
+<td>&lt;10 th (Tidak Layak)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Astambul</td>
+<td>Kab. Banjar</td>
+<td>BWS Kal III/PSDA</td>
+<td>28.9</td>
+<td>2022</td>
+<td>2025</td>
+<td>1</td>
+<td>74.8</td>
+<td>&lt;10 th (Tidak Layak)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Mengkauk</td>
+<td>Kab. Banjar</td>
+<td>BWS Kal III/PSDA</td>
+<td>60.8</td>
+<td>2022</td>
+<td>2025</td>
+<td>3</td>
+<td>102.2</td>
+<td>&lt;10 th (Tidak Layak)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Batu Tangga</td>
+<td>Hulu Sungai Tengah</td>
+<td>BWS Kal III/PSDA</td>
+<td>137</td>
+<td>1995</td>
+<td>2025</td>
+<td>28</td>
+<td>153</td>
+<td>20-29 th (Cukup)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Intangan</td>
+<td>Hulu Sungai Tengah</td>
+<td>BWS Kal III/PSDA</td>
+<td>123.7</td>
+<td>1995</td>
+<td>2025</td>
+<td>26</td>
+<td>188</td>
+<td>20-29 th (Cukup)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kambat</td>
+<td>Hulu Sungai Tengah</td>
+<td>BWS Kal III/PSDA</td>
+<td>122.3</td>
+<td>1995</td>
+<td>2025</td>
+<td>23</td>
+<td>368</td>
+<td>20-29 th (Cukup)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Mangunang</td>
+<td>Hulu Sungai Tengah</td>
+<td>BWS Kal III/PSDA</td>
+<td>116.6</td>
+<td>1995</td>
+<td>2025</td>
+<td>26</td>
+<td>142</td>
+<td>20-29 th (Cukup)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Mo&rsquo;ui</td>
+<td>Hulu Sungai Tengah</td>
+<td>BWS Kal III/PSDA</td>
+<td>110.9</td>
+<td>1995</td>
+<td>2025</td>
+<td>22</td>
+<td>180</td>
+<td>20-29 th (Cukup)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Kal-Sel (BMKG)</td>
+<td>Kab. Banjarbaru</td>
+<td>BMKG</td>
+<td>25</td>
+<td>1998</td>
+<td>2025</td>
+<td>27</td>
+<td>255.3</td>
+<td>20-29 th (Cukup)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Syamsuddin Noor</td>
+<td>Kota Banjarbaru</td>
+<td>BMKG</td>
+<td>33.7</td>
+<td>1998</td>
+<td>2025</td>
+<td>27</td>
+<td>249</td>
+<td>20-29 th (Cukup)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Surgi Mufti</td>
+<td>Kota Banjarmasin</td>
+<td>BMKG</td>
+<td>3.5</td>
+<td>1996</td>
+<td>2014</td>
+<td>19</td>
+<td>168</td>
+<td>&lt;20 th (Kurang)</td>
+</tr>
+</tbody>
+</table>
+<p><small><em>Keterangan: Stasiun dengan status ‘Tidak Layak’ memiliki data kurang dari 10 tahun sehingga tidak memenuhi persyaratan SNI 2415:2016. Stasiun ‘Cukup’ memiliki 20–29 tahun data</em></small></p>
+<h2 id="plotting-jarak-tapak-proyek-terhadap-lokasi-stasiun-hujan">Plotting Jarak Tapak Proyek Terhadap Lokasi Stasiun Hujan</h2>
+<p>Selain terhadap kelengkapan data hujan, jarak stasiun hujan juga sangat berpengaruh terhadap analisa yang akan digunakan. Semakin dekat maka akan semakin baik. Hasil plotting bisa dilihat sebagai berikut</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-4-peta-lokasi-stasiun-hujan-dan-area-wpg-soetoyo">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/peta_lokasi_sta_hujan_hu75ab2c9456d1866612a35adc1d13d5ab_402719_2000x2000_fit_lanczos_2.png" data-caption="Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo">
+
+
+  <img data-src="/project/wpg-banjarmasin/peta_lokasi_sta_hujan_hu75ab2c9456d1866612a35adc1d13d5ab_402719_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="80%" height="2310">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 4. Peta Lokasi Stasiun Hujan dan Area WPG Soetoyo
+  </figcaption>
+
+
+</figure>
+
+<p>Dari 15 stasiun tersebut hanya ada 2 Lokasi yang paling lengkap dan paling dekat, yaitu Stasiun BMKG Syamsuddin Noor dan Stasiun BMKG Kalimantan Selatan.
+Meskipun begitu, karena jarak Lokasi stasiun hujan terhadap area pekerjaan masih sekitar 25 – 33 Km maka diperlukan data satelit untuk bisa menghitung curah hujan spesifik yang berada di area pekerjaan.</p>
+<h1 id="tambahan-data-satelit-gpm">Tambahan data Satelit (GPM)</h1>
+<p>Data GPM IMERG V07 dipilih karena menggunakan radar presipitasi aktif (DPR, dual frequency precipitation radar) sebagai kalibrator, menghasilkan akurasi deteksi kejadian hujan harian yang lebih baik di wilayah tropis dibandingkan produk berbasis inframerah seperti CHIRPS atau PERSIANN. Validasi independen di Kalimantan dan wilayah Indonesia lainnya menunjukkan performa konsisten pada skala harian dengan nilai RMSE dan CSI yang kompetitif. Selain itu, GPM IMERG telah diadopsi secara resmi oleh BNPB dalam sistem inaRISK sebagai referensi klimatologis nasional. Overlay grid GPM dengan lokasi pekerjaan dan stasiun BMKG sebagai referensi diperlihatkan sebagai berikut.</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-5-overlay-lokasi-wpg-dengan-pos-hujan-dan-grid-gpm">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/grid-gpm_huba5c04e49189428deb45d58b790e7d24_402933_2000x2000_fit_lanczos_2.png" data-caption="Gambar 5. Overlay Lokasi WPG dengan Pos Hujan dan Grid GPM">
+
+
+  <img data-src="/project/wpg-banjarmasin/grid-gpm_huba5c04e49189428deb45d58b790e7d24_402933_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="80%" height="3000">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 5. Overlay Lokasi WPG dengan Pos Hujan dan Grid GPM
+  </figcaption>
+
+
+</figure>
+
+<p>Dari hasil plotting time series data tahunan dan bulanan, data hujan satelit memiliki trend yang serupa. Namun jika dibandingkan HHMT, maka data satelit hampir semua nya underestimate. Terutama di tahun 2021 Ketika terjadi hujan ekstrim di dua stasiun BMKG. Untuk itu diperlukan <strong>koreksi bias</strong>.</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-6-plot-data-bulanan-antara-pos-hujan-bmkg-dan-grid-gpm">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/plot-data-bulanan_hu0c1c850c680602d43315568329c06e7c_268065_2000x2000_fit_lanczos_2.png" data-caption="Gambar 6. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM">
+
+
+  <img data-src="/project/wpg-banjarmasin/plot-data-bulanan_hu0c1c850c680602d43315568329c06e7c_268065_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="80%" height="2400">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 6. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-7-plot-data-bulanan-antara-pos-hujan-bmkg-dan-grid-gpm">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/plot-data-tahunan_hu26b49eb14e96293597dab2543cf60d71_631941_2000x2000_fit_lanczos_2.png" data-caption="Gambar 7. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM">
+
+
+  <img data-src="/project/wpg-banjarmasin/plot-data-tahunan_hu26b49eb14e96293597dab2543cf60d71_631941_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="80%" height="2000">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 7. Plot Data Bulanan antara Pos Hujan BMKG dan Grid GPM
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-8-plot-data-hhmt-antara-pos-hujan-bmkg-dan-grid-gpm">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/plot-data-hhmt_hu037f523c861a055fb9d9f1286807f84b_263784_2000x2000_fit_lanczos_2.png" data-caption="Gambar 8. Plot Data HHMT antara Pos Hujan BMKG dan Grid GPM">
+
+
+  <img data-src="/project/wpg-banjarmasin/plot-data-hhmt_hu037f523c861a055fb9d9f1286807f84b_263784_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="80%" height="2000">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 8. Plot Data HHMT antara Pos Hujan BMKG dan Grid GPM
+  </figcaption>
+
+
+</figure>
+
+<h2 id="koreksi-bias">Koreksi Bias</h2>
+<p>Data satelit GPM IMERG mengandung bias sistematis dibandingkan pengukuran ground station. Koreksi bias difokuskan pada Hujan Harian Maksimum Tahunan (HHMT) — parameter utama analisis frekuensi banjir. Empat metode koreksi (monthly scaling (M1), HHMT direct scaling (M2), quantile mapping (M3), sampai year-specific scalling (M4)) dievaluasi menggunakan data 1998–2025 dan tujuh metriks validasi (PBIAS, RMSE, MAE, R, R2, NSE, dan KGE) dijadikan acuan sebagai filter metode koreksi mana yang paling baik.</p>
+<p>Validasi data curah hujan satelit tidak dapat dilakukan dengan satu metrik tunggal karena setiap metrik mengukur dimensi kesalahan yang berbeda. Penggunaan beberapa metrik secara bersamaan memastikan tidak ada aspek kualitas data yang terlewat dari evaluasi. Tujuh metrik yang digunakan dalam proyek ini mencakup empat dimensi utama:</p>
+<center><small><b> Tabel 2 Empat dimensi evaluasi dan metrik terkait</b> </small></center>
+<table>
+<thead>
+<tr>
+<th><strong>Dimensi</strong></th>
+<th><strong>Metrik</strong></th>
+<th><strong>Aspek yang Diukur</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bias Sistematik</strong></td>
+<td>PBIAS</td>
+<td>Apakah GPM over- atau underestimate secara konsisten?</td>
+</tr>
+<tr>
+<td><strong>Magnitudo Error</strong></td>
+<td>RMSE, MAE</td>
+<td>Seberapa besar rata-rata kesalahan absolut antara GPM dan observasi?</td>
+</tr>
+<tr>
+<td><strong>Korelasi Linear</strong></td>
+<td>R, R²</td>
+<td>Seberapa kuat hubungan linear antara GPM dan observasi?</td>
+</tr>
+<tr>
+<td><strong>Efisiensi Model</strong></td>
+<td>NSE, KGE</td>
+<td>Seberapa baik GPM dibandingkan baseline (rata-rata observasi)?</td>
+</tr>
+</tbody>
+</table>
+<center><small><b> Tabel 3 Perbandingan Metrik Validasi Koreksi Bias HHMT — M0 sampai M4 </b> </small></center>
+<table>
+<thead>
+<tr>
+<th><strong>No.</strong></th>
+<th><strong>Metode</strong></th>
+<th><strong>Keterangan</strong></th>
+<th><strong>PBIAS<br>(%)</strong></th>
+<th><strong>RMSE<br>(mm)</strong></th>
+<th><strong>MAE<br>(mm)</strong></th>
+<th><strong>R</strong></th>
+<th><strong>R²</strong></th>
+<th><strong>NSE</strong></th>
+<th><strong>KGE</strong></th>
+<th><strong>Kategori<br>NSE/PBIAS/KGE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>M0 — GPM Raw</strong></td>
+<td>Tanpa koreksi — baseline</td>
+<td>-31.9</td>
+<td>47.439</td>
+<td>38.721</td>
+<td>0.373</td>
+<td>0.139</td>
+<td>-1.062</td>
+<td>0.206</td>
+<td><strong>TM/TM/TM</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>M1 — Monthly Scaling</strong></td>
+<td>CF per bulan dari data BMKG tersedia</td>
+<td>-27.0</td>
+<td>43.701</td>
+<td>34.499</td>
+<td>0.383</td>
+<td>0.147</td>
+<td>-0.750</td>
+<td>0.252</td>
+<td><strong>TM/TM/M</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>M2 — HHMT Direct Scaling</strong></td>
+<td>CF global HHMT tunggal</td>
+<td>3.5</td>
+<td>36.468</td>
+<td>24.177</td>
+<td>0.373</td>
+<td>0.139</td>
+<td>-0.218</td>
+<td>0.371</td>
+<td><strong>TM/SB/M</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>M3 — Quantile Mapping</strong></td>
+<td>Pemetaan distribusi empiris</td>
+<td>3.5</td>
+<td>39.001</td>
+<td>26.843</td>
+<td>0.350</td>
+<td>0.123</td>
+<td>-0.394</td>
+<td>0.347</td>
+<td><strong>TM/SB/M</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>M4 — Year-Specific</strong></td>
+<td>Fk per tahun (Year-Specific Scaling)</td>
+<td><strong>3.5</strong></td>
+<td><strong>15.789</strong></td>
+<td><strong>11.136</strong></td>
+<td><strong>0.900</strong></td>
+<td><strong>0.811</strong></td>
+<td><strong>0.772</strong></td>
+<td><strong>0.879</strong></td>
+<td><strong>SB/SB/SB</strong></td>
+</tr>
+</tbody>
+</table>
+<small>
+KETERANGAN KATEGORI (Moriasi et al. 2007 & Gupta et al. 2009):
+<p>NSE  :  &gt;0.75=SB (Sangat Baik)  |  0.65–0.75=B (Baik)  |  0.50–0.65=M (Memuaskan)  |  &lt;0.50=TM (Tidak Memuaskan)</p>
+<p>PBIAS:  &lt;10%=SB  |  10–15%=B  |  15–25%=M  |  &gt;25%=TM</p>
+<p>KGE:  &gt;0.75=SB  |  0.50–0.75=B  |  0.25–0.50=M  |  &lt;0.25=TM</p>
+<p>▣  M4 = Dipilih karena terbaik dari semua sisi validasi metrik								
+</small></p>
+<p>Perbandingan antara GPM RAW (tanpa koreksi) dengan GPM hasil koreksi bias serta dengan nilai validasi metriknya dapat dilihat dalam gambar berikut.</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-9-perbandingan-antara-gpm-raw-dengan-gpm-hasil-koreksi-bias">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/koreksi-bias-gpm_hu61e9dd037462eff3242668323d9f8e15_397957_2000x2000_fit_lanczos_2.png" data-caption="Gambar 9. Perbandingan antara GPM RAW dengan GPM Hasil koreksi bias">
+
+
+  <img data-src="/project/wpg-banjarmasin/koreksi-bias-gpm_hu61e9dd037462eff3242668323d9f8e15_397957_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="100%" height="1889">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 9. Perbandingan antara GPM RAW dengan GPM Hasil koreksi bias
+  </figcaption>
+
+
+</figure>
+
+<h1 id="analisis-frekuensi-dan-uji-kesesuaian-goodness-of-fit">Analisis Frekuensi dan Uji Kesesuaian (<em>goodness-of-fit</em>)</h1>
+<p>Analisis frekuensi hujan bertujuan untuk memperkirakan besaran hujan rencana dengan kala ulang tertentu (T) berdasarkan seri data historis Hujan Harian Maksimum Tahunan (HHMT). Metode ini berasumsi bahwa data HHMT merupakan sampel acak yang mengikuti salah satu distribusi probabilitas tertentu. Dalam analisis ini digunakan lima distribusi yang umum dipakai dalam hidrologi di Indonesia, sesuai SNI 2415:2016 dan SNI 7746:2012.
+Pemilihan distribusi yang paling sesuai dilakukan melalui dua uji kesesuaian statistik, sesuai SNI 7746:2012: uji Chi-Kuadrat dan uji Kolmogorov–Smirnov. Distribusi dengan nilai statistik uji terkecil (relatif terhadap nilai kritisnya) pada kedua uji ditetapkan sebagai distribusi terpilih.</p>
+<center><small><b> Tabel 4 Rekap Uji Kesesuaian di 5 Distribusi Hujan </b> </small></center>
+<table>
+<thead>
+<tr>
+<th>Distribusi</th>
+<th>Chi² Hitung</th>
+<th>Chi² Kritis</th>
+<th>Derajat<br>Bebas</th>
+<th>Uji Chi-Sq</th>
+<th>D_maks (KS)</th>
+<th>D_kritis (KS)</th>
+<th>Uji KS</th>
+<th>Lolos<br>Kedua Uji</th>
+<th>Ranking</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Log-Pearson III  (TERPILIH)</td>
+<td>2.714286</td>
+<td>3.841</td>
+<td>1</td>
+<td>DITERIMA</td>
+<td>0.084357</td>
+<td>0.257</td>
+<td>DITERIMA</td>
+<td>LOLOS</td>
+<td>1</td>
+</tr>
+<tr>
+<td>GEV</td>
+<td>3.071429</td>
+<td>3.841</td>
+<td>1</td>
+<td>DITERIMA</td>
+<td>0.109532</td>
+<td>0.257</td>
+<td>DITERIMA</td>
+<td>LOLOS</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Gumbel</td>
+<td>4.857143</td>
+<td>5.991</td>
+<td>2</td>
+<td>DITERIMA</td>
+<td>0.126584</td>
+<td>0.257</td>
+<td>DITERIMA</td>
+<td>LOLOS</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Log-Normal</td>
+<td>4.857143</td>
+<td>5.991</td>
+<td>2</td>
+<td>DITERIMA</td>
+<td>0.150318</td>
+<td>0.257</td>
+<td>DITERIMA</td>
+<td>LOLOS</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>11.285714</td>
+<td>5.991</td>
+<td>2</td>
+<td>DITOLAK</td>
+<td>0.191136</td>
+<td>0.257</td>
+<td>DITERIMA</td>
+<td>GAGAL</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-9-nilai-uji-kesesuaian----terhadap-nilai-kritis">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/uji-kesesuaian_hu22dff5fc746c1fc58558063709a7dd30_142442_2000x2000_fit_lanczos_2.png" data-caption="Gambar 9. Nilai Uji Kesesuaian - % Terhadap Nilai Kritis">
+
+
+  <img data-src="/project/wpg-banjarmasin/uji-kesesuaian_hu22dff5fc746c1fc58558063709a7dd30_142442_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="80%" height="1331">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 9. Nilai Uji Kesesuaian - % Terhadap Nilai Kritis
+  </figcaption>
+
+
+</figure>
+
+<center><small><b> Tabel 5 Hujan Rencana (mm/hari) Berdasarkan Semua Distribusi — Log-Pearson III Terpilih </b> </small></center>
+<table>
+<thead>
+<tr>
+<th>Kala Ulang<br>(Tahun)</th>
+<th>Periode<br>Ulang (T)</th>
+<th>Normal<br>(mm)</th>
+<th>Log-Normal<br>(mm)</th>
+<th>Gumbel<br>(mm)</th>
+<th>Log-Pearson III<br>(Terpilih, mm)</th>
+<th>GEV<br>(mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T = 2 tahun</td>
+<td>2</td>
+<td>114.33</td>
+<td>110.15</td>
+<td>108.47</td>
+<td>105.52</td>
+<td>107.26</td>
+</tr>
+<tr>
+<td>T = 5 tahun</td>
+<td>5</td>
+<td>144.31</td>
+<td>137.75</td>
+<td>139.96</td>
+<td>134.58</td>
+<td>134.70</td>
+</tr>
+<tr>
+<td>T = 10 tahun</td>
+<td>10</td>
+<td>159.99</td>
+<td>154.83</td>
+<td>160.81</td>
+<td>157.04</td>
+<td>154.71</td>
+</tr>
+<tr>
+<td>T = 20 tahun</td>
+<td>20</td>
+<td>172.93</td>
+<td>170.51</td>
+<td>180.81</td>
+<td>181.12</td>
+<td>175.40</td>
+</tr>
+<tr>
+<td>T = 25 tahun</td>
+<td>25</td>
+<td>176.70</td>
+<td>175.37</td>
+<td>187.15</td>
+<td>189.32</td>
+<td>182.29</td>
+</tr>
+<tr>
+<td>T = 50 tahun</td>
+<td>50</td>
+<td>187.50</td>
+<td>190.08</td>
+<td>206.69</td>
+<td>216.42</td>
+<td>204.56</td>
+</tr>
+<tr>
+<td>T = 100 tahun</td>
+<td>100</td>
+<td>197.22</td>
+<td>204.35</td>
+<td>226.09</td>
+<td>246.32</td>
+<td>228.31</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-10-kurva-frekuensi-hujan--5-distribusi-hujan">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/kurva-frekuensi-hujan_hu8d745bc8af567c4845e9f5c342d4eeed_248387_2000x2000_fit_lanczos_2.png" data-caption="Gambar 10. Kurva Frekuensi Hujan – 5 Distribusi Hujan">
+
+
+  <img data-src="/project/wpg-banjarmasin/kurva-frekuensi-hujan_hu8d745bc8af567c4845e9f5c342d4eeed_248387_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="80%" height="1332">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 10. Kurva Frekuensi Hujan – 5 Distribusi Hujan
+  </figcaption>
+
+
+</figure>
+
+<h1 id="deliniasi-subdas">Deliniasi Subdas</h1>
+<p>Delineasi catchment menggunakan DEM hasil survei topografi tahun 2026, diproses dengan program GIS. Resolusi hasil pengukuran topografi jauh lebih tinggi dibandingkan DEMNAS sehingga menghasilkan batas Sub DAS yang lebih akurat. Secara garis besar WPG Sungai Soetoyo ini merupakan bagian dari WPG Kota Banjarmasin dengan total 11 WPG yang tersebar. Lokasi WPG S. Soetoyo sendiri berada di sebelah barat yang berhubungan langsung dengan Sungai Barito. Peta area WPG Banjarmasin secara keseluruhan dan area WPG detail S. Soetoyo ditampilkan pada gambar berikut.</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-11-area-wpg-kota-banjarmasin--keseluruhan">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/area-wpg-keseluruhan_huc019c073c667e7a566036b9ee0d6484f_9594597_2000x2000_fit_lanczos_2.png" data-caption="Gambar 11. Area WPG Kota Banjarmasin – Keseluruhan">
+
+
+  <img data-src="/project/wpg-banjarmasin/area-wpg-keseluruhan_huc019c073c667e7a566036b9ee0d6484f_9594597_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="90%" height="2480">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 11. Area WPG Kota Banjarmasin – Keseluruhan
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-12-area-wpg-s-soetoyo">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/area-wpg-soetoyo_hu9b764694b627e71d194b52a552498552_5110901_2000x2000_fit_lanczos_2.png" data-caption="Gambar 12. Area WPG S. Soetoyo">
+
+
+  <img data-src="/project/wpg-banjarmasin/area-wpg-soetoyo_hu9b764694b627e71d194b52a552498552_5110901_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="90%" height="1262">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 12. Area WPG S. Soetoyo
+  </figcaption>
+
+
+</figure>
+
+<h1 id="permodelan-swmm">Permodelan SWMM</h1>
+<p>Storm Water Management Model (SWMM) digunakan untuk mengkonversi hujan rencana menjadi hidrograf debit di setiap titik keluar sub-DAS. Parameter utama model:
+•	Metode limpasan: SCS Curve Number (CN) — USDA TR-55, 1986
+•	Input hujan: Kurva IDF dari hasil analisis frekuensi
+•	Karakteristik sub-DAS: Luas, kemiringan, panjang saluran, CN per penggunaan lahan</p>
+<p>Penentuan parameter model SWMM (Storm Water Management Model) pada area WPG Banjarmasin didasarkan pada karakteristik fisik lahan dan jenis tanah yang ada di wilayah tersebut. Wilayah Banjarmasin dan sekitarnya merupakan dataran rendah Kalimantan Selatan yang didominasi oleh tanah lempung berliat dengan drainase alami yang buruk, muka air tanah dangkal, serta banyak dijumpai lahan rawa dan gambut yang terkonversi. Kondisi ini secara hidrologis menempatkan jenis tanah di wilayah kajian pada klasifikasi Hydrologic Soil Group (HSG) Tipe C. Seluruh nilai parameter standar yang digunakan merujuk pada Hydrology National Engineering Handbook, Chapter 7 (USDA-NRCS, 2009) dan panduan hidrolika FHWA-SA-96-067 (McCuen et al., 1996).</p>
+<center><small><b> Tabel 6 Rekapitulasi Nilai Parameter SWMM – Area WPG Soetoyo - Kota Banjarmasin </b> </small></center>
+<table>
+<thead>
+<tr>
+<th>Parameter SWMM</th>
+<th>Nilai Terpilih</th>
+<th>Kategori / Dasar</th>
+<th>Sumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hydrologic Soil Group (HSG)</td>
+<td>C</td>
+<td>Tanah lempung berliat, drainase buruk, dominan di dataran rendah Kalimantan Selatan</td>
+<td>NRCS TR-55</td>
+</tr>
+<tr>
+<td>Curve Number (CN)</td>
+<td>90</td>
+<td>Residential – 1/8 ac or less (65% impervious), HSG C</td>
+<td>NRCS NEH Ch. 7</td>
+</tr>
+<tr>
+<td>Manning&rsquo;s n – Impervious (N-Imperv)</td>
+<td>0,012</td>
+<td>Smooth concrete (saluran beton halus)</td>
+<td>FHWA-SA-96-067</td>
+</tr>
+<tr>
+<td>Manning&rsquo;s n – Pervious (N-Perv)</td>
+<td>0,024</td>
+<td>Cement rubble surface (permukaan berbatu/tanah terbuka)</td>
+<td>FHWA-SA-96-067</td>
+</tr>
+<tr>
+<td>Depression Storage – Impervious (Dstore-Imperv)</td>
+<td>1,27 mm</td>
+<td>Impervious surfaces (0,05 in = 1,27 mm)</td>
+<td>NRCS / FHWA</td>
+</tr>
+<tr>
+<td>Depression Storage – Pervious (Dstore-Perv)</td>
+<td>5,24 mm</td>
+<td>Lawns/pasture (0,20 in = 5,08 mm dibulatkan 5,24 mm)</td>
+<td>NRCS / FHWA</td>
+</tr>
+</tbody>
+</table>
+<h1 id="hidrograf-desain-dan-debit-puncak-per-sub-das">Hidrograf Desain dan Debit puncak per Sub-DAS</h1>
+<p>Hasil dari running permodelan SWMM dengan input dan parameter yamg telah ditentukan berupa hidrograf debit banjir ditampilkan sebagai berikut</p>
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-13-hidrograf-debit-pada-masing-masing-subdas-q2">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/hidrograf-q2_hu252a14b0f74c551ef537fcd3aa63258b_315263_2000x2000_fit_lanczos_2.png" data-caption="Gambar 13. Hidrograf Debit Pada Masing-masing Subdas (Q2)">
+
+
+  <img data-src="/project/wpg-banjarmasin/hidrograf-q2_hu252a14b0f74c551ef537fcd3aa63258b_315263_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="90%" height="935">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 13. Hidrograf Debit Pada Masing-masing Subdas (Q2)
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-gambar-14-hidrograf-debit-pada-masing-masing-subdas-q5">
+
+
+  <a data-fancybox="" href="/project/wpg-banjarmasin/hidrograf-q5_hu6c1842bef1d0aed9a8aecfb27a67fdef_316576_2000x2000_fit_lanczos_2.png" data-caption="Gambar 14. Hidrograf Debit Pada Masing-masing Subdas (Q5)">
+
+
+  <img data-src="/project/wpg-banjarmasin/hidrograf-q5_hu6c1842bef1d0aed9a8aecfb27a67fdef_316576_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="90%" height="926">
+</a>
+
+
+  
+  
+  <figcaption>
+    Gambar 14. Hidrograf Debit Pada Masing-masing Subdas (Q5)
+  </figcaption>
+
+
+</figure>
+
+<center><small><b> Tabel 7 Rekapitulasi Debit Puncak per Sub-DAS (m³/s) — SWMM Output </b> </small></center>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Kode</th>
+<th>Nama</th>
+<th>Q2</th>
+<th>Q5</th>
+<th>Q10</th>
+<th>Q20</th>
+<th>Q25</th>
+<th>Q50</th>
+<th>Q100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>subdas_anak_pelambuan_kiri_1</td>
+<td>1.53</td>
+<td>2.03</td>
+<td>2.41</td>
+<td>2.81</td>
+<td>2.95</td>
+<td>3.40</td>
+<td>3.89</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B</td>
+<td>subdas_anak_pelambuan_kiri_2</td>
+<td>0.54</td>
+<td>0.71</td>
+<td>0.85</td>
+<td>0.99</td>
+<td>1.03</td>
+<td>1.19</td>
+<td>1.36</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C</td>
+<td>subdas_anak_pelambuan_kiri_3</td>
+<td>2.06</td>
+<td>2.72</td>
+<td>3.23</td>
+<td>3.76</td>
+<td>3.94</td>
+<td>4.55</td>
+<td>5.21</td>
+</tr>
+<tr>
+<td>4</td>
+<td>D</td>
+<td>subdas_anak_pelambuan_kn_1</td>
+<td>3.48</td>
+<td>4.80</td>
+<td>5.83</td>
+<td>6.92</td>
+<td>7.29</td>
+<td>8.51</td>
+<td>9.85</td>
+</tr>
+<tr>
+<td>5</td>
+<td>E</td>
+<td>subdas_anak_pelambuan_kn_2</td>
+<td>1.66</td>
+<td>2.20</td>
+<td>2.61</td>
+<td>3.05</td>
+<td>3.20</td>
+<td>3.69</td>
+<td>4.23</td>
+</tr>
+<tr>
+<td>6</td>
+<td>F</td>
+<td>subdas_jafri_zamzam_ki_1</td>
+<td>2.32</td>
+<td>3.25</td>
+<td>3.97</td>
+<td>4.75</td>
+<td>5.01</td>
+<td>5.87</td>
+<td>6.81</td>
+</tr>
+<tr>
+<td>7</td>
+<td>G</td>
+<td>subdas_jafri_zamzam_ki_2</td>
+<td>2.54</td>
+<td>3.54</td>
+<td>4.30</td>
+<td>5.11</td>
+<td>5.39</td>
+<td>6.29</td>
+<td>7.27</td>
+</tr>
+<tr>
+<td>8</td>
+<td>H</td>
+<td>subdas_jafri_zamzam_ki_3</td>
+<td>3.03</td>
+<td>4.33</td>
+<td>5.38</td>
+<td>6.52</td>
+<td>6.92</td>
+<td>8.21</td>
+<td>9.65</td>
+</tr>
+<tr>
+<td>9</td>
+<td>I</td>
+<td>subdas_jafri_zamzam_ki_4</td>
+<td>2.81</td>
+<td>4.04</td>
+<td>5.04</td>
+<td>6.13</td>
+<td>6.51</td>
+<td>7.76</td>
+<td>9.15</td>
+</tr>
+<tr>
+<td>10</td>
+<td>J</td>
+<td>subdas_jafri_zamzam_kn_1</td>
+<td>0.96</td>
+<td>1.32</td>
+<td>1.60</td>
+<td>1.90</td>
+<td>2.00</td>
+<td>2.33</td>
+<td>2.69</td>
+</tr>
+<tr>
+<td>11</td>
+<td>K</td>
+<td>subdas_jafri_zamzam_kn_2</td>
+<td>3.22</td>
+<td>4.45</td>
+<td>5.38</td>
+<td>6.37</td>
+<td>6.70</td>
+<td>7.79</td>
+<td>8.99</td>
+</tr>
+<tr>
+<td>12</td>
+<td>L</td>
+<td>subdas_jafri_zamzam_kn_3</td>
+<td>1.89</td>
+<td>2.60</td>
+<td>3.13</td>
+<td>3.70</td>
+<td>3.89</td>
+<td>4.52</td>
+<td>5.21</td>
+</tr>
+</tbody>
+</table>
+<center><small><b> Tabel 8 Rekapitulasi Debit Puncak per DAS (m³/s) di Outlet  </b> </small></center>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Subdas</th>
+<th>Q2</th>
+<th>Q5</th>
+<th>Q10</th>
+<th>Q20</th>
+<th>Q25</th>
+<th>Q50</th>
+<th>Q100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Pelambuan</td>
+<td>9.27</td>
+<td>12.47</td>
+<td>14.92</td>
+<td>17.53</td>
+<td>18.41</td>
+<td>21.34</td>
+<td>24.54</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Jafri Zamzam</td>
+<td>16.76</td>
+<td>23.53</td>
+<td>28.81</td>
+<td>34.48</td>
+<td>36.42</td>
+<td>42.77</td>
+<td>49.78</td>
+</tr>
+</tbody>
+</table>
+<h1 id="perbandingan-dengan-studi-terdahulu">Perbandingan dengan Studi Terdahulu</h1>
+<p>Pada tahun 2023, Balai Teknik Sungai telah melakukan kajian hidrologi di lokasi yang sama. Perbandingan dengan pekerjaan TSC (<em>Technical Support Consultant</em>) tahun 2026 ini disampaikan dalam tabel matriks berikut</p>
+<center><small><b> Tabel 9 Perbandingan Studi Hidrologi </b> </small></center>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Balai teknik sungai, 2023</th>
+<th>TSC, 2026</th>
+<th>Selisih (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total Luas Subdas (Ha)</td>
+<td>456.2</td>
+<td>458.84</td>
+<td>0.58%</td>
+</tr>
+<tr>
+<td>Data hujan</td>
+<td>Surgi Mufti (18 Tahun)</td>
+<td>GPM Koreksi (28 Tahun)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Hujan Rencana R5 (mm/hari)</td>
+<td>95.691</td>
+<td>134.58</td>
+<td>40.64%</td>
+</tr>
+<tr>
+<td>Distribusi Hujan</td>
+<td>Mononobe (5 Jam)</td>
+<td>Mononobe (5 Jam)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Intensitas Hujan R5 (mm/jam)</td>
+<td>55.96</td>
+<td>78.701</td>
+<td>40.64%</td>
+</tr>
+<tr>
+<td>Model Hidrologi</td>
+<td>SWMM</td>
+<td>SWMM</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Curve Number</td>
+<td>90</td>
+<td>90</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Debit Q5 JZZ (m3/dtk)</td>
+<td>18.27</td>
+<td>23.53</td>
+<td>28.77%</td>
+</tr>
+<tr>
+<td>Debit Q5 Pelambuan (m3/dtk)</td>
+<td>9.38</td>
+<td>12.47</td>
+<td>32.94%</td>
+</tr>
+</tbody>
+</table>
+<p>Pada kajian TSC 2026 ini nilai curah hujan rencana R5 lebih besar dari kajian 2023 (naik ~40%), dikarenakan adanya penambahan data curah hujan ekstrim di tahun 2021 (252.1 mm/hari).  Oleh karena itu nilai debit pada masing-masing ruas Sungai juga mengalami peningkatan ~30% dibandingkan pada kajian balai Teknik Sungai 2023 meskipun luasan DAS yang hampir mirip dan digunakan metode distribusi hujan yang sama (mononobe 5 jam).</p>
+
+    </div>
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/hidrologi/">Hidrologi</a>
+  
+  <a class="badge badge-light" href="/tag/swmm/">SWMM</a>
+  
+  <a class="badge badge-light" href="/tag/data_satelit/">Data_satelit</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://irpanblog2.netlify.app/project/wpg-banjarmasin/&amp;text=Analisa%20Hidrologi%20-%20Kota%20Banjarmasin%20%28NUFReP%29" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://irpanblog2.netlify.app/project/wpg-banjarmasin/&amp;t=Analisa%20Hidrologi%20-%20Kota%20Banjarmasin%20%28NUFReP%29" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Analisa%20Hidrologi%20-%20Kota%20Banjarmasin%20%28NUFReP%29&amp;body=https://irpanblog2.netlify.app/project/wpg-banjarmasin/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://irpanblog2.netlify.app/project/wpg-banjarmasin/&amp;title=Analisa%20Hidrologi%20-%20Kota%20Banjarmasin%20%28NUFReP%29" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Analisa%20Hidrologi%20-%20Kota%20Banjarmasin%20%28NUFReP%29%20https://irpanblog2.netlify.app/project/wpg-banjarmasin/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://irpanblog2.netlify.app/project/wpg-banjarmasin/&amp;title=Analisa%20Hidrologi%20-%20Kota%20Banjarmasin%20%28NUFReP%29" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://irpanblog2.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/author/irpan-chumaedi/avatar_hu471b0f6803e0170320129db8faa319d9_39551_270x270_fill_q75_lanczos_center.jpg" alt="Irpan Chumaedi"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://irpanblog2.netlify.app/">Irpan Chumaedi</a></h5>
+      <h6 class="card-subtitle">Hydrologist Engineer</h6>
+      <p class="card-text">Konsultan sumber daya air dengan spesialisasi analisis hidrologi, pemodelan hidrolika, dan kajian lingkungan (AMDAL).</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        
+          <i class="fas fa-envelope"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.youtube.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-youtube"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-github"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/irpan-chumaedi-73992863/" target="_blank" rel="noopener">
+        
+          <i class="fab fa-linkedin"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://discord.gg/za2KPWJFKG" target="_blank" rel="noopener">
+        
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
+               style="width:1em; height:1em; fill:currentColor; vertical-align:-0.125em;">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+          </svg>
+        
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/materi-analisa-frekuensi-hujan/">Analisa Frekuensi Curah Hujan</a></li>
+      
+      <li><a href="/post/materi-kalibrasi-data-gpm-bmkg/">Kalibrasi Data GPM dengan Data BMKG</a></li>
+      
+      <li><a href="/post/materi-visualisasi-data-hujan-excel/">Rekap &amp; Visualisasi Data Hujan dengan Excel</a></li>
+      
+      <li><a href="/post/materi-visualisasi-r-ggplot2/">Rekap &amp; Visualisasi Data Hujan dengan R &amp; ggplot2</a></li>
+      
+      <li><a href="/post/mengenal-r-rmarkdown/">Mengenal R &amp; RMarkdown: Instalasi dan Proyek Pertama</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+    <div class="project-related-pages content-widget-hr">
+      
+      
+      
+      
+    </div>
+  </div>
+</article>
+
+<style>
+#toc-float {
+  position: fixed;
+  top: 80px;
+  right: 1.5rem;
+  width: 220px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: rgba(30,30,40,0.95);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.8rem;
+  z-index: 9999;
+  font-size: 0.78rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#toc-float.toc-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+#toc-float .toc-title {
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+#toc-nav a {
+  display: block;
+  padding: 0.25rem 0.4rem;
+  color: #aaa;
+  text-decoration: none !important;
+  border-radius: 4px;
+  line-height: 1.4;
+  transition: background 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+#toc-nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+  text-decoration: none !important;
+}
+#toc-nav a.toc-active {
+  color: #64B5F6 !important;
+  border-left-color: #64B5F6;
+  background: rgba(33,150,243,0.1);
+}
+#toc-nav a.toc-h1 { padding-left: 0.4rem; font-weight: 700; }
+#toc-nav a.toc-h2 { padding-left: 0.4rem; font-weight: 600; }
+#toc-nav a.toc-h3 { padding-left: 1.2rem; font-size: 0.72rem; color: #888; }
+#toc-float::-webkit-scrollbar { width: 3px; }
+#toc-float::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+@media (max-width: 1300px) { #toc-float { display: none !important; } }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var article = document.querySelector('.article-style');
+  if (!article) return;
+
+  var headings = article.querySelectorAll('h1, h2, h3');
+  if (headings.length < 2) return;
+
+  
+  var toc = document.createElement('div');
+  toc.id = 'toc-float';
+  toc.innerHTML = '<div class="toc-title">📋 Daftar Isi</div><nav id="toc-nav"></nav>';
+  document.body.appendChild(toc);
+
+  var nav = toc.querySelector('#toc-nav');
+
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'toc-' + i;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.replace(/^#+\s*/, '');
+    a.className = 'toc-' + h.tagName.toLowerCase();
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(h.id);
+      if (target) {
+        var offset = 70;
+        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+    nav.appendChild(a);
+  });
+
+  
+  setTimeout(function() {
+    toc.classList.add('toc-visible');
+  }, 400);
+
+  
+  var links = nav.querySelectorAll('a');
+  function updateActive() {
+    var scrollPos = window.scrollY + 90;
+    var current = headings[0].id;
+    headings.forEach(function(h) {
+      if (h.offsetTop <= scrollPos) current = h.id;
+    });
+    links.forEach(function(a) {
+      a.classList.toggle('toc-active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+});
+</script>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'event' : "Events",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/js/wowchemy.min.572b7caf7fe601716a0f74d67d754c21.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

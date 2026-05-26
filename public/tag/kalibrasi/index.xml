@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kalibrasi | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/kalibrasi/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/kalibrasi/index.xml" rel="self" type="application/rss+xml" />
+    <description>Kalibrasi</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 21 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>Kalibrasi</title>
+      <link>https://irpanblog2.netlify.app/tag/kalibrasi/</link>
+    </image>
+    
+    <item>
+      <title>Kalibrasi Data GPM dengan Data BMKG</title>
+      <link>https://irpanblog2.netlify.app/post/materi-kalibrasi-data-gpm-bmkg/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-kalibrasi-data-gpm-bmkg/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/kalibrasi-data-gpm-bmkg.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Kalibrasi Data GPM dengan Data BMKG&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;&lt;small&gt; 🔽&lt;a href=&#34;https://drive.google.com/drive/folders/1Z7C9zQ8Ohl0CTDvCh5b6Hge_izT7e95y?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download Data, plot dan Skrip R&lt;/a&gt;. &lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

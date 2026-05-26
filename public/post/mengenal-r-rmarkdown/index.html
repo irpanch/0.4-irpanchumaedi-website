@@ -1,0 +1,1681 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Irpan Chumaedi">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Panduan praktis memulai R dan RMarkdown untuk hydrologist. Dilengkapi template Analisis Frekuensi Curah Hujan yang siap pakai — cukup ganti data, klik Knit, laporan Word langsung jadi.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.0fb8277805f3281de542f2093a1c4a87.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Irpan Chumaedi">
+  <meta property="og:url" content="https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/">
+  <meta property="og:title" content="Mengenal R &amp; RMarkdown: Instalasi dan Proyek Pertama | Irpan Chumaedi">
+  <meta property="og:description" content="Panduan praktis memulai R dan RMarkdown untuk hydrologist. Dilengkapi template Analisis Frekuensi Curah Hujan yang siap pakai — cukup ganti data, klik Knit, laporan Word langsung jadi."><meta property="og:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2026-05-17T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2026-05-17T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/"
+  },
+  "headline": "Mengenal R \u0026 RMarkdown: Instalasi dan Proyek Pertama",
+  
+  "datePublished": "2026-05-17T00:00:00Z",
+  "dateModified": "2026-05-17T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Irpan Chumaedi"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Irpan Chumaedi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Panduan praktis memulai R dan RMarkdown untuk hydrologist. Dilengkapi template Analisis Frekuensi Curah Hujan yang siap pakai — cukup ganti data, klik Knit, laporan Word langsung jadi."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.home-section, article, .card').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  
+  window.addEventListener('scroll', function() {
+    var navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    
+    var btns = document.querySelectorAll('.float-btn');
+    btns.forEach(function(btn) {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+  });
+
+  
+  document.querySelectorAll('.featurette').forEach(function(el, i) {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
+
+  
+  var isDbPage = window.location.pathname.indexOf('/post/database') === 0;
+  var container = document.createElement('div');
+  container.className = 'float-buttons';
+
+  
+  var btnTop = document.createElement('button');
+  btnTop.className = 'float-btn float-btn-top';
+  btnTop.title = 'Kembali ke atas';
+  btnTop.innerHTML = '↑';
+  btnTop.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  container.appendChild(btnTop);
+
+  
+  var isProvinsiPage = window.location.pathname.indexOf('/post/database-') === 0;
+  if (isProvinsiPage) {
+    var btnDb = document.createElement('a');
+    btnDb.className = 'float-btn float-btn-db';
+    btnDb.href = '/post/database/';
+    btnDb.title = 'Kembali ke Database Utama';
+    btnDb.innerHTML = '🗄️';
+    container.appendChild(btnDb);
+  }
+
+  document.body.appendChild(container);
+});
+</script>
+
+
+  <title>Mengenal R &amp; RMarkdown: Instalasi dan Proyek Pertama | Irpan Chumaedi</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.1df0392aab543464b23a85146803aaf2.js"></script>
+
+  
+
+<aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Tentang</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#skills"><span>Keahlian</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Proyek</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#kurikulum"><span>Kurikulum</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Tulisan</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/database/"><span>Database</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Kontak</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Mengenal R &amp; RMarkdown: Instalasi dan Proyek Pertama</h1>
+
+  
+  <p class="page-subtitle">Dari instalasi hingga laporan hidrologi otomatis dalam satu klik</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      <a href="/author/irpan-chumaedi/">Irpan Chumaedi</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 17, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/fondasi-data-tools/">Fondasi Data &amp; Tools</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <style>
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(0,188,212,0.4); }
+  50%       { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0,188,212,0); }
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(5px); }
+}
+.card-anim { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+.ca1 { animation-delay: 0.05s; }
+.ca2 { animation-delay: 0.18s; }
+.ca3 { animation-delay: 0.31s; }
+.ca4 { animation-delay: 0.44s; }
+.ca5 { animation-delay: 0.57s; }
+.step-anim { opacity: 0; animation: slideRight 0.45s ease forwards; }
+.sa1 { animation-delay: 0.1s; } .sa2 { animation-delay: 0.22s; }
+.sa3 { animation-delay: 0.34s; } .sa4 { animation-delay: 0.46s; }
+.sa5 { animation-delay: 0.58s; }
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+.arrow-bounce { display: inline-block; animation: arrowBounce 1.3s ease-in-out infinite; }
+</style>
+<blockquote>
+<p><em>Artikel ini adalah bagian dari seri <strong>Fondasi Data &amp; Tools</strong>. Sebelum membaca ini, pastikan sudah membaca <a href="/post/materi-pengguna-pembuat-kode/">Filosofi: Pengguna vs. Pembuat Kode</a>.</em></p>
+</blockquote>
+<hr>
+<p>Bayangkan kamu baru saja selesai mengumpulkan data curah hujan 25 tahun dari BMKG. Analisis frekuensi harus dikerjakan: hitung statistik, fit distribusi, uji KS, uji chi-kuadrat, buat kurva IDF. Lalu semua hasilnya harus masuk ke laporan Word yang rapi.</p>
+<p><em>Tiba-tiba bos bilang: &ldquo;Mas, data hujan yang kemarin kejauhan. ambil data ini ya, lokasi nya lebih dekat soalnya&rdquo;</em></p>
+<p><em>&lsquo;Waduh, ngulang dari awal lagi dong&ndash;'</em></p>
+<p>Hal ini sering saya alami dan dengan berat hati harus dikerjakan lagi dari awal. Memang sudah ada template excel dan word nya. Tapi menghabiskan waktu, belum lagi kita harus teliti jangan sampai ada kata &ldquo;Papua&rdquo; di proyek &ldquo;Banjarmasin&rdquo;, <strong>malu banget</strong>.</p>
+<p>Contoh kasus lainnya adalah ketika kita mengerjakan proses yang sama, tapi lokasinya saja yang berbeda. Data memang pasti berbeda juga, tapi proses analisis persis sama tok.</p>
+<p>Untuk mengerjakan ulang dengan cara biasa mungkin bisa menghabiskan <strong>2-4 jam</strong> per stasiun, per proyek. tapi dengan cara yang akan kita pelajari hari ini tinggal <strong>klik satu tombol</strong>, laporan bisa jadi dalam 30 detik.</p>
+<hr>
+<h2 id="apa-itu-r">Apa Itu R?</h2>
+<p>R adalah bahasa pemrograman yang dirancang khusus untuk analisis statistik dan visualisasi data. Tapi jangan langsung takut dengan kata &ldquo;pemrograman&rdquo; — seperti yang sudah dibahas di <a href="https://www.irpanchumaedi.com/post/materi-pengguna-pembuat-kode/" target="_blank" rel="noopener">artikel sebelumnya</a>, kita tidak perlu menjadi programmer. Kita cukup menjadi <strong>pengguna yang cerdas</strong>.</p>
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin: 1.8rem 0;">
+<div class="card-anim ca1" style="border-radius: 12px; padding: 1.2rem; background: #0d1b2a; border: 1px solid #1565C0; border-top: 3px solid #1565C0; text-align: center;">
+<div style="font-size: 1.6rem; margin-bottom: 0.5rem; font-family: monospace; color: #1E88E5; font-weight: 700;">R</div>
+<div style="font-size: 0.82rem; font-weight: 700; color: #90CAF9; margin-bottom: 0.4rem;">Gratis & Open Source</div>
+<div style="font-size: 0.75rem; color: #666; line-height: 1.5;">Tidak perlu lisensi. Ribuan paket tersedia di CRAN.</div>
+</div>
+<div class="card-anim ca2" style="border-radius: 12px; padding: 1.2rem; background: #0d1b2a; border: 1px solid #00BCD4; border-top: 3px solid #00BCD4; text-align: center;">
+<div style="font-size: 1.6rem; margin-bottom: 0.5rem; font-family: monospace; color: #00BCD4; font-weight: 700;">📊</div>
+<div style="font-size: 0.82rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.4rem;">Visualisasi Kelas Atas</div>
+<div style="font-size: 0.75rem; color: #666; line-height: 1.5;">ggplot2 menghasilkan plot publikasi-siap dengan sedikit kode.</div>
+</div>
+<div class="card-anim ca3" style="border-radius: 12px; padding: 1.2rem; background: #0d1b2a; border: 1px solid #43A047; border-top: 3px solid #43A047; text-align: center;">
+<div style="font-size: 1.6rem; margin-bottom: 0.5rem; font-family: monospace; color: #66BB6A; font-weight: 700;">∞</div>
+<div style="font-size: 0.82rem; font-weight: 700; color: #A5D6A7; margin-bottom: 0.4rem;">Reproducible</div>
+<div style="font-size: 0.75rem; color: #666; line-height: 1.5;">Ganti input → semua output diperbarui otomatis. Tidak ada copy-paste.</div>
+</div>
+</div>
+<hr>
+<h2 id="apa-itu-rmarkdown">Apa Itu RMarkdown?</h2>
+<p>RMarkdown adalah format file (<code>.Rmd</code>) yang <strong>menggabungkan tiga hal dalam satu dokumen</strong>:</p>
+<div style="margin: 1.5rem 0; border: 1px solid #1a2a3a; border-radius: 12px; overflow: hidden;">
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+<div class="card-anim ca1" style="padding: 1.1rem; border-right: 1px solid #1a2a3a; background: #070d14;">
+<div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #F57F17; margin-bottom: 0.5rem;">① YAML Header</div>
+<div style="font-family: monospace; font-size: 0.72rem; color: #FFB74D; line-height: 1.7;">---<br>title: "Analisis"<br>output:<br>&nbsp;&nbsp;word_document<br>---</div>
+<div style="font-size: 0.72rem; color: #555; margin-top: 0.5rem;">Konfigurasi dokumen: judul, format output, parameter.</div>
+</div>
+<div class="card-anim ca2" style="padding: 1.1rem; border-right: 1px solid #1a2a3a; background: #070d14;">
+<div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0288D1; margin-bottom: 0.5rem;">② Teks Markdown</div>
+<div style="font-family: monospace; font-size: 0.72rem; color: #4FC3F7; line-height: 1.7;"># Bab 1<br>Analisis dilakukan<br>di stasiun **BMKG**<br>periode 2000–2026.</div>
+<div style="font-size: 0.72rem; color: #555; margin-top: 0.5rem;">Narasi laporan dalam format teks sederhana.</div>
+</div>
+<div class="card-anim ca3" style="padding: 1.1rem; background: #070d14;">
+<div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #43A047; margin-bottom: 0.5rem;">③ Code Chunk R</div>
+<div style="font-family: monospace; font-size: 0.72rem; color: #81C784; line-height: 1.7;">```{r}<br>x_bar &lt;- mean(hujan)<br>plot(cdf_gumbel)<br>flextable(df_hasil)<br>```</div>
+<div style="font-size: 0.72rem; color: #555; margin-top: 0.5rem;">Kode analisis, tabel, dan grafik — semua otomatis.</div>
+</div>
+</div>
+</div>
+<p>Ketika kamu klik <strong>Knit</strong>, RStudio menjalankan semua kode R, menghasilkan grafik, menghitung angka, lalu menyusunnya menjadi dokumen Word (atau PDF, atau HTML) secara otomatis.</p>
+<hr>
+<h2 id="perbandingan-manual-vs-rmarkdown">Perbandingan: Manual vs RMarkdown</h2>
+<p>Gambar di bawah ini menunjukkan perbedaan nyata dalam alur kerja:</p>
+<p><img src="compare-manual-vs-rmd.gif" alt="Perbandingan Manual vs RMarkdown"></p>
+<p>Satu kata: <strong>reproducible</strong>. Ketika data berubah, kamu tidak perlu mengulang semua langkah. Cukup update file Excel, klik Knit, laporan diperbarui dalam hitungan detik.</p>
+<hr>
+<h2 id="instalasi-r--rstudio">Instalasi: R + RStudio</h2>
+<p>Kamu hanya butuh <strong>dua software</strong> ini. Keduanya gratis.</p>
+<div style="margin: 1.5rem 0;">
+<div class="step-anim sa1" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; margin-bottom: 0.75rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #1565C0; border-radius: 10px;">
+<div style="width: 36px; height: 36px; border-radius: 50%; background: #1565C0; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;" class="pulse-dot">1</div>
+<div>
+<div style="font-size: 0.9rem; font-weight: 700; color: #90CAF9; margin-bottom: 0.2rem;">Install R</div>
+<div style="font-size: 0.82rem; color: #666; line-height: 1.6;">Download dari <a href="https://cran.r-project.org" strong style="color: #90CAF9;">cran.r-project.org</strong></a> → pilih <em>Download R for Windows atau sistem operasi yang kamu pakai</em> → jalankan installer, klik Next terus sampai selesai.</div>
+</div>
+</div>
+<div class="step-anim sa2" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; margin-bottom: 0.75rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #00BCD4; border-radius: 10px;">
+<div style="width: 36px; height: 36px; border-radius: 50%; background: #00838F; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;">2</div>
+<div>
+<div style="font-size: 0.9rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.2rem;">Install RStudio</div>
+<div style="font-size: 0.82rem; color: #666; line-height: 1.6;">Download RStudio dari posit untuk <a href="https://rstudio.org/download/latest/stable/desktop/windows/RStudio-latest.exe" strong style="color: #80DEEA;">windows</strong></a> atau <a href="https://rstudio.org/download/latest/stable/desktop/mac/RStudio-latest.dmg" strong style="color: #80DEEA;">mac</strong></a> → install. RStudio adalah antarmuka visual untuk bekerja dengan R.</div>
+</div>
+</div>
+<div class="step-anim sa3" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; margin-bottom: 0.75rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #43A047; border-radius: 10px;">
+<div style="width: 36px; height: 36px; border-radius: 50%; background: #2E7D32; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;">3</div>
+<div>
+<div style="font-size: 0.9rem; font-weight: 700; color: #A5D6A7; margin-bottom: 0.2rem;">Install Paket yang Dibutuhkan</div>
+<div style="font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 0.5rem;">Buka RStudio → di panel <em>Console</em> (bawah kiri), ketik dan tekan Enter:</div>
+<div style="background: #050d14; border: 1px solid #1a2a3a; border-radius: 6px; padding: 0.6rem 0.8rem; font-family: monospace; font-size: 0.78rem; color: #A5D6A7; line-height: 1.8;">install.packages(c("rmarkdown", "readxl", "ggplot2",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"dplyr", "tidyr", "flextable", "scales"))</div>
+<div style="font-size: 0.75rem; color: #555; margin-top: 0.4rem;">Tunggu beberapa menit hingga semua paket terinstal.</div>
+</div>
+</div>
+<div class="step-anim sa4" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #FFB300; border-radius: 10px;">
+<div style="width: 36px; height: 36px; border-radius: 50%; background: #F57F17; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;">4</div>
+<div>
+<div style="font-size: 0.9rem; font-weight: 700; color: #FFE082; margin-bottom: 0.2rem;">Verifikasi Instalasi</div>
+<div style="font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 0.5rem;">Di Console, ketik:</div>
+<div style="background: #050d14; border: 1px solid #1a2a3a; border-radius: 6px; padding: 0.6rem 0.8rem; font-family: monospace; font-size: 0.78rem; color: #FFE082; line-height: 1.8;">library(ggplot2)<br>ggplot(data.frame(x=1:10, y=rnorm(10)), aes(x,y)) + geom_point()</div>
+<div style="font-size: 0.75rem; color: #555; margin-top: 0.4rem;">Jika muncul grafik di panel kanan bawah, instalasi berhasil.</div>
+</div>
+</div>
+</div>
+<hr>
+<h2 id="proyek-pertama-analisis-frekuensi-curah-hujan">Proyek Pertama: Analisis Frekuensi Curah Hujan</h2>
+<p>Ini bagian yang menarik. Kita tidak akan mulai dari nol — saya sudah siapkan template lengkap yang bisa langsung dipakai.</p>
+<h3 id="cara-kerjanya">Cara Kerjanya</h3>
+<p><img src="workflow-rmarkdown.gif" alt="Alur Kerja Template RMarkdown"></p>
+<p>Template ini membaca data dari <strong>Excel</strong>, menjalankan seluruh analisis secara otomatis, lalu menghasilkan <strong>laporan Word</strong> lengkap dengan tabel dan grafik.</p>
+<h3 id="yang-dihasilkan-otomatis">Yang Dihasilkan Otomatis</h3>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5rem 0;">
+<div class="card-anim ca1" style="padding: 1rem 1.1rem; background: #0a120d; border: 1px solid #2E7D32; border-radius: 10px;">
+<div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #66BB6A; margin-bottom: 0.6rem;">Analisis Distribusi</div>
+<div style="font-size: 0.8rem; color: #888; line-height: 1.7;">
+[v] Tabel data hujan harian maksimum<br>
+[v] Plot PDF — 4 distribusi sekaligus<br>
+[v] Plot CDF dengan plotting position<br>
+[v] Uji Kolmogorov-Smirnov<br>
+[v] Uji Chi-Kuadrat<br>
+[v] Pemilihan distribusi terbaik otomatis
+</div>
+</div>
+<div class="card-anim ca2" style="padding: 1rem 1.1rem; background: #0a1018; border: 1px solid #1565C0; border-radius: 10px;">
+<div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64B5F6; margin-bottom: 0.6rem;">Curah Hujan Rencana & IDF</div>
+<div style="font-size: 0.8rem; color: #888; line-height: 1.7;">
+[v] CH rencana: T = 2, 5, 10, 25, 50, 100 tahun<br>
+[v] Tabel IDF lengkap (5 menit - 24 jam)<br>
+[v] Kurva IDF log-log<br>
+[v] Rumus Mononobe<br>
+[v] Rekapitulasi intensitas t = 60 menit<br>
+[v] Semua dalam format Word siap laporan
+</div>
+</div>
+</div>
+<h3 id="cara-menggunakan-template">Cara Menggunakan Template</h3>
+<div style="margin: 1.5rem 0;">
+<div class="step-anim sa1" style="display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;">
+<div style="font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #1E88E5; flex-shrink: 0; padding-top: 1px;">01</div>
+<div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #90CAF9; margin-bottom: 0.2rem;">Download & Ekstrak File Template</div>
+<div style="font-size: 0.78rem; color: #555; line-height: 1.5;">Simpan ketiga file di <strong style="color: #90CAF9;">satu folder yang sama</strong>: <code style="background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;">Analisis_Frekuensi_TEMPLATE.Rmd</code>, <code style="background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;">Data_Input_Frekuensi.xlsx</code>, dan <code style="background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;">reference_template.docx</code></div>
+</div>
+</div>
+<div class="step-anim sa2" style="display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;">
+<div style="font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #00BCD4; flex-shrink: 0; padding-top: 1px;">02</div>
+<div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.2rem;">Isi Data di Excel</div>
+<div style="font-size: 0.78rem; color: #555; line-height: 1.5;">Buka <code style="background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;">Data_Input_Frekuensi.xlsx</code>. Isi sheet <strong style="color:#80DEEA;">Metadata_Proyek</strong> (nama proyek, stasiun, kala ulang) dan sheet <strong style="color:#80DEEA;">Data_Hujan</strong> (kolom Tahun dan Hujan Maks mm). Simpan file.</div>
+</div>
+</div>
+<div class="step-anim sa3" style="display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;">
+<div style="font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #43A047; flex-shrink: 0; padding-top: 1px;">03</div>
+<div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #A5D6A7; margin-bottom: 0.2rem;">Buka File .Rmd di RStudio</div>
+<div style="font-size: 0.78rem; color: #555; line-height: 1.5;">Double-click file <code style="background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;">.Rmd</code> → terbuka di RStudio. Kamu akan melihat kode di bagian <code style="background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;">DATA_INPUT</code> — tidak perlu diubah jika file Excel ada di folder yang sama.</div>
+</div>
+</div>
+<div class="step-anim sa4" style="display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;">
+<div style="font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #FFB300; flex-shrink: 0; padding-top: 1px;">04</div>
+<div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #FFE082; margin-bottom: 0.2rem;">Klik Tombol Knit</div>
+<div style="font-size: 0.78rem; color: #555; line-height: 1.5;">Di RStudio, klik tombol <strong style="color:#FFE082;">[ Knit ]</strong> (ikon benang + jarum di toolbar, atau tekan <kbd style="background:#1a2a3a; padding:2px 6px; border-radius:3px; font-size:0.7rem;">Ctrl + Shift + K</kbd>). Tunggu 10–30 detik. File Word akan terbuka otomatis.</div>
+</div>
+</div>
+<div class="step-anim sa5" style="display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; background: #070e12; border: 1px solid #006064; border-radius: 9px;">
+<div style="font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #00BCD4; flex-shrink: 0; padding-top: 1px;">05</div>
+<div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.2rem;">Proyek Berikutnya? Tinggal Ganti Data</div>
+<div style="font-size: 0.78rem; color: #555; line-height: 1.5;">Salin folder ke direktori proyek baru. Buka Excel, ganti data hujan dan metadata. Klik Knit. Laporan baru siap — tanpa mengubah satu baris kode pun.</div>
+</div>
+</div>
+</div>
+<hr>
+<h2 id="anatomi-template-bagian-yang-perlu-diketahui">Anatomi Template: Bagian yang Perlu Diketahui</h2>
+<p>Kamu tidak perlu memahami semua kode. Tapi ada tiga bagian penting yang perlu diketahui:</p>
+<div style="margin: 1.5rem 0; background: #050d14; border: 1px solid #1a2a3a; border-radius: 12px; overflow: hidden;">
+<div style="background: #0a1520; padding: 0.7rem 1.2rem; border-bottom: 1px solid #1a2a3a;">
+<span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #64B5F6; text-transform: uppercase;">Analisis_Frekuensi_TEMPLATE.Rmd</span>
+</div>
+<div style="padding: 1.1rem 1.3rem;">
+<div style="margin-bottom: 1rem;">
+<div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #F57F17; margin-bottom: 0.4rem;">① YAML — Konfigurasi Output</div>
+<div style="background: #0a1218; border-radius: 6px; padding: 0.7rem 0.9rem; font-family: monospace; font-size: 0.75rem; line-height: 1.8; color: #FFB74D;">
+<span style="color: #555;">---</span><br>
+<span style="color: #F57F17;">title:</span> <span style="color: #FFF8E1;">"Analisis Frekuensi Curah Hujan Harian Maksimum"</span><br>
+<span style="color: #F57F17;">params:</span><br>
+&nbsp;&nbsp;<span style="color: #F57F17;">path_excel:</span> <span style="color: #FFF8E1;">"Data_Input_Frekuensi.xlsx"</span> <span style="color: #555;"># ← path ke file Excel</span><br>
+<span style="color: #F57F17;">output:</span><br>
+&nbsp;&nbsp;<span style="color: #F57F17;">word_document:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F57F17;">reference_docx:</span> <span style="color: #FFF8E1;">reference_template.docx</span><br>
+<span style="color: #555;">---</span>
+</div>
+<div style="font-size: 0.74rem; color: #555; margin-top: 0.4rem;">Hanya ubah <code>path_excel</code> jika file Excel tidak berada di folder yang sama.</div>
+</div>
+<div style="margin-bottom: 1rem;">
+<div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #43A047; margin-bottom: 0.4rem;">② DATA_INPUT — Satu-satunya blok yang perlu dipahami</div>
+<div style="background: #0a1218; border-radius: 6px; padding: 0.7rem 0.9rem; font-family: monospace; font-size: 0.75rem; line-height: 1.8; color: #A5D6A7;">
+<span style="color: #555;">```{r DATA_INPUT}</span><br>
+<span style="color: #555;"># !! HANYA EDIT BAGIAN INI UNTUK SETIAP PROYEK BARU !!</span><br>
+<span style="color: #43A047;">path_excel</span> <span style="color: #fff;">&lt;-</span> params$path_excel<br>
+<span style="color: #43A047;">T_values_default</span> <span style="color: #fff;">&lt;-</span> <span style="color: #81C784;">c(2, 5, 10, 25, 50, 100)</span><br>
+<span style="color: #555;">```</span>
+</div>
+<div style="font-size: 0.74rem; color: #555; margin-top: 0.4rem;">Kala ulang bisa diatur dari Excel (sheet Metadata_Proyek). Blok ini hanya fallback.</div>
+</div>
+<div>
+<div style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #1E88E5; margin-bottom: 0.4rem;">③ ANALISIS — Jangan diubah</div>
+<div style="background: #0a1218; border-radius: 6px; padding: 0.7rem 0.9rem; font-family: monospace; font-size: 0.75rem; line-height: 1.8; color: #64B5F6;">
+<span style="color: #555;">```{r ANALISIS, include=FALSE}</span><br>
+<span style="color: #555;"># Statistik dasar, fit 4 distribusi, uji KS & Chi-kuadrat,</span><br>
+<span style="color: #555;"># pemilihan otomatis, hitung IDF Mononobe — semua di sini.</span><br>
+<span style="color: #555;"># Tidak perlu diubah.</span><br>
+<span style="color: #555;">```</span>
+</div>
+<div style="font-size: 0.74rem; color: #555; margin-top: 0.4rem;">Semua matematika ada di sini — Normal, Log-Normal, Gumbel, Log-Pearson III. Dihitung otomatis.</div>
+</div>
+</div>
+</div>
+<hr>
+<h2 id="download-template">Download Template</h2>
+<div style="margin: 1.5rem 0; padding: 1.4rem 1.6rem; background: linear-gradient(135deg, #0a1520, #071018); border: 1px solid #1565C0; border-radius: 14px;" class="card-anim ca1">
+<div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64B5F6; margin-bottom: 1rem;">Paket Template — Analisis Frekuensi Curah Hujan</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.7rem; margin-bottom: 1.1rem;">
+<div style="padding: 0.8rem; background: #0d1b2a; border: 1px solid #1a3050; border-radius: 8px; text-align: center;">
+<div style="font-family: monospace; font-size: 0.75rem; font-weight: 700; color: #43A047; margin-bottom: 0.3rem;">.Rmd</div>
+<div style="font-size: 0.72rem; color: #666;">Analisis_Frekuensi<br>_TEMPLATE.Rmd</div>
+</div>
+<div style="padding: 0.8rem; background: #0d1b2a; border: 1px solid #1a3050; border-radius: 8px; text-align: center;">
+<div style="font-family: monospace; font-size: 0.75rem; font-weight: 700; color: #1E88E5; margin-bottom: 0.3rem;">.xlsx</div>
+<div style="font-size: 0.72rem; color: #666;">Data_Input<br>_Frekuensi.xlsx</div>
+</div>
+<div style="padding: 0.8rem; background: #0d1b2a; border: 1px solid #1a3050; border-radius: 8px; text-align: center;">
+<div style="font-family: monospace; font-size: 0.75rem; font-weight: 700; color: #FFB300; margin-bottom: 0.3rem;">.docx</div>
+<div style="font-size: 0.72rem; color: #666;">reference<br>_template.docx</div>
+</div>
+</div>
+<div style="font-size: 0.8rem; color: #555; line-height: 1.6; margin-bottom: 1rem;">Tiga file harus berada dalam <strong style="color: #90CAF9;">satu folder yang sama</strong>. Template sudah diuji dengan data BMKG stasiun Bandung, 2000–2026. Distribusi yang didukung: Normal, Log-Normal 2P, Gumbel, Log-Pearson III.</div>
+<a href="/files/template-analisis-frekuensi.zip" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.5rem; background: #1565C0; color: white; text-decoration: none; border-radius: 8px; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.02em; transition: background 0.2s ease;" onmouseover="this.style.background='#1E88E5'" onmouseout="this.style.background='#1565C0'">
+<span style="font-size: 1rem;">&#8595;</span> Download Template (ZIP)
+</a>
+</div>
+<hr>
+<h2 id="apa-selanjutnya">Apa Selanjutnya?</h2>
+<p>Setelah berhasil menjalankan template ini, kamu sudah memiliki fondasi yang kuat. Artikel berikutnya akan membahas cara <strong>memodifikasi template</strong> untuk kebutuhan proyek yang berbeda — menambah stasiun, mengubah distribusi, atau mengintegrasikan data GPM IMERG.</p>
+<div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem;">
+<a href="/post/materi-pengguna-pembuat-kode/" style="display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 10px; text-decoration: none; transition: border-color 0.2s ease;" onmouseover="this.style.borderColor='#555'" onmouseout="this.style.borderColor='#1a2a3a'">
+<span style="font-size: 1.1rem; flex-shrink: 0; color: #555; display: inline-block; transform: scaleX(-1);">→</span>
+<div>
+<div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #555; margin-bottom: 0.15rem;">Artikel Sebelumnya</div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #90CAF9;">Filosofi: Pengguna vs. Pembuat Kode</div>
+</div>
+</a>
+<div style="display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px dashed #2a2a3a; border-radius: 10px; opacity: 0.55; cursor: default;">
+<span style="font-size: 1.1rem; flex-shrink: 0; color: #444;">→</span>
+<div>
+<div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #444; margin-bottom: 0.15rem;">Segera Hadir</div>
+<div style="font-size: 0.85rem; font-weight: 700; color: #555;">Kustomisasi Template: Adaptasi untuk Berbagai Proyek</div>
+</div>
+</div>
+</div>
+<hr>
+<p><em>Template ini dibuat menggunakan R versi 4.x dengan paket: <code>rmarkdown</code>, <code>readxl</code>, <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, <code>flextable</code>, <code>scales</code>. Semua perhitungan mengikuti metode standar hidrologi Indonesia.</em> 🌧️</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/tag/rmarkdown/">RMarkdown</a>
+  
+  <a class="badge badge-light" href="/tag/hidrologi/">Hidrologi</a>
+  
+  <a class="badge badge-light" href="/tag/analisis-frekuensi/">Analisis Frekuensi</a>
+  
+  <a class="badge badge-light" href="/tag/tutorial/">tutorial</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/&amp;text=Mengenal%20R%20&amp;amp;%20RMarkdown:%20Instalasi%20dan%20Proyek%20Pertama" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/&amp;t=Mengenal%20R%20&amp;amp;%20RMarkdown:%20Instalasi%20dan%20Proyek%20Pertama" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Mengenal%20R%20&amp;amp;%20RMarkdown:%20Instalasi%20dan%20Proyek%20Pertama&amp;body=https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/&amp;title=Mengenal%20R%20&amp;amp;%20RMarkdown:%20Instalasi%20dan%20Proyek%20Pertama" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Mengenal%20R%20&amp;amp;%20RMarkdown:%20Instalasi%20dan%20Proyek%20Pertama%20https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/&amp;title=Mengenal%20R%20&amp;amp;%20RMarkdown:%20Instalasi%20dan%20Proyek%20Pertama" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://irpanblog2.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/author/irpan-chumaedi/avatar_hu471b0f6803e0170320129db8faa319d9_39551_270x270_fill_q75_lanczos_center.jpg" alt="Irpan Chumaedi"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://irpanblog2.netlify.app/">Irpan Chumaedi</a></h5>
+      <h6 class="card-subtitle">Hydrologist Engineer</h6>
+      <p class="card-text">Konsultan sumber daya air dengan spesialisasi analisis hidrologi, pemodelan hidrolika, dan kajian lingkungan (AMDAL).</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        
+          <i class="fas fa-envelope"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.youtube.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-youtube"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-github"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/irpan-chumaedi-73992863/" target="_blank" rel="noopener">
+        
+          <i class="fab fa-linkedin"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://discord.gg/za2KPWJFKG" target="_blank" rel="noopener">
+        
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
+               style="width:1em; height:1em; fill:currentColor; vertical-align:-0.125em;">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+          </svg>
+        
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/materi-pengguna-pembuat-kode/">Filosofi: Pengguna vs. Pembuat Kode</a></li>
+      
+      <li><a href="/post/materi-analisa-frekuensi-hujan/">Analisa Frekuensi Curah Hujan</a></li>
+      
+      <li><a href="/post/materi-kalibrasi-data-gpm-bmkg/">Kalibrasi Data GPM dengan Data BMKG</a></li>
+      
+      <li><a href="/post/materi-visualisasi-r-ggplot2/">Rekap &amp; Visualisasi Data Hujan dengan R &amp; ggplot2</a></li>
+      
+      <li><a href="/post/materi-keterbatasan-data-hujan/">Keterbatasan Data Hujan Pos dan Alternatif GPM IMERG</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'event' : "Events",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/js/wowchemy.min.572b7caf7fe601716a0f74d67d754c21.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

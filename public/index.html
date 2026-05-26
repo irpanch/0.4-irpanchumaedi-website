@@ -1,0 +1,3022 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Irpan Chumaedi">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Hydrologist Engineer">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://irpanblog2.netlify.app/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.0fb8277805f3281de542f2093a1c4a87.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Irpan Chumaedi">
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://irpanblog2.netlify.app/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Irpan Chumaedi">
+  <meta property="og:url" content="https://irpanblog2.netlify.app/">
+  <meta property="og:title" content="Irpan Chumaedi">
+  <meta property="og:description" content="Hydrologist Engineer"><meta property="og:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    <meta property="og:updated_time" content="2030-06-01T13:00:00&#43;00:00">
+  
+
+  
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://irpanblog2.netlify.app/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "url": "https://irpanblog2.netlify.app/"
+}
+</script>
+
+
+  
+
+
+  
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.home-section, article, .card').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  
+  window.addEventListener('scroll', function() {
+    var navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    
+    var btns = document.querySelectorAll('.float-btn');
+    btns.forEach(function(btn) {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+  });
+
+  
+  document.querySelectorAll('.featurette').forEach(function(el, i) {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
+
+  
+  var isDbPage = window.location.pathname.indexOf('/post/database') === 0;
+  var container = document.createElement('div');
+  container.className = 'float-buttons';
+
+  
+  var btnTop = document.createElement('button');
+  btnTop.className = 'float-btn float-btn-top';
+  btnTop.title = 'Kembali ke atas';
+  btnTop.innerHTML = '↑';
+  btnTop.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  container.appendChild(btnTop);
+
+  
+  var isProvinsiPage = window.location.pathname.indexOf('/post/database-') === 0;
+  if (isProvinsiPage) {
+    var btnDb = document.createElement('a');
+    btnDb.className = 'float-btn float-btn-db';
+    btnDb.href = '/post/database/';
+    btnDb.title = 'Kembali ke Database Utama';
+    btnDb.innerHTML = '🗄️';
+    container.appendChild(btnDb);
+  }
+
+  document.body.appendChild(container);
+});
+</script>
+
+
+  <title>Irpan Chumaedi</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.1df0392aab543464b23a85146803aaf2.js"></script>
+
+  
+
+<aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about" data-target="#about"><span>Tentang</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#skills" data-target="#skills"><span>Keahlian</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects" data-target="#projects"><span>Proyek</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#kurikulum" data-target="#kurikulum"><span>Kurikulum</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts" data-target="#posts"><span>Tulisan</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/database/"><span>Database</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact" data-target="#contact"><span>Kontak</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+<span class="js-widget-page d-none"></span>
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  <section id="about" class="home-section wg-about  "  >
+   <div class="home-section-bg " ></div>
+    <div class="container">
+
+    
+
+      
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <div id="profile">
+
+      
+      
+      <img class="avatar avatar-circle" src="/author/irpan-chumaedi/avatar_hu471b0f6803e0170320129db8faa319d9_39551_270x270_fill_q75_lanczos_center.jpg" alt="Irpan Chumaedi">
+      
+
+      <div class="portrait-title">
+        <h2>Irpan Chumaedi</h2>
+        <h3>Hydrologist Engineer</h3>
+
+        
+        <h3>
+          
+          <span>Konsultan Swasta — Sumber Daya Air</span>
+          
+        </h3>
+        
+      </div>
+
+      <ul class="network-icon" aria-hidden="true">
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="/#contact"  aria-label="envelope">
+            <i class="fas fa-envelope big-icon"></i>
+          </a>
+        </li>
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="https://www.youtube.com/irpanch" target="_blank" rel="noopener" aria-label="youtube">
+            <i class="fab fa-youtube big-icon"></i>
+          </a>
+        </li>
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="https://github.com/irpanch" target="_blank" rel="noopener" aria-label="github">
+            <i class="fab fa-github big-icon"></i>
+          </a>
+        </li>
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="https://www.linkedin.com/in/irpan-chumaedi-73992863/" target="_blank" rel="noopener" aria-label="linkedin">
+            <i class="fab fa-linkedin big-icon"></i>
+          </a>
+        </li>
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="https://discord.gg/za2KPWJFKG" target="_blank" rel="noopener" aria-label="discord">
+            <i class="fab fa-discord big-icon"></i>
+          </a>
+        </li>
+        
+      </ul>
+
+    </div>
+  </div>
+  <div class="col-12 col-lg-8">
+
+    
+    <h1>Tentang saya..</h1>
+
+    <div class="article-style">
+      <h1 id="halo-">Halo 👋</h1>
+<p>Nama saya <strong>Irpan Chumaedi</strong>, konsultan swasta di bidang perencanaan sumber daya air. Pekerjaan utama saya meliputi analisis hidrologi, pemodelan hidrolika, dan penyusunan dokumen kajian lingkungan (AMDAL/ANDAL).</p>
+<p>Pengalaman saya mencakup berbagai jenis proyek seperti perencanaan drainase, irigasi, bendung, bendungan, dan analisis banjir. Proyek yang pernah ditangani tersebar di berbagai wilayah Indonesia mulai dari Kalimantan, Sulawesi, Maluku Utara, hingga Sumatera.</p>
+<p>Fokus utama dari pembuatan website ini ada di pengumpulan <a href="https://www.irpanchumaedi.com/post/database/" title="database geospasial dan hidrologi indonesia" target="_blank" rel="noopener">Database</a> hidrologi dan juga membahas mengenai pembelajaran atau <a href="https://www.irpanchumaedi.com/#kurikulum" target="_blank" rel="noopener">kurikulum</a> dari pengalaman saya sebagai seorang <em>hidrologist engineer</em>.</p>
+<p>Website ini masih dalam tahap pengembangan, jadi <em>stay tuned</em> untuk materi dan data lain yang segara disiapkan. Sementara itu silahkan explore dulu website ini atau bisa tonton dulu beberapa video <a href="https://www.youtube.com/irpanch" title="channel YouTube Irpan Chumaedi" target="_blank" rel="noopener">YouTube</a> saya.</p>
+<p>Terimakasih dan Salam kenal 🙂</p>
+
+    </div>
+
+    <div class="row">
+
+      
+      <div class="col-md-5">
+        <h3>Interests</h3>
+        <ul class="ul-interests">
+          
+          <li>Hidrologi &amp; Pemodelan Hidrolika</li>
+          
+          <li>Kajian Lingkungan (AMDAL/ANDAL)</li>
+          
+          <li>Remote Sensing &amp; Data Satelit</li>
+          
+          <li>Pemrograman R untuk Hidrologi</li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <div class="col-md-7">
+        <h3>Education</h3>
+        <ul class="ul-edu fa-ul">
+          
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course">S2 Pengelolaan Sumber Daya Air, 2020</p>
+              <p class="institution">Institut Teknologi Bandung</p>
+            </div>
+          </li>
+          
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course">S1 Teknik Sipil, 2011</p>
+              <p class="institution">Universitas Jenderal Achmad Yani</p>
+            </div>
+          </li>
+          
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course">D3 Teknik Sipil, 2005</p>
+              <p class="institution">Politeknik Negeri Bandung</p>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+
+
+    
+
+    </div>
+  </section>
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  <section id="skills" class="home-section wg-featurette  "  >
+   <div class="home-section-bg " ></div>
+    <div class="container">
+
+    
+
+      
+
+
+<div class="row featurette">
+  
+  <div class="col-md-12 section-heading">
+    <h1>Keahlian</h1>
+    <p>Tools &amp; Software yang Saya Gunakan</p>
+  </div>
+  
+
+  
+
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fas fa-water"></i></div>
+    
+    <h3>HEC-RAS</h3>
+    <p>Pemodelan banjir, profil muka air, dan aliran 1D/2D untuk sungai dan saluran drainase.</p>
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fas fa-cloud-rain"></i></div>
+    
+    <h3>HEC-HMS</h3>
+    <p>Pemodelan hujan-limpasan (rainfall-runoff) dan penelusuran banjir di DAS.</p>
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fas fa-city"></i></div>
+    
+    <h3>SWMM</h3>
+    <p>Simulasi drainase perkotaan dan sistem jaringan saluran kompleks.</p>
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fas fa-map"></i></div>
+    
+    <h3>QGIS &amp; Global Mapper</h3>
+    <p>Analisis spasial, delineasi DAS, pemetaan banjir, dan kartografi profesional.</p>
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fas fa-chart-line"></i></div>
+    
+    <h3>R &amp; ggplot2</h3>
+    <p>Analisis statistik hidro-klimatologi, visualisasi data, dan otomasi laporan dengan R Markdown.</p>
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fas fa-satellite"></i></div>
+    
+    <h3>Remote Sensing &amp; GEE</h3>
+    <p>Analisis data curah hujan satelit (GPM IMERG, GSMaP-MVK, ERA5) untuk validasi model.</p>
+  </div>
+  
+</div>
+
+
+    
+
+    </div>
+  </section>
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  <section id="projects" class="home-section wg-portfolio  "  >
+   <div class="home-section-bg " ></div>
+    <div class="container">
+
+    
+      <div class="row  ">
+      
+        
+          <div class="col-12 col-lg-4 section-heading">
+            <h1>Proyek</h1>
+            
+          </div>
+        
+      
+    
+
+      
+
+
+
+
+
+
+
+
+
+<div class="col-12 col-lg-8">
+
+  
+
+  
+
+  <div class=" row js-layout-row ">
+    
+
+      
+      
+      
+
+      
+        
+
+
+<div class="col-12 isotope-item js-id-Hidrologi js-id-SWMM js-id-Data_satelit">
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/project/wpg-banjarmasin/" >Analisa Hidrologi - Kota Banjarmasin (NUFReP)</a>
+    </h3>
+
+    
+    <a href="/project/wpg-banjarmasin/"  class="summary-link">
+      <div class="article-style">
+        Kota banjarmasin merupakan daerah yang rawan banjir. Keterbatasan data di tengah lokasi yang rawan bencana menjadikan tantangan tersendiri untuk memperoleh hasil analisa yang relevan dan akurat.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+    </div>
+
+    
+    <div class="btn-links">
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+</div>
+
+      
+
+    
+
+      
+      
+      
+
+      
+        
+
+
+<div class="col-12 isotope-item js-id-Hidrologi js-id-HEC-RAS js-id-Amdal">
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/project/andal-emas-gorontalo-mneral/" >ANDAL Kegiatan Pertambangan Emas DMP - Kab. Bone Bolango, Provinsi Gorontalo </a>
+    </h3>
+
+    
+    <a href="/project/andal-emas-gorontalo-mneral/"  class="summary-link">
+      <div class="article-style">
+        Kajian hidrologi untuk kegiatan pertambangan emas PT Gorontalo Mineral di Kecamatan Suwawa Timur, Kecamatan Bone Raya, Kecamatan Bulawa, Kecamatan Pinogu, Kabupaten Bone Bolango, Provinsi Gorontalo
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+    </div>
+
+    
+    <div class="btn-links">
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+</div>
+
+      
+
+    
+
+      
+      
+      
+
+      
+        
+
+
+<div class="col-12 isotope-item js-id-AMDAL js-id-Sedimentasi js-id-HEC-HMS">
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/project/andal-pulo-obi/" >ANDAL PSN-KIO — Hidrologi &amp; Sedimentasi (Pulau Obi)</a>
+    </h3>
+
+    
+    <a href="/project/andal-pulo-obi/"  class="summary-link">
+      <div class="article-style">
+        Penyusunan ANDAL untuk proyek strategis nasional di Pulau Obi, Maluku Utara, mencakup analisis erosi USLE, debit banjir rancangan, dan dampak sedimentasi.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+    </div>
+
+    
+    <div class="btn-links">
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+</div>
+
+      
+
+    
+  </div>
+</div>
+
+
+    
+      </div>
+    
+
+    </div>
+  </section>
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  <section id="kurikulum" class="home-section wg-blank  "  >
+   <div class="home-section-bg " ></div>
+    <div class="container">
+
+    
+      <div class="row  justify-content-center">
+      
+    
+
+      
+
+
+
+  <div class="col-12">
+    <style>
+.kur-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.kur-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.kur-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.kur-header p {
+  color: #888;
+  font-size: 0.95rem;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.kur-phase {
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.kur-phase-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.3rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+.kur-phase-header:hover { background: rgba(255,255,255,0.04); }
+.kur-phase-header.open { border-bottom: 1px solid rgba(255,255,255,0.08); }
+.kur-phase-num {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.kur-phase-info { flex: 1; }
+.kur-phase-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.15rem; }
+.kur-phase-sub { font-size: 0.75rem; color: #888; }
+.kur-phase-arrow { font-size: 0.8rem; color: #888; transition: transform 0.3s; }
+.kur-phase-header.open .kur-phase-arrow { transform: rotate(180deg); }
+.kur-body { display: none; padding: 1rem 1.3rem; }
+.kur-body.open { display: block; }
+.kur-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.kur-module {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.2s, border-color 0.2s;
+}
+.kur-module:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+.kur-module-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.kur-module-info { flex: 1; }
+.kur-module-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.1rem; }
+.kur-module-desc { font-size: 0.75rem; color: #888; line-height: 1.4; }
+.kur-module-badge {
+  font-size: 0.62rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
+  font-weight: 600;
+}
+.badge-done { background: rgba(76,175,80,0.15); color: #81C784; }
+.badge-wip  { background: rgba(255,193,7,0.15);  color: #FFD54F; }
+.badge-soon { background: rgba(255,255,255,0.07); color: #888; }
+
+/* Warna per fase */
+.phase-1 .kur-phase-num { background: rgba(33,150,243,0.2); color: #64B5F6; }
+.phase-1 .kur-phase-header { border-left: 3px solid #2196F3; }
+.phase-2 .kur-phase-num { background: rgba(76,175,80,0.2); color: #81C784; }
+.phase-2 .kur-phase-header { border-left: 3px solid #4CAF50; }
+.phase-3 .kur-phase-num { background: rgba(255,152,0,0.2); color: #FFB74D; }
+.phase-3 .kur-phase-header { border-left: 3px solid #FF9800; }
+.phase-4 .kur-phase-num { background: rgba(156,39,176,0.2); color: #CE93D8; }
+.phase-4 .kur-phase-header { border-left: 3px solid #9C27B0; }
+.phase-5 .kur-phase-num { background: rgba(244,67,54,0.2); color: #EF9A9A; }
+.phase-5 .kur-phase-header { border-left: 3px solid #F44336; }
+
+.kur-legend {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.kur-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #888;
+}
+</style>
+<div class="kur-wrapper">
+<div class="kur-header">
+  <h2>🎓 Kurikulum Hidrologi Praktis</h2>
+  <p>Dari pengumpulan data lapangan hingga pemodelan hidrolika — disusun bertahap untuk praktisi dan mahasiswa teknik sumber daya air Indonesia.</p>
+</div>
+<!-- FASE 1 -->
+<div class="kur-phase phase-1">
+<div class="kur-phase-header" onclick="togglePhase(this)">
+  <div class="kur-phase-num">1</div>
+  <div class="kur-phase-info">
+    <div class="kur-phase-title">Fondasi — Data & Tools  (2 dari 2) </div>
+    <div class="kur-phase-sub">Filosofi dan pencerahan dari tools yang tidak biasa tapi luar biasa</div>
+  </div>
+  <span class="kur-phase-arrow">▼</span>
+</div>
+<div class="kur-body">
+<div class="kur-modules">
+  <a class="kur-module" href="/post/materi-pengguna-pembuat-kode/">
+    <span class="kur-module-icon">🧱</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Filosofi: Pengguna vs Pembuat Kode</div>
+      <div class="kur-module-desc">Analogi batu-bata — kamu tidak perlu tahu cara membuatnya, cukup tahu cara memakainya dengan benar.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+  <a class="kur-module" href="/post/mengenal-r-rmarkdown/">
+    <span class="kur-module-icon">📊</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Mengenal R & RMarkdown: Instalasi dan Proyek Pertama</div>
+      <div class="kur-module-desc">Kelebihan R untuk hidrologi: visualisasi ggplot2, multiple output, literate programming. Kurva belajar & solusinya dengan AI.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+</div>
+</div>
+</div>
+<!-- FASE 2 -->
+<div class="kur-phase phase-2">
+<div class="kur-phase-header" onclick="togglePhase(this)">
+  <div class="kur-phase-num">2</div>
+  <div class="kur-phase-info">
+    <div class="kur-phase-title">Pengumpulan & Rekap Data Hujan (5 dari 5) </div>
+    <div class="kur-phase-sub">Keterbatasan data · BMKG · GPM Giovanni · Excel · R</div>
+  </div>
+  <span class="kur-phase-arrow">▼</span>
+</div>
+<div class="kur-body">
+<div class="kur-modules">
+  <a class="kur-module" href="/materi/keterbatasan-data-hujan/" target="_blank">
+    <span class="kur-module-icon">🌧️</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Keterbatasan Data Hujan di Indonesia</div>
+      <div class="kur-module-desc">Realita data BMKG yang terbatas, kerapatan stasiun yang tidak merata, dan mengapa kita perlu alternatif data satelit. Termasuk peta interaktif 6.487 stasiun BMKG dan simulasi validasi GPM IMERG.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+<a class="kur-module" href="/post/materi-download-gpm/">
+  <span class="kur-module-icon">🛰️</span>
+  <div class="kur-module-info">
+    <div class="kur-module-title">Download Data Hujan GPM dengan Giovanni</div>
+    <div class="kur-module-desc">Langkah demi langkah mengunduh data GPM IMERG dari NASA Giovanni — gratis, global, dan historis hingga 25 tahun ke belakang.</div>
+  </div>
+  <span class="kur-module-badge badge-done">✅ Tersedia</span>
+</a>
+  <a class="kur-module" href="/post/materi-download-bmkg/">
+    <span class="kur-module-icon">📥</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Download Data Hujan BMKG</div>
+      <div class="kur-module-desc">Cara mengakses data observasi BMKG, keterbatasannya, dan strategi mengisi data yang hilang (missing data).</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+  <a class="kur-module" href="/post/materi-visualisasi-data-hujan-excel/">
+    <span class="kur-module-icon">📋</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Rekap & Visualisasi Data Hujan dengan Excel</div>
+      <div class="kur-module-desc">Template Excel siap pakai untuk rekap data harian, bulanan, dan tahunan — lengkap dengan grafik otomatis.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+  <a class="kur-module" href="/post/materi-visualisasi-r-ggplot2/">
+    <span class="kur-module-icon">📈</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Visualisasi Data Hujan dengan R & ggplot2</div>
+      <div class="kur-module-desc">Hasil yang sama dengan Excel, tapi lebih fleksibel — plot heatmap, boxplot bulanan, dan tren tahunan dalam hitungan baris kode.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+</div>
+</div>
+</div>
+<!-- FASE 3 -->
+<div class="kur-phase phase-3">
+<div class="kur-phase-header" onclick="togglePhase(this)">
+  <div class="kur-phase-num">3</div>
+  <div class="kur-phase-info">
+    <div class="kur-phase-title">Analisis Hidrologi (3 dari 4) </div>
+    <div class="kur-phase-sub">Kalibrasi · Frekuensi · IDF · Debit Banjir </div>
+  </div>
+  <span class="kur-phase-arrow">▼</span>
+</div>
+<div class="kur-body">
+<div class="kur-modules">
+  <a class="kur-module" href="/post/materi-kalibrasi-data-gpm-bmkg/">
+    <span class="kur-module-icon">⚖️</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Kalibrasi Data GPM dengan Data BMKG</div>
+      <div class="kur-module-desc">Validasi dan koreksi bias data satelit menggunakan data observasi — metode NSE, KGE, dan PBIAS dengan Excel & R.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+  <a class="kur-module" href="/post/materi-analisa-frekuensi-hujan/">
+    <span class="kur-module-icon">📉</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Analisis Frekuensi Curah Hujan</div>
+      <div class="kur-module-desc">Distribusi Log Pearson III, Gumbel, dan Normal — uji Smirnov-Kolmogorov & Chi-Square, periode ulang 2–100 tahun.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+  <div class="kur-module">
+    <span class="kur-module-icon">🗺️</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Delineasi DAS & Overlay Peta dengan QGIS</div>
+      <div class="kur-module-desc">Overlay peta tapak proyek dengan peta DAS dari Permen PUPR — dari DEM DEMNAS ke batas DAS dalam satu workflow QGIS.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+  <a class="kur-module" href="/post/materi-perhitungan-debit-banjir/">
+    <span class="kur-module-icon">🌊</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Perhitungan Debit Banjir Rancangan</div>
+      <div class="kur-module-desc">Metode Rasional dan HSS Nakayasu — dari hujan rancangan ke hidrograf banjir untuk berbagai periode ulang.</div>
+    </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
+</div>
+</div>
+</div>
+<!-- FASE 4 -->
+<div class="kur-phase phase-4">
+<div class="kur-phase-header" onclick="togglePhase(this)">
+  <div class="kur-phase-num">4</div>
+  <div class="kur-phase-info">
+    <div class="kur-phase-title">Pemodelan Hidrolika — HEC-RAS (0 dari 6) </div>
+    <div class="kur-phase-sub">1D · 2D · Steady · Unsteady · Flood Mapping</div>
+  </div>
+  <span class="kur-phase-arrow">▼</span>
+</div>
+<div class="kur-body">
+<div class="kur-modules">
+  <a class="kur-module" href="/post/materi-pengantar-hecras/">
+    <span class="kur-module-icon">🏗️</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Pengantar HEC-RAS — Konsep & Interface</div>
+      <div class="kur-module-desc">Apa itu HEC-RAS, kapan digunakan, dan bagaimana alur kerja dari data geometri hingga output profil muka air.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </a>
+  <div class="kur-module">
+    <span class="kur-module-icon">📐</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Persiapan Data Geometri dari QGIS ke HEC-RAS</div>
+      <div class="kur-module-desc">Workflow dari DEM dan data survei topografi ke geometri sungai di HEC-RAS — termasuk HEC-GeoRAS.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+  <div class="kur-module">
+    <span class="kur-module-icon">🔁</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Simulasi Aliran Steady 1D</div>
+      <div class="kur-module-desc">Profil muka air kondisi steady — input debit rancangan, kondisi batas, dan interpretasi output untuk desain.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+  <div class="kur-module">
+    <span class="kur-module-icon">🌊</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Simulasi Banjir Unsteady & Flood Mapping</div>
+      <div class="kur-module-desc">Penelusuran banjir (flood routing) dan pembuatan peta genangan — dari hidrograf masukan hingga peta risiko banjir.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+  <div class="kur-module">
+    <span class="kur-module-icon">🗾</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Pemodelan 2D dengan HEC-RAS</div>
+      <div class="kur-module-desc">Kapan 1D tidak cukup dan perlu 2D — setup mesh, kondisi batas, dan visualisasi hasil simulasi 2D.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+</div>
+</div>
+</div>
+<!-- FASE 5 -->
+<div class="kur-phase phase-5">
+<div class="kur-phase-header" onclick="togglePhase(this)">
+  <div class="kur-phase-num">5</div>
+  <div class="kur-phase-info">
+    <div class="kur-phase-title">Output Profesional — Laporan & Presentasi (0 dari 3)</div>
+    <div class="kur-phase-sub">Quarto · R Markdown · Excel · Word · PowerPoint</div>
+  </div>
+  <span class="kur-phase-arrow">▼</span>
+</div>
+<div class="kur-body">
+<div class="kur-modules">
+  <div class="kur-module">
+    <span class="kur-module-icon">📄</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Literate Programming — Analisis & Laporan Sekaligus</div>
+      <div class="kur-module-desc">Konsep Quarto dan R Markdown — tulis kode dan narasi dalam satu file, hasilkan Excel + Word + PDF sekaligus.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+  <div class="kur-module">
+    <span class="kur-module-icon">📊</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Dari R ke Excel — Output Laporan Otomatis</div>
+      <div class="kur-module-desc">Generate tabel dan grafik langsung ke Excel menggunakan openxlsx — format laporan profesional tanpa copy-paste.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+  <div class="kur-module">
+    <span class="kur-module-icon">🎯</span>
+    <div class="kur-module-info">
+      <div class="kur-module-title">Studi Kasus Lengkap — Dari Data ke Laporan</div>
+      <div class="kur-module-desc">Proyek nyata end-to-end: data GPM → kalibrasi BMKG → analisis frekuensi → HEC-RAS → laporan Word & presentasi PPT.</div>
+    </div>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
+  </div>
+</div>
+</div>
+</div>
+<div class="kur-legend">
+  <div class="kur-legend-item"><span class="kur-module-badge badge-done" style="margin:0;">✅ Tersedia</span> Sudah bisa dibaca</div>
+  <div class="kur-legend-item"><span class="kur-module-badge badge-wip" style="margin:0;">🔧 Draf</span> Sedang ditulis</div>
+  <div class="kur-legend-item"><span class="kur-module-badge badge-soon" style="margin:0;">📅 Segera</span> Dalam rencana</div>
+</div>
+</div>
+<script>
+function togglePhase(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+</script>
+
+  </div>
+
+
+
+    
+      </div>
+    
+
+    </div>
+  </section>
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  <section id="posts" class="home-section wg-pages  "  >
+   <div class="home-section-bg " ></div>
+    <div class="container">
+
+    
+      <div class="row  ">
+      
+        
+          <div class="col-12 col-lg-4 section-heading">
+            <h1>Recent Posts</h1>
+            
+          </div>
+        
+      
+    
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+<div class="col-12 col-lg-8">
+
+  
+
+  
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/post/materi-pengantar-hecras/" >Pengantar HEC-RAS - Konsep dan Interface</a>
+    </h3>
+
+    
+    <a href="/post/materi-pengantar-hecras/"  class="summary-link">
+      <div class="article-style">
+        Memahami apa itu HEC-RAS, kapan dan mengapa digunakan, serta bagaimana alur kerja dari input data geometri hingga output profil muka air.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 27, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    0 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/kurikulum/">Kurikulum</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+    
+  
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/post/materi-perhitungan-debit-banjir/" >Perhitungan Debit Banjir Rencana</a>
+    </h3>
+
+    
+    <a href="/post/materi-perhitungan-debit-banjir/"  class="summary-link">
+      <div class="article-style">
+        Dari curah hujan rencana (IDF) menjadi hidrograf banjir desain — metode rasional, HSS Nakayasu, dan perbandingan antar metode.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 23, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    0 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/kurikulum/">Kurikulum</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+    
+  
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/post/materi-analisa-frekuensi-hujan/" >Analisa Frekuensi Curah Hujan</a>
+    </h3>
+
+    
+    <a href="/post/materi-analisa-frekuensi-hujan/"  class="summary-link">
+      <div class="article-style">
+        Dari data hujan historis menjadi angka desain infrastruktur — kala ulang, distribusi, IDF, dan seterusnya. Panduan Lengkap untuk Hydrologist &amp; Siapa Pun yang Ingin Memahaminya.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 22, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    0 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/kurikulum/">Kurikulum</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+    
+  
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/post/materi-kalibrasi-data-gpm-bmkg/" >Kalibrasi Data GPM dengan Data BMKG</a>
+    </h3>
+
+    
+    <a href="/post/materi-kalibrasi-data-gpm-bmkg/"  class="summary-link">
+      <div class="article-style">
+        Koreksi bias GPM IMERG V07 menggunakan metode Year-Specific Scaling Factor (M4). Studi kasus WPG Banjarmasin 1998–2025.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 21, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/kurikulum/">Kurikulum</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+    
+  
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/post/materi-visualisasi-data-hujan-excel/" >Rekap &amp; Visualisasi Data Hujan dengan Excel</a>
+    </h3>
+
+    
+    <a href="/post/materi-visualisasi-data-hujan-excel/"  class="summary-link">
+      <div class="article-style">
+        Panduan lengkap merekap dan memvisualisasikan data hujan harian menggunakan Microsoft Excel. Studi kasus Sta. Hujan Cemara, Bandung — 26 tahun pengamatan (2000–2025).
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 18, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/kurikulum/">Kurikulum</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+    
+  
+
+  
+  
+  
+
+    
+    
+      
+    
+
+    
+
+    <div class="see-all">
+      <a href="/post/">
+        See all posts
+        <i class="fas fa-angle-right"></i>
+      </a>
+    </div>
+  
+
+</div>
+
+
+    
+      </div>
+    
+
+    </div>
+  </section>
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  <section id="contact" class="home-section wg-contact  "  >
+   <div class="home-section-bg " ></div>
+    <div class="container">
+
+    
+      <div class="row  ">
+      
+        
+          <div class="col-12 col-lg-4 section-heading">
+            <h1>Kontak</h1>
+            
+          </div>
+        
+      
+    
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-12 col-lg-8">
+  
+
+  
+
+  <ul class="fa-ul">
+
+    
+    <li>
+      <i class="fa-li fas fa-envelope fa-2x" aria-hidden="true"></i>
+      <span id="person-email"><a href="mailto:irpanch@gmail.com">irpanch@gmail.com</a></span>
+    </li>
+    
+
+    
+
+    
+    
+      
+      <li>
+        <i class="fa-li fas fa-map-marker fa-2x" aria-hidden="true"></i>
+        <span id="person-address">Bandung, Jawa Barat </span>
+      </li>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      
+        <i class="fa-li fab fa-youtube fa-2x" aria-hidden="true"></i>
+      
+      <a href="https://www.youtube.com/irpanch" target="_blank" rel="noopener">Channel YouTube</a>
+    </li>
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      
+        <i class="fa-li fab fa-linkedin fa-2x" aria-hidden="true"></i>
+      
+      <a href="https://www.linkedin.com/in/irpan-chumaedi-73992863/" target="_blank" rel="noopener">LinkedIn</a>
+    </li>
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      
+        <span class="fa-li" aria-hidden="true" style="font-size:2em; line-height:1;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" style="width:0.875em;height:0.875em;fill:currentColor;vertical-align:-0.125em;">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+          </svg>
+        </span>
+      
+      <a href="https://discord.gg/za2KPWJFKG" target="_blank" rel="noopener">Discord</a>
+    </li>
+    
+
+  </ul>
+
+  
+  <div class="d-none">
+    <input id="map-provider" value="2">
+    <input id="map-lat" value="-6.9175">
+    <input id="map-lng" value="107.6191">
+    <input id="map-dir" value="Bandung, Jawa Barat ">
+    <input id="map-zoom" value="15">
+    <input id="map-api-key" value="">
+  </div>
+  <div id="map"></div>
+  
+
+</div>
+
+
+    
+      </div>
+    
+
+    </div>
+  </section>
+
+
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'event' : "Events",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/js/wowchemy.min.572b7caf7fe601716a0f74d67d754c21.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

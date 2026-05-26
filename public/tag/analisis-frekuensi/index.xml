@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Analisis Frekuensi | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/analisis-frekuensi/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/analisis-frekuensi/index.xml" rel="self" type="application/rss+xml" />
+    <description>Analisis Frekuensi</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 17 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>Analisis Frekuensi</title>
+      <link>https://irpanblog2.netlify.app/tag/analisis-frekuensi/</link>
+    </image>
+    
+    <item>
+      <title>Mengenal R &amp; RMarkdown: Instalasi dan Proyek Pertama</title>
+      <link>https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/</link>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/mengenal-r-rmarkdown/</guid>
+      <description>&lt;style&gt;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(0,188,212,0.4); }
+  50%       { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0,188,212,0); }
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(5px); }
+}
+.card-anim { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+.ca1 { animation-delay: 0.05s; }
+.ca2 { animation-delay: 0.18s; }
+.ca3 { animation-delay: 0.31s; }
+.ca4 { animation-delay: 0.44s; }
+.ca5 { animation-delay: 0.57s; }
+.step-anim { opacity: 0; animation: slideRight 0.45s ease forwards; }
+.sa1 { animation-delay: 0.1s; } .sa2 { animation-delay: 0.22s; }
+.sa3 { animation-delay: 0.34s; } .sa4 { animation-delay: 0.46s; }
+.sa5 { animation-delay: 0.58s; }
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+.arrow-bounce { display: inline-block; animation: arrowBounce 1.3s ease-in-out infinite; }
+&lt;/style&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Artikel ini adalah bagian dari seri &lt;strong&gt;Fondasi Data &amp;amp; Tools&lt;/strong&gt;. Sebelum membaca ini, pastikan sudah membaca &lt;a href=&#34;https://irpanblog2.netlify.app/post/materi-pengguna-pembuat-kode/&#34;&gt;Filosofi: Pengguna vs. Pembuat Kode&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Bayangkan kamu baru saja selesai mengumpulkan data curah hujan 25 tahun dari BMKG. Analisis frekuensi harus dikerjakan: hitung statistik, fit distribusi, uji KS, uji chi-kuadrat, buat kurva IDF. Lalu semua hasilnya harus masuk ke laporan Word yang rapi.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Tiba-tiba bos bilang: &amp;ldquo;Mas, data hujan yang kemarin kejauhan. ambil data ini ya, lokasi nya lebih dekat soalnya&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;lsquo;Waduh, ngulang dari awal lagi dong&amp;ndash;&#39;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Hal ini sering saya alami dan dengan berat hati harus dikerjakan lagi dari awal. Memang sudah ada template excel dan word nya. Tapi menghabiskan waktu, belum lagi kita harus teliti jangan sampai ada kata &amp;ldquo;Papua&amp;rdquo; di proyek &amp;ldquo;Banjarmasin&amp;rdquo;, &lt;strong&gt;malu banget&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Contoh kasus lainnya adalah ketika kita mengerjakan proses yang sama, tapi lokasinya saja yang berbeda. Data memang pasti berbeda juga, tapi proses analisis persis sama tok.&lt;/p&gt;
+&lt;p&gt;Untuk mengerjakan ulang dengan cara biasa mungkin bisa menghabiskan &lt;strong&gt;2-4 jam&lt;/strong&gt; per stasiun, per proyek. tapi dengan cara yang akan kita pelajari hari ini tinggal &lt;strong&gt;klik satu tombol&lt;/strong&gt;, laporan bisa jadi dalam 30 detik.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;apa-itu-r&#34;&gt;Apa Itu R?&lt;/h2&gt;
+&lt;p&gt;R adalah bahasa pemrograman yang dirancang khusus untuk analisis statistik dan visualisasi data. Tapi jangan langsung takut dengan kata &amp;ldquo;pemrograman&amp;rdquo; — seperti yang sudah dibahas di &lt;a href=&#34;https://www.irpanchumaedi.com/post/materi-pengguna-pembuat-kode/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;artikel sebelumnya&lt;/a&gt;, kita tidak perlu menjadi programmer. Kita cukup menjadi &lt;strong&gt;pengguna yang cerdas&lt;/strong&gt;.&lt;/p&gt;
+&lt;div style=&#34;display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin: 1.8rem 0;&#34;&gt;
+&lt;div class=&#34;card-anim ca1&#34; style=&#34;border-radius: 12px; padding: 1.2rem; background: #0d1b2a; border: 1px solid #1565C0; border-top: 3px solid #1565C0; text-align: center;&#34;&gt;
+&lt;div style=&#34;font-size: 1.6rem; margin-bottom: 0.5rem; font-family: monospace; color: #1E88E5; font-weight: 700;&#34;&gt;R&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.82rem; font-weight: 700; color: #90CAF9; margin-bottom: 0.4rem;&#34;&gt;Gratis &amp; Open Source&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.75rem; color: #666; line-height: 1.5;&#34;&gt;Tidak perlu lisensi. Ribuan paket tersedia di CRAN.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;card-anim ca2&#34; style=&#34;border-radius: 12px; padding: 1.2rem; background: #0d1b2a; border: 1px solid #00BCD4; border-top: 3px solid #00BCD4; text-align: center;&#34;&gt;
+&lt;div style=&#34;font-size: 1.6rem; margin-bottom: 0.5rem; font-family: monospace; color: #00BCD4; font-weight: 700;&#34;&gt;📊&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.82rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.4rem;&#34;&gt;Visualisasi Kelas Atas&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.75rem; color: #666; line-height: 1.5;&#34;&gt;ggplot2 menghasilkan plot publikasi-siap dengan sedikit kode.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;card-anim ca3&#34; style=&#34;border-radius: 12px; padding: 1.2rem; background: #0d1b2a; border: 1px solid #43A047; border-top: 3px solid #43A047; text-align: center;&#34;&gt;
+&lt;div style=&#34;font-size: 1.6rem; margin-bottom: 0.5rem; font-family: monospace; color: #66BB6A; font-weight: 700;&#34;&gt;∞&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.82rem; font-weight: 700; color: #A5D6A7; margin-bottom: 0.4rem;&#34;&gt;Reproducible&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.75rem; color: #666; line-height: 1.5;&#34;&gt;Ganti input → semua output diperbarui otomatis. Tidak ada copy-paste.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;apa-itu-rmarkdown&#34;&gt;Apa Itu RMarkdown?&lt;/h2&gt;
+&lt;p&gt;RMarkdown adalah format file (&lt;code&gt;.Rmd&lt;/code&gt;) yang &lt;strong&gt;menggabungkan tiga hal dalam satu dokumen&lt;/strong&gt;:&lt;/p&gt;
+&lt;div style=&#34;margin: 1.5rem 0; border: 1px solid #1a2a3a; border-radius: 12px; overflow: hidden;&#34;&gt;
+&lt;div style=&#34;display: grid; grid-template-columns: 1fr 1fr 1fr;&#34;&gt;
+&lt;div class=&#34;card-anim ca1&#34; style=&#34;padding: 1.1rem; border-right: 1px solid #1a2a3a; background: #070d14;&#34;&gt;
+&lt;div style=&#34;font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #F57F17; margin-bottom: 0.5rem;&#34;&gt;① YAML Header&lt;/div&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.72rem; color: #FFB74D; line-height: 1.7;&#34;&gt;---&lt;br&gt;title: &#34;Analisis&#34;&lt;br&gt;output:&lt;br&gt;&amp;nbsp;&amp;nbsp;word_document&lt;br&gt;---&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.72rem; color: #555; margin-top: 0.5rem;&#34;&gt;Konfigurasi dokumen: judul, format output, parameter.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;card-anim ca2&#34; style=&#34;padding: 1.1rem; border-right: 1px solid #1a2a3a; background: #070d14;&#34;&gt;
+&lt;div style=&#34;font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0288D1; margin-bottom: 0.5rem;&#34;&gt;② Teks Markdown&lt;/div&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.72rem; color: #4FC3F7; line-height: 1.7;&#34;&gt;# Bab 1&lt;br&gt;Analisis dilakukan&lt;br&gt;di stasiun **BMKG**&lt;br&gt;periode 2000–2026.&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.72rem; color: #555; margin-top: 0.5rem;&#34;&gt;Narasi laporan dalam format teks sederhana.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;card-anim ca3&#34; style=&#34;padding: 1.1rem; background: #070d14;&#34;&gt;
+&lt;div style=&#34;font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #43A047; margin-bottom: 0.5rem;&#34;&gt;③ Code Chunk R&lt;/div&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.72rem; color: #81C784; line-height: 1.7;&#34;&gt;```{r}&lt;br&gt;x_bar &amp;lt;- mean(hujan)&lt;br&gt;plot(cdf_gumbel)&lt;br&gt;flextable(df_hasil)&lt;br&gt;```&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.72rem; color: #555; margin-top: 0.5rem;&#34;&gt;Kode analisis, tabel, dan grafik — semua otomatis.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Ketika kamu klik &lt;strong&gt;Knit&lt;/strong&gt;, RStudio menjalankan semua kode R, menghasilkan grafik, menghitung angka, lalu menyusunnya menjadi dokumen Word (atau PDF, atau HTML) secara otomatis.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;perbandingan-manual-vs-rmarkdown&#34;&gt;Perbandingan: Manual vs RMarkdown&lt;/h2&gt;
+&lt;p&gt;Gambar di bawah ini menunjukkan perbedaan nyata dalam alur kerja:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;compare-manual-vs-rmd.gif&#34; alt=&#34;Perbandingan Manual vs RMarkdown&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Satu kata: &lt;strong&gt;reproducible&lt;/strong&gt;. Ketika data berubah, kamu tidak perlu mengulang semua langkah. Cukup update file Excel, klik Knit, laporan diperbarui dalam hitungan detik.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;instalasi-r--rstudio&#34;&gt;Instalasi: R + RStudio&lt;/h2&gt;
+&lt;p&gt;Kamu hanya butuh &lt;strong&gt;dua software&lt;/strong&gt; ini. Keduanya gratis.&lt;/p&gt;
+&lt;div style=&#34;margin: 1.5rem 0;&#34;&gt;
+&lt;div class=&#34;step-anim sa1&#34; style=&#34;display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; margin-bottom: 0.75rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #1565C0; border-radius: 10px;&#34;&gt;
+&lt;div style=&#34;width: 36px; height: 36px; border-radius: 50%; background: #1565C0; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;&#34; class=&#34;pulse-dot&#34;&gt;1&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.9rem; font-weight: 700; color: #90CAF9; margin-bottom: 0.2rem;&#34;&gt;Install R&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.82rem; color: #666; line-height: 1.6;&#34;&gt;Download dari &lt;a href=&#34;https://cran.r-project.org&#34; strong style=&#34;color: #90CAF9;&#34;&gt;cran.r-project.org&lt;/strong&gt;&lt;/a&gt; → pilih &lt;em&gt;Download R for Windows atau sistem operasi yang kamu pakai&lt;/em&gt; → jalankan installer, klik Next terus sampai selesai.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;step-anim sa2&#34; style=&#34;display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; margin-bottom: 0.75rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #00BCD4; border-radius: 10px;&#34;&gt;
+&lt;div style=&#34;width: 36px; height: 36px; border-radius: 50%; background: #00838F; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;&#34;&gt;2&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.9rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.2rem;&#34;&gt;Install RStudio&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.82rem; color: #666; line-height: 1.6;&#34;&gt;Download RStudio dari posit untuk &lt;a href=&#34;https://rstudio.org/download/latest/stable/desktop/windows/RStudio-latest.exe&#34; strong style=&#34;color: #80DEEA;&#34;&gt;windows&lt;/strong&gt;&lt;/a&gt; atau &lt;a href=&#34;https://rstudio.org/download/latest/stable/desktop/mac/RStudio-latest.dmg&#34; strong style=&#34;color: #80DEEA;&#34;&gt;mac&lt;/strong&gt;&lt;/a&gt; → install. RStudio adalah antarmuka visual untuk bekerja dengan R.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;step-anim sa3&#34; style=&#34;display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; margin-bottom: 0.75rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #43A047; border-radius: 10px;&#34;&gt;
+&lt;div style=&#34;width: 36px; height: 36px; border-radius: 50%; background: #2E7D32; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;&#34;&gt;3&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.9rem; font-weight: 700; color: #A5D6A7; margin-bottom: 0.2rem;&#34;&gt;Install Paket yang Dibutuhkan&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 0.5rem;&#34;&gt;Buka RStudio → di panel &lt;em&gt;Console&lt;/em&gt; (bawah kiri), ketik dan tekan Enter:&lt;/div&gt;
+&lt;div style=&#34;background: #050d14; border: 1px solid #1a2a3a; border-radius: 6px; padding: 0.6rem 0.8rem; font-family: monospace; font-size: 0.78rem; color: #A5D6A7; line-height: 1.8;&#34;&gt;install.packages(c(&#34;rmarkdown&#34;, &#34;readxl&#34;, &#34;ggplot2&#34;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#34;dplyr&#34;, &#34;tidyr&#34;, &#34;flextable&#34;, &#34;scales&#34;))&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.75rem; color: #555; margin-top: 0.4rem;&#34;&gt;Tunggu beberapa menit hingga semua paket terinstal.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;step-anim sa4&#34; style=&#34;display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; background: #0d1b2a; border: 1px solid #1a3050; border-left: 4px solid #FFB300; border-radius: 10px;&#34;&gt;
+&lt;div style=&#34;width: 36px; height: 36px; border-radius: 50%; background: #F57F17; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;&#34;&gt;4&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.9rem; font-weight: 700; color: #FFE082; margin-bottom: 0.2rem;&#34;&gt;Verifikasi Instalasi&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 0.5rem;&#34;&gt;Di Console, ketik:&lt;/div&gt;
+&lt;div style=&#34;background: #050d14; border: 1px solid #1a2a3a; border-radius: 6px; padding: 0.6rem 0.8rem; font-family: monospace; font-size: 0.78rem; color: #FFE082; line-height: 1.8;&#34;&gt;library(ggplot2)&lt;br&gt;ggplot(data.frame(x=1:10, y=rnorm(10)), aes(x,y)) + geom_point()&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.75rem; color: #555; margin-top: 0.4rem;&#34;&gt;Jika muncul grafik di panel kanan bawah, instalasi berhasil.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;proyek-pertama-analisis-frekuensi-curah-hujan&#34;&gt;Proyek Pertama: Analisis Frekuensi Curah Hujan&lt;/h2&gt;
+&lt;p&gt;Ini bagian yang menarik. Kita tidak akan mulai dari nol — saya sudah siapkan template lengkap yang bisa langsung dipakai.&lt;/p&gt;
+&lt;h3 id=&#34;cara-kerjanya&#34;&gt;Cara Kerjanya&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;workflow-rmarkdown.gif&#34; alt=&#34;Alur Kerja Template RMarkdown&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Template ini membaca data dari &lt;strong&gt;Excel&lt;/strong&gt;, menjalankan seluruh analisis secara otomatis, lalu menghasilkan &lt;strong&gt;laporan Word&lt;/strong&gt; lengkap dengan tabel dan grafik.&lt;/p&gt;
+&lt;h3 id=&#34;yang-dihasilkan-otomatis&#34;&gt;Yang Dihasilkan Otomatis&lt;/h3&gt;
+&lt;div style=&#34;display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5rem 0;&#34;&gt;
+&lt;div class=&#34;card-anim ca1&#34; style=&#34;padding: 1rem 1.1rem; background: #0a120d; border: 1px solid #2E7D32; border-radius: 10px;&#34;&gt;
+&lt;div style=&#34;font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #66BB6A; margin-bottom: 0.6rem;&#34;&gt;Analisis Distribusi&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.8rem; color: #888; line-height: 1.7;&#34;&gt;
+[v] Tabel data hujan harian maksimum&lt;br&gt;
+[v] Plot PDF — 4 distribusi sekaligus&lt;br&gt;
+[v] Plot CDF dengan plotting position&lt;br&gt;
+[v] Uji Kolmogorov-Smirnov&lt;br&gt;
+[v] Uji Chi-Kuadrat&lt;br&gt;
+[v] Pemilihan distribusi terbaik otomatis
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;card-anim ca2&#34; style=&#34;padding: 1rem 1.1rem; background: #0a1018; border: 1px solid #1565C0; border-radius: 10px;&#34;&gt;
+&lt;div style=&#34;font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64B5F6; margin-bottom: 0.6rem;&#34;&gt;Curah Hujan Rencana &amp; IDF&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.8rem; color: #888; line-height: 1.7;&#34;&gt;
+[v] CH rencana: T = 2, 5, 10, 25, 50, 100 tahun&lt;br&gt;
+[v] Tabel IDF lengkap (5 menit - 24 jam)&lt;br&gt;
+[v] Kurva IDF log-log&lt;br&gt;
+[v] Rumus Mononobe&lt;br&gt;
+[v] Rekapitulasi intensitas t = 60 menit&lt;br&gt;
+[v] Semua dalam format Word siap laporan
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;cara-menggunakan-template&#34;&gt;Cara Menggunakan Template&lt;/h3&gt;
+&lt;div style=&#34;margin: 1.5rem 0;&#34;&gt;
+&lt;div class=&#34;step-anim sa1&#34; style=&#34;display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #1E88E5; flex-shrink: 0; padding-top: 1px;&#34;&gt;01&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.85rem; font-weight: 700; color: #90CAF9; margin-bottom: 0.2rem;&#34;&gt;Download &amp; Ekstrak File Template&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.78rem; color: #555; line-height: 1.5;&#34;&gt;Simpan ketiga file di &lt;strong style=&#34;color: #90CAF9;&#34;&gt;satu folder yang sama&lt;/strong&gt;: &lt;code style=&#34;background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;&#34;&gt;Analisis_Frekuensi_TEMPLATE.Rmd&lt;/code&gt;, &lt;code style=&#34;background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;&#34;&gt;Data_Input_Frekuensi.xlsx&lt;/code&gt;, dan &lt;code style=&#34;background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;&#34;&gt;reference_template.docx&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;step-anim sa2&#34; style=&#34;display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #00BCD4; flex-shrink: 0; padding-top: 1px;&#34;&gt;02&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.85rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.2rem;&#34;&gt;Isi Data di Excel&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.78rem; color: #555; line-height: 1.5;&#34;&gt;Buka &lt;code style=&#34;background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;&#34;&gt;Data_Input_Frekuensi.xlsx&lt;/code&gt;. Isi sheet &lt;strong style=&#34;color:#80DEEA;&#34;&gt;Metadata_Proyek&lt;/strong&gt; (nama proyek, stasiun, kala ulang) dan sheet &lt;strong style=&#34;color:#80DEEA;&#34;&gt;Data_Hujan&lt;/strong&gt; (kolom Tahun dan Hujan Maks mm). Simpan file.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;step-anim sa3&#34; style=&#34;display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #43A047; flex-shrink: 0; padding-top: 1px;&#34;&gt;03&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.85rem; font-weight: 700; color: #A5D6A7; margin-bottom: 0.2rem;&#34;&gt;Buka File .Rmd di RStudio&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.78rem; color: #555; line-height: 1.5;&#34;&gt;Double-click file &lt;code style=&#34;background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;&#34;&gt;.Rmd&lt;/code&gt; → terbuka di RStudio. Kamu akan melihat kode di bagian &lt;code style=&#34;background:#1a2a3a; padding:1px 5px; border-radius:3px; font-size:0.72rem;&#34;&gt;DATA_INPUT&lt;/code&gt; — tidak perlu diubah jika file Excel ada di folder yang sama.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;step-anim sa4&#34; style=&#34;display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; margin-bottom: 0.6rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 9px;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #FFB300; flex-shrink: 0; padding-top: 1px;&#34;&gt;04&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.85rem; font-weight: 700; color: #FFE082; margin-bottom: 0.2rem;&#34;&gt;Klik Tombol Knit&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.78rem; color: #555; line-height: 1.5;&#34;&gt;Di RStudio, klik tombol &lt;strong style=&#34;color:#FFE082;&#34;&gt;[ Knit ]&lt;/strong&gt; (ikon benang + jarum di toolbar, atau tekan &lt;kbd style=&#34;background:#1a2a3a; padding:2px 6px; border-radius:3px; font-size:0.7rem;&#34;&gt;Ctrl + Shift + K&lt;/kbd&gt;). Tunggu 10–30 detik. File Word akan terbuka otomatis.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;step-anim sa5&#34; style=&#34;display: flex; gap: 0.9rem; padding: 0.9rem 1.1rem; background: #070e12; border: 1px solid #006064; border-radius: 9px;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.78rem; font-weight: 700; color: #00BCD4; flex-shrink: 0; padding-top: 1px;&#34;&gt;05&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.85rem; font-weight: 700; color: #80DEEA; margin-bottom: 0.2rem;&#34;&gt;Proyek Berikutnya? Tinggal Ganti Data&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.78rem; color: #555; line-height: 1.5;&#34;&gt;Salin folder ke direktori proyek baru. Buka Excel, ganti data hujan dan metadata. Klik Knit. Laporan baru siap — tanpa mengubah satu baris kode pun.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;anatomi-template-bagian-yang-perlu-diketahui&#34;&gt;Anatomi Template: Bagian yang Perlu Diketahui&lt;/h2&gt;
+&lt;p&gt;Kamu tidak perlu memahami semua kode. Tapi ada tiga bagian penting yang perlu diketahui:&lt;/p&gt;
+&lt;div style=&#34;margin: 1.5rem 0; background: #050d14; border: 1px solid #1a2a3a; border-radius: 12px; overflow: hidden;&#34;&gt;
+&lt;div style=&#34;background: #0a1520; padding: 0.7rem 1.2rem; border-bottom: 1px solid #1a2a3a;&#34;&gt;
+&lt;span style=&#34;font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #64B5F6; text-transform: uppercase;&#34;&gt;Analisis_Frekuensi_TEMPLATE.Rmd&lt;/span&gt;
+&lt;/div&gt;
+&lt;div style=&#34;padding: 1.1rem 1.3rem;&#34;&gt;
+&lt;div style=&#34;margin-bottom: 1rem;&#34;&gt;
+&lt;div style=&#34;font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #F57F17; margin-bottom: 0.4rem;&#34;&gt;① YAML — Konfigurasi Output&lt;/div&gt;
+&lt;div style=&#34;background: #0a1218; border-radius: 6px; padding: 0.7rem 0.9rem; font-family: monospace; font-size: 0.75rem; line-height: 1.8; color: #FFB74D;&#34;&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;---&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #F57F17;&#34;&gt;title:&lt;/span&gt; &lt;span style=&#34;color: #FFF8E1;&#34;&gt;&#34;Analisis Frekuensi Curah Hujan Harian Maksimum&#34;&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #F57F17;&#34;&gt;params:&lt;/span&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&lt;span style=&#34;color: #F57F17;&#34;&gt;path_excel:&lt;/span&gt; &lt;span style=&#34;color: #FFF8E1;&#34;&gt;&#34;Data_Input_Frekuensi.xlsx&#34;&lt;/span&gt; &lt;span style=&#34;color: #555;&#34;&gt;# ← path ke file Excel&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #F57F17;&#34;&gt;output:&lt;/span&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&lt;span style=&#34;color: #F57F17;&#34;&gt;word_document:&lt;/span&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style=&#34;color: #F57F17;&#34;&gt;reference_docx:&lt;/span&gt; &lt;span style=&#34;color: #FFF8E1;&#34;&gt;reference_template.docx&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;---&lt;/span&gt;
+&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.74rem; color: #555; margin-top: 0.4rem;&#34;&gt;Hanya ubah &lt;code&gt;path_excel&lt;/code&gt; jika file Excel tidak berada di folder yang sama.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;margin-bottom: 1rem;&#34;&gt;
+&lt;div style=&#34;font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #43A047; margin-bottom: 0.4rem;&#34;&gt;② DATA_INPUT — Satu-satunya blok yang perlu dipahami&lt;/div&gt;
+&lt;div style=&#34;background: #0a1218; border-radius: 6px; padding: 0.7rem 0.9rem; font-family: monospace; font-size: 0.75rem; line-height: 1.8; color: #A5D6A7;&#34;&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;```{r DATA_INPUT}&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;# !! HANYA EDIT BAGIAN INI UNTUK SETIAP PROYEK BARU !!&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #43A047;&#34;&gt;path_excel&lt;/span&gt; &lt;span style=&#34;color: #fff;&#34;&gt;&amp;lt;-&lt;/span&gt; params$path_excel&lt;br&gt;
+&lt;span style=&#34;color: #43A047;&#34;&gt;T_values_default&lt;/span&gt; &lt;span style=&#34;color: #fff;&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color: #81C784;&#34;&gt;c(2, 5, 10, 25, 50, 100)&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;```&lt;/span&gt;
+&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.74rem; color: #555; margin-top: 0.4rem;&#34;&gt;Kala ulang bisa diatur dari Excel (sheet Metadata_Proyek). Blok ini hanya fallback.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #1E88E5; margin-bottom: 0.4rem;&#34;&gt;③ ANALISIS — Jangan diubah&lt;/div&gt;
+&lt;div style=&#34;background: #0a1218; border-radius: 6px; padding: 0.7rem 0.9rem; font-family: monospace; font-size: 0.75rem; line-height: 1.8; color: #64B5F6;&#34;&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;```{r ANALISIS, include=FALSE}&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;# Statistik dasar, fit 4 distribusi, uji KS &amp; Chi-kuadrat,&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;# pemilihan otomatis, hitung IDF Mononobe — semua di sini.&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;# Tidak perlu diubah.&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;color: #555;&#34;&gt;```&lt;/span&gt;
+&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.74rem; color: #555; margin-top: 0.4rem;&#34;&gt;Semua matematika ada di sini — Normal, Log-Normal, Gumbel, Log-Pearson III. Dihitung otomatis.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;download-template&#34;&gt;Download Template&lt;/h2&gt;
+&lt;div style=&#34;margin: 1.5rem 0; padding: 1.4rem 1.6rem; background: linear-gradient(135deg, #0a1520, #071018); border: 1px solid #1565C0; border-radius: 14px;&#34; class=&#34;card-anim ca1&#34;&gt;
+&lt;div style=&#34;font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64B5F6; margin-bottom: 1rem;&#34;&gt;Paket Template — Analisis Frekuensi Curah Hujan&lt;/div&gt;
+&lt;div style=&#34;display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.7rem; margin-bottom: 1.1rem;&#34;&gt;
+&lt;div style=&#34;padding: 0.8rem; background: #0d1b2a; border: 1px solid #1a3050; border-radius: 8px; text-align: center;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.75rem; font-weight: 700; color: #43A047; margin-bottom: 0.3rem;&#34;&gt;.Rmd&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.72rem; color: #666;&#34;&gt;Analisis_Frekuensi&lt;br&gt;_TEMPLATE.Rmd&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;padding: 0.8rem; background: #0d1b2a; border: 1px solid #1a3050; border-radius: 8px; text-align: center;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.75rem; font-weight: 700; color: #1E88E5; margin-bottom: 0.3rem;&#34;&gt;.xlsx&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.72rem; color: #666;&#34;&gt;Data_Input&lt;br&gt;_Frekuensi.xlsx&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;padding: 0.8rem; background: #0d1b2a; border: 1px solid #1a3050; border-radius: 8px; text-align: center;&#34;&gt;
+&lt;div style=&#34;font-family: monospace; font-size: 0.75rem; font-weight: 700; color: #FFB300; margin-bottom: 0.3rem;&#34;&gt;.docx&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.72rem; color: #666;&#34;&gt;reference&lt;br&gt;_template.docx&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.8rem; color: #555; line-height: 1.6; margin-bottom: 1rem;&#34;&gt;Tiga file harus berada dalam &lt;strong style=&#34;color: #90CAF9;&#34;&gt;satu folder yang sama&lt;/strong&gt;. Template sudah diuji dengan data BMKG stasiun Bandung, 2000–2026. Distribusi yang didukung: Normal, Log-Normal 2P, Gumbel, Log-Pearson III.&lt;/div&gt;
+&lt;a href=&#34;https://irpanblog2.netlify.app/files/template-analisis-frekuensi.zip&#34; style=&#34;display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.5rem; background: #1565C0; color: white; text-decoration: none; border-radius: 8px; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.02em; transition: background 0.2s ease;&#34; onmouseover=&#34;this.style.background=&#39;#1E88E5&#39;&#34; onmouseout=&#34;this.style.background=&#39;#1565C0&#39;&#34;&gt;
+&lt;span style=&#34;font-size: 1rem;&#34;&gt;&amp;#8595;&lt;/span&gt; Download Template (ZIP)
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;apa-selanjutnya&#34;&gt;Apa Selanjutnya?&lt;/h2&gt;
+&lt;p&gt;Setelah berhasil menjalankan template ini, kamu sudah memiliki fondasi yang kuat. Artikel berikutnya akan membahas cara &lt;strong&gt;memodifikasi template&lt;/strong&gt; untuk kebutuhan proyek yang berbeda — menambah stasiun, mengubah distribusi, atau mengintegrasikan data GPM IMERG.&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem;&#34;&gt;
+&lt;a href=&#34;https://irpanblog2.netlify.app/post/materi-pengguna-pembuat-kode/&#34; style=&#34;display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px solid #1a2a3a; border-radius: 10px; text-decoration: none; transition: border-color 0.2s ease;&#34; onmouseover=&#34;this.style.borderColor=&#39;#555&#39;&#34; onmouseout=&#34;this.style.borderColor=&#39;#1a2a3a&#39;&#34;&gt;
+&lt;span style=&#34;font-size: 1.1rem; flex-shrink: 0; color: #555; display: inline-block; transform: scaleX(-1);&#34;&gt;→&lt;/span&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #555; margin-bottom: 0.15rem;&#34;&gt;Artikel Sebelumnya&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.85rem; font-weight: 700; color: #90CAF9;&#34;&gt;Filosofi: Pengguna vs. Pembuat Kode&lt;/div&gt;
+&lt;/div&gt;
+&lt;/a&gt;
+&lt;div style=&#34;display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #070d14; border: 1px dashed #2a2a3a; border-radius: 10px; opacity: 0.55; cursor: default;&#34;&gt;
+&lt;span style=&#34;font-size: 1.1rem; flex-shrink: 0; color: #444;&#34;&gt;→&lt;/span&gt;
+&lt;div&gt;
+&lt;div style=&#34;font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #444; margin-bottom: 0.15rem;&#34;&gt;Segera Hadir&lt;/div&gt;
+&lt;div style=&#34;font-size: 0.85rem; font-weight: 700; color: #555;&#34;&gt;Kustomisasi Template: Adaptasi untuk Berbagai Proyek&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Template ini dibuat menggunakan R versi 4.x dengan paket: &lt;code&gt;rmarkdown&lt;/code&gt;, &lt;code&gt;readxl&lt;/code&gt;, &lt;code&gt;ggplot2&lt;/code&gt;, &lt;code&gt;dplyr&lt;/code&gt;, &lt;code&gt;tidyr&lt;/code&gt;, &lt;code&gt;flextable&lt;/code&gt;, &lt;code&gt;scales&lt;/code&gt;. Semua perhitungan mengikuti metode standar hidrologi Indonesia.&lt;/em&gt; 🌧️&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

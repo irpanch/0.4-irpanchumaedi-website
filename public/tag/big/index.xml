@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BIG | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/big/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/big/index.xml" rel="self" type="application/rss+xml" />
+    <description>BIG</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 07 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>BIG</title>
+      <link>https://irpanblog2.netlify.app/tag/big/</link>
+    </image>
+    
+    <item>
+      <title>Database Terrain — DEMNAS BIG</title>
+      <link>https://irpanblog2.netlify.app/post/database-terrain/</link>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/database-terrain/</guid>
+      <description>&lt;p&gt;← &lt;a href=&#34;https://irpanblog2.netlify.app/post/database/&#34;&gt;Kembali ke Database Utama&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;DEMNAS&lt;/strong&gt; adalah Digital Elevation Model Nasional Indonesia resolusi tinggi yang diproduksi oleh
+&lt;strong&gt;Badan Informasi Geospasial (BIG)&lt;/strong&gt; menggunakan data radar IFSAR (resolusi 8.3m) dan
+TerraSAR-X (resolusi 27m). Data dapat diunduh &lt;strong&gt;gratis&lt;/strong&gt; langsung dari server BIG.&lt;/p&gt;
+&lt;div style=&#34;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem;margin:1.5rem 0 2rem 0;&#34;&gt;
+&lt;div style=&#34;background:rgba(33,150,243,0.08);border:1px solid rgba(33,150,243,0.2);border-radius:8px;padding:0.9rem;text-align:center;&#34;&gt;
+  &lt;div style=&#34;font-size:1.8rem;&#34;&gt;🗂️&lt;/div&gt;
+  &lt;div style=&#34;font-size:1.4rem;font-weight:700;color:#64B5F6;&#34;&gt;4.777&lt;/div&gt;
+  &lt;div style=&#34;font-size:0.72rem;color:#888;&#34;&gt;Total Tile&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;background:rgba(76,175,80,0.08);border:1px solid rgba(76,175,80,0.2);border-radius:8px;padding:0.9rem;text-align:center;&#34;&gt;
+  &lt;div style=&#34;font-size:1.8rem;&#34;&gt;📡&lt;/div&gt;
+  &lt;div style=&#34;font-size:1.4rem;font-weight:700;color:#81C784;&#34;&gt;8.3 m&lt;/div&gt;
+  &lt;div style=&#34;font-size:0.72rem;color:#888;&#34;&gt;Resolusi IFSAR&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;background:rgba(255,193,7,0.08);border:1px solid rgba(255,193,7,0.2);border-radius:8px;padding:0.9rem;text-align:center;&#34;&gt;
+  &lt;div style=&#34;font-size:1.8rem;&#34;&gt;🛰️&lt;/div&gt;
+  &lt;div style=&#34;font-size:1.4rem;font-weight:700;color:#FFD54F;&#34;&gt;27 m&lt;/div&gt;
+  &lt;div style=&#34;font-size:0.72rem;color:#888;&#34;&gt;Resolusi TerraSAR-X&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;background:rgba(156,39,176,0.08);border:1px solid rgba(156,39,176,0.2);border-radius:8px;padding:0.9rem;text-align:center;&#34;&gt;
+  &lt;div style=&#34;font-size:1.8rem;&#34;&gt;🌏&lt;/div&gt;
+  &lt;div style=&#34;font-size:1.4rem;font-weight:700;color:#CE93D8;&#34;&gt;6&lt;/div&gt;
+  &lt;div style=&#34;font-size:0.72rem;color:#888;&#34;&gt;Wilayah&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;daftar-tile-per-wilayah&#34;&gt;Daftar Tile per Wilayah&lt;/h2&gt;
+&lt;div style=&#34;overflow-x:auto;&#34;&gt;
+&lt;table style=&#34;width:100%;border-collapse:collapse;font-size:0.9rem;&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;background:rgba(33,150,243,0.12);border-bottom:2px solid rgba(33,150,243,0.3);&#34;&gt;
+      &lt;th style=&#34;padding:10px 14px;text-align:left;width:40px;&#34;&gt;&lt;/th&gt;
+      &lt;th style=&#34;padding:10px 14px;text-align:left;&#34;&gt;Wilayah&lt;/th&gt;
+      &lt;th style=&#34;padding:10px 14px;text-align:center;&#34;&gt;Jumlah Tile&lt;/th&gt;
+      &lt;th style=&#34;padding:10px 14px;text-align:left;&#34;&gt;Detail&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&#39;padding:10px 14px;font-size:1.3rem;&#39;&gt;🦺&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;font-weight:700;&#39;&gt;Sulawesi&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;text-align:center;font-weight:600;color:#64B5F6;font-family:monospace;&#39;&gt;1.367&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;&#39;&gt;&lt;a href=&#39;https://irpanblog2.netlify.app/post/database-terrain-sulawesi/&#39; style=&#39;display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(33,150,243,0.15);color:#64B5F6;border:1px solid rgba(33,150,243,0.3);border-radius:5px;text-decoration:none;font-size:0.82rem;font-weight:600;&#39;&gt;📋 Lihat Daftar Tile&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&#39;padding:10px 14px;font-size:1.3rem;&#39;&gt;🏝️&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;font-weight:700;&#39;&gt;Sumatera&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;text-align:center;font-weight:600;color:#64B5F6;font-family:monospace;&#39;&gt;1.042&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;&#39;&gt;&lt;a href=&#39;https://irpanblog2.netlify.app/post/database-terrain-sumatera/&#39; style=&#39;display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(33,150,243,0.15);color:#64B5F6;border:1px solid rgba(33,150,243,0.3);border-radius:5px;text-decoration:none;font-size:0.82rem;font-weight:600;&#39;&gt;📋 Lihat Daftar Tile&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&#39;padding:10px 14px;font-size:1.3rem;&#39;&gt;🌿&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;font-weight:700;&#39;&gt;Kalimantan&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;text-align:center;font-weight:600;color:#64B5F6;font-family:monospace;&#39;&gt;831&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;&#39;&gt;&lt;a href=&#39;https://irpanblog2.netlify.app/post/database-terrain-kalimantan/&#39; style=&#39;display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(33,150,243,0.15);color:#64B5F6;border:1px solid rgba(33,150,243,0.3);border-radius:5px;text-decoration:none;font-size:0.82rem;font-weight:600;&#39;&gt;📋 Lihat Daftar Tile&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&#39;padding:10px 14px;font-size:1.3rem;&#39;&gt;🦜&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;font-weight:700;&#39;&gt;Papua&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;text-align:center;font-weight:600;color:#64B5F6;font-family:monospace;&#39;&gt;735&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;&#39;&gt;&lt;a href=&#39;https://irpanblog2.netlify.app/post/database-terrain-papua/&#39; style=&#39;display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(33,150,243,0.15);color:#64B5F6;border:1px solid rgba(33,150,243,0.3);border-radius:5px;text-decoration:none;font-size:0.82rem;font-weight:600;&#39;&gt;📋 Lihat Daftar Tile&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&#39;padding:10px 14px;font-size:1.3rem;&#39;&gt;☕&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;font-weight:700;&#39;&gt;Jawa &amp; Bali&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;text-align:center;font-weight:600;color:#64B5F6;font-family:monospace;&#39;&gt;493&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;&#39;&gt;&lt;a href=&#39;https://irpanblog2.netlify.app/post/database-terrain-jawa/&#39; style=&#39;display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(33,150,243,0.15);color:#64B5F6;border:1px solid rgba(33,150,243,0.3);border-radius:5px;text-decoration:none;font-size:0.82rem;font-weight:600;&#39;&gt;📋 Lihat Daftar Tile&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&#39;padding:10px 14px;font-size:1.3rem;&#39;&gt;🌊&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;font-weight:700;&#39;&gt;Maluku&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;text-align:center;font-weight:600;color:#64B5F6;font-family:monospace;&#39;&gt;309&lt;/td&gt;&lt;td style=&#39;padding:10px 14px;&#39;&gt;&lt;a href=&#39;https://irpanblog2.netlify.app/post/database-terrain-maluku/&#39; style=&#39;display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(33,150,243,0.15);color:#64B5F6;border:1px solid rgba(33,150,243,0.3);border-radius:5px;text-decoration:none;font-size:0.82rem;font-weight:600;&#39;&gt;📋 Lihat Daftar Tile&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cara-mengunduh&#34;&gt;Cara Mengunduh&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Klik &lt;strong&gt;Lihat Daftar Tile&lt;/strong&gt; pada wilayah yang dibutuhkan&lt;/li&gt;
+&lt;li&gt;Cari NLP / kode lembar peta yang diperlukan&lt;/li&gt;
+&lt;li&gt;Klik tombol &lt;strong&gt;⬇ Unduh&lt;/strong&gt; — file diunduh langsung dari server BIG&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;Tips:&lt;/strong&gt; Gunakan &lt;strong&gt;Ctrl+F&lt;/strong&gt; di halaman daftar tile untuk mencari kode NLP spesifik.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Sumber:&lt;/strong&gt; Badan Informasi Geospasial (BIG) — &lt;a href=&#34;https://tanahair.indonesia.go.id&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tanahair.indonesia.go.id&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Format:&lt;/strong&gt; GeoTIFF (.tif) · Sistem koordinat: Geographic WGS84&lt;br&gt;
+&lt;strong&gt;Lisensi:&lt;/strong&gt; Terbuka untuk keperluan penelitian, perencanaan, dan pendidikan&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

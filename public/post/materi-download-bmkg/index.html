@@ -1,0 +1,1745 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Irpan Chumaedi">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Cara mengakses data observasi BMKG, keterbatasannya, dan strategi mengisi data yang hilang (missing data) untuk keperluan studi hidrologi.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://irpanblog2.netlify.app/post/materi-download-bmkg/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.0fb8277805f3281de542f2093a1c4a87.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://irpanblog2.netlify.app/post/materi-download-bmkg/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Irpan Chumaedi">
+  <meta property="og:url" content="https://irpanblog2.netlify.app/post/materi-download-bmkg/">
+  <meta property="og:title" content="Download Data Hujan BMKG: Cara Akses, Keterbatasan, dan Strategi Data Hilang | Irpan Chumaedi">
+  <meta property="og:description" content="Cara mengakses data observasi BMKG, keterbatasannya, dan strategi mengisi data yang hilang (missing data) untuk keperluan studi hidrologi."><meta property="og:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2026-05-12T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2026-05-12T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://irpanblog2.netlify.app/post/materi-download-bmkg/"
+  },
+  "headline": "Download Data Hujan BMKG: Cara Akses, Keterbatasan, dan Strategi Data Hilang",
+  
+  "datePublished": "2026-05-12T00:00:00Z",
+  "dateModified": "2026-05-12T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Irpan Chumaedi"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Irpan Chumaedi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Cara mengakses data observasi BMKG, keterbatasannya, dan strategi mengisi data yang hilang (missing data) untuk keperluan studi hidrologi."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.home-section, article, .card').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  
+  window.addEventListener('scroll', function() {
+    var navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    
+    var btns = document.querySelectorAll('.float-btn');
+    btns.forEach(function(btn) {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+  });
+
+  
+  document.querySelectorAll('.featurette').forEach(function(el, i) {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
+
+  
+  var isDbPage = window.location.pathname.indexOf('/post/database') === 0;
+  var container = document.createElement('div');
+  container.className = 'float-buttons';
+
+  
+  var btnTop = document.createElement('button');
+  btnTop.className = 'float-btn float-btn-top';
+  btnTop.title = 'Kembali ke atas';
+  btnTop.innerHTML = '↑';
+  btnTop.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  container.appendChild(btnTop);
+
+  
+  var isProvinsiPage = window.location.pathname.indexOf('/post/database-') === 0;
+  if (isProvinsiPage) {
+    var btnDb = document.createElement('a');
+    btnDb.className = 'float-btn float-btn-db';
+    btnDb.href = '/post/database/';
+    btnDb.title = 'Kembali ke Database Utama';
+    btnDb.innerHTML = '🗄️';
+    container.appendChild(btnDb);
+  }
+
+  document.body.appendChild(container);
+});
+</script>
+
+
+  <title>Download Data Hujan BMKG: Cara Akses, Keterbatasan, dan Strategi Data Hilang | Irpan Chumaedi</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.1df0392aab543464b23a85146803aaf2.js"></script>
+
+  
+
+<aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Tentang</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#skills"><span>Keahlian</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Proyek</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#kurikulum"><span>Kurikulum</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Tulisan</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/database/"><span>Database</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Kontak</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Download Data Hujan BMKG: Cara Akses, Keterbatasan, dan Strategi Data Hilang</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 12, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/tutorial/">Tutorial</a>, <a href="/category/data-hujan/">Data Hujan</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="data-bmkg-sebagai-referensi-utama">Data BMKG sebagai Referensi Utama</h2>
+<p>Data curah hujan observasi dari <strong>Badan Meteorologi, Klimatologi, dan Geofisika (BMKG)</strong> adalah referensi primer dalam setiap studi hidrologi di Indonesia. Berbeda dengan data satelit (GPM IMERG) yang merupakan estimasi, data BMKG berasal dari <strong>pengukuran langsung</strong> di lapangan menggunakan penakar hujan standar.</p>
+<p><strong>Keunggulan data BMKG:</strong></p>
+<ul>
+<li>✅ Data pengukuran langsung (ground truth)</li>
+<li>✅ Umumnya tersedia hingga puluhan tahun (beberapa stasiun sejak 1970-an)</li>
+<li>✅ Diakui secara legal dan ilmiah untuk keperluan perizinan dan AMDAL</li>
+<li>✅ Menjadi acuan kalibrasi/validasi untuk data satelit</li>
+</ul>
+<p><strong>Keterbatasan data BMKG:</strong></p>
+<ul>
+<li>❌ Kerapatan stasiun tidak merata — banyak area terpencil tidak terjangkau</li>
+<li>❌ Data seringkali tidak lengkap (banyak missing data)</li>
+<li>❌ Akses data historis panjang memerlukan permohonan resmi (berbayar)</li>
+<li>❌ Portal online hanya tersedia 2 tahun terakhir secara gratis</li>
+</ul>
+<hr>
+<h2 id="cara-mengakses-data-bmkg">Cara Mengakses Data BMKG</h2>
+<p>Ada tiga jalur utama untuk mendapatkan data curah hujan BMKG:</p>
+<h3 id="jalur-1-portal-bmkg-data-online-gratis-terbatas-2-tahun">Jalur 1: Portal BMKG Data Online (Gratis, Terbatas 2 Tahun)</h3>
+<p>🔗 <strong>URL:</strong> <a href="https://dataonline.bmkg.go.id/" target="_blank" rel="noopener">https://dataonline.bmkg.go.id/</a></p>
+<p>Portal ini menyediakan akses gratis ke data iklim (curah hujan, suhu, kelembaban, dll.) namun <strong>hanya 2 tahun terakhir</strong> yang bisa diunduh secara mandiri.</p>
+<p><strong>Langkah akses:</strong></p>
+<ol>
+<li>Buka <a href="https://dataonline.bmkg.go.id/" target="_blank" rel="noopener">https://dataonline.bmkg.go.id/</a></li>
+<li>Klik <strong>&ldquo;Masuk&rdquo;</strong> → daftar akun gratis jika belum punya</li>
+<li>Pilih menu <strong>&ldquo;Data Iklim&rdquo;</strong> → <strong>&ldquo;Unduh Data&rdquo;</strong></li>
+<li>Pilih stasiun, parameter (Curah Hujan / RR), dan periode waktu</li>
+<li>Format output: <strong>Excel (.xlsx)</strong> atau CSV</li>
+</ol>
+<blockquote>
+<p><strong>Catatan penting:</strong> Server BMKG Data Online menerapkan pembatasan ketat. Permintaan data lebih dari 2 tahun akan ditolak secara otomatis oleh sistem, bukan karena akun terbatas.</p>
+</blockquote>
+<hr>
+<h3 id="jalur-2-permohonan-resmi-ke-upt-bmkg-data-historis-panjang">Jalur 2: Permohonan Resmi ke UPT BMKG (Data Historis Panjang)</h3>
+<p>Untuk data historis lebih dari 2 tahun (misalnya 10–30 tahun untuk keperluan AMDAL), kamu perlu mengajukan <strong>permohonan data resmi</strong> ke Balai Besar / UPT BMKG setempat.</p>
+<p><strong>Prosedur permohonan:</strong></p>
+<ol>
+<li>Buat surat permohonan data resmi di atas kop perusahaan/instansi</li>
+<li>Cantumkan: nama stasiun, parameter, periode, dan tujuan penggunaan</li>
+<li>Kirimkan ke UPT BMKG yang membawahi wilayah stasiun target</li>
+<li>Biaya: bervariasi, umumnya <strong>Rp 50.000 – Rp 500.000</strong> per stasiun per periode (PNBP)</li>
+<li>Waktu proses: <strong>1–3 minggu</strong> tergantung beban kerja UPT</li>
+</ol>
+<p><strong>Kontak UPT BMKG berdasarkan wilayah:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Wilayah</th>
+<th>UPT BMKG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jawa Barat</td>
+<td>BMKG Stamet Bandung, BBTMC Serpong</td>
+</tr>
+<tr>
+<td>Kalimantan Selatan</td>
+<td>BMKG Staklim Banjarbaru</td>
+</tr>
+<tr>
+<td>Kalimantan Timur</td>
+<td>BMKG Staklim Samarinda</td>
+</tr>
+<tr>
+<td>Maluku Utara</td>
+<td>BMKG Stamet Ternate</td>
+</tr>
+<tr>
+<td>Sulawesi</td>
+<td>BMKG Staklim Makassar</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<hr>
+<h2 id="memahami-format-data-bmkg">Memahami Format Data BMKG</h2>
+<p>Data yang diunduh dari portal BMKG biasanya berbentuk tabel Excel dengan format seperti ini:</p>
+<pre><code>Nama Stasiun : Stasiun Klimatologi Banjarbaru
+Lintang      : -3.4425° LS
+Bujur        : 114.8253° BT
+Elevasi      : 66 m
+Parameter    : Curah Hujan (mm)
+
+Tanggal    | RR
+-----------|------
+2023-01-01 | 15.2
+2023-01-02 | 0.0
+2023-01-03 | 8888  ← kode data hilang (missing)
+2023-01-04 | 9999  ← kode tidak ada pengamatan
+2023-01-05 | 22.4
+</code></pre>
+<p><strong>Kode khusus yang sering muncul:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kode</th>
+<th>Makna</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>8888</code></td>
+<td>Data hilang / tidak tercatat</td>
+</tr>
+<tr>
+<td><code>9999</code></td>
+<td>Tidak ada pengamatan (hari libur, dll.)</td>
+</tr>
+<tr>
+<td><code>-</code> atau <code>NaN</code></td>
+<td>Tidak ada data</td>
+</tr>
+<tr>
+<td><code>0.0</code></td>
+<td>Tidak hujan (hari kering)</td>
+</tr>
+<tr>
+<td><code>Tr</code></td>
+<td><em>Trace</em> — hujan sangat kecil, tidak terukur (&lt;0.5 mm)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Penting:</strong> Jangan sampai kode <code>8888</code> atau <code>9999</code> ikut dihitung sebagai nilai curah hujan! Ini adalah kesalahan umum yang membuat analisis frekuensi menjadi tidak valid.</p>
+</blockquote>
+<hr>
+<h2 id="identifikasi-dan-penanganan-data-hilang-missing-data">Identifikasi dan Penanganan Data Hilang (Missing Data)</h2>
+<h3 id="langkah-1-hitung-persentase-data-hilang">Langkah 1: Hitung Persentase Data Hilang</h3>
+<p>Sebelum menggunakan data BMKG, wajib hukumnya mengecek kualitas data:</p>
+<pre><code class="language-r"># ============================================================
+# Identifikasi missing data pada dataset BMKG
+# ============================================================
+options(OutDec = &quot;.&quot;)
+
+library(dplyr)
+library(lubridate)
+
+# Baca data (sesuaikan path)
+data_hujan &lt;- read.csv(&quot;data_bmkg_banjarbaru.csv&quot;,
+                       stringsAsFactors = FALSE)
+
+# Konversi tanggal
+data_hujan$tanggal &lt;- as.Date(data_hujan$tanggal, format = &quot;%Y-%m-%d&quot;)
+
+# Ganti kode missing dengan NA
+data_hujan$rr[data_hujan$rr %in% c(8888, 9999)] &lt;- NA
+data_hujan$rr[data_hujan$rr == &quot;Tr&quot;] &lt;- 0  # Trace dianggap 0
+
+# Hitung persentase missing per tahun
+ringkasan_missing &lt;- data_hujan %&gt;%
+  mutate(tahun = year(tanggal)) %&gt;%
+  group_by(tahun) %&gt;%
+  summarise(
+    total_hari    = n(),
+    hari_missing  = sum(is.na(rr)),
+    persen_missing = round(hari_missing / total_hari * 100, 1)
+  )
+
+print(ringkasan_missing)
+</code></pre>
+<p><strong>Panduan interpretasi kualitas data:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Persentase Missing</th>
+<th>Kategori</th>
+<th>Tindakan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 5%</td>
+<td>Baik</td>
+<td>Imputasi sederhana</td>
+</tr>
+<tr>
+<td>5% – 15%</td>
+<td>Cukup</td>
+<td>Imputasi dengan stasiun tetangga</td>
+</tr>
+<tr>
+<td>15% – 30%</td>
+<td>Kurang</td>
+<td>Pertimbangkan data satelit sebagai suplemen</td>
+</tr>
+<tr>
+<td>&gt; 30%</td>
+<td>Buruk</td>
+<td>Hindari penggunaan, gunakan GPM IMERG</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="langkah-2-strategi-imputasi-data-hilang">Langkah 2: Strategi Imputasi Data Hilang</h3>
+<p>Ada beberapa metode pengisian data hilang, pilih berdasarkan kondisi lapangan:</p>
+<h4 id="metode-1-rata-rata-stasiun-tetangga-normal-ratio-method">Metode 1: Rata-rata Stasiun Tetangga (Normal Ratio Method)</h4>
+<p>Metode ini menggunakan bobot berdasarkan rasio curah hujan normal tahunan antara stasiun target dan stasiun pengisi.</p>
+<pre><code class="language-r"># ============================================================
+# Imputasi dengan Normal Ratio Method
+# ============================================================
+
+# Curah hujan tahunan rata-rata (mm/tahun) dari masing-masing stasiun
+# Dapatkan nilai ini dari 10–30 tahun data di tiap stasiun
+n_target   &lt;- 2100  # Stasiun target (yang punya missing data)
+n_stasiun1 &lt;- 1950  # Stasiun tetangga 1
+n_stasiun2 &lt;- 2300  # Stasiun tetangga 2
+n_stasiun3 &lt;- 2050  # Stasiun tetangga 3
+
+# Jika deviasi curah hujan normal antar stasiun &lt; 10%:
+# Gunakan rata-rata aritmetika sederhana
+# Jika deviasi ≥ 10%: Gunakan Normal Ratio Method
+
+hitung_imputasi_normal_ratio &lt;- function(rr1, rr2, rr3,
+                                          n_t, n_1, n_2, n_3) {
+  # Formula: P_x = (N_x/3) * (P_1/N_1 + P_2/N_2 + P_3/N_3)
+  nilai &lt;- (n_t / 3) * (rr1/n_1 + rr2/n_2 + rr3/n_3)
+  return(round(nilai, 1))
+}
+
+# Contoh pengisian untuk satu hari missing
+rr_imputasi &lt;- hitung_imputasi_normal_ratio(
+  rr1 = 18.5, rr2 = 22.0, rr3 = 15.8,
+  n_t = n_target, n_1 = n_stasiun1,
+  n_2 = n_stasiun2, n_3 = n_stasiun3
+)
+
+cat(&quot;Curah hujan hasil imputasi:&quot;, rr_imputasi, &quot;mm\n&quot;)
+</code></pre>
+<h4 id="metode-2-inverse-distance-weighting-idw-antar-stasiun">Metode 2: Inverse Distance Weighting (IDW) antar Stasiun</h4>
+<pre><code class="language-r"># ============================================================
+# Imputasi dengan IDW berdasarkan jarak antar stasiun
+# ============================================================
+
+# Koordinat stasiun (dalam derajat desimal)
+stasiun &lt;- data.frame(
+  nama     = c(&quot;Target&quot;, &quot;Sts_1&quot;, &quot;Sts_2&quot;, &quot;Sts_3&quot;),
+  lon      = c(114.825, 114.600, 115.100, 114.700),
+  lat      = c(-3.443,  -3.200,  -3.600,  -3.700),
+  rr_hari  = c(NA,      18.5,    22.0,    15.8)  # NA = missing
+)
+
+# Hitung jarak Euclidean (approx) dalam km
+hitung_jarak_km &lt;- function(lon1, lat1, lon2, lat2) {
+  dx &lt;- (lon2 - lon1) * 111.32 * cos(lat1 * pi / 180)
+  dy &lt;- (lat2 - lat1) * 110.57
+  sqrt(dx^2 + dy^2)
+}
+
+stasiun_pengisi &lt;- stasiun[!is.na(stasiun$rr_hari), ]
+
+# Hitung jarak dari stasiun target ke pengisi
+stasiun_pengisi$jarak &lt;- mapply(
+  hitung_jarak_km,
+  lon1 = stasiun$lon[1], lat1 = stasiun$lat[1],
+  lon2 = stasiun_pengisi$lon, lat2 = stasiun_pengisi$lat
+)
+
+# Bobot IDW (1/d^2)
+stasiun_pengisi$bobot &lt;- 1 / stasiun_pengisi$jarak^2
+
+# Curah hujan hasil IDW
+rr_idw &lt;- sum(stasiun_pengisi$rr_hari * stasiun_pengisi$bobot) /
+          sum(stasiun_pengisi$bobot)
+
+cat(&quot;Curah hujan IDW:&quot;, round(rr_idw, 1), &quot;mm\n&quot;)
+</code></pre>
+<h4 id="metode-3-isi-dengan-data-gpm-imerg-rekomendasi-modern">Metode 3: Isi dengan Data GPM IMERG (Rekomendasi Modern)</h4>
+<p>Jika tidak ada stasiun tetangga yang memadai, data GPM IMERG Final Run bisa digunakan untuk mengisi missing data setelah dilakukan <strong>bias correction</strong>:</p>
+<pre><code class="language-r"># ============================================================
+# Koreksi bias GPM IMERG menggunakan ratio scaling
+# ============================================================
+
+# Periode yang memiliki data lengkap di keduanya (untuk kalibrasi)
+# bmkg_lengkap  = data BMKG periode overlap (tanpa missing)
+# gpm_overlap   = data GPM periode yang sama
+
+# Hitung faktor koreksi bulanan
+faktor_koreksi &lt;- data.frame(
+  bulan  = 1:12,
+  fc     = tapply(bmkg_lengkap$rr, month(bmkg_lengkap$tanggal),
+                  mean, na.rm = TRUE) /
+           tapply(gpm_overlap$rr,  month(gpm_overlap$tanggal),
+                  mean, na.rm = TRUE)
+)
+
+# Terapkan koreksi ke GPM untuk mengisi missing BMKG
+data_gabungan &lt;- data_hujan  # copy data BMKG
+bln_missing &lt;- month(data_gabungan$tanggal[is.na(data_gabungan$rr)])
+fc_terpilih &lt;- faktor_koreksi$fc[bln_missing]
+
+data_gabungan$rr[is.na(data_gabungan$rr)] &lt;-
+  gpm_data$rr[is.na(data_hujan$rr)] * fc_terpilih
+</code></pre>
+<hr>
+<h2 id="validasi-kualitas-data-akhir">Validasi Kualitas Data Akhir</h2>
+<p>Setelah imputasi, lakukan validasi visual sebelum data digunakan untuk analisis lanjutan:</p>
+<pre><code class="language-r"># ============================================================
+# Plot curah hujan tahunan untuk deteksi anomali
+# ============================================================
+
+library(ggplot2)
+
+data_tahunan &lt;- data_hujan %&gt;%
+  mutate(tahun = year(tanggal)) %&gt;%
+  group_by(tahun) %&gt;%
+  summarise(rr_tahunan = sum(rr, na.rm = TRUE))
+
+ggplot(data_tahunan, aes(x = tahun, y = rr_tahunan)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;#2196F3&quot;, alpha = 0.8) +
+  geom_hline(yintercept = mean(data_tahunan$rr_tahunan),
+             linetype = &quot;dashed&quot;, color = &quot;red&quot;, linewidth = 0.8) +
+  labs(
+    title    = &quot;Curah Hujan Tahunan — Stasiun BMKG&quot;,
+    subtitle = &quot;Garis merah: rata-rata periode analisis&quot;,
+    x        = &quot;Tahun&quot;,
+    y        = &quot;Curah Hujan Tahunan (mm)&quot;
+  ) +
+  theme_bw(base_size = 12)
+</code></pre>
+<p>Perhatikan anomali seperti lonjakan ekstrem atau nilai nol pada seluruh tahun — ini bisa mengindikasikan kesalahan dalam proses imputasi atau kode missing yang belum tergantikan.</p>
+<hr>
+<h2 id="kesimpulan-kapan-gunakan-data-bmkg-vs-gpm-imerg">Kesimpulan: Kapan Gunakan Data BMKG vs GPM IMERG?</h2>
+<table>
+<thead>
+<tr>
+<th>Kondisi</th>
+<th>Rekomendasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stasiun BMKG &lt; 5 km dari area studi, data lengkap</td>
+<td>Gunakan BMKG saja</td>
+</tr>
+<tr>
+<td>Stasiun BMKG ada tapi banyak missing data (&gt;15%)</td>
+<td>Gabungkan BMKG + GPM (hybrid)</td>
+</tr>
+<tr>
+<td>Tidak ada stasiun BMKG dalam radius 20 km</td>
+<td>Gunakan GPM IMERG Final Run</td>
+</tr>
+<tr>
+<td>Keperluan AMDAL formal</td>
+<td>BMKG sebagai primer, GPM sebagai sekunder</td>
+</tr>
+<tr>
+<td>Data &gt; 10 tahun diperlukan dan proses lambat</td>
+<td>GPM + Open-Meteo ERA5 sebagai suplemen</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li>BMKG Data Online: <a href="https://dataonline.bmkg.go.id/" target="_blank" rel="noopener">https://dataonline.bmkg.go.id/</a></li>
+<li>WMO (2012). <em>Guide to Meteorological Instruments and Methods of Observation</em>. WMO No. 8.</li>
+<li>Paulhus, J.L.H. &amp; Kohler, M.A. (1952). Interpolation of missing precipitation records. <em>Monthly Weather Review</em>, 80(8), 129–133.</li>
+<li>Soewarno (1995). <em>Hidrologi: Aplikasi Metode Statistik untuk Analisa Data</em>. Nova, Bandung.</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/bmkg/">BMKG</a>
+  
+  <a class="badge badge-light" href="/tag/data-hujan/">data hujan</a>
+  
+  <a class="badge badge-light" href="/tag/observasi/">observasi</a>
+  
+  <a class="badge badge-light" href="/tag/missing-data/">missing data</a>
+  
+  <a class="badge badge-light" href="/tag/imputasi/">imputasi</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://irpanblog2.netlify.app/post/materi-download-bmkg/&amp;text=Download%20Data%20Hujan%20BMKG:%20Cara%20Akses,%20Keterbatasan,%20dan%20Strategi%20Data%20Hilang" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://irpanblog2.netlify.app/post/materi-download-bmkg/&amp;t=Download%20Data%20Hujan%20BMKG:%20Cara%20Akses,%20Keterbatasan,%20dan%20Strategi%20Data%20Hilang" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Download%20Data%20Hujan%20BMKG:%20Cara%20Akses,%20Keterbatasan,%20dan%20Strategi%20Data%20Hilang&amp;body=https://irpanblog2.netlify.app/post/materi-download-bmkg/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://irpanblog2.netlify.app/post/materi-download-bmkg/&amp;title=Download%20Data%20Hujan%20BMKG:%20Cara%20Akses,%20Keterbatasan,%20dan%20Strategi%20Data%20Hilang" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Download%20Data%20Hujan%20BMKG:%20Cara%20Akses,%20Keterbatasan,%20dan%20Strategi%20Data%20Hilang%20https://irpanblog2.netlify.app/post/materi-download-bmkg/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://irpanblog2.netlify.app/post/materi-download-bmkg/&amp;title=Download%20Data%20Hujan%20BMKG:%20Cara%20Akses,%20Keterbatasan,%20dan%20Strategi%20Data%20Hilang" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://irpanblog2.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/author/irpan-chumaedi/avatar_hu471b0f6803e0170320129db8faa319d9_39551_270x270_fill_q75_lanczos_center.jpg" alt="Irpan Chumaedi"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://irpanblog2.netlify.app/">Irpan Chumaedi</a></h5>
+      <h6 class="card-subtitle">Hydrologist Engineer</h6>
+      <p class="card-text">Konsultan sumber daya air dengan spesialisasi analisis hidrologi, pemodelan hidrolika, dan kajian lingkungan (AMDAL).</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        
+          <i class="fas fa-envelope"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.youtube.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-youtube"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-github"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/irpan-chumaedi-73992863/" target="_blank" rel="noopener">
+        
+          <i class="fab fa-linkedin"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://discord.gg/za2KPWJFKG" target="_blank" rel="noopener">
+        
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
+               style="width:1em; height:1em; fill:currentColor; vertical-align:-0.125em;">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+          </svg>
+        
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/materi-download-gpm/">Download Data Hujan GPM IMERG dengan NASA Giovanni</a></li>
+      
+      <li><a href="/post/materi-keterbatasan-data-hujan/">Keterbatasan Data Hujan Pos dan Alternatif GPM IMERG</a></li>
+      
+      <li><a href="/post/materi-kalibrasi-data-gpm-bmkg/">Kalibrasi Data GPM dengan Data BMKG</a></li>
+      
+      <li><a href="/post/materi-visualisasi-data-hujan-excel/">Rekap &amp; Visualisasi Data Hujan dengan Excel</a></li>
+      
+      <li><a href="/post/materi-visualisasi-r-ggplot2/">Rekap &amp; Visualisasi Data Hujan dengan R &amp; ggplot2</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'event' : "Events",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/js/wowchemy.min.572b7caf7fe601716a0f74d67d754c21.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

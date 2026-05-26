@@ -302,7 +302,7 @@ design:
       <div class="kur-module-title">Pengantar HEC-RAS — Konsep & Interface</div>
       <div class="kur-module-desc">Apa itu HEC-RAS, kapan digunakan, dan bagaimana alur kerja dari data geometri hingga output profil muka air.</div>
     </div>
-    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+    <span class="kur-module-badge badge-soon">📅 Segera</span>
   </a>
 
   <div class="kur-module">

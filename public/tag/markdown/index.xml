@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/markdown/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <description>markdown</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 09 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>markdown</title>
+      <link>https://irpanblog2.netlify.app/tag/markdown/</link>
+    </image>
+    
+    <item>
+      <title>Kenalan Dengan Markdown</title>
+      <link>https://irpanblog2.netlify.app/post/kenalan-dengan-markdown/</link>
+      <pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/kenalan-dengan-markdown/</guid>
+      <description>
+&lt;script src=&#34;https://irpanblog2.netlify.app/post/kenalan-dengan-markdown/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;a-little-background..&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A little Background..&lt;/h2&gt;
+&lt;p&gt;Teks biasa atau &lt;em&gt;plain text&lt;/em&gt; merupakan hal yang penting dalam dunia komunikasi, baik di dunia nyata maupun di dunia komputer. Apa yang ingin disampaikan harus tertulis dengan &lt;strong&gt;jelas&lt;/strong&gt;. Kenapa? agar bisa dimengerti.&lt;/p&gt;
+&lt;p&gt;Coba lihat diantara tulisan ini, mana yang lebih mudah dipahami?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;contoh_tulisan.png&#34; width=&#34;898&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Gambar diatas merupakan screenshot &lt;a href=&#34;https://id.quora.com/Mengapa-tulisan-dokter-jelek-saat-menulis-resep&#34;&gt;jawaban Quora&lt;/a&gt; yang saya ambil. Yang kiri merupakan tulisan aslinya dan yang kanan setelah ditulis ulang. Jauh banget kan perbedaannya.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;apa-itu-markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Apa itu markdown?&lt;/h2&gt;
+&lt;p&gt;Secara teknis markdown adalah sintaks ringan untuk merubah teks biasa menjadi teks yang berformat.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;contoh-penggunaan-markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Contoh penggunaan markdown&lt;/h2&gt;
+&lt;p&gt;Sintaksnya sederhana. Saya coba tabelkan beberapa penggunaannya seperti ini:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;26%&#34; /&gt;
+&lt;col width=&#34;36%&#34; /&gt;
+&lt;col width=&#34;36%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Penggunaan&lt;/th&gt;
+&lt;th&gt;Sintaks&lt;/th&gt;
+&lt;th&gt;Hasil&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Heading 1 dan seterusnya&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;&lt;code&gt;# Heading 1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;## Heading 2&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;### Heading 3&lt;/code&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;h1 id=&#34;heading-1&#34;&gt;Heading 1&lt;/h1&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;Heading 2&lt;/h2&gt;
+&lt;h3 id=&#34;heading-3&#34;&gt;Heading 3&lt;/h3&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Menulis tebal (bold)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;**tulisan tebal**&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;tulisan tebal&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Menulis miring (italic)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;*tulisan miring*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;tulisan miring&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Menulis coret (strikethrough)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;~~tulisan coret~~&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;del&gt;tulisan coret&lt;/del&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Link ke url&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[website ini keren!](irpanchumaedi.com&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;irpanchumaedi.com&#34;&gt;website ini keren!&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;referensi&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Referensi&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Markdown&#34;&gt;Markdown - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

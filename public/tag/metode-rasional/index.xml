@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Metode Rasional | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/metode-rasional/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/metode-rasional/index.xml" rel="self" type="application/rss+xml" />
+    <description>Metode Rasional</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>Metode Rasional</title>
+      <link>https://irpanblog2.netlify.app/tag/metode-rasional/</link>
+    </image>
+    
+    <item>
+      <title>Perhitungan Debit Banjir Rencana</title>
+      <link>https://irpanblog2.netlify.app/post/materi-perhitungan-debit-banjir/</link>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-perhitungan-debit-banjir/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/perhitungan-debit-banjir-rencana.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Perhitungan Debit Banjir Rencana&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

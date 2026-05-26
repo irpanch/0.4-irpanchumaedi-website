@@ -1,0 +1,1607 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  
+  
+  <meta name="generator" content="Wowchemy 5.0.0-beta.1 for Hugo">
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Irpan Chumaedi">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Panduan langkah demi langkah mengunduh data curah hujan GPM IMERG dari NASA Giovanni — gratis, global, dan historis hingga 25 tahun ke belakang.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://irpanblog2.netlify.app/post/materi-download-gpm/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.0fb8277805f3281de542f2093a1c4a87.css">
+
+  
+
+
+
+
+  
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://irpanblog2.netlify.app/post/materi-download-gpm/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Irpan Chumaedi">
+  <meta property="og:url" content="https://irpanblog2.netlify.app/post/materi-download-gpm/">
+  <meta property="og:title" content="Download Data Hujan GPM IMERG dengan NASA Giovanni | Irpan Chumaedi">
+  <meta property="og:description" content="Panduan langkah demi langkah mengunduh data curah hujan GPM IMERG dari NASA Giovanni — gratis, global, dan historis hingga 25 tahun ke belakang."><meta property="og:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2026-05-12T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2026-05-12T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://irpanblog2.netlify.app/post/materi-download-gpm/"
+  },
+  "headline": "Download Data Hujan GPM IMERG dengan NASA Giovanni",
+  
+  "datePublished": "2026-05-12T00:00:00Z",
+  "dateModified": "2026-05-12T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Irpan Chumaedi"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Irpan Chumaedi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Panduan langkah demi langkah mengunduh data curah hujan GPM IMERG dari NASA Giovanni — gratis, global, dan historis hingga 25 tahun ke belakang."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.home-section, article, .card').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  
+  window.addEventListener('scroll', function() {
+    var navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    
+    var btns = document.querySelectorAll('.float-btn');
+    btns.forEach(function(btn) {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+  });
+
+  
+  document.querySelectorAll('.featurette').forEach(function(el, i) {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
+
+  
+  var isDbPage = window.location.pathname.indexOf('/post/database') === 0;
+  var container = document.createElement('div');
+  container.className = 'float-buttons';
+
+  
+  var btnTop = document.createElement('button');
+  btnTop.className = 'float-btn float-btn-top';
+  btnTop.title = 'Kembali ke atas';
+  btnTop.innerHTML = '↑';
+  btnTop.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  container.appendChild(btnTop);
+
+  
+  var isProvinsiPage = window.location.pathname.indexOf('/post/database-') === 0;
+  if (isProvinsiPage) {
+    var btnDb = document.createElement('a');
+    btnDb.className = 'float-btn float-btn-db';
+    btnDb.href = '/post/database/';
+    btnDb.title = 'Kembali ke Database Utama';
+    btnDb.innerHTML = '🗄️';
+    container.appendChild(btnDb);
+  }
+
+  document.body.appendChild(container);
+});
+</script>
+
+
+  <title>Download Data Hujan GPM IMERG dengan NASA Giovanni | Irpan Chumaedi</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.1df0392aab543464b23a85146803aaf2.js"></script>
+
+  
+
+<aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Irpan Chumaedi</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Tentang</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#skills"><span>Keahlian</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Proyek</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#kurikulum"><span>Kurikulum</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Tulisan</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/database/"><span>Database</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Kontak</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Download Data Hujan GPM IMERG dengan NASA Giovanni</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 12, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/tutorial/">Tutorial</a>, <a href="/category/data-hujan/">Data Hujan</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="mengapa-gpm-imerg">Mengapa GPM IMERG?</h2>
+<p>Ketika data stasiun hujan BMKG tidak tersedia atau tidak mencukupi untuk area studi kamu, <strong>GPM IMERG</strong> adalah solusi terbaik yang tersedia secara gratis. GPM (<em>Global Precipitation Measurement</em>) adalah misi satelit bersama NASA dan JAXA yang menghasilkan estimasi curah hujan global setiap 30 menit dengan resolusi spasial 0.1° × 0.1° (~11 km di ekuator).</p>
+<p><strong>Keunggulan GPM IMERG:</strong></p>
+<ul>
+<li>✅ Cakupan global termasuk seluruh wilayah Indonesia</li>
+<li>✅ Data historis tersedia sejak <strong>Juni 1998</strong> (hampir 27 tahun)</li>
+<li>✅ Gratis tanpa registrasi berbayar</li>
+<li>✅ Tersedia dalam resolusi waktu 30 menit, harian, dan bulanan</li>
+<li>✅ Produk Final Run sudah dikoreksi dengan data gauge (stasiun hujan)</li>
+</ul>
+<p><strong>Keterbatasan yang perlu diketahui:</strong></p>
+<ul>
+<li>❌ Bukan pengukuran langsung — tetap ada bias, terutama di area pegunungan</li>
+<li>❌ Resolusi spasial ~11 km mungkin kurang detail untuk DAS kecil (&lt;50 km²)</li>
+<li>❌ Memerlukan validasi dengan data stasiun sebelum digunakan untuk desain</li>
+</ul>
+<hr>
+<h2 id="mengenal-produk-gpm-imerg">Mengenal Produk GPM IMERG</h2>
+<p>Sebelum download, penting memahami tiga varian produk IMERG:</p>
+<table>
+<thead>
+<tr>
+<th>Produk</th>
+<th>Latensi</th>
+<th>Koreksi Gauge</th>
+<th>Rekomendasi Penggunaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Early Run</strong></td>
+<td>~4 jam</td>
+<td>❌ Tidak</td>
+<td>Monitoring banjir real-time</td>
+</tr>
+<tr>
+<td><strong>Late Run</strong></td>
+<td>~12 jam</td>
+<td>Sebagian</td>
+<td>Operasional jangka pendek</td>
+</tr>
+<tr>
+<td><strong>Final Run</strong></td>
+<td>~3.5 bulan</td>
+<td>✅ Ya</td>
+<td><strong>Studi hidrologi &amp; AMDAL</strong> ✓</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Untuk keperluan AMDAL, kajian hidrologi, dan HEC-HMS → selalu gunakan Final Run (V07B).</strong></p>
+</blockquote>
+<hr>
+<h2 id="platform-download-nasa-giovanni">Platform Download: NASA Giovanni</h2>
+<p><strong>NASA Giovanni</strong> (Geospatial Interactive Online Visualization ANd aNalysis) adalah antarmuka web resmi NASA untuk eksplorasi dan download data geosains termasuk GPM IMERG.</p>
+<p>🔗 <strong>URL:</strong> <a href="https://giovanni.gsfc.nasa.gov/giovanni/" target="_blank" rel="noopener">https://giovanni.gsfc.nasa.gov/giovanni/</a></p>
+<p>Giovanni memungkinkan kamu mengunduh data dalam format NetCDF atau ASCII langsung dari browser — tanpa perlu coding atau command line.</p>
+<hr>
+<h2 id="langkah-langkah-download-gpm-imerg-di-giovanni">Langkah-Langkah Download GPM IMERG di Giovanni</h2>
+<h3 id="langkah-1-buka-giovanni-dan-login">Langkah 1: Buka Giovanni dan Login</h3>
+<ol>
+<li>Buka <a href="https://giovanni.gsfc.nasa.gov/giovanni/" target="_blank" rel="noopener">https://giovanni.gsfc.nasa.gov/giovanni/</a></li>
+<li>Klik <strong>Sign In</strong> di pojok kanan atas</li>
+<li>Gunakan akun <strong>NASA Earthdata</strong> (gratis). Jika belum punya, daftar di <a href="https://urs.earthdata.nasa.gov/" target="_blank" rel="noopener">https://urs.earthdata.nasa.gov/</a></li>
+</ol>
+<blockquote>
+<p><strong>Tips:</strong> Pastikan kamu sudah mengaktifkan aplikasi Giovanni di profil Earthdata kamu. Masuk ke profil Earthdata → Applications → Authorized Apps → cari dan authorize Giovanni.</p>
+</blockquote>
+<hr>
+<h3 id="langkah-2-pilih-tipe-analisis">Langkah 2: Pilih Tipe Analisis</h3>
+<p>Di panel kiri atas, pilih tipe visualisasi/output yang diinginkan:</p>
+<ul>
+<li><strong>Time Series, Area Averaged</strong> → untuk mendapatkan satu nilai rata-rata area per waktu (paling umum untuk hidrologi)</li>
+<li><strong>Map, Averaged</strong> → untuk melihat distribusi spasial rata-rata</li>
+<li><strong>Time Averaged Map</strong> → peta rata-rata untuk periode tertentu</li>
+</ul>
+<p>Untuk download data deret waktu (time series) curah hujan harian ke R atau Excel → pilih <strong>&ldquo;Time Series, Area Averaged&rdquo;</strong>.</p>
+<hr>
+<h3 id="langkah-3-pilih-variabel-data">Langkah 3: Pilih Variabel Data</h3>
+<ol>
+<li>
+<p>Di kotak pencarian variabel, ketik: <code>IMERG precipitation</code></p>
+</li>
+<li>
+<p>Dari hasil pencarian, pilih:</p>
+<pre><code>GPM IMERG Final Precipitation L3 1 day 0.1 degree x 0.1 degree V07
+Variable: precipitation
+</code></pre>
+<p>Nama lengkap: <code>GPM_3IMERGDF_07/precipitation</code></p>
+</li>
+<li>
+<p>Klik <strong>[+]</strong> atau <strong>Add</strong> untuk menambahkan variabel ke daftar aktif.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Catatan:</strong> Produk dengan label &ldquo;<strong>F</strong>&rdquo; (Final), &ldquo;<strong>D</strong>&rdquo; (Daily) adalah yang kita gunakan. Hindari produk Early (&ldquo;E&rdquo;) atau Late (&ldquo;L&rdquo;) untuk studi historis.</p>
+</blockquote>
+<hr>
+<h3 id="langkah-4-tentukan-rentang-waktu">Langkah 4: Tentukan Rentang Waktu</h3>
+<p>Di panel <strong>Date Range</strong>, masukkan periode analisis:</p>
+<ul>
+<li><strong>Start Date:</strong> Sesuaikan kebutuhan (misal: <code>2000-01-01</code> atau <code>1998-06-01</code> untuk data paling awal)</li>
+<li><strong>End Date:</strong> Tanggal terakhir yang diinginkan</li>
+</ul>
+<blockquote>
+<p><strong>Untuk studi AMDAL:</strong> Minimal 10 tahun data. Disarankan mengambil <strong>20 tahun</strong> untuk analisis frekuensi yang representatif.</p>
+</blockquote>
+<hr>
+<h3 id="langkah-5-tentukan-area-studi-bounding-box">Langkah 5: Tentukan Area Studi (Bounding Box)</h3>
+<p>Di panel <strong>Bounding Box</strong>, masukkan koordinat area studi dalam format:</p>
+<pre><code>West | South | East | North
+</code></pre>
+<p><strong>Contoh untuk beberapa kota di Indonesia:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lokasi</th>
+<th>West</th>
+<th>South</th>
+<th>East</th>
+<th>North</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Banjarmasin</td>
+<td>114.0</td>
+<td>-3.8</td>
+<td>115.0</td>
+<td>-3.0</td>
+</tr>
+<tr>
+<td>Pulau Obi (Maluku Utara)</td>
+<td>127.3</td>
+<td>-1.8</td>
+<td>128.1</td>
+<td>-1.2</td>
+</tr>
+<tr>
+<td>Kutai Barat (Kaltim)</td>
+<td>114.5</td>
+<td>-0.5</td>
+<td>115.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Bandung</td>
+<td>107.3</td>
+<td>-7.2</td>
+<td>107.8</td>
+<td>-6.7</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tips:</strong> Gunakan Google Maps atau QGIS untuk mendapatkan koordinat bounding box area DAS kamu secara akurat. Tambahkan buffer ~0.5° dari batas DAS untuk memastikan cakupan penuh.</p>
+</blockquote>
+<hr>
+<h3 id="langkah-6-jalankan-analisis">Langkah 6: Jalankan Analisis</h3>
+<p>Klik tombol <strong>&ldquo;Plot and Download&rdquo;</strong> (tombol hijau di bawah panel kiri).</p>
+<p>Giovanni akan memproses permintaan dan menampilkan:</p>
+<ul>
+<li>Grafik time series interaktif di panel kanan</li>
+<li>Informasi metadata variabel</li>
+</ul>
+<p>Proses ini bisa memakan waktu <strong>beberapa menit</strong> tergantung panjang periode yang diminta.</p>
+<hr>
+<h3 id="langkah-7-download-data">Langkah 7: Download Data</h3>
+<p>Setelah grafik muncul:</p>
+<ol>
+<li>Scroll ke bawah grafik, cari tombol <strong>&ldquo;Download&rdquo;</strong> atau ikon unduh</li>
+<li>Pilih format file:
+<ul>
+<li><strong>NetCDF (.nc4)</strong> → untuk analisis lanjutan di R atau Python</li>
+<li><strong>ASCII (.csv / .txt)</strong> → langsung bisa dibuka di Excel</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Rekomendasi:</strong> Download dalam format <strong>ASCII</strong> jika hanya butuh time series untuk Excel atau R. Download <strong>NetCDF</strong> jika butuh data grid spasial untuk pemetaan di QGIS.</p>
+</blockquote>
+<hr>
+<h2 id="alternatif-download-via-nasa-ges-disc-data-lebih-lengkap">Alternatif: Download via NASA GES DISC (Data Lebih Lengkap)</h2>
+<p>Untuk download dalam jumlah besar atau format file-per-hari (granule), gunakan <strong>NASA GES DISC</strong>:</p>
+<p>🔗 <a href="https://disc.gsfc.nasa.gov/datasets/GPM_3IMERGDF_07/summary" target="_blank" rel="noopener">https://disc.gsfc.nasa.gov/datasets/GPM_3IMERGDF_07/summary</a></p>
+<p>Metode download via GES DISC:</p>
+<ol>
+<li>Cari dataset <code>GPM_3IMERGDF_07</code></li>
+<li>Klik <strong>&ldquo;Online Archive&rdquo;</strong></li>
+<li>Navigasi ke folder tahun/bulan yang diinginkan</li>
+<li>Download file <code>.HDF5</code> atau gunakan <strong>wget script</strong> yang disediakan</li>
+</ol>
+<hr>
+<h2 id="struktur-data-yang-diunduh-format-ascii">Struktur Data yang Diunduh (Format ASCII)</h2>
+<p>Data time series dari Giovanni akan terlihat seperti ini:</p>
+<pre><code># Units: mm/day
+# Variable: GPM IMERG Final Precipitation
+# Bounding Box: W=114.0, S=-3.8, E=115.0, N=-3.0
+# Start: 2000-01-01, End: 2024-12-31
+time, precipitation
+2000-01-01, 8.45
+2000-01-02, 0.12
+2000-01-03, 15.73
+...
+</code></pre>
+<p>Kolom pertama adalah tanggal, kolom kedua adalah curah hujan dalam satuan <strong>mm/hari</strong>.</p>
+<hr>
+<h2 id="langkah-selanjutnya">Langkah Selanjutnya</h2>
+<p>Setelah data berhasil diunduh, langkah berikutnya adalah:</p>
+<ol>
+<li><strong>Rekap &amp; Visualisasi</strong> → Susun data ke Excel atau proses dengan R</li>
+<li><strong>Validasi</strong> → Bandingkan dengan data stasiun BMKG terdekat (jika tersedia)</li>
+<li><strong>Analisis Frekuensi</strong> → Hitung curah hujan rencana untuk berbagai kala ulang</li>
+</ol>
+<blockquote>
+<p>Lihat tutorial selanjutnya: <strong>Visualisasi Data Hujan dengan R &amp; ggplot2</strong> untuk mengolah data GPM IMERG yang sudah diunduh.</p>
+</blockquote>
+<hr>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li>Huffman, G.J., et al. (2023). <em>GPM IMERG Final Precipitation L3 1 day 0.1 degree x 0.1 degree V07</em>. Goddard Earth Sciences Data and Information Services Center (GES DISC). <a href="https://doi.org/10.5067/GPM/IMERGDF/DAY/07" target="_blank" rel="noopener">https://doi.org/10.5067/GPM/IMERGDF/DAY/07</a></li>
+<li>NASA Giovanni: <a href="https://giovanni.gsfc.nasa.gov/giovanni/" target="_blank" rel="noopener">https://giovanni.gsfc.nasa.gov/giovanni/</a></li>
+<li>NASA GES DISC: <a href="https://disc.gsfc.nasa.gov/" target="_blank" rel="noopener">https://disc.gsfc.nasa.gov/</a></li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/gpm/">GPM</a>
+  
+  <a class="badge badge-light" href="/tag/imerg/">IMERG</a>
+  
+  <a class="badge badge-light" href="/tag/giovanni/">Giovanni</a>
+  
+  <a class="badge badge-light" href="/tag/data-hujan/">data hujan</a>
+  
+  <a class="badge badge-light" href="/tag/satelit/">satelit</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://irpanblog2.netlify.app/post/materi-download-gpm/&amp;text=Download%20Data%20Hujan%20GPM%20IMERG%20dengan%20NASA%20Giovanni" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://irpanblog2.netlify.app/post/materi-download-gpm/&amp;t=Download%20Data%20Hujan%20GPM%20IMERG%20dengan%20NASA%20Giovanni" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Download%20Data%20Hujan%20GPM%20IMERG%20dengan%20NASA%20Giovanni&amp;body=https://irpanblog2.netlify.app/post/materi-download-gpm/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://irpanblog2.netlify.app/post/materi-download-gpm/&amp;title=Download%20Data%20Hujan%20GPM%20IMERG%20dengan%20NASA%20Giovanni" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Download%20Data%20Hujan%20GPM%20IMERG%20dengan%20NASA%20Giovanni%20https://irpanblog2.netlify.app/post/materi-download-gpm/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://irpanblog2.netlify.app/post/materi-download-gpm/&amp;title=Download%20Data%20Hujan%20GPM%20IMERG%20dengan%20NASA%20Giovanni" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://irpanblog2.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/author/irpan-chumaedi/avatar_hu471b0f6803e0170320129db8faa319d9_39551_270x270_fill_q75_lanczos_center.jpg" alt="Irpan Chumaedi"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://irpanblog2.netlify.app/">Irpan Chumaedi</a></h5>
+      <h6 class="card-subtitle">Hydrologist Engineer</h6>
+      <p class="card-text">Konsultan sumber daya air dengan spesialisasi analisis hidrologi, pemodelan hidrolika, dan kajian lingkungan (AMDAL).</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        
+          <i class="fas fa-envelope"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.youtube.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-youtube"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/irpanch" target="_blank" rel="noopener">
+        
+          <i class="fab fa-github"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/irpan-chumaedi-73992863/" target="_blank" rel="noopener">
+        
+          <i class="fab fa-linkedin"></i>
+        
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://discord.gg/za2KPWJFKG" target="_blank" rel="noopener">
+        
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
+               style="width:1em; height:1em; fill:currentColor; vertical-align:-0.125em;">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+          </svg>
+        
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/materi-download-bmkg/">Download Data Hujan BMKG: Cara Akses, Keterbatasan, dan Strategi Data Hilang</a></li>
+      
+      <li><a href="/post/materi-kalibrasi-data-gpm-bmkg/">Kalibrasi Data GPM dengan Data BMKG</a></li>
+      
+      <li><a href="/post/materi-visualisasi-data-hujan-excel/">Rekap &amp; Visualisasi Data Hujan dengan Excel</a></li>
+      
+      <li><a href="/post/materi-visualisasi-r-ggplot2/">Rekap &amp; Visualisasi Data Hujan dengan R &amp; ggplot2</a></li>
+      
+      <li><a href="/post/materi-keterbatasan-data-hujan/">Keterbatasan Data Hujan Pos dan Alternatif GPM IMERG</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'event' : "Events",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/js/wowchemy.min.572b7caf7fe601716a0f74d67d754c21.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

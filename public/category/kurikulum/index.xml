@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kurikulum | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/category/kurikulum/</link>
+      <atom:link href="https://irpanblog2.netlify.app/category/kurikulum/index.xml" rel="self" type="application/rss+xml" />
+    <description>Kurikulum</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>Kurikulum</title>
+      <link>https://irpanblog2.netlify.app/category/kurikulum/</link>
+    </image>
+    
+    <item>
+      <title>Pengantar HEC-RAS - Konsep dan Interface</title>
+      <link>https://irpanblog2.netlify.app/post/materi-pengantar-hecras/</link>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-pengantar-hecras/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/modul-1-pengantar-hecras.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Pengantar HEC-RAS&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Perhitungan Debit Banjir Rencana</title>
+      <link>https://irpanblog2.netlify.app/post/materi-perhitungan-debit-banjir/</link>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-perhitungan-debit-banjir/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/perhitungan-debit-banjir-rencana.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Perhitungan Debit Banjir Rencana&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Analisa Frekuensi Curah Hujan</title>
+      <link>https://irpanblog2.netlify.app/post/materi-analisa-frekuensi-hujan/</link>
+      <pubDate>Fri, 22 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-analisa-frekuensi-hujan/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/analisa-frekuensi-curah-hujan.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Analisa Frekuensi Curah Hujan&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Kalibrasi Data GPM dengan Data BMKG</title>
+      <link>https://irpanblog2.netlify.app/post/materi-kalibrasi-data-gpm-bmkg/</link>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-kalibrasi-data-gpm-bmkg/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/kalibrasi-data-gpm-bmkg.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Kalibrasi Data GPM dengan Data BMKG&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;&lt;small&gt; 🔽&lt;a href=&#34;https://drive.google.com/drive/folders/1Z7C9zQ8Ohl0CTDvCh5b6Hge_izT7e95y?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download Data, plot dan Skrip R&lt;/a&gt;. &lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rekap &amp; Visualisasi Data Hujan dengan Excel</title>
+      <link>https://irpanblog2.netlify.app/post/materi-visualisasi-data-hujan-excel/</link>
+      <pubDate>Mon, 18 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-visualisasi-data-hujan-excel/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/rekap-visualisasi-data-hujan.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Rekap dan Visualisasi Data Hujan dengan Excel&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;&lt;small&gt; 🔽&lt;a href=&#34;https://1drv.ms/x/c/22f5ef4527203c63/IQCF8XwJQ0FlSbOszk5HB-tMAblXsphp4gsBaUdwiihCZ1c?e=Modg3o&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download &lt;/a&gt;data hujan Sta. Cemara, Bandung 2000-2025. &lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rekap &amp; Visualisasi Data Hujan dengan R &amp; ggplot2</title>
+      <link>https://irpanblog2.netlify.app/post/materi-visualisasi-r-ggplot2/</link>
+      <pubDate>Mon, 18 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-visualisasi-r-ggplot2/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/visualisasi-data-hujan-r-ggplot2.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Rekap dan Visualisasi Data Hujan dengan Excel&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;&lt;small&gt; 🔽&lt;a href=&#34;https://1drv.ms/x/c/22f5ef4527203c63/IQCF8XwJQ0FlSbOszk5HB-tMAblXsphp4gsBaUdwiihCZ1c?e=Modg3o&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Download &lt;/a&gt;data hujan Sta. Cemara, Bandung 2000-2025. &lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pemodelan Hidrolika | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/pemodelan-hidrolika/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/pemodelan-hidrolika/index.xml" rel="self" type="application/rss+xml" />
+    <description>Pemodelan Hidrolika</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>Pemodelan Hidrolika</title>
+      <link>https://irpanblog2.netlify.app/tag/pemodelan-hidrolika/</link>
+    </image>
+    
+    <item>
+      <title>Pengantar HEC-RAS - Konsep dan Interface</title>
+      <link>https://irpanblog2.netlify.app/post/materi-pengantar-hecras/</link>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-pengantar-hecras/</guid>
+      <description>
+&lt;iframe
+  src=&#34;https://irpanblog2.netlify.app/html/modul-1-pengantar-hecras.html&#34;
+  width=&#34;100%&#34;
+  height=&#34;920px&#34;
+  style=&#34;border:none; border-radius:10px; display:block;&#34;
+  loading=&#34;lazy&#34;
+  title=&#34;Pengantar HEC-RAS&#34;&gt;
+&lt;/iframe&gt;
+
+
+&lt;hr&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

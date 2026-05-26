@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>satelit | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/satelit/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/satelit/index.xml" rel="self" type="application/rss+xml" />
+    <description>satelit</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>satelit</title>
+      <link>https://irpanblog2.netlify.app/tag/satelit/</link>
+    </image>
+    
+    <item>
+      <title>Download Data Hujan GPM IMERG dengan NASA Giovanni</title>
+      <link>https://irpanblog2.netlify.app/post/materi-download-gpm/</link>
+      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-download-gpm/</guid>
+      <description>&lt;h2 id=&#34;mengapa-gpm-imerg&#34;&gt;Mengapa GPM IMERG?&lt;/h2&gt;
+&lt;p&gt;Ketika data stasiun hujan BMKG tidak tersedia atau tidak mencukupi untuk area studi kamu, &lt;strong&gt;GPM IMERG&lt;/strong&gt; adalah solusi terbaik yang tersedia secara gratis. GPM (&lt;em&gt;Global Precipitation Measurement&lt;/em&gt;) adalah misi satelit bersama NASA dan JAXA yang menghasilkan estimasi curah hujan global setiap 30 menit dengan resolusi spasial 0.1° × 0.1° (~11 km di ekuator).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Keunggulan GPM IMERG:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ Cakupan global termasuk seluruh wilayah Indonesia&lt;/li&gt;
+&lt;li&gt;✅ Data historis tersedia sejak &lt;strong&gt;Juni 1998&lt;/strong&gt; (hampir 27 tahun)&lt;/li&gt;
+&lt;li&gt;✅ Gratis tanpa registrasi berbayar&lt;/li&gt;
+&lt;li&gt;✅ Tersedia dalam resolusi waktu 30 menit, harian, dan bulanan&lt;/li&gt;
+&lt;li&gt;✅ Produk Final Run sudah dikoreksi dengan data gauge (stasiun hujan)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Keterbatasan yang perlu diketahui:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;❌ Bukan pengukuran langsung — tetap ada bias, terutama di area pegunungan&lt;/li&gt;
+&lt;li&gt;❌ Resolusi spasial ~11 km mungkin kurang detail untuk DAS kecil (&amp;lt;50 km²)&lt;/li&gt;
+&lt;li&gt;❌ Memerlukan validasi dengan data stasiun sebelum digunakan untuk desain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;mengenal-produk-gpm-imerg&#34;&gt;Mengenal Produk GPM IMERG&lt;/h2&gt;
+&lt;p&gt;Sebelum download, penting memahami tiga varian produk IMERG:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Produk&lt;/th&gt;
+&lt;th&gt;Latensi&lt;/th&gt;
+&lt;th&gt;Koreksi Gauge&lt;/th&gt;
+&lt;th&gt;Rekomendasi Penggunaan&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Early Run&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;~4 jam&lt;/td&gt;
+&lt;td&gt;❌ Tidak&lt;/td&gt;
+&lt;td&gt;Monitoring banjir real-time&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Late Run&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;~12 jam&lt;/td&gt;
+&lt;td&gt;Sebagian&lt;/td&gt;
+&lt;td&gt;Operasional jangka pendek&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Final Run&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;~3.5 bulan&lt;/td&gt;
+&lt;td&gt;✅ Ya&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Studi hidrologi &amp;amp; AMDAL&lt;/strong&gt; ✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Untuk keperluan AMDAL, kajian hidrologi, dan HEC-HMS → selalu gunakan Final Run (V07B).&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;platform-download-nasa-giovanni&#34;&gt;Platform Download: NASA Giovanni&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;NASA Giovanni&lt;/strong&gt; (Geospatial Interactive Online Visualization ANd aNalysis) adalah antarmuka web resmi NASA untuk eksplorasi dan download data geosains termasuk GPM IMERG.&lt;/p&gt;
+&lt;p&gt;🔗 &lt;strong&gt;URL:&lt;/strong&gt; &lt;a href=&#34;https://giovanni.gsfc.nasa.gov/giovanni/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://giovanni.gsfc.nasa.gov/giovanni/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Giovanni memungkinkan kamu mengunduh data dalam format NetCDF atau ASCII langsung dari browser — tanpa perlu coding atau command line.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;langkah-langkah-download-gpm-imerg-di-giovanni&#34;&gt;Langkah-Langkah Download GPM IMERG di Giovanni&lt;/h2&gt;
+&lt;h3 id=&#34;langkah-1-buka-giovanni-dan-login&#34;&gt;Langkah 1: Buka Giovanni dan Login&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Buka &lt;a href=&#34;https://giovanni.gsfc.nasa.gov/giovanni/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://giovanni.gsfc.nasa.gov/giovanni/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Klik &lt;strong&gt;Sign In&lt;/strong&gt; di pojok kanan atas&lt;/li&gt;
+&lt;li&gt;Gunakan akun &lt;strong&gt;NASA Earthdata&lt;/strong&gt; (gratis). Jika belum punya, daftar di &lt;a href=&#34;https://urs.earthdata.nasa.gov/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://urs.earthdata.nasa.gov/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Pastikan kamu sudah mengaktifkan aplikasi Giovanni di profil Earthdata kamu. Masuk ke profil Earthdata → Applications → Authorized Apps → cari dan authorize Giovanni.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;langkah-2-pilih-tipe-analisis&#34;&gt;Langkah 2: Pilih Tipe Analisis&lt;/h3&gt;
+&lt;p&gt;Di panel kiri atas, pilih tipe visualisasi/output yang diinginkan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Time Series, Area Averaged&lt;/strong&gt; → untuk mendapatkan satu nilai rata-rata area per waktu (paling umum untuk hidrologi)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Map, Averaged&lt;/strong&gt; → untuk melihat distribusi spasial rata-rata&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time Averaged Map&lt;/strong&gt; → peta rata-rata untuk periode tertentu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Untuk download data deret waktu (time series) curah hujan harian ke R atau Excel → pilih &lt;strong&gt;&amp;ldquo;Time Series, Area Averaged&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;langkah-3-pilih-variabel-data&#34;&gt;Langkah 3: Pilih Variabel Data&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Di kotak pencarian variabel, ketik: &lt;code&gt;IMERG precipitation&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dari hasil pencarian, pilih:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GPM IMERG Final Precipitation L3 1 day 0.1 degree x 0.1 degree V07
+Variable: precipitation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nama lengkap: &lt;code&gt;GPM_3IMERGDF_07/precipitation&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Klik &lt;strong&gt;[+]&lt;/strong&gt; atau &lt;strong&gt;Add&lt;/strong&gt; untuk menambahkan variabel ke daftar aktif.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Catatan:&lt;/strong&gt; Produk dengan label &amp;ldquo;&lt;strong&gt;F&lt;/strong&gt;&amp;rdquo; (Final), &amp;ldquo;&lt;strong&gt;D&lt;/strong&gt;&amp;rdquo; (Daily) adalah yang kita gunakan. Hindari produk Early (&amp;ldquo;E&amp;rdquo;) atau Late (&amp;ldquo;L&amp;rdquo;) untuk studi historis.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;langkah-4-tentukan-rentang-waktu&#34;&gt;Langkah 4: Tentukan Rentang Waktu&lt;/h3&gt;
+&lt;p&gt;Di panel &lt;strong&gt;Date Range&lt;/strong&gt;, masukkan periode analisis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Start Date:&lt;/strong&gt; Sesuaikan kebutuhan (misal: &lt;code&gt;2000-01-01&lt;/code&gt; atau &lt;code&gt;1998-06-01&lt;/code&gt; untuk data paling awal)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;End Date:&lt;/strong&gt; Tanggal terakhir yang diinginkan&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Untuk studi AMDAL:&lt;/strong&gt; Minimal 10 tahun data. Disarankan mengambil &lt;strong&gt;20 tahun&lt;/strong&gt; untuk analisis frekuensi yang representatif.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;langkah-5-tentukan-area-studi-bounding-box&#34;&gt;Langkah 5: Tentukan Area Studi (Bounding Box)&lt;/h3&gt;
+&lt;p&gt;Di panel &lt;strong&gt;Bounding Box&lt;/strong&gt;, masukkan koordinat area studi dalam format:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;West | South | East | North
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Contoh untuk beberapa kota di Indonesia:&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Lokasi&lt;/th&gt;
+&lt;th&gt;West&lt;/th&gt;
+&lt;th&gt;South&lt;/th&gt;
+&lt;th&gt;East&lt;/th&gt;
+&lt;th&gt;North&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Banjarmasin&lt;/td&gt;
+&lt;td&gt;114.0&lt;/td&gt;
+&lt;td&gt;-3.8&lt;/td&gt;
+&lt;td&gt;115.0&lt;/td&gt;
+&lt;td&gt;-3.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pulau Obi (Maluku Utara)&lt;/td&gt;
+&lt;td&gt;127.3&lt;/td&gt;
+&lt;td&gt;-1.8&lt;/td&gt;
+&lt;td&gt;128.1&lt;/td&gt;
+&lt;td&gt;-1.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Kutai Barat (Kaltim)&lt;/td&gt;
+&lt;td&gt;114.5&lt;/td&gt;
+&lt;td&gt;-0.5&lt;/td&gt;
+&lt;td&gt;115.5&lt;/td&gt;
+&lt;td&gt;0.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Bandung&lt;/td&gt;
+&lt;td&gt;107.3&lt;/td&gt;
+&lt;td&gt;-7.2&lt;/td&gt;
+&lt;td&gt;107.8&lt;/td&gt;
+&lt;td&gt;-6.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt; Gunakan Google Maps atau QGIS untuk mendapatkan koordinat bounding box area DAS kamu secara akurat. Tambahkan buffer ~0.5° dari batas DAS untuk memastikan cakupan penuh.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;langkah-6-jalankan-analisis&#34;&gt;Langkah 6: Jalankan Analisis&lt;/h3&gt;
+&lt;p&gt;Klik tombol &lt;strong&gt;&amp;ldquo;Plot and Download&amp;rdquo;&lt;/strong&gt; (tombol hijau di bawah panel kiri).&lt;/p&gt;
+&lt;p&gt;Giovanni akan memproses permintaan dan menampilkan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Grafik time series interaktif di panel kanan&lt;/li&gt;
+&lt;li&gt;Informasi metadata variabel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Proses ini bisa memakan waktu &lt;strong&gt;beberapa menit&lt;/strong&gt; tergantung panjang periode yang diminta.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;langkah-7-download-data&#34;&gt;Langkah 7: Download Data&lt;/h3&gt;
+&lt;p&gt;Setelah grafik muncul:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Scroll ke bawah grafik, cari tombol &lt;strong&gt;&amp;ldquo;Download&amp;rdquo;&lt;/strong&gt; atau ikon unduh&lt;/li&gt;
+&lt;li&gt;Pilih format file:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;NetCDF (.nc4)&lt;/strong&gt; → untuk analisis lanjutan di R atau Python&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ASCII (.csv / .txt)&lt;/strong&gt; → langsung bisa dibuka di Excel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Rekomendasi:&lt;/strong&gt; Download dalam format &lt;strong&gt;ASCII&lt;/strong&gt; jika hanya butuh time series untuk Excel atau R. Download &lt;strong&gt;NetCDF&lt;/strong&gt; jika butuh data grid spasial untuk pemetaan di QGIS.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;alternatif-download-via-nasa-ges-disc-data-lebih-lengkap&#34;&gt;Alternatif: Download via NASA GES DISC (Data Lebih Lengkap)&lt;/h2&gt;
+&lt;p&gt;Untuk download dalam jumlah besar atau format file-per-hari (granule), gunakan &lt;strong&gt;NASA GES DISC&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;🔗 &lt;a href=&#34;https://disc.gsfc.nasa.gov/datasets/GPM_3IMERGDF_07/summary&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://disc.gsfc.nasa.gov/datasets/GPM_3IMERGDF_07/summary&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Metode download via GES DISC:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cari dataset &lt;code&gt;GPM_3IMERGDF_07&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Klik &lt;strong&gt;&amp;ldquo;Online Archive&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Navigasi ke folder tahun/bulan yang diinginkan&lt;/li&gt;
+&lt;li&gt;Download file &lt;code&gt;.HDF5&lt;/code&gt; atau gunakan &lt;strong&gt;wget script&lt;/strong&gt; yang disediakan&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;struktur-data-yang-diunduh-format-ascii&#34;&gt;Struktur Data yang Diunduh (Format ASCII)&lt;/h2&gt;
+&lt;p&gt;Data time series dari Giovanni akan terlihat seperti ini:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Units: mm/day
+# Variable: GPM IMERG Final Precipitation
+# Bounding Box: W=114.0, S=-3.8, E=115.0, N=-3.0
+# Start: 2000-01-01, End: 2024-12-31
+time, precipitation
+2000-01-01, 8.45
+2000-01-02, 0.12
+2000-01-03, 15.73
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Kolom pertama adalah tanggal, kolom kedua adalah curah hujan dalam satuan &lt;strong&gt;mm/hari&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;langkah-selanjutnya&#34;&gt;Langkah Selanjutnya&lt;/h2&gt;
+&lt;p&gt;Setelah data berhasil diunduh, langkah berikutnya adalah:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Rekap &amp;amp; Visualisasi&lt;/strong&gt; → Susun data ke Excel atau proses dengan R&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validasi&lt;/strong&gt; → Bandingkan dengan data stasiun BMKG terdekat (jika tersedia)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analisis Frekuensi&lt;/strong&gt; → Hitung curah hujan rencana untuk berbagai kala ulang&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lihat tutorial selanjutnya: &lt;strong&gt;Visualisasi Data Hujan dengan R &amp;amp; ggplot2&lt;/strong&gt; untuk mengolah data GPM IMERG yang sudah diunduh.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;referensi&#34;&gt;Referensi&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Huffman, G.J., et al. (2023). &lt;em&gt;GPM IMERG Final Precipitation L3 1 day 0.1 degree x 0.1 degree V07&lt;/em&gt;. Goddard Earth Sciences Data and Information Services Center (GES DISC). &lt;a href=&#34;https://doi.org/10.5067/GPM/IMERGDF/DAY/07&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://doi.org/10.5067/GPM/IMERGDF/DAY/07&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NASA Giovanni: &lt;a href=&#34;https://giovanni.gsfc.nasa.gov/giovanni/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://giovanni.gsfc.nasa.gov/giovanni/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NASA GES DISC: &lt;a href=&#34;https://disc.gsfc.nasa.gov/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://disc.gsfc.nasa.gov/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

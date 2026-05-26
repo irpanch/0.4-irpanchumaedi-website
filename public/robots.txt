@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: https://irpanblog2.netlify.app/sitemap.xml

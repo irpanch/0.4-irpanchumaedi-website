@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BNPB | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/bnpb/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/bnpb/index.xml" rel="self" type="application/rss+xml" />
+    <description>BNPB</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 07 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>BNPB</title>
+      <link>https://irpanblog2.netlify.app/tag/bnpb/</link>
+    </image>
+    
+    <item>
+      <title>Peta Risiko Bencana inaRISK BNPB - PDF Georeference</title>
+      <link>https://irpanblog2.netlify.app/post/database-risiko-bencana/</link>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/database-risiko-bencana/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;🗺️ Data bersumber dari &lt;strong&gt;inaRISK BNPB&lt;/strong&gt; (inarisk.bnpb.go.id). File tersedia dalam format &lt;strong&gt;PDF&lt;/strong&gt; per provinsi
+mencakup 3 jenis bahaya: &lt;strong&gt;Banjir&lt;/strong&gt;, &lt;strong&gt;Banjir Bandang&lt;/strong&gt;, dan &lt;strong&gt;Kekeringan&lt;/strong&gt;. Meskipun dalam format PDF, file ini dapat dibuka langsung oleh program GIS dan terkoordinat karena sudah ter-georeference.
+Harap cantumkan sumber BNPB apabila digunakan dalam laporan atau publikasi.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div style=&#34;margin:1.5rem 0;&#34;&gt;
+&lt;a href=&#34;https://1drv.ms/f/c/22f5ef4527203c63/IgAmvEBRAxNaS4DeJoBfZu2TAR-JbOgS1yGTN1uXDb3ykyU?e=n690C8&#34; target=&#34;_blank&#34;
+   style=&#34;display:inline-flex;align-items:center;gap:8px;background:#0078D4;color:#fff;
+          padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.95rem;&#34;&gt;
+  📁 Buka Folder OneDrive
+&lt;/a&gt;
+&lt;span style=&#34;margin-left:12px;font-size:0.85rem;opacity:0.7;&#34;&gt;
+  Folder berisi subfolder per provinsi — 92 dari 102 file tersedia
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ketersediaan-peta-per-provinsi&#34;&gt;Ketersediaan Peta per Provinsi&lt;/h2&gt;
+&lt;div style=&#34;overflow-x:auto;margin-top:1rem;&#34;&gt;
+&lt;table style=&#34;width:100%;border-collapse:collapse;font-size:0.88rem;&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;background:rgba(33,150,243,0.15);border-bottom:2px solid rgba(33,150,243,0.4);&#34;&gt;
+      &lt;th style=&#34;padding:10px 12px;text-align:left;&#34;&gt;Provinsi&lt;/th&gt;
+      &lt;th style=&#34;padding:10px 12px;text-align:center;&#34;&gt;🌊 Banjir&lt;/th&gt;
+      &lt;th style=&#34;padding:10px 12px;text-align:center;&#34;&gt;⛰️ Banjir Bandang&lt;/th&gt;
+      &lt;th style=&#34;padding:10px 12px;text-align:center;&#34;&gt;☀️ Kekeringan&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Aceh&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (8.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.5 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (8 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Bali&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.5 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.8 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Bangka Belitung&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Banten&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.1 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.3 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.2 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Bengkulu&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.5 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.6 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.5 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;DI Yogyakarta&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;DKI Jakarta&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (3.3 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (3.2 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Gorontalo&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.7 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.7 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Jambi&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (12.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9.3 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Jawa Barat&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (10.1 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9.7 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9.7 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Jawa Tengah&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (11.5 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (10.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Jawa Timur&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.6 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (10.5 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (10.1 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Kalimantan Barat&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (10.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.3 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Kalimantan Selatan&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.3 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.5 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Kalimantan Tengah&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.1 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Kalimantan Timur&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.7 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.5 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Kalimantan Utara&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (8.9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9.3 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Kepulauan Riau&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.7 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.6 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Lampung&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.7 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;❌&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Maluku&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Maluku Utara&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.8 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.8 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.8 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Nusa Tenggara Barat&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.8 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.1 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (4.7 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Nusa Tenggara Timur&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.1 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Papua&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (13 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (14.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (11.3 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Papua Barat&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.1 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Riau&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (11.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.7 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sulawesi Barat&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.8 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.9 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.5 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sulawesi Selatan&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.3 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.5 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sulawesi Tengah&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (10 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.5 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sulawesi Tenggara&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (8 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.6 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (9.2 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sulawesi Utara&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.3 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (5.7 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sumatera Barat&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.2 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.8 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sumatera Selatan&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (11.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.6 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.7 MB)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr style=&#39;background:rgba(255,255,255,0.03);&#39;&gt;&lt;td style=&#39;padding:8px 12px;font-weight:600;white-space:nowrap;&#39;&gt;Sumatera Utara&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (8 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (7.4 MB)&lt;/td&gt;&lt;td style=&#39;padding:8px 12px;text-align:center;&#39;&gt;✅ (6.8 MB)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p style=&#34;margin-top:1rem;font-size:0.82rem;opacity:0.6;&#34;&gt;
+✅ = File tersedia (ukuran dalam MB) &amp;nbsp;|&amp;nbsp; ❌ = Tidak tersedia di server inaRISK BNPB
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cara-mengunduh&#34;&gt;Cara Mengunduh&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Klik tombol &lt;strong&gt;Buka Folder OneDrive&lt;/strong&gt; di atas&lt;/li&gt;
+&lt;li&gt;Masuk ke subfolder &lt;strong&gt;nama provinsi&lt;/strong&gt; yang dibutuhkan&lt;/li&gt;
+&lt;li&gt;Klik kanan file PDF → &lt;strong&gt;Download&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 Tidak perlu login Microsoft — folder bersifat publik (view only).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Sumber:&lt;/strong&gt; Badan Nasional Penanggulangan Bencana (BNPB) — &lt;a href=&#34;https://inarisk.bnpb.go.id&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;inarisk.bnpb.go.id&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Diakses:&lt;/strong&gt; Maret–April 2026&lt;br&gt;
+&lt;strong&gt;Format:&lt;/strong&gt; PDF (A3, skala nasional per provinsi)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

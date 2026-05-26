@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>imputasi | Irpan Chumaedi</title>
+    <link>https://irpanblog2.netlify.app/tag/imputasi/</link>
+      <atom:link href="https://irpanblog2.netlify.app/tag/imputasi/index.xml" rel="self" type="application/rss+xml" />
+    <description>imputasi</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://irpanblog2.netlify.app/images/icon_huc8b49dbecede763dad003ee9bbdb929f_244914_512x512_fill_lanczos_center_2.png</url>
+      <title>imputasi</title>
+      <link>https://irpanblog2.netlify.app/tag/imputasi/</link>
+    </image>
+    
+    <item>
+      <title>Download Data Hujan BMKG: Cara Akses, Keterbatasan, dan Strategi Data Hilang</title>
+      <link>https://irpanblog2.netlify.app/post/materi-download-bmkg/</link>
+      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://irpanblog2.netlify.app/post/materi-download-bmkg/</guid>
+      <description>&lt;h2 id=&#34;data-bmkg-sebagai-referensi-utama&#34;&gt;Data BMKG sebagai Referensi Utama&lt;/h2&gt;
+&lt;p&gt;Data curah hujan observasi dari &lt;strong&gt;Badan Meteorologi, Klimatologi, dan Geofisika (BMKG)&lt;/strong&gt; adalah referensi primer dalam setiap studi hidrologi di Indonesia. Berbeda dengan data satelit (GPM IMERG) yang merupakan estimasi, data BMKG berasal dari &lt;strong&gt;pengukuran langsung&lt;/strong&gt; di lapangan menggunakan penakar hujan standar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Keunggulan data BMKG:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ Data pengukuran langsung (ground truth)&lt;/li&gt;
+&lt;li&gt;✅ Umumnya tersedia hingga puluhan tahun (beberapa stasiun sejak 1970-an)&lt;/li&gt;
+&lt;li&gt;✅ Diakui secara legal dan ilmiah untuk keperluan perizinan dan AMDAL&lt;/li&gt;
+&lt;li&gt;✅ Menjadi acuan kalibrasi/validasi untuk data satelit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Keterbatasan data BMKG:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;❌ Kerapatan stasiun tidak merata — banyak area terpencil tidak terjangkau&lt;/li&gt;
+&lt;li&gt;❌ Data seringkali tidak lengkap (banyak missing data)&lt;/li&gt;
+&lt;li&gt;❌ Akses data historis panjang memerlukan permohonan resmi (berbayar)&lt;/li&gt;
+&lt;li&gt;❌ Portal online hanya tersedia 2 tahun terakhir secara gratis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cara-mengakses-data-bmkg&#34;&gt;Cara Mengakses Data BMKG&lt;/h2&gt;
+&lt;p&gt;Ada tiga jalur utama untuk mendapatkan data curah hujan BMKG:&lt;/p&gt;
+&lt;h3 id=&#34;jalur-1-portal-bmkg-data-online-gratis-terbatas-2-tahun&#34;&gt;Jalur 1: Portal BMKG Data Online (Gratis, Terbatas 2 Tahun)&lt;/h3&gt;
+&lt;p&gt;🔗 &lt;strong&gt;URL:&lt;/strong&gt; &lt;a href=&#34;https://dataonline.bmkg.go.id/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://dataonline.bmkg.go.id/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Portal ini menyediakan akses gratis ke data iklim (curah hujan, suhu, kelembaban, dll.) namun &lt;strong&gt;hanya 2 tahun terakhir&lt;/strong&gt; yang bisa diunduh secara mandiri.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Langkah akses:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Buka &lt;a href=&#34;https://dataonline.bmkg.go.id/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://dataonline.bmkg.go.id/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Klik &lt;strong&gt;&amp;ldquo;Masuk&amp;rdquo;&lt;/strong&gt; → daftar akun gratis jika belum punya&lt;/li&gt;
+&lt;li&gt;Pilih menu &lt;strong&gt;&amp;ldquo;Data Iklim&amp;rdquo;&lt;/strong&gt; → &lt;strong&gt;&amp;ldquo;Unduh Data&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Pilih stasiun, parameter (Curah Hujan / RR), dan periode waktu&lt;/li&gt;
+&lt;li&gt;Format output: &lt;strong&gt;Excel (.xlsx)&lt;/strong&gt; atau CSV&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Catatan penting:&lt;/strong&gt; Server BMKG Data Online menerapkan pembatasan ketat. Permintaan data lebih dari 2 tahun akan ditolak secara otomatis oleh sistem, bukan karena akun terbatas.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;jalur-2-permohonan-resmi-ke-upt-bmkg-data-historis-panjang&#34;&gt;Jalur 2: Permohonan Resmi ke UPT BMKG (Data Historis Panjang)&lt;/h3&gt;
+&lt;p&gt;Untuk data historis lebih dari 2 tahun (misalnya 10–30 tahun untuk keperluan AMDAL), kamu perlu mengajukan &lt;strong&gt;permohonan data resmi&lt;/strong&gt; ke Balai Besar / UPT BMKG setempat.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Prosedur permohonan:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Buat surat permohonan data resmi di atas kop perusahaan/instansi&lt;/li&gt;
+&lt;li&gt;Cantumkan: nama stasiun, parameter, periode, dan tujuan penggunaan&lt;/li&gt;
+&lt;li&gt;Kirimkan ke UPT BMKG yang membawahi wilayah stasiun target&lt;/li&gt;
+&lt;li&gt;Biaya: bervariasi, umumnya &lt;strong&gt;Rp 50.000 – Rp 500.000&lt;/strong&gt; per stasiun per periode (PNBP)&lt;/li&gt;
+&lt;li&gt;Waktu proses: &lt;strong&gt;1–3 minggu&lt;/strong&gt; tergantung beban kerja UPT&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Kontak UPT BMKG berdasarkan wilayah:&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Wilayah&lt;/th&gt;
+&lt;th&gt;UPT BMKG&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Jawa Barat&lt;/td&gt;
+&lt;td&gt;BMKG Stamet Bandung, BBTMC Serpong&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Kalimantan Selatan&lt;/td&gt;
+&lt;td&gt;BMKG Staklim Banjarbaru&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Kalimantan Timur&lt;/td&gt;
+&lt;td&gt;BMKG Staklim Samarinda&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Maluku Utara&lt;/td&gt;
+&lt;td&gt;BMKG Stamet Ternate&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Sulawesi&lt;/td&gt;
+&lt;td&gt;BMKG Staklim Makassar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;memahami-format-data-bmkg&#34;&gt;Memahami Format Data BMKG&lt;/h2&gt;
+&lt;p&gt;Data yang diunduh dari portal BMKG biasanya berbentuk tabel Excel dengan format seperti ini:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Nama Stasiun : Stasiun Klimatologi Banjarbaru
+Lintang      : -3.4425° LS
+Bujur        : 114.8253° BT
+Elevasi      : 66 m
+Parameter    : Curah Hujan (mm)
+
+Tanggal    | RR
+-----------|------
+2023-01-01 | 15.2
+2023-01-02 | 0.0
+2023-01-03 | 8888  ← kode data hilang (missing)
+2023-01-04 | 9999  ← kode tidak ada pengamatan
+2023-01-05 | 22.4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Kode khusus yang sering muncul:&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Kode&lt;/th&gt;
+&lt;th&gt;Makna&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;8888&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Data hilang / tidak tercatat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;9999&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Tidak ada pengamatan (hari libur, dll.)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-&lt;/code&gt; atau &lt;code&gt;NaN&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Tidak ada data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0.0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Tidak hujan (hari kering)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Tr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;Trace&lt;/em&gt; — hujan sangat kecil, tidak terukur (&amp;lt;0.5 mm)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Penting:&lt;/strong&gt; Jangan sampai kode &lt;code&gt;8888&lt;/code&gt; atau &lt;code&gt;9999&lt;/code&gt; ikut dihitung sebagai nilai curah hujan! Ini adalah kesalahan umum yang membuat analisis frekuensi menjadi tidak valid.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;identifikasi-dan-penanganan-data-hilang-missing-data&#34;&gt;Identifikasi dan Penanganan Data Hilang (Missing Data)&lt;/h2&gt;
+&lt;h3 id=&#34;langkah-1-hitung-persentase-data-hilang&#34;&gt;Langkah 1: Hitung Persentase Data Hilang&lt;/h3&gt;
+&lt;p&gt;Sebelum menggunakan data BMKG, wajib hukumnya mengecek kualitas data:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# ============================================================
+# Identifikasi missing data pada dataset BMKG
+# ============================================================
+options(OutDec = &amp;quot;.&amp;quot;)
+
+library(dplyr)
+library(lubridate)
+
+# Baca data (sesuaikan path)
+data_hujan &amp;lt;- read.csv(&amp;quot;data_bmkg_banjarbaru.csv&amp;quot;,
+                       stringsAsFactors = FALSE)
+
+# Konversi tanggal
+data_hujan$tanggal &amp;lt;- as.Date(data_hujan$tanggal, format = &amp;quot;%Y-%m-%d&amp;quot;)
+
+# Ganti kode missing dengan NA
+data_hujan$rr[data_hujan$rr %in% c(8888, 9999)] &amp;lt;- NA
+data_hujan$rr[data_hujan$rr == &amp;quot;Tr&amp;quot;] &amp;lt;- 0  # Trace dianggap 0
+
+# Hitung persentase missing per tahun
+ringkasan_missing &amp;lt;- data_hujan %&amp;gt;%
+  mutate(tahun = year(tanggal)) %&amp;gt;%
+  group_by(tahun) %&amp;gt;%
+  summarise(
+    total_hari    = n(),
+    hari_missing  = sum(is.na(rr)),
+    persen_missing = round(hari_missing / total_hari * 100, 1)
+  )
+
+print(ringkasan_missing)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Panduan interpretasi kualitas data:&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Persentase Missing&lt;/th&gt;
+&lt;th&gt;Kategori&lt;/th&gt;
+&lt;th&gt;Tindakan&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt; 5%&lt;/td&gt;
+&lt;td&gt;Baik&lt;/td&gt;
+&lt;td&gt;Imputasi sederhana&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5% – 15%&lt;/td&gt;
+&lt;td&gt;Cukup&lt;/td&gt;
+&lt;td&gt;Imputasi dengan stasiun tetangga&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;15% – 30%&lt;/td&gt;
+&lt;td&gt;Kurang&lt;/td&gt;
+&lt;td&gt;Pertimbangkan data satelit sebagai suplemen&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt; 30%&lt;/td&gt;
+&lt;td&gt;Buruk&lt;/td&gt;
+&lt;td&gt;Hindari penggunaan, gunakan GPM IMERG&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;langkah-2-strategi-imputasi-data-hilang&#34;&gt;Langkah 2: Strategi Imputasi Data Hilang&lt;/h3&gt;
+&lt;p&gt;Ada beberapa metode pengisian data hilang, pilih berdasarkan kondisi lapangan:&lt;/p&gt;
+&lt;h4 id=&#34;metode-1-rata-rata-stasiun-tetangga-normal-ratio-method&#34;&gt;Metode 1: Rata-rata Stasiun Tetangga (Normal Ratio Method)&lt;/h4&gt;
+&lt;p&gt;Metode ini menggunakan bobot berdasarkan rasio curah hujan normal tahunan antara stasiun target dan stasiun pengisi.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# ============================================================
+# Imputasi dengan Normal Ratio Method
+# ============================================================
+
+# Curah hujan tahunan rata-rata (mm/tahun) dari masing-masing stasiun
+# Dapatkan nilai ini dari 10–30 tahun data di tiap stasiun
+n_target   &amp;lt;- 2100  # Stasiun target (yang punya missing data)
+n_stasiun1 &amp;lt;- 1950  # Stasiun tetangga 1
+n_stasiun2 &amp;lt;- 2300  # Stasiun tetangga 2
+n_stasiun3 &amp;lt;- 2050  # Stasiun tetangga 3
+
+# Jika deviasi curah hujan normal antar stasiun &amp;lt; 10%:
+# Gunakan rata-rata aritmetika sederhana
+# Jika deviasi ≥ 10%: Gunakan Normal Ratio Method
+
+hitung_imputasi_normal_ratio &amp;lt;- function(rr1, rr2, rr3,
+                                          n_t, n_1, n_2, n_3) {
+  # Formula: P_x = (N_x/3) * (P_1/N_1 + P_2/N_2 + P_3/N_3)
+  nilai &amp;lt;- (n_t / 3) * (rr1/n_1 + rr2/n_2 + rr3/n_3)
+  return(round(nilai, 1))
+}
+
+# Contoh pengisian untuk satu hari missing
+rr_imputasi &amp;lt;- hitung_imputasi_normal_ratio(
+  rr1 = 18.5, rr2 = 22.0, rr3 = 15.8,
+  n_t = n_target, n_1 = n_stasiun1,
+  n_2 = n_stasiun2, n_3 = n_stasiun3
+)
+
+cat(&amp;quot;Curah hujan hasil imputasi:&amp;quot;, rr_imputasi, &amp;quot;mm\n&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;metode-2-inverse-distance-weighting-idw-antar-stasiun&#34;&gt;Metode 2: Inverse Distance Weighting (IDW) antar Stasiun&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# ============================================================
+# Imputasi dengan IDW berdasarkan jarak antar stasiun
+# ============================================================
+
+# Koordinat stasiun (dalam derajat desimal)
+stasiun &amp;lt;- data.frame(
+  nama     = c(&amp;quot;Target&amp;quot;, &amp;quot;Sts_1&amp;quot;, &amp;quot;Sts_2&amp;quot;, &amp;quot;Sts_3&amp;quot;),
+  lon      = c(114.825, 114.600, 115.100, 114.700),
+  lat      = c(-3.443,  -3.200,  -3.600,  -3.700),
+  rr_hari  = c(NA,      18.5,    22.0,    15.8)  # NA = missing
+)
+
+# Hitung jarak Euclidean (approx) dalam km
+hitung_jarak_km &amp;lt;- function(lon1, lat1, lon2, lat2) {
+  dx &amp;lt;- (lon2 - lon1) * 111.32 * cos(lat1 * pi / 180)
+  dy &amp;lt;- (lat2 - lat1) * 110.57
+  sqrt(dx^2 + dy^2)
+}
+
+stasiun_pengisi &amp;lt;- stasiun[!is.na(stasiun$rr_hari), ]
+
+# Hitung jarak dari stasiun target ke pengisi
+stasiun_pengisi$jarak &amp;lt;- mapply(
+  hitung_jarak_km,
+  lon1 = stasiun$lon[1], lat1 = stasiun$lat[1],
+  lon2 = stasiun_pengisi$lon, lat2 = stasiun_pengisi$lat
+)
+
+# Bobot IDW (1/d^2)
+stasiun_pengisi$bobot &amp;lt;- 1 / stasiun_pengisi$jarak^2
+
+# Curah hujan hasil IDW
+rr_idw &amp;lt;- sum(stasiun_pengisi$rr_hari * stasiun_pengisi$bobot) /
+          sum(stasiun_pengisi$bobot)
+
+cat(&amp;quot;Curah hujan IDW:&amp;quot;, round(rr_idw, 1), &amp;quot;mm\n&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;metode-3-isi-dengan-data-gpm-imerg-rekomendasi-modern&#34;&gt;Metode 3: Isi dengan Data GPM IMERG (Rekomendasi Modern)&lt;/h4&gt;
+&lt;p&gt;Jika tidak ada stasiun tetangga yang memadai, data GPM IMERG Final Run bisa digunakan untuk mengisi missing data setelah dilakukan &lt;strong&gt;bias correction&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# ============================================================
+# Koreksi bias GPM IMERG menggunakan ratio scaling
+# ============================================================
+
+# Periode yang memiliki data lengkap di keduanya (untuk kalibrasi)
+# bmkg_lengkap  = data BMKG periode overlap (tanpa missing)
+# gpm_overlap   = data GPM periode yang sama
+
+# Hitung faktor koreksi bulanan
+faktor_koreksi &amp;lt;- data.frame(
+  bulan  = 1:12,
+  fc     = tapply(bmkg_lengkap$rr, month(bmkg_lengkap$tanggal),
+                  mean, na.rm = TRUE) /
+           tapply(gpm_overlap$rr,  month(gpm_overlap$tanggal),
+                  mean, na.rm = TRUE)
+)
+
+# Terapkan koreksi ke GPM untuk mengisi missing BMKG
+data_gabungan &amp;lt;- data_hujan  # copy data BMKG
+bln_missing &amp;lt;- month(data_gabungan$tanggal[is.na(data_gabungan$rr)])
+fc_terpilih &amp;lt;- faktor_koreksi$fc[bln_missing]
+
+data_gabungan$rr[is.na(data_gabungan$rr)] &amp;lt;-
+  gpm_data$rr[is.na(data_hujan$rr)] * fc_terpilih
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;validasi-kualitas-data-akhir&#34;&gt;Validasi Kualitas Data Akhir&lt;/h2&gt;
+&lt;p&gt;Setelah imputasi, lakukan validasi visual sebelum data digunakan untuk analisis lanjutan:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# ============================================================
+# Plot curah hujan tahunan untuk deteksi anomali
+# ============================================================
+
+library(ggplot2)
+
+data_tahunan &amp;lt;- data_hujan %&amp;gt;%
+  mutate(tahun = year(tanggal)) %&amp;gt;%
+  group_by(tahun) %&amp;gt;%
+  summarise(rr_tahunan = sum(rr, na.rm = TRUE))
+
+ggplot(data_tahunan, aes(x = tahun, y = rr_tahunan)) +
+  geom_bar(stat = &amp;quot;identity&amp;quot;, fill = &amp;quot;#2196F3&amp;quot;, alpha = 0.8) +
+  geom_hline(yintercept = mean(data_tahunan$rr_tahunan),
+             linetype = &amp;quot;dashed&amp;quot;, color = &amp;quot;red&amp;quot;, linewidth = 0.8) +
+  labs(
+    title    = &amp;quot;Curah Hujan Tahunan — Stasiun BMKG&amp;quot;,
+    subtitle = &amp;quot;Garis merah: rata-rata periode analisis&amp;quot;,
+    x        = &amp;quot;Tahun&amp;quot;,
+    y        = &amp;quot;Curah Hujan Tahunan (mm)&amp;quot;
+  ) +
+  theme_bw(base_size = 12)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Perhatikan anomali seperti lonjakan ekstrem atau nilai nol pada seluruh tahun — ini bisa mengindikasikan kesalahan dalam proses imputasi atau kode missing yang belum tergantikan.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;kesimpulan-kapan-gunakan-data-bmkg-vs-gpm-imerg&#34;&gt;Kesimpulan: Kapan Gunakan Data BMKG vs GPM IMERG?&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Kondisi&lt;/th&gt;
+&lt;th&gt;Rekomendasi&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Stasiun BMKG &amp;lt; 5 km dari area studi, data lengkap&lt;/td&gt;
+&lt;td&gt;Gunakan BMKG saja&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Stasiun BMKG ada tapi banyak missing data (&amp;gt;15%)&lt;/td&gt;
+&lt;td&gt;Gabungkan BMKG + GPM (hybrid)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Tidak ada stasiun BMKG dalam radius 20 km&lt;/td&gt;
+&lt;td&gt;Gunakan GPM IMERG Final Run&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Keperluan AMDAL formal&lt;/td&gt;
+&lt;td&gt;BMKG sebagai primer, GPM sebagai sekunder&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Data &amp;gt; 10 tahun diperlukan dan proses lambat&lt;/td&gt;
+&lt;td&gt;GPM + Open-Meteo ERA5 sebagai suplemen&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;referensi&#34;&gt;Referensi&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;BMKG Data Online: &lt;a href=&#34;https://dataonline.bmkg.go.id/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://dataonline.bmkg.go.id/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;WMO (2012). &lt;em&gt;Guide to Meteorological Instruments and Methods of Observation&lt;/em&gt;. WMO No. 8.&lt;/li&gt;
+&lt;li&gt;Paulhus, J.L.H. &amp;amp; Kohler, M.A. (1952). Interpolation of missing precipitation records. &lt;em&gt;Monthly Weather Review&lt;/em&gt;, 80(8), 129–133.&lt;/li&gt;
+&lt;li&gt;Soewarno (1995). &lt;em&gt;Hidrologi: Aplikasi Metode Statistik untuk Analisa Data&lt;/em&gt;. Nova, Bandung.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

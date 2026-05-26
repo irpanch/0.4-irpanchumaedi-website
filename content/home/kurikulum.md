@@ -296,7 +296,7 @@ design:
 <div class="kur-body">
 <div class="kur-modules">
 
-  <a class="kur-module"  href="/post/materi-pengantar-hecras/">
+  <a class="kur-module" href="/post/materi-pengantar-hecras/">
     <span class="kur-module-icon">🏗️</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Pengantar HEC-RAS — Konsep & Interface</div>

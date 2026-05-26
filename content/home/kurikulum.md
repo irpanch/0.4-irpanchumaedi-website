@@ -296,14 +296,14 @@ design:
 <div class="kur-body">
 <div class="kur-modules">
 
-  <div class="kur-module">
+  <a class="kur-module"  href="/post/materi-pengantar-hecras/">
     <span class="kur-module-icon">🏗️</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Pengantar HEC-RAS — Konsep & Interface</div>
       <div class="kur-module-desc">Apa itu HEC-RAS, kapan digunakan, dan bagaimana alur kerja dari data geometri hingga output profil muka air.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">📐</span>

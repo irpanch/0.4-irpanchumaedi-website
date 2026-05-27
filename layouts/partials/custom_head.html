@@ -62,3 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.body.appendChild(container);
 });
 </script>
+
+{{ if .Params.modul_hecras }}
+  <link rel="stylesheet" href="{{ "css/hecras-modul.css" | relURL }}">
+{{ end }}

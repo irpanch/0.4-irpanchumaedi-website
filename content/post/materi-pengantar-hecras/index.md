@@ -515,7 +515,7 @@ commentable: false
   <a href="/post/materi-persiapan-geometri/" class="next-module">
     <div>
       <div class="next-label">Modul Berikutnya →</div>
-      <div class="next-title">Modul 2: Persiapan Data Geometri dari QGIS ke HEC-RAS</div>
+      <div class="next-title">Modul 2: Persiapan Data Geometri untuk HEC-RAS</div>
     </div>
     <div class="next-arrow">→</div>
   </a>

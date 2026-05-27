@@ -242,27 +242,154 @@ toc: false
 .materi-frekuensi .wrap, .materi-frekuensi .section { max-width: 100%; }
 
 
+
 /* === DARK MODE === */
 body.dark .materi-frekuensi { color:#8e94b5; }
-body.dark .materi-frekuensi h1,body.dark .materi-frekuensi h2,body.dark .materi-frekuensi h3,body.dark .materi-frekuensi h4 { color:#e8eaf6; }
+
+/* Heading & teks utama */
+body.dark .materi-frekuensi h1,
+body.dark .materi-frekuensi h2,
+body.dark .materi-frekuensi h3,
+body.dark .materi-frekuensi h4 { color:#e8eaf6 !important; }
 body.dark .materi-frekuensi p { color:#8e94b5; }
 body.dark .materi-frekuensi strong { color:#e8eaf6; }
+body.dark .materi-frekuensi li { color:#8e94b5; }
+
+/* Section header */
 body.dark .materi-frekuensi .section-header { border-color:#343858; }
-body.dark .materi-frekuensi .section-header h2 { color:#e8eaf6; }
-body.dark .materi-frekuensi .section-num { background:#1e3a6e !important; color:#5b8fff !important; border-color:#2a4a8e !important; }
-body.dark .materi-frekuensi [class*="card"] { background:#222638 !important; border-color:#343858 !important; color:#8e94b5; }
-body.dark .materi-frekuensi .card-label { color:#a0a8cc !important; }
-body.dark .materi-frekuensi th { background:#2a2e42 !important; color:#8e94b5 !important; border-color:#343858 !important; }
-body.dark .materi-frekuensi td { border-color:#343858 !important; color:#8e94b5; }
+body.dark .materi-frekuensi .section-header h2 { color:#e8eaf6 !important; }
+body.dark .materi-frekuensi .section-num {
+  background:#1e3a6e !important;
+  color:#5b8fff !important;
+  border-color:#2a4a8e !important;
+}
+body.dark .materi-frekuensi .subsection h3 { color:#c8ccdf !important; }
+
+/* Cards — background & border */
+body.dark .materi-frekuensi [class*="card"],
+body.dark .materi-frekuensi .card,
+body.dark .materi-frekuensi .metric-card {
+  background:#222638 !important;
+  border-color:#343858 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* Card teks — SEMUA varian label & nilai */
+body.dark .materi-frekuensi .card-label,
+body.dark .materi-frekuensi .metric-label,
+body.dark .materi-frekuensi .metric-sub {
+  color:#8e94b5 !important;
+}
+body.dark .materi-frekuensi .card p,
+body.dark .materi-frekuensi .card-body {
+  color:#8e94b5 !important;
+}
+body.dark .materi-frekuensi .metric-val {
+  /* warna nilai (biru/amber/dll) tetap — biarkan dari CSS asli */
+  filter: brightness(1.2);
+}
+
+/* Teks dengan var gray-* — override via CSS variable remapping */
+body.dark .materi-frekuensi {
+  --gray-100:#1b1d27;
+  --gray-200:#222638;
+  --gray-300:#2a2e42;
+  --gray-500:#8e94b5;
+  --gray-600:#a0a8cc;
+  --gray-700:#c8ccdf;
+  --gray-900:#e8eaf6;
+  --navy:#e8eaf6;
+  --navy2:#c8ccdf;
+  --blue:#5b8fff;
+  --blue-mid:#7aa5ff;
+  --blue-pale:#1e2a42;
+  --red:#e05a5a;
+  --red-light:#2d1515;
+  --amber:#f4a642;
+  --amber-light:#2d2010;
+  --purple:#9d7cf8;
+  --purple-light:#1e1530;
+  --green:#3ecf8e;
+  --green-light:#0d2418;
+  --shadow: 0 2px 12px rgba(0,0,0,0.35);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.45);
+  --code-bg:#12151f;
+}
+
+/* Table */
+body.dark .materi-frekuensi table { border-color:#343858; }
+body.dark .materi-frekuensi th {
+  background:#2a2e42 !important;
+  color:#8e94b5 !important;
+  border-color:#343858 !important;
+}
+body.dark .materi-frekuensi td {
+  border-color:#343858 !important;
+  color:#8e94b5 !important;
+}
 body.dark .materi-frekuensi tr:nth-child(even) { background:#1e2235 !important; }
-body.dark .materi-frekuensi tr:hover td { background:#1e2235 !important; }
-body.dark .materi-frekuensi code,body.dark .materi-frekuensi pre { background:#12151f !important; color:#a8b4ff !important; }
-body.dark .materi-frekuensi select,body.dark .materi-frekuensi input { background:#2a2e42 !important; border-color:#343858 !important; color:#e8eaf6 !important; }
-body.dark .materi-frekuensi [class*="metric"] { background:#222638 !important; border-color:#343858 !important; }
-body.dark .materi-frekuensi [class*="result"],[id*="result"] { background:#222638 !important; border-color:#343858 !important; }
-body.dark .materi-frekuensi .grid-2>*,body.dark .materi-frekuensi .grid-3>*,body.dark .materi-frekuensi .grid-4>* { background:#222638; border-color:#343858; }
+body.dark .materi-frekuensi tr:hover td { background:#252840 !important; }
+
+/* Code */
+body.dark .materi-frekuensi code,
+body.dark .materi-frekuensi pre {
+  background:#12151f !important;
+  color:#a8b4ff !important;
+}
+
+/* Form inputs */
+body.dark .materi-frekuensi select,
+body.dark .materi-frekuensi input[type=number],
+body.dark .materi-frekuensi input[type=text] {
+  background:#2a2e42 !important;
+  border-color:#343858 !important;
+  color:#e8eaf6 !important;
+}
+
+/* Result/output boxes */
+body.dark .materi-frekuensi [class*="result"],
+body.dark .materi-frekuensi [id*="result"],
+body.dark .materi-frekuensi [class*="output"],
+body.dark .materi-frekuensi [id*="output"] {
+  background:#222638 !important;
+  border-color:#343858 !important;
+  color:#8e94b5 !important;
+}
+
+/* Grid boxes */
+body.dark .materi-frekuensi .grid-2>*,
+body.dark .materi-frekuensi .grid-3>*,
+body.dark .materi-frekuensi .grid-4>* {
+  background:#222638 !important;
+  border-color:#343858 !important;
+}
+
+/* Info/alert boxes */
+body.dark .materi-frekuensi [class*="info-"],
+body.dark .materi-frekuensi [class*="alert-"],
+body.dark .materi-frekuensi [class*="note-"] {
+  background:#1e2235 !important;
+  border-color:#343858 !important;
+  color:#8e94b5 !important;
+}
+
+/* Links */
 body.dark .materi-frekuensi a { color:#5b8fff; }
 body.dark .materi-frekuensi hr { border-color:#343858; }
+
+/* Fix teks inline style hardcoded */
+body.dark .materi-frekuensi [style*="color:#0f172a"],
+body.dark .materi-frekuensi [style*="color:#1e293b"],
+body.dark .materi-frekuensi [style*="color:#334155"],
+body.dark .materi-frekuensi [style*="color:#475569"] {
+  color:#e8eaf6 !important;
+}
+body.dark .materi-frekuensi [style*="background:#fff"],
+body.dark .materi-frekuensi [style*="background:#f4f6f9"],
+body.dark .materi-frekuensi [style*="background:#f8fafc"],
+body.dark .materi-frekuensi [style*="background:#f1f5f9"] {
+  background:#222638 !important;
+}
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>

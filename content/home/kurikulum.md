@@ -288,7 +288,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">4</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Pemodelan Hidrolika — HEC-RAS (0 dari 6) </div>
+    <div class="kur-phase-title">Pemodelan Hidrolika — HEC-RAS (2 dari 6) </div>
     <div class="kur-phase-sub">1D · 2D · Steady · Unsteady · Flood Mapping</div>
   </div>
   <span class="kur-phase-arrow">▼</span>
@@ -308,7 +308,7 @@ design:
   <a class="kur-module" href="/post/materi-persiapan-geometri/">
     <span class="kur-module-icon">📐</span>
     <div class="kur-module-info">
-      <div class="kur-module-title">Persiapan Data Geometri dari QGIS ke HEC-RAS</div>
+      <div class="kur-module-title">Persiapan Data Geometri ke HEC-RAS</div>
       <div class="kur-module-desc">Workflow dari DEM dan data survei topografi ke geometri sungai di HEC-RAS — termasuk HEC-GeoRAS.</div>
     </div>
     <span class="kur-module-badge badge-done">✅ Tersedia</span>

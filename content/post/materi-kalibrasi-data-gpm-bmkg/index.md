@@ -33,6 +33,8 @@ toc: false
 
 .materi-kalibrasi, .materi-kalibrasi *::before, .materi-kalibrasi *::after {box-sizing:border-box;margin:0;padding:0;}
 
+
+
 /.materi-kalibrasi * STICKY NAV */
 .sticky-nav {position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--gray-200);box-shadow:var(--shadow);}
 .materi-kalibrasi .sticky-inner {max-width:900px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;gap:1rem;height:52px;}
@@ -216,8 +218,14 @@ toc: false
 .materi-kalibrasi .anim-in.visible {animation:fadeUp 0.45s ease both;}
 
 
-/* ===== DARK MODE (body.dark) ===== */
-body.dark .materi-kalibrasi { color: #8e94b5; }
+/* === LAYOUT FIX: integrasi Wowchemy === */
+.materi-kalibrasi { box-sizing: border-box; width: 100%; overflow-x: hidden; }
+.materi-kalibrasi * { box-sizing: border-box; }
+.materi-kalibrasi .wrap, .materi-kalibrasi .section { max-width: 100%; }
+
+
+/* === DARK MODE === */
+body.dark .materi-kalibrasi { color:#8e94b5; }
 body.dark .materi-kalibrasi h1,body.dark .materi-kalibrasi h2,body.dark .materi-kalibrasi h3,body.dark .materi-kalibrasi h4 { color:#e8eaf6; }
 body.dark .materi-kalibrasi p { color:#8e94b5; }
 body.dark .materi-kalibrasi strong { color:#e8eaf6; }
@@ -230,46 +238,18 @@ body.dark .materi-kalibrasi th { background:#2a2e42 !important; color:#8e94b5 !i
 body.dark .materi-kalibrasi td { border-color:#343858 !important; color:#8e94b5; }
 body.dark .materi-kalibrasi tr:nth-child(even) { background:#1e2235 !important; }
 body.dark .materi-kalibrasi tr:hover td { background:#1e2235 !important; }
-body.dark .materi-kalibrasi code, body.dark .materi-kalibrasi pre { background:#12151f !important; color:#a8b4ff !important; }
-body.dark .materi-kalibrasi select, body.dark .materi-kalibrasi input { background:#2a2e42 !important; border-color:#343858 !important; color:#e8eaf6 !important; }
+body.dark .materi-kalibrasi code,body.dark .materi-kalibrasi pre { background:#12151f !important; color:#a8b4ff !important; }
+body.dark .materi-kalibrasi select,body.dark .materi-kalibrasi input { background:#2a2e42 !important; border-color:#343858 !important; color:#e8eaf6 !important; }
 body.dark .materi-kalibrasi [class*="metric"] { background:#222638 !important; border-color:#343858 !important; }
-body.dark .materi-kalibrasi [class*="result"], body.dark .materi-kalibrasi [id*="result"] { background:#222638 !important; border-color:#343858 !important; color:#8e94b5; }
-body.dark .materi-kalibrasi .grid-2>*, body.dark .materi-kalibrasi .grid-3>*, body.dark .materi-kalibrasi .grid-4>* { background:#222638; border-color:#343858; }
+body.dark .materi-kalibrasi [class*="result"],[id*="result"] { background:#222638 !important; border-color:#343858 !important; }
+body.dark .materi-kalibrasi .grid-2>*,body.dark .materi-kalibrasi .grid-3>*,body.dark .materi-kalibrasi .grid-4>* { background:#222638; border-color:#343858; }
 body.dark .materi-kalibrasi a { color:#5b8fff; }
 body.dark .materi-kalibrasi hr { border-color:#343858; }
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <div class="materi-kalibrasi">
-</div>
-    <span class="sticky-pct" id="progPct">0%</span>
-  </div>
-</div>
-
-<!-- FLOATING TOC -->
-
-
-
-<h1>Kalibrasi Data GPM<br>dengan Data BMKG</h1>
-    <p class="hero-sub">Koreksi Bias GPM IMERG V07 menggunakan Metode Year-Specific Scaling Factor (M4)<br>Studi Kasus: WPG Banjarmasin · Piksel B4 (114.60°E, 3.30°S) · 1998–2025</p>
-    <div class="hero-pills">
-      <span class="hero-pill pill-red">GPM Raw: PBIAS −31.9%</span>
-      <span class="hero-pill pill-blue">GPM M4: PBIAS +3.5%</span>
-      <span class="hero-pill pill-amber">n = 28 tahun</span>
-      <span class="hero-pill pill-purple">NSE: −1.06 → 0.77</span>
-    </div>
-    <div class="hero-meta">
-      <span class="hero-meta-item">📅 1998–2025</span>
-      <span class="hero-meta-item">🛰️ GPM IMERG V07 (NASA)</span>
-      <span class="hero-meta-item">🌧️ BMKG Syamsuddin Noor + BMKG Kalsel</span>
-      <span class="hero-meta-item">📐 SNI 2415:2016</span>
-    </div>
-  </div>
-</div>
-
-<div class="wrap">
-
-  <!-- ===== S1: LATAR BELAKANG ===== -->
+<!-- ===== S1: LATAR BELAKANG ===== -->
   <section class="section anim-in" id="s1">
     <div class="section-header"><div class="section-num">1</div><h2>Latar Belakang</h2></div>
 
@@ -506,7 +486,7 @@ body.dark .materi-kalibrasi hr { border-color:#343858; }
     <div id="s4a"></div>
     <div class="fig-wrap">
       <div class="fig-header">📈 Panel 1 — Time Series HHMT Tahunan</div>
-      <img src="/images/kalibrasi-gpm/timeseries-hhmt-tahunan.jpg" alt="Time series HHMT tahunan GPM Raw vs GPM M4 vs Observasi BMKG 1998-2025 Banjarmasin" loading="lazy" style="width:100%;border-radius:8px;margin:0.5rem 0;">
+      <img src="/images/kalibrasi-gpm/timeseries-hhmt-tahunan.jpg" alt="Time series HHMT tahunan GPM Raw vs GPM M4 vs Observasi BMKG 1998-2025" loading="lazy" style="width:100%;border-radius:8px;margin:0.5rem 0;">
       <div class="fig-caption">Time series HHMT tahunan: GPM Raw (merah solid) vs GPM M4 (navy solid) vs Observasi BMKG (oranye dashed). Label kotak menunjukkan nilai puncak tahun 2021 = 252.2 mm.</div>
     </div>
 
@@ -536,7 +516,7 @@ body.dark .materi-kalibrasi hr { border-color:#343858; }
     <div id="s4c"></div>
     <div class="fig-wrap">
       <div class="fig-header">🔵 Panel 3 — Scatter Plot: GPM Raw vs GPM M4 terhadap Observasi BMKG</div>
-      <img src="/images/kalibrasi-gpm/scatterplot-gpm-vs-bmkg.jpg" alt="Scatter plot GPM Raw vs Obs BMKG (kiri) dan GPM M4 vs Obs BMKG (kanan)" loading="lazy" style="width:100%;border-radius:8px;margin:0.5rem 0;">
+      <img src="/images/kalibrasi-gpm/scatterplot-gpm-vs-bmkg.jpg" alt="Scatter plot GPM Raw vs Obs BMKG dan GPM M4 vs Obs BMKG" loading="lazy" style="width:100%;border-radius:8px;margin:0.5rem 0;">
       <div class="fig-caption">Kiri: Scatter GPM Raw vs Obs BMKG — titik tersebar jauh dari garis 1:1 (R=0.373). Kanan: Scatter GPM M4 vs Obs BMKG — titik mengikuti garis 1:1 dengan rapat (R=0.900).</div>
     </div>
 
@@ -866,10 +846,9 @@ fig_final <span class="op">&lt;-</span> p1 <span class="op">/</span> p_scatter <
       <a href="https://www.irpanchumaedi.com/#contact" target="_top" style="display:inline-block;background:var(--blue-mid);color:#fff;font-size:13px;font-weight:600;padding:10px 24px;border-radius:20px;text-decoration:none;">Hubungi saya →</a>
     </div>
   </section>
-
 </div>
-
 <script>
+
 /* DATA */
 const years   = [1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
 const rawData = [62.8, 71.0, 75.4, 66.4, 64.6, 70.6, 89.3, 63.4, 76.1, 70.7, 82.7, 58.3, 81.5, 161.3, 64.8, 74.6, 67.2, 53.1, 71.1, 92.9, 72.8, 67.9, 57.2, 105.2, 62.7, 57.1, 103.1, 63.9];
@@ -1084,222 +1063,6 @@ function copyCode(btn) {
 
 updateProgress();
 buildCharts();
-</script>
-</div>
-<script>
-/* DATA */
-const years   = [1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
-const rawData = [62.8, 71.0, 75.4, 66.4, 64.6, 70.6, 89.3, 63.4, 76.1, 70.7, 82.7, 58.3, 81.5, 161.3, 64.8, 74.6, 67.2, 53.1, 71.1, 92.9, 72.8, 67.9, 57.2, 105.2, 62.7, 57.1, 103.1, 63.9];
-const m4Data  = [105.3, 92.2, 98.3, 83.8, 95.0, 139.6, 136.0, 64.2, 85.5, 97.9, 149.1, 101.9, 90.5, 135.8, 94.0, 103.0, 165.7, 107.4, 108.0, 99.5, 101.7, 84.0, 124.1, 252.2, 135.0, 131.1, 127.7, 92.6];
-const obsData = [86.1, 93.1, 101.0, 78.9, 119.8, 119.8, 136.1, 62.2, 80.0, 109.3, 116.2, 105.2, 90.5, 113.0, 92.4, 118.2, 117.5, 98.9, 108.0, 111.8, 112.1, 70.5, 122.1, 249.0, 120.8, 127.6, 148.4, 84.4];
-const fkData  = [1.6768, 1.2979, 1.3031, 1.262, 1.4706, 1.978, 1.523, 1.0134, 1.1229, 1.3847, 1.8035, 1.7479, 1.1104, 0.8419, 1.4506, 1.3807, 2.4658, 2.0235, 1.519, 1.071, 1.397, 1.2364, 2.1696, 2.3969, 2.1531, 2.296, 1.2386, 1.4491];
-const errRaw  = rawData.map((v,i) => parseFloat((v - obsData[i]).toFixed(1)));
-const errM4   = m4Data.map((v,i)  => parseFloat((v - obsData[i]).toFixed(1)));
-const medFk   = (() => { const s=[...fkData].sort((a,b)=>a-b); const m=Math.floor(s.length/2); return s.length%2?s[m]:(s[m-1]+s[m])/2; })();
 
-/* PROGRESS */
-function updateProgress() {
-  const pct = Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100)||0;
-  document.getElementById('progBar').style.width = pct+'%';
-  document.getElementById('progPct').textContent = pct+'%';
-  updateToc();
-}
-window.addEventListener('scroll', updateProgress, {passive:true});
-
-/* TOC */
-function updateToc() {
-  const secs  = document.querySelectorAll('section[id],div[id]');
-  const links = document.querySelectorAll('.toc-link');
-  let active = '';
-  secs.forEach(s => { if(s.getBoundingClientRect().top < 120) active = s.id; });
-  links.forEach(l => {
-    const href = l.getAttribute('href').slice(1);
-    l.classList.toggle('active', href === active);
-  });
-}
-function toggleToc() {
-  const toc = document.getElementById('tocFloat');
-  toc.classList.toggle('collapsed');
-  // Save state
-  try { localStorage.setItem('tocCollapsed', toc.classList.contains('collapsed')); } catch(e){}
-}
-function toggleTocMobile() {
-  const toc = document.getElementById('tocFloat');
-  toc.style.display = toc.style.display === 'block' ? 'none' : 'block';
-}
-// Restore collapse state
-(function(){
-  try {
-    if(localStorage.getItem('tocCollapsed') === 'true') {
-      document.getElementById('tocFloat').classList.add('collapsed');
-    }
-  } catch(e){}
-})();
-
-/* FILL TABLE */
-const tbody = document.getElementById('tblBody');
-const rowData = [
-  [1998,62.8,1.677,105.3,86.1],   [1999,71.0,1.298,92.2,93.1],
-  [2000,75.4,1.303,98.3,101.0],   [2001,66.4,1.262,83.8,78.9],
-  [2002,64.6,1.471,95.0,119.8],   [2003,70.6,1.978,139.6,119.8],
-  [2004,89.3,1.523,136.0,136.1],  [2005,63.4,1.013,64.2,62.2],
-  [2006,76.1,1.123,85.5,80.0],    [2007,70.7,1.385,97.9,109.3],
-  [2008,82.7,1.804,149.1,116.2],  [2009,58.3,1.748,101.9,105.2],
-  [2010,81.5,1.110,90.5,90.5],    [2011,161.3,0.842,135.8,113.0],
-  [2012,64.8,1.451,94.0,92.4],    [2013,74.6,1.381,103.0,118.2],
-  [2014,67.2,2.466,165.7,117.5],  [2015,53.1,2.024,107.4,98.9],
-  [2016,71.1,1.519,108.0,108.0],  [2017,92.9,1.071,99.5,111.8],
-  [2018,72.8,1.397,101.7,112.1],  [2019,67.9,1.236,84.0,70.5],
-  [2020,57.2,2.170,124.1,122.1],  [2021,105.2,2.397,252.2,249.0],
-  [2022,62.7,2.153,135.0,120.8],  [2023,57.1,2.296,131.1,127.6],
-  [2024,103.1,1.239,127.7,148.4], [2025,63.9,1.449,92.6,84.4]
-];
-rowData.forEach(([yr,raw,fk,m4,obs]) => {
-  const er = parseFloat((raw-obs).toFixed(1));
-  const em = parseFloat((m4-obs).toFixed(1));
-  const tr = document.createElement('tr');
-  tr.innerHTML = `<td>${yr}</td>
-    <td class="${er<0?'neg':'pos'}">${raw}</td>
-    <td style="color:#6D28D9;font-weight:600;">${fk.toFixed(3)}</td>
-    <td class="${Math.abs(em)<15?'good':''}">${m4}</td>
-    <td>${obs}</td>
-    <td class="${er<0?'bad':'pos'}">${er>0?'+':''}${er}</td>
-    <td class="${Math.abs(em)<15?'good':'bad'}">${em>0?'+':''}${em}</td>`;
-  tbody.appendChild(tr);
-});
-
-/* CHARTS */
-const CH = {};
-function buildCharts() {
-  // ── Residual Error ──────────────────────────────────────────
-  const ctx1 = document.getElementById('chartResidual');
-  if(ctx1 && !CH.r) {
-    ctx1.height = 240;
-    CH.r = new Chart(ctx1, {
-      type:'bar',
-      data:{
-        labels: years,
-        datasets:[
-          {label:'Error GPM Raw', data:errRaw, backgroundColor:'rgba(185,28,28,0.72)', borderRadius:3},
-          {label:'Error GPM M4',  data:errM4,  backgroundColor:'rgba(26,82,118,0.78)',  borderRadius:3},
-          {type:'line', label:'Zona +10mm', data:Array(28).fill(10),
-            borderColor:'rgba(29,111,66,0.5)', borderWidth:1.5, borderDash:[5,4], pointRadius:0, fill:false},
-          {type:'line', label:'Zona -10mm', data:Array(28).fill(-10),
-            borderColor:'rgba(29,111,66,0.5)', borderWidth:1.5, borderDash:[5,4], pointRadius:0, fill:'-1',
-            backgroundColor:'rgba(29,111,66,0.08)'}
-        ]
-      },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        plugins:{
-          legend:{display:true, position:'bottom', labels:{font:{size:11}, usePointStyle:true,
-            filter: item => !item.text.startsWith('Zona')}},
-          tooltip:{callbacks:{label:c => {
-            if(c.dataset.label.startsWith('Zona')) return null;
-            const sign = c.raw > 0 ? '+' : '';
-            return c.dataset.label + ': ' + sign + c.raw + ' mm';
-          }}}
-        },
-        scales:{
-          x:{ticks:{font:{size:10}, maxRotation:60, autoSkip:false}, grid:{display:false}},
-          y:{title:{display:true, text:'Error (mm)'}, ticks:{font:{size:11}},
-             grid:{color:'rgba(0,0,0,0.06)'}}
-        },
-        animation:{duration:700}
-      }
-    });
-  }
-
-  // ── Metrik Validasi ─────────────────────────────────────────
-  const ctx2 = document.getElementById('chartMetrik');
-  if(ctx2 && !CH.m) {
-    ctx2.height = 280;
-    CH.m = new Chart(ctx2, {
-      type:'bar',
-      data:{
-        labels:['R (Korelasi)', 'R² (Determinasi)', 'NSE (Nash-Sutcliffe)', 'KGE (Kling-Gupta)'],
-        datasets:[
-          {label:'GPM Raw', data:[0.373,0.139,-1.062,0.206], backgroundColor:'rgba(185,28,28,0.75)', borderRadius:4},
-          {label:'GPM M4',  data:[0.900,0.811, 0.772, 0.879], backgroundColor:'rgba(26,82,118,0.80)',  borderRadius:4},
-          {type:'line', label:'Threshold SB (0.75)', data:[0.75,0.75,0.75,0.75],
-            borderColor:'#1d6f42', borderWidth:2, borderDash:[6,4], pointRadius:0, fill:false}
-        ]
-      },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        plugins:{
-          legend:{position:'bottom', labels:{font:{size:11}, usePointStyle:true}},
-          tooltip:{callbacks:{label:c => c.dataset.label + ': ' + Number(c.raw).toFixed(3)}}
-        },
-        scales:{
-          x:{ticks:{font:{size:11}}, grid:{display:false}},
-          y:{min:-1.2, max:1.05, title:{display:true, text:'Nilai Metrik'}, ticks:{font:{size:11}}}
-        },
-        animation:{duration:800}
-      }
-    });
-  }
-
-  // ── Faktor Koreksi Fk ───────────────────────────────────────
-  const ctx3 = document.getElementById('chartFk');
-  if(ctx3 && !CH.fk) {
-    ctx3.height = 260;
-    const medLabel = 'Median Fk (' + medFk.toFixed(3) + ')';
-    CH.fk = new Chart(ctx3, {
-      type:'bar',
-      data:{
-        labels: years,
-        datasets:[
-          {label:'Fk per tahun', data:fkData, backgroundColor:'rgba(109,40,217,0.75)', borderRadius:3},
-          {type:'line', label: medLabel, data:Array(28).fill(medFk),
-            borderColor:'#6D28D9', borderWidth:2, borderDash:[6,4], pointRadius:0, fill:false},
-          {type:'line', label:'Fk = 1.0', data:Array(28).fill(1.0),
-            borderColor:'#94a3b8', borderWidth:1.5, borderDash:[3,3], pointRadius:0, fill:false}
-        ]
-      },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        plugins:{
-          legend:{display:false},
-          tooltip:{callbacks:{label:c => {
-            if(c.datasetIndex === 0) return 'Fk: ' + Number(c.raw).toFixed(3);
-            return c.dataset.label;
-          }}}
-        },
-        scales:{
-          x:{ticks:{font:{size:10}, maxRotation:60, autoSkip:false}, grid:{display:false}},
-          y:{min:0, max:2.85, title:{display:true, text:'Fk (-)'}, ticks:{font:{size:11}}}
-        },
-        animation:{duration:700}
-      }
-    });
-  }
-}
-
-/* INTERSECTION OBSERVER */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.classList.add('visible');
-      buildCharts();
-    }
-  });
-}, {threshold:0.01, rootMargin:'0px 0px -10px 0px'});
-document.querySelectorAll('.anim-in').forEach(el => io.observe(el));
-
-// Fallback: build charts immediately in case IO doesn't fire (iframe context)
-setTimeout(buildCharts, 400);
-
-/* COPY */
-function copyCode(btn) {
-  const text = btn.closest('.code-wrap').querySelector('pre').innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent='✓ Tersalin!';
-    setTimeout(()=>btn.textContent='Salin',2000);
-  });
-}
-
-updateProgress();
-buildCharts();
 </script>
 {{< /rawhtml >}}

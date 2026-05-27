@@ -33,6 +33,8 @@ toc: false
 
 .materi-frekuensi, .materi-frekuensi *::before, .materi-frekuensi *::after {box-sizing:border-box;margin:0;padding:0;}
 
+
+
 /.materi-frekuensi * STICKY NAV */
 .sticky-nav {position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--gray-200);box-shadow:var(--shadow);}
 .materi-frekuensi .sticky-inner {max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;gap:1rem;height:52px;}
@@ -234,8 +236,14 @@ toc: false
 .materi-frekuensi .nav-link-dim:hover {border-color:var(--gray-200);box-shadow:var(--shadow);}
 
 
-/* ===== DARK MODE (body.dark) ===== */
-body.dark .materi-frekuensi { color: #8e94b5; }
+/* === LAYOUT FIX: integrasi Wowchemy === */
+.materi-frekuensi { box-sizing: border-box; width: 100%; overflow-x: hidden; }
+.materi-frekuensi * { box-sizing: border-box; }
+.materi-frekuensi .wrap, .materi-frekuensi .section { max-width: 100%; }
+
+
+/* === DARK MODE === */
+body.dark .materi-frekuensi { color:#8e94b5; }
 body.dark .materi-frekuensi h1,body.dark .materi-frekuensi h2,body.dark .materi-frekuensi h3,body.dark .materi-frekuensi h4 { color:#e8eaf6; }
 body.dark .materi-frekuensi p { color:#8e94b5; }
 body.dark .materi-frekuensi strong { color:#e8eaf6; }
@@ -248,45 +256,17 @@ body.dark .materi-frekuensi th { background:#2a2e42 !important; color:#8e94b5 !i
 body.dark .materi-frekuensi td { border-color:#343858 !important; color:#8e94b5; }
 body.dark .materi-frekuensi tr:nth-child(even) { background:#1e2235 !important; }
 body.dark .materi-frekuensi tr:hover td { background:#1e2235 !important; }
-body.dark .materi-frekuensi code, body.dark .materi-frekuensi pre { background:#12151f !important; color:#a8b4ff !important; }
-body.dark .materi-frekuensi select, body.dark .materi-frekuensi input { background:#2a2e42 !important; border-color:#343858 !important; color:#e8eaf6 !important; }
+body.dark .materi-frekuensi code,body.dark .materi-frekuensi pre { background:#12151f !important; color:#a8b4ff !important; }
+body.dark .materi-frekuensi select,body.dark .materi-frekuensi input { background:#2a2e42 !important; border-color:#343858 !important; color:#e8eaf6 !important; }
 body.dark .materi-frekuensi [class*="metric"] { background:#222638 !important; border-color:#343858 !important; }
-body.dark .materi-frekuensi [class*="result"], body.dark .materi-frekuensi [id*="result"] { background:#222638 !important; border-color:#343858 !important; color:#8e94b5; }
-body.dark .materi-frekuensi .grid-2>*, body.dark .materi-frekuensi .grid-3>*, body.dark .materi-frekuensi .grid-4>* { background:#222638; border-color:#343858; }
+body.dark .materi-frekuensi [class*="result"],[id*="result"] { background:#222638 !important; border-color:#343858 !important; }
+body.dark .materi-frekuensi .grid-2>*,body.dark .materi-frekuensi .grid-3>*,body.dark .materi-frekuensi .grid-4>* { background:#222638; border-color:#343858; }
 body.dark .materi-frekuensi a { color:#5b8fff; }
 body.dark .materi-frekuensi hr { border-color:#343858; }
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <div class="materi-frekuensi">
-</div>
-    <span class="sticky-pct" id="progPct">0%</span>
-  </div>
-</div>
-
-<!-- FLOATING TOC -->
-
-
-
-<h1>Analisa Frekuensi<br>Curah Hujan</h1>
-    <p class="hero-sub">Dari data hujan historis menjadi angka desain infrastruktur — kala ulang, distribusi, IDF, dan seterusnya<br>Panduan Lengkap untuk Hydrologist & Siapa Pun yang Ingin Memahaminya</p>
-    <div class="hero-pills">
-      <span class="hero-pill pill-blue">4 Distribusi Statistik</span>
-      <span class="hero-pill pill-purple">Uji KS & Chi-Kuadrat</span>
-      <span class="hero-pill pill-amber">Kala Ulang 2–100 Tahun</span>
-      <span class="hero-pill pill-green">Kurva IDF Mononobe</span>
-      <span class="hero-pill pill-red">Kode R Lengkap</span>
-    </div>
-    <div class="hero-meta">
-      <span class="hero-meta-item">📐 SNI 2415:2016</span>
-      <span class="hero-meta-item">📚 Triatmodjo (2008) · Sri Harto (1993)</span>
-      <span class="hero-meta-item">💻 R · ggplot2 · flextable</span>
-    </div>
-  </div>
-</div>
-
-<div class="wrap">
-
 <!-- ===== S1: LATAR BELAKANG ===== -->
 <section class="section anim-in" id="s1">
   <div class="section-header"><div class="section-num">1</div><h2>Latar Belakang — Mengapa Perlu?</h2></div>
@@ -971,355 +951,9 @@ ggplot(tbl_idf, <span class="fn">aes</span>(x = t, y = I_mmjam, color = <span cl
     Semua rumus dalam artikel ini mengikuti metode standar hidrologi Indonesia, konsisten dengan <strong>SNI 2415:2016</strong>. Referensi: Triatmodjo (2008), Sri Harto (1993), Soemarto (1995), Mononobe (1932). Analisis menggunakan R versi 4.x dengan paket: <code>e1071</code>, <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, <code>flextable</code>, <code>readxl</code>.
   </p>
 </section>
-
-</div><!-- /wrap -->
-
-<script>
-/* ================================================================
-   DATA & CALCULATIONS
-   ================================================================ */
-const amsData = [
-  {yr:2000, val:87.5},{yr:2001,val:102.3},{yr:2002,val:65.8},
-  {yr:2003,val:118.4},{yr:2004,val:93.7},{yr:2005,val:76.1},
-  {yr:2006,val:158.9},{yr:2007,val:99.4},{yr:2008,val:143.2},
-  {yr:2009,val:112.0},{yr:2010,val:78.2},{yr:2011,val:134.6},
-  {yr:2012,val:89.1},{yr:2013,val:97.5},{yr:2014,val:108.2},
-  {yr:2015,val:82.6},{yr:2016,val:121.3},{yr:2017,val:74.8},
-  {yr:2018,val:96.4},{yr:2019,val:145.7},{yr:2020,val:118.3},
-  {yr:2021,val:88.0},{yr:2022,val:127.4},{yr:2023,val:103.8},
-  {yr:2024,val:91.2}
-];
-const n = amsData.length;
-const vals = amsData.map(d=>d.val);
-const xbar = vals.reduce((a,b)=>a+b,0)/n;
-const S = Math.sqrt(vals.reduce((a,v)=>a+(v-xbar)**2,0)/(n-1));
-const CV = S/xbar;
-const Cs = (n*vals.reduce((a,v)=>a+(v-xbar)**3,0))/((n-1)*(n-2)*S**3);
-const alpha_g = S*Math.PI/Math.sqrt(6);
-const mu_g    = xbar - 0.5772*alpha_g;
-const T_arr   = [2,5,10,25,50,100];
-
-function KT_gumbel(T){ return -(Math.sqrt(6)/Math.PI)*(0.5772+Math.log(Math.log(T/(T-1)))); }
-function RT_gumbel(T){ return xbar + KT_gumbel(T)*S; }
-
-// Log-Normal
-const lnvals = vals.map(v=>Math.log(v));
-const ybar = lnvals.reduce((a,b)=>a+b,0)/n;
-const Sy   = Math.sqrt(lnvals.reduce((a,v)=>a+(v-ybar)**2,0)/(n-1));
-function RT_lognorm(T){
-  const z = (function(p){ // inverse normal CDF approximation
-    const a=[2.515517,0.802853,0.010328],b=[1.432788,0.189269,0.001308];
-    const t=Math.sqrt(-2*Math.log(p<0.5?p:1-p));
-    const num=a[0]+a[1]*t+a[2]*t*t, den=1+b[0]*t+b[1]*t*t+b[2]*t*t*t;
-    return (p<0.5?-1:1)*(t-num/den);
-  })(1-1/T);
-  return Math.exp(ybar+z*Sy);
-}
-
-// Normal - simple
-function RT_normal(T){
-  const z = (function(p){
-    const a=[2.515517,0.802853,0.010328],b=[1.432788,0.189269,0.001308];
-    const t=Math.sqrt(-2*Math.log(p<0.5?p:1-p));
-    const num=a[0]+a[1]*t+a[2]*t*t, den=1+b[0]*t+b[1]*t*t+b[2]*t*t*t;
-    return (p<0.5?-1:1)*(t-num/den);
-  })(1-1/T);
-  return xbar + z*S;
-}
-
-// LP3 - simplified (using KT from table approximation based on Cs)
-const KT_LP3_table = {
-  2:[0.000,-0.033,-0.064,-0.254,-0.330,-0.396],
-  5:[0.842,0.856,0.869,0.938,0.967,0.990],
-  10:[1.282,1.318,1.353,1.518,1.588,1.643],
-  25:[1.751,1.837,1.929,2.219,2.388,2.515],
-  50:[2.054,2.193,2.342,2.809,3.059,3.256],
-  100:[2.326,2.540,2.770,3.388,3.720,3.990]
-};
-// Cs of ln(x) data
-const Cs_ln = (n*lnvals.reduce((a,v)=>a+(v-ybar)**3,0))/((n-1)*(n-2)*Sy**3);
-// Use Cs_ln = ~0.5 index 4
-function RT_LP3(T){
-  const i = 4; // approximate for moderate Cs
-  return Math.exp(ybar + KT_LP3_table[T][i]*Sy);
-}
-
-/* ================================================================
-   BUILD AMS TABLE
-   ================================================================ */
-function buildAMSTable(){
-  const tb = document.getElementById('tblAMS');
-  // split into 3 columns of data
-  const perCol = Math.ceil(n/3);
-  let html = '<thead><tr>';
-  for(let c=0;c<3;c++) html += '<th>Tahun</th><th>Hujan Maks (mm)</th>';
-  html += '</tr></thead><tbody>';
-  for(let r=0;r<perCol;r++){
-    html += '<tr>';
-    for(let c=0;c<3;c++){
-      const idx = c*perCol+r;
-      if(idx<n){ html += `<td>${amsData[idx].yr}</td><td>${amsData[idx].val}</td>`; }
-      else { html += '<td colspan="2"></td>'; }
-    }
-    html += '</tr>';
-  }
-  html += '</tbody>';
-  tb.innerHTML = html;
-}
-
-/* ================================================================
-   BUILD STAT CARDS
-   ================================================================ */
-function buildStatCards(){
-  const c = document.getElementById('statCards');
-  const stats = [
-    {lbl:'Rata-rata (x̄)',val:xbar.toFixed(2)+' mm',sub:'Mean tahunan',cls:'blue'},
-    {lbl:'Std. Deviasi (S)',val:S.toFixed(2)+' mm',sub:'Variabilitas data',cls:'amber'},
-    {lbl:'Kemencengan (Cs)',val:Cs.toFixed(3),sub:'Cs > 0 → ekor kanan',cls:'purple'},
-    {lbl:'Koef. Variasi (CV)',val:(CV*100).toFixed(1)+'%',sub:'S / x̄',cls:'green'},
-  ];
-  c.innerHTML = stats.map(s=>`
-    <div class="metric-card ${s.cls}">
-      <div class="metric-label">${s.lbl}</div>
-      <div class="metric-val">${s.val}</div>
-      <div class="metric-sub">${s.sub}</div>
-    </div>`).join('');
-}
-
-/* ================================================================
-   BUILD RENCANA TABLE
-   ================================================================ */
-function buildRencanaTable(){
-  const tb = document.getElementById('tblRencana');
-  const uses = ['Gorong-gorong sederhana','Drainase perkotaan kecil','Drainase utama kota','Sungai / jembatan sedang','Tanggul banjir / bendung','Bendungan besar / vital'];
-  let html = `<thead><tr>
-    <th>Kala Ulang T</th><th>K_T (Gumbel)</th>
-    <th class="th-blue">R_T Gumbel (mm)</th>
-    <th>Kegunaan Umum</th></tr></thead><tbody>`;
-  T_arr.forEach((T,i)=>{
-    const kt = KT_gumbel(T), rt = RT_gumbel(T);
-    const hi = i>=3 ? 'style="color:var(--amber);font-weight:700;"' : '';
-    html += `<tr ${i>=3?'class="highlight"':''}>
-      <td ${hi}>T = ${T} tahun</td>
-      <td>${kt.toFixed(3)}</td>
-      <td style="font-weight:700;color:var(--navy2);">${rt.toFixed(1)}</td>
-      <td class="td-label" style="font-family:inherit;font-size:11px;color:var(--gray-600);">${uses[i]}</td>
-    </tr>`;
-  });
-  html += '</tbody>';
-  tb.innerHTML = html;
-}
-
-/* ================================================================
-   BUILD IDF TABLE
-   ================================================================ */
-function buildIDFTable(){
-  const tb = document.getElementById('tblIDF');
-  const durs = [{t:5/60,lbl:'5 mnt'},{t:10/60,lbl:'10 mnt'},{t:15/60,lbl:'15 mnt'},
-                {t:0.5,lbl:'30 mnt'},{t:1,lbl:'60 mnt ★'},{t:2,lbl:'2 jam'},
-                {t:3,lbl:'3 jam'},{t:6,lbl:'6 jam'},{t:12,lbl:'12 jam'},{t:24,lbl:'24 jam'}];
-  function mono(R24,t){ return (R24/24)*Math.pow(24/t,2/3); }
-  let html = '<thead><tr><th>Durasi</th>';
-  T_arr.forEach(T=>{ html+=`<th class="th-blue">T=${T} thn (mm/j)</th>`; });
-  html += '</tr></thead><tbody>';
-  durs.forEach(d=>{
-    const isKey = Math.abs(d.t-1)<0.01;
-    html += `<tr ${isKey?'style="background:rgba(180,83,9,0.06);"':''}>
-      <td class="td-label" style="font-family:inherit;${isKey?'color:var(--amber);font-weight:700;':''}">
-        ${d.lbl}</td>`;
-    T_arr.forEach(T=>{
-      const i = mono(RT_gumbel(T),d.t);
-      html += `<td style="${isKey?'font-weight:700;color:var(--amber);':''}">${i.toFixed(1)}</td>`;
-    });
-    html += '</tr>';
-  });
-  html += '</tbody>';
-  tb.innerHTML = html;
-}
-
-/* ================================================================
-   CHARTS
-   ================================================================ */
-const CH = {};
-function buildCharts(){
-  if(CH._built) return; CH._built = true;
-
-  /* CDF Chart */
-  const sorted = [...vals].sort((a,b)=>a-b);
-  const emp = sorted.map((_,i)=>(i+1)/(n+1));
-  const xRange = Array.from({length:60},(_,i)=>55+i*2);
-  const cdfGumbel = x => Math.exp(-Math.exp(-(x-mu_g)/alpha_g));
-  const cdfNorm   = x => { const z=(x-xbar)/S; return 0.5*(1+erf(z/Math.sqrt(2))); };
-  const cdfLN     = x => { const z=(Math.log(x)-ybar)/Sy; return 0.5*(1+erf(z/Math.sqrt(2))); };
-  function erf(x){ const t=1/(1+0.3275911*Math.abs(x)); const y=1-t*(0.254829592-t*(0.284496736-t*(1.421413741-t*(1.453152027-t*1.061405429))))*Math.exp(-x*x); return x>=0?y:-y; }
-  // LP3 approximation via Gumbel-shifted
-  const cdfLP3    = x => Math.exp(-Math.exp(-(x-mu_g*0.97)/alpha_g));
-
-  const ctx1 = document.getElementById('chartCDF');
-  if(ctx1) CH.cdf = new Chart(ctx1,{
-    type:'scatter',
-    data:{datasets:[
-      {label:'Data Empiris',data:sorted.map((x,i)=>({x,y:emp[i]})),backgroundColor:'#64748b',pointRadius:4,order:5},
-      {label:'Normal',type:'line',data:xRange.map(x=>({x,y:cdfNorm(x)})),borderColor:'#2563eb',borderWidth:2,pointRadius:0,tension:0.4,order:4},
-      {label:'Log-Normal',type:'line',data:xRange.map(x=>({x,y:cdfLN(x)})),borderColor:'#0891b2',borderWidth:2,pointRadius:0,tension:0.4,order:3},
-      {label:'Gumbel',type:'line',data:xRange.map(x=>({x,y:cdfGumbel(x)})),borderColor:'#d97706',borderWidth:2.5,pointRadius:0,tension:0.4,order:2},
-      {label:'Log-Pearson III',type:'line',data:xRange.map(x=>({x,y:cdfLP3(x)})),borderColor:'#16a34a',borderWidth:2,pointRadius:0,tension:0.4,borderDash:[5,3],order:1},
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: (${c.parsed.x.toFixed(0)} mm, P=${c.parsed.y.toFixed(3)})`}}},
-      scales:{
-        x:{title:{display:true,text:'Curah Hujan (mm)'},grid:{color:'rgba(0,0,0,0.05)'}},
-        y:{title:{display:true,text:'Probabilitas Kumulatif F(x)'},min:0,max:1,grid:{color:'rgba(0,0,0,0.05)'}}
-      }
-    }
-  });
-
-  /* KS Chart */
-  const ctx2 = document.getElementById('chartKS');
-  if(ctx2) CH.ks = new Chart(ctx2,{
-    type:'bar',
-    data:{
-      labels:['Normal','Log-Normal','Gumbel (Terbaik)','Log-Pearson III'],
-      datasets:[
-        {label:'D-hitung',data:[0.091,0.074,0.058,0.063],
-          backgroundColor:['rgba(37,99,235,0.75)','rgba(8,145,178,0.75)','rgba(217,119,6,0.9)','rgba(22,163,74,0.75)'],
-          borderRadius:5,order:1},
-        {type:'line',label:'D-kritis (α=5%, n=25) = 0.264',data:[0.264,0.264,0.264,0.264],
-          borderColor:'#dc2626',borderWidth:2,borderDash:[6,4],pointRadius:0,fill:false,order:0}
-      ]
-    },
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{
-        legend:{position:'bottom',labels:{font:{size:11},usePointStyle:true}},
-        tooltip:{callbacks:{label:c=>c.dataset.label+': '+Number(c.raw).toFixed(3)}}
-      },
-      scales:{
-        x:{grid:{display:false}},
-        y:{min:0,max:0.35,title:{display:true,text:'Nilai D'},ticks:{font:{size:11}}}
-      }
-    }
-  });
-
-  /* Rencana Chart */
-  const ctx3 = document.getElementById('chartRencana');
-  if(ctx3) CH.renc = new Chart(ctx3,{
-    type:'bar',
-    data:{
-      labels:T_arr.map(t=>`T=${t} thn`),
-      datasets:[
-        {label:'Normal',data:T_arr.map(RT_normal),backgroundColor:'rgba(37,99,235,0.7)',borderRadius:3},
-        {label:'Log-Normal',data:T_arr.map(RT_lognorm),backgroundColor:'rgba(8,145,178,0.7)',borderRadius:3},
-        {label:'Gumbel ★',data:T_arr.map(RT_gumbel),backgroundColor:'rgba(217,119,6,0.9)',borderRadius:3,borderWidth:2,borderColor:'#92400e'},
-        {label:'Log-Pearson III',data:T_arr.map(RT_LP3),backgroundColor:'rgba(22,163,74,0.7)',borderRadius:3},
-      ]
-    },
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{
-        legend:{position:'bottom',labels:{font:{size:11},usePointStyle:true}},
-        tooltip:{callbacks:{label:c=>c.dataset.label+': '+Number(c.raw).toFixed(1)+' mm'}}
-      },
-      scales:{
-        x:{grid:{display:false},ticks:{font:{size:11}}},
-        y:{title:{display:true,text:'Curah Hujan Rencana (mm)'},min:60,ticks:{font:{size:11}}}
-      }
-    }
-  });
-
-  /* IDF Chart */
-  const ctx4 = document.getElementById('chartIDF');
-  if(ctx4){
-    const durs = [5/60,10/60,15/60,0.5,1,2,3,6,12,24];
-    const durLabels = ["5'","10'","15'","30'","1 jam","2 jam","3 jam","6 jam","12 jam","24 jam"];
-    const mono = (R24,t) => (R24/24)*Math.pow(24/t,2/3);
-    const colors = ['#7c3aed','#dc2626','#d97706','#0284c7','#2563eb','#64748b'];
-    CH.idf = new Chart(ctx4,{
-      type:'line',
-      data:{
-        labels:durLabels,
-        datasets:T_arr.slice().reverse().map((T,i)=>({
-          label:`T = ${T} tahun`,
-          data:durs.map(t=>mono(RT_gumbel(T),t)),
-          borderColor:colors[i],
-          backgroundColor:colors[i]+'22',
-          borderWidth: i===0?2.5:1.8,
-          pointRadius:3,
-          tension:0.3,
-          fill:false
-        }))
-      },
-      options:{responsive:true,maintainAspectRatio:false,
-        plugins:{
-          legend:{position:'bottom',labels:{font:{size:11},usePointStyle:true}},
-          tooltip:{callbacks:{label:c=>c.dataset.label+': '+Number(c.raw).toFixed(1)+' mm/jam'}}
-        },
-        scales:{
-          x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:11}}},
-          y:{title:{display:true,text:'Intensitas (mm/jam)'},min:0,ticks:{font:{size:11}},
-             grid:{color:'rgba(0,0,0,0.05)'}}
-        }
-      }
-    });
-  }
-}
-
-/* ================================================================
-   TOC, PROGRESS BAR, ANIMATION
-   ================================================================ */
-function updateProgress(){
-  const el=document.getElementById('progBar'), pct=document.getElementById('progPct');
-  const scroll=window.scrollY, total=document.body.scrollHeight-window.innerHeight;
-  const p=total>0?Math.round(scroll/total*100):0;
-  el.style.width=p+'%'; pct.textContent=p+'%';
-}
-window.addEventListener('scroll',updateProgress,{passive:true});
-
-const tocLinks = document.querySelectorAll('.toc-link');
-const sections = Array.from(document.querySelectorAll('section[id], div[id]'));
-function updateToc(){
-  let cur='';
-  sections.forEach(s=>{
-    if(window.scrollY>=s.offsetTop-100) cur=s.id;
-  });
-  tocLinks.forEach(l=>{
-    const h=l.getAttribute('href').replace('#','');
-    l.classList.toggle('active',h===cur);
-  });
-}
-window.addEventListener('scroll',updateToc,{passive:true});
-
-function toggleToc(){
-  document.getElementById('tocFloat').classList.toggle('collapsed');
-}
-let tocVisible = false;
-function toggleTocMobile(){
-  tocVisible=!tocVisible;
-  const tf=document.getElementById('tocFloat');
-  if(tocVisible){ tf.style.display='block'; tf.style.position='fixed'; tf.style.right='0'; tf.style.top='80px'; }
-  else { tf.style.display=''; }
-}
-
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('visible'); buildCharts(); }
-  });
-},{threshold:0.01,rootMargin:'0px 0px -10px 0px'});
-document.querySelectorAll('.anim-in').forEach(el=>io.observe(el));
-
-function copyCode(btn){
-  const text=btn.closest('.code-wrap').querySelector('pre').innerText;
-  navigator.clipboard.writeText(text).then(()=>{ btn.textContent='✓ Tersalin!'; setTimeout(()=>btn.textContent='Salin',2000); });
-}
-
-/* INIT */
-buildAMSTable();
-buildStatCards();
-buildRencanaTable();
-buildIDFTable();
-updateProgress();
-setTimeout(buildCharts,400);
-</script>
 </div>
 <script>
+
 /* ================================================================
    DATA & CALCULATIONS
    ================================================================ */
@@ -1662,5 +1296,6 @@ buildRencanaTable();
 buildIDFTable();
 updateProgress();
 setTimeout(buildCharts,400);
+
 </script>
 {{< /rawhtml >}}

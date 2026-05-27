@@ -7,7 +7,7 @@ categories: ["Hidrologi"]
 date: 2024-02-03
 lastmod: 2024-02-03
 draft: false
-description: "Cara menghitung debit banjir rencana dengan metode hidrograf satuan sintetis (Nakayasu, Snyder) dan metode Rational. Kalkulator interaktif dan contoh numerik lengkap."
+description: "Cara menghitung debit banjir rencana dengan metode Nakayasu, Snyder, dan Rational. Kalkulator interaktif dan contoh numerik lengkap."
 modul_hecras: true
 reading_time: true
 share: true
@@ -32,6 +32,8 @@ toc: false
 
 
 .materi-debit, .materi-debit *::before, .materi-debit *::after {box-sizing:border-box;margin:0;padding:0;}
+
+
 .materi-debit .sticky-nav {position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--gray-200);box-shadow:var(--shadow);}
 .materi-debit .sticky-inner {max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;gap:1rem;height:52px;}
 .materi-debit .sticky-title {font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;}
@@ -204,8 +206,14 @@ toc: false
 .anim-in {opacity:1;}.materi-debit .anim-in.visible {animation:fadeUp 0.45s ease both;}
 
 
-/* ===== DARK MODE (body.dark) ===== */
-body.dark .materi-debit { color: #8e94b5; }
+/* === LAYOUT FIX: integrasi Wowchemy === */
+.materi-debit { box-sizing: border-box; width: 100%; overflow-x: hidden; }
+.materi-debit * { box-sizing: border-box; }
+.materi-debit .wrap, .materi-debit .section { max-width: 100%; }
+
+
+/* === DARK MODE === */
+body.dark .materi-debit { color:#8e94b5; }
 body.dark .materi-debit h1,body.dark .materi-debit h2,body.dark .materi-debit h3,body.dark .materi-debit h4 { color:#e8eaf6; }
 body.dark .materi-debit p { color:#8e94b5; }
 body.dark .materi-debit strong { color:#e8eaf6; }
@@ -218,41 +226,17 @@ body.dark .materi-debit th { background:#2a2e42 !important; color:#8e94b5 !impor
 body.dark .materi-debit td { border-color:#343858 !important; color:#8e94b5; }
 body.dark .materi-debit tr:nth-child(even) { background:#1e2235 !important; }
 body.dark .materi-debit tr:hover td { background:#1e2235 !important; }
-body.dark .materi-debit code, body.dark .materi-debit pre { background:#12151f !important; color:#a8b4ff !important; }
-body.dark .materi-debit select, body.dark .materi-debit input { background:#2a2e42 !important; border-color:#343858 !important; color:#e8eaf6 !important; }
+body.dark .materi-debit code,body.dark .materi-debit pre { background:#12151f !important; color:#a8b4ff !important; }
+body.dark .materi-debit select,body.dark .materi-debit input { background:#2a2e42 !important; border-color:#343858 !important; color:#e8eaf6 !important; }
 body.dark .materi-debit [class*="metric"] { background:#222638 !important; border-color:#343858 !important; }
-body.dark .materi-debit [class*="result"], body.dark .materi-debit [id*="result"] { background:#222638 !important; border-color:#343858 !important; color:#8e94b5; }
-body.dark .materi-debit .grid-2>*, body.dark .materi-debit .grid-3>*, body.dark .materi-debit .grid-4>* { background:#222638; border-color:#343858; }
+body.dark .materi-debit [class*="result"],[id*="result"] { background:#222638 !important; border-color:#343858 !important; }
+body.dark .materi-debit .grid-2>*,body.dark .materi-debit .grid-3>*,body.dark .materi-debit .grid-4>* { background:#222638; border-color:#343858; }
 body.dark .materi-debit a { color:#5b8fff; }
 body.dark .materi-debit hr { border-color:#343858; }
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <div class="materi-debit">
-</div>
-    <span class="sticky-pct" id="progPct">0%</span>
-  </div>
-</div>
-
-
-<h1>Perhitungan Debit<br>Banjir Rencana</h1>
-    <p class="hero-sub">Dari curah hujan rencana (IDF) menjadi hidrograf banjir desain — metode rasional, HSS Nakayasu, dan perbandingan antar metode<br>Dilengkapi kalkulator interaktif & hidrograf dinamis</p>
-    <div class="hero-pills">
-      <span class="hero-pill pill-blue">Metode Rasional</span>
-      <span class="hero-pill pill-purple">HSS Nakayasu</span>
-      <span class="hero-pill pill-amber">Waktu Konsentrasi</span>
-      <span class="hero-pill pill-green">Hujan Efektif</span>
-      <span class="hero-pill pill-red">Kalkulator Interaktif</span>
-    </div>
-    <div class="hero-meta">
-      <span class="hero-meta-item">📐 SNI 2415:2016</span>
-      <span class="hero-meta-item">📚 Sri Harto (1993) · Triatmodjo (2008)</span>
-      <span class="hero-meta-item">💻 R · ggplot2 · dplyr</span>
-    </div>
-  </div>
-</div>
-<div class="wrap">
-
 <!-- S1: LATAR BELAKANG -->
 <section class="section anim-in" id="s1">
   <div class="section-header"><div class="section-num">1</div><h2>Latar Belakang — Mengapa Perlu Debit Banjir Rencana?</h2></div>
@@ -1019,316 +1003,9 @@ ggplot(df_hydro, <span class="fn">aes</span>(x = t, y = Q, color = T_yr)) <span 
     Semua rumus mengikuti <strong>SNI 2415:2016</strong>. Referensi: Sri Harto (1993), Triatmodjo (2008), Soemarto (1995), Nakayasu (1950), Kirpich (1940). Kode R menggunakan paket: <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>.
   </p>
 </section>
-
-</div><!-- /wrap -->
-
-<script>
-/* ================================================================
-   DATA
-   ================================================================ */
-const T_arr  = [2,5,10,25,50,100];
-const RT     = [96.4,118.7,133.4,151.9,165.6,179.2];
-const A=50, L=10, alpha=2.0, C=0.65;
-const Lk=5000, Sk=0.010;
-
-// Nakayasu parameters
-const tg  = (L < 15) ? 0.21*Math.pow(L,0.7) : 0.40+0.058*L;  // 1.053 hr
-const tr  = tg;
-const tp  = tg + 0.8*tr;    // 1.895 hr
-const T03 = alpha*tg;        // 2.106 hr
-const Qp_unit = A/(3.6*(0.3*tp+T03));  // m3/s per mm
-
-// Time of concentration - Kirpich
-const tc_min = 0.0195*Math.pow(Lk,0.77)*Math.pow(Sk,-0.385);
-const tc_hr  = tc_min/60;
-
-// Mononobe IDF
-function mononobe(R24,t){ return (R24/24)*Math.pow(24/t, 2/3); }
-
-// Intensities at tc
-const I_tc = RT.map(r=>mononobe(r,tc_hr));
-
-// Rational method peak discharge
-const Q_ras = I_tc.map(i=>0.278*C*i*A);
-
-// Effective rainfall & Nakayasu peaks
-const R_eff    = RT.map(r=>C*r);
-const Qpeak_N  = R_eff.map(r=>Qp_unit*r);
-
-// Nakayasu unit hydrograph
-function nakUnit(t){
-  if(t<=tp)           return Qp_unit*Math.pow(t/tp,2.4);
-  if(t<=tp+T03)       return Qp_unit*Math.pow(0.3,(t-tp)/T03);
-  if(t<=tp+2.5*T03)   return Qp_unit*Math.pow(0.3,(t-tp+0.5*T03)/(1.5*T03));
-  return Qp_unit*Math.pow(0.3,(t-tp+1.5*T03)/(2*T03));
-}
-const dt=0.1, tMax=22;
-const t_seq=[], u_seq=[];
-for(let t=0;t<=tMax;t+=dt){t_seq.push(+t.toFixed(1));u_seq.push(nakUnit(t));}
-
-const COLORS=['#64748b','#2563eb','#0284c7','#d97706','#dc2626','#7c3aed'];
-const LABELS=['T = 2 thn','T = 5 thn','T = 10 thn','T = 25 thn','T = 50 thn','T = 100 thn'];
-
-/* ================================================================
-   DAS PARAMS CARD
-   ================================================================ */
-function buildDASParams(){
-  const el=document.getElementById('dasParams');
-  const params=[
-    {n:'Luas DAS (A)',v:'50',u:'km²',c:'var(--blue-mid)'},
-    {n:'Panjang Sungai (L)',v:'10',u:'km',c:'var(--purple)'},
-    {n:'Kemiringan DAS (S)',v:'0.010',u:'m/m',c:'var(--amber)'},
-    {n:'Koef. Limpasan (C)',v:'0.65',u:'-',c:'var(--green)'},
-    {n:'Waktu Konsentrasi',v:'1.35',u:'jam',c:'var(--red)'},
-    {n:'Parameter α',v:'2.0',u:'-',c:'var(--navy)'},
-  ];
-  el.innerHTML=params.map(p=>`
-    <div class="das-param" style="border-top-color:${p.c};">
-      <div class="das-param-name">${p.n}</div>
-      <div class="das-param-val">${p.v} <span class="das-param-unit">${p.u}</span></div>
-    </div>`).join('');
-}
-
-/* ================================================================
-   REFF TABLE
-   ================================================================ */
-function buildReffTable(){
-  const tb=document.getElementById('tblReff');
-  let html=`<thead><tr><th>Kala Ulang T</th><th class="th-blue">R_T (mm)</th>
-    <th class="th-amber">R_eff = C×R_T (mm)</th>
-    <th class="th-purple">Q_p Nakayasu (m³/s)</th>
-    <th class="th-blue">Proporsi Runoff</th></tr></thead><tbody>`;
-  T_arr.forEach((T,i)=>{
-    const hi=i>=3;
-    html+=`<tr ${hi?'class="highlight"':''}>
-      <td style="${hi?'color:var(--amber);font-weight:700;':''}">T = ${T} tahun</td>
-      <td>${RT[i].toFixed(1)}</td>
-      <td style="color:var(--amber);font-weight:600;">${R_eff[i].toFixed(1)}</td>
-      <td style="color:var(--purple);font-weight:700;">${Qpeak_N[i].toFixed(0)}</td>
-      <td>${(C*100).toFixed(0)}%</td>
-    </tr>`;
-  });
-  tb.innerHTML=html+'</tbody>';
-}
-
-/* ================================================================
-   PEAK DEBIT CARDS
-   ================================================================ */
-function buildPeakCards(){
-  const el=document.getElementById('peakCards');
-  const cls=['blue','blue','blue','amber','red','purple'];
-  el.innerHTML=T_arr.map((T,i)=>`
-    <div class="metric-card ${cls[i]}">
-      <div class="metric-label">T = ${T} tahun</div>
-      <div class="metric-val">${Qpeak_N[i].toFixed(0)}</div>
-      <div class="metric-unit">m³/s (Nakayasu)</div>
-    </div>`).join('');
-}
-
-/* ================================================================
-   DEBIT TABLE
-   ================================================================ */
-function buildDebitTable(){
-  const tb=document.getElementById('tblDebit');
-  let html=`<thead><tr>
-    <th>Kala Ulang T</th>
-    <th class="th-blue">R_T (mm)</th>
-    <th class="th-green">R_eff (mm)</th>
-    <th class="th-blue">Q Rasional (m³/s)</th>
-    <th class="th-purple">Q Nakayasu (m³/s)</th>
-    <th class="th-amber">Selisih (%)</th>
-    <th>Keterangan</th>
-  </tr></thead><tbody>`;
-  const uses=['Drainase minor','Drainase sekunder','Drainase utama','Sungai / jembatan','Tanggul / bendung','Bendungan / vital'];
-  T_arr.forEach((T,i)=>{
-    const selisih=((Q_ras[i]-Qpeak_N[i])/Qpeak_N[i]*100);
-    const hi=i>=3;
-    html+=`<tr ${hi?'class="highlight"':''}>
-      <td style="${hi?'color:var(--amber);font-weight:700;':''}">T = ${T} thn</td>
-      <td>${RT[i].toFixed(1)}</td>
-      <td style="color:var(--green);">${R_eff[i].toFixed(1)}</td>
-      <td style="color:var(--blue);font-weight:600;">${Q_ras[i].toFixed(0)}</td>
-      <td style="color:var(--purple);font-weight:700;">${Qpeak_N[i].toFixed(0)}</td>
-      <td style="color:${Math.abs(selisih)>15?'var(--red)':'var(--gray-600)'};">${selisih>0?'+':''}${selisih.toFixed(1)}%</td>
-      <td class="td-label" style="font-family:inherit;font-size:11px;color:var(--gray-600);">${uses[i]}</td>
-    </tr>`;
-  });
-  tb.innerHTML=html+'</tbody>';
-}
-
-/* ================================================================
-   RATIONAL CALCULATOR
-   ================================================================ */
-function updateRasional(){
-  const c_val = parseFloat(document.getElementById('slC').value);
-  const a_val = parseFloat(document.getElementById('slA').value);
-  const t_val = parseFloat(document.getElementById('selT').value);
-  const tc_v  = parseFloat(document.getElementById('slTc').value);
-  document.getElementById('dispC').textContent = c_val.toFixed(2);
-  document.getElementById('dispA').textContent = a_val.toFixed(0);
-  document.getElementById('dispTc').textContent = tc_v.toFixed(2);
-  // Find RT for selected T
-  const idx = T_arr.indexOf(parseInt(t_val));
-  const rt_v = RT[idx] || 133.4;
-  const i_v  = mononobe(rt_v, tc_v);
-  const q_v  = 0.278*c_val*i_v*a_val;
-  document.getElementById('dispI').textContent = i_v.toFixed(1)+' mm/jam (R₂₄='+rt_v+' mm, t='+tc_v.toFixed(2)+' jam)';
-  document.getElementById('resultQ').textContent = q_v.toFixed(0);
-  // Compare text
-  const pools = q_v/0.001; // liters
-  document.getElementById('resultCompare').textContent = `≈ ${(q_v/1000).toFixed(2)} m³/ms | ${Math.round(q_v*3600/50000)} mm/jam rata DAS`;
-  document.getElementById('warningA').style.display = a_val>50?'flex':'none';
-}
-function setC(v){ if(v){ document.getElementById('slC').value=v; updateRasional(); } }
-
-/* ================================================================
-   CHARTS
-   ================================================================ */
-const CH={};
-function buildCharts(){
-  if(CH._built) return; CH._built=true;
-
-  /* Rasional Bar */
-  const ctx1=document.getElementById('chartRasional');
-  if(ctx1) CH.ras=new Chart(ctx1,{
-    type:'bar',
-    data:{
-      labels:T_arr.map(t=>'T='+t+' thn'),
-      datasets:[{
-        label:'Debit Puncak (m³/s)',
-        data:Q_ras.map(q=>+q.toFixed(1)),
-        backgroundColor:COLORS,
-        borderRadius:5,
-      }]
-    },
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{
-        legend:{display:false},
-        tooltip:{callbacks:{label:c=>'Q = '+c.raw.toFixed(1)+' m³/s'}}
-      },
-      scales:{
-        x:{grid:{display:false},ticks:{font:{size:11}}},
-        y:{title:{display:true,text:'Debit (m³/s)'},ticks:{font:{size:11}},grid:{color:'rgba(0,0,0,0.05)'}}
-      }
-    }
-  });
-
-  /* Hydrograph */
-  const ctx2=document.getElementById('chartHydro');
-  if(ctx2){
-    const datasets=T_arr.map((T,i)=>({
-      label:LABELS[i],
-      data:u_seq.map(u=>+(u*R_eff[i]).toFixed(2)),
-      borderColor:COLORS[i],
-      backgroundColor:'transparent',
-      borderWidth:i>=3?2.2:1.5,
-      pointRadius:0,
-      tension:0.3,
-      hidden:i<2 // default show T10+
-    }));
-    CH.hydro=new Chart(ctx2,{
-      type:'line',
-      data:{labels:t_seq,datasets},
-      options:{responsive:true,maintainAspectRatio:false,
-        interaction:{mode:'index',intersect:false},
-        plugins:{
-          legend:{display:false},
-          tooltip:{callbacks:{
-            title:items=>'t = '+items[0].label+' jam',
-            label:c=>c.dataset.label+': '+c.raw.toFixed(1)+' m³/s'
-          }}
-        },
-        scales:{
-          x:{title:{display:true,text:'Waktu (jam)'},ticks:{maxTicksLimit:12,font:{size:11}},grid:{color:'rgba(0,0,0,0.04)'}},
-          y:{title:{display:true,text:'Debit Q (m³/s)'},min:0,ticks:{font:{size:11}},grid:{color:'rgba(0,0,0,0.05)'}}
-        }
-      }
-    });
-    // Build toggle buttons
-    const btns=document.getElementById('hydroBtns');
-    btns.innerHTML=T_arr.map((T,i)=>`
-      <button class="hydro-btn ${!CH.hydro.data.datasets[i].hidden?'active':''}"
-        style="color:${COLORS[i]};border-color:${COLORS[i]};${!CH.hydro.data.datasets[i].hidden?'background:'+COLORS[i]+';color:#fff;':''}"
-        onclick="toggleHydro(${i},this,'${COLORS[i]}')">T = ${T}</button>`).join('');
-  }
-
-  /* Compare */
-  const ctx3=document.getElementById('chartCompare');
-  if(ctx3) CH.cmp=new Chart(ctx3,{
-    type:'bar',
-    data:{
-      labels:T_arr.map(t=>'T = '+t+' thn'),
-      datasets:[
-        {label:'Metode Rasional',data:Q_ras.map(q=>+q.toFixed(0)),backgroundColor:'rgba(24,95,165,0.75)',borderRadius:4},
-        {label:'HSS Nakayasu',data:Qpeak_N.map(q=>+q.toFixed(0)),backgroundColor:'rgba(109,40,217,0.75)',borderRadius:4},
-      ]
-    },
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{
-        legend:{position:'bottom',labels:{font:{size:11},usePointStyle:true}},
-        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.raw+' m³/s'}}
-      },
-      scales:{
-        x:{grid:{display:false},ticks:{font:{size:11}}},
-        y:{title:{display:true,text:'Debit Puncak (m³/s)'},ticks:{font:{size:11}},grid:{color:'rgba(0,0,0,0.05)'}}
-      }
-    }
-  });
-}
-
-function toggleHydro(i,btn,color){
-  const ds=CH.hydro.data.datasets[i];
-  ds.hidden=!ds.hidden;
-  if(ds.hidden){btn.style.background='#fff';btn.style.color=color;}
-  else{btn.style.background=color;btn.style.color='#fff';}
-  CH.hydro.update();
-}
-
-/* ================================================================
-   TOC, SCROLL
-   ================================================================ */
-function updateProgress(){
-  const el=document.getElementById('progBar'),pct=document.getElementById('progPct');
-  const s=window.scrollY,total=document.body.scrollHeight-window.innerHeight;
-  const p=total>0?Math.round(s/total*100):0;
-  el.style.width=p+'%';pct.textContent=p+'%';
-}
-window.addEventListener('scroll',updateProgress,{passive:true});
-const tocLinks=document.querySelectorAll('.toc-link');
-const sections=Array.from(document.querySelectorAll('section[id],div[id]'));
-function updateToc(){
-  let cur='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
-  tocLinks.forEach(l=>{const h=l.getAttribute('href').replace('#','');l.classList.toggle('active',h===cur);});
-}
-window.addEventListener('scroll',updateToc,{passive:true});
-function toggleToc(){document.getElementById('tocFloat').classList.toggle('collapsed');}
-let tocV=false;
-function toggleTocMobile(){
-  tocV=!tocV;const tf=document.getElementById('tocFloat');
-  tf.style.display=tocV?'block':'';
-  if(tocV){tf.style.position='fixed';tf.style.right='0';tf.style.top='80px';}
-}
-function copyCode(btn){
-  const t=btn.closest('.code-wrap').querySelector('pre').innerText;
-  navigator.clipboard.writeText(t).then(()=>{btn.textContent='✓ Tersalin!';setTimeout(()=>btn.textContent='Salin',2000);});
-}
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');buildCharts();}});
-},{threshold:0.01,rootMargin:'0px 0px -10px 0px'});
-document.querySelectorAll('.anim-in').forEach(el=>io.observe(el));
-
-/* INIT */
-buildDASParams();
-buildReffTable();
-buildPeakCards();
-buildDebitTable();
-updateRasional();
-updateProgress();
-setTimeout(buildCharts,400);
-</script>
 </div>
 <script>
+
 /* ================================================================
    DATA
    ================================================================ */
@@ -1632,5 +1309,6 @@ buildDebitTable();
 updateRasional();
 updateProgress();
 setTimeout(buildCharts,400);
+
 </script>
 {{< /rawhtml >}}

@@ -1,149 +1,112 @@
 /*
- * hecras-modul.css — v2 (Wowchemy-integrated)
- * Mengikuti sistem light/dark Wowchemy via class .dark pada <body>
- * Primary color: #2962ff (sesuai irpanchumaedi.com)
- *
- * Cara deploy: ganti file static/css/hecras-modul.css dengan file ini
+ * hecras-modul.css — v3 (fully integrated with Wowchemy)
+ * - Tidak ada background hardcoded → ikut body Wowchemy
+ * - Light/dark via body.dark selector (sistem Wowchemy)
+ * - Primary color: #2962ff (sesuai irpanchumaedi.com)
+ * - Tidak ada hero, tidak ada topnav, tidak ada container
  */
 
-/* ─── DESIGN TOKENS ─────────────────────────────────────────
-   Wowchemy toggle dark mode dengan class .dark di <body>.
-   Kita definisikan dua set variabel:
-   - Default   = Light mode
-   - .dark ...  = Dark mode
-   ──────────────────────────────────────────────────────── */
+/* ─── TOKEN: LIGHT MODE (default) ──────────────────────── */
 .hecras-modul {
-  --hec-primary:    #2962ff;   /* primary Wowchemy irpanchumaedi.com */
-  --hec-primary-faint: rgba(41,98,255,0.12);
-  --hec-primary-border: rgba(41,98,255,0.3);
+  --hec-primary:        #2962ff;
+  --hec-primary-faint:  rgba(41,98,255,0.10);
+  --hec-primary-border: rgba(41,98,255,0.25);
 
-  /* Light mode defaults */
-  --hec-bg:         #ffffff;
-  --hec-bg-card:    #f8f9fb;
-  --hec-bg-card2:   #eef0f5;
-  --hec-border:     #e2e5ef;
-  --hec-text:       #1a1d2e;
-  --hec-muted:      #4a5168;
-  --hec-dim:        #8e94b0;
-  --hec-code-bg:    #f0f2f8;
+  --hec-bg-card:  #f4f5f9;
+  --hec-bg-card2: #eaecf3;
+  --hec-border:   #dde0ed;
+  --hec-text:     #1a1d2e;
+  --hec-muted:    #4a5168;
+  --hec-dim:      #8e94b0;
+  --hec-code-bg:  #eef0f8;
 
-  --hec-success:    #1a8754;
-  --hec-warning:    #c87000;
-  --hec-danger:     #c0392b;
-  --hec-info:       #1565c0;
+  --hec-success:        #1a7a4a;
+  --hec-warning:        #b86e00;
+  --hec-danger:         #b52b2b;
+  --hec-info:           #1255a8;
 
-  --hec-success-faint: rgba(26,135,84,0.08);
-  --hec-warning-faint: rgba(200,112,0,0.08);
-  --hec-danger-faint:  rgba(192,57,43,0.08);
-  --hec-info-faint:    rgba(21,101,192,0.08);
-  --hec-success-border: rgba(26,135,84,0.25);
-  --hec-warning-border: rgba(200,112,0,0.25);
-  --hec-danger-border:  rgba(192,57,43,0.25);
-  --hec-info-border:    rgba(21,101,192,0.25);
+  --hec-success-faint:  rgba(26,122,74,0.08);
+  --hec-warning-faint:  rgba(184,110,0,0.08);
+  --hec-danger-faint:   rgba(181,43,43,0.08);
+  --hec-info-faint:     rgba(18,85,168,0.08);
+  --hec-success-border: rgba(26,122,74,0.22);
+  --hec-warning-border: rgba(184,110,0,0.22);
+  --hec-danger-border:  rgba(181,43,43,0.22);
+  --hec-info-border:    rgba(18,85,168,0.22);
 }
 
-/* Dark mode — aktif saat Wowchemy toggle class .dark di <body> */
+/* ─── TOKEN: DARK MODE ──────────────────────────────────── */
 body.dark .hecras-modul {
-  --hec-bg:         #1b1d27;
-  --hec-bg-card:    #222638;
-  --hec-bg-card2:   #2a2e42;
-  --hec-border:     #2e3149;
-  --hec-text:       #e8eaf6;
-  --hec-muted:      #8e94b5;
-  --hec-dim:        #5a6080;
-  --hec-code-bg:    #12151f;
+  --hec-primary:        #5b8fff;
+  --hec-primary-faint:  rgba(91,143,255,0.12);
+  --hec-primary-border: rgba(91,143,255,0.30);
 
-  --hec-success:    #3ecf8e;
-  --hec-warning:    #f4a642;
-  --hec-danger:     #e05a5a;
-  --hec-info:       #4a9eff;
+  --hec-bg-card:  #222638;
+  --hec-bg-card2: #2a2e42;
+  --hec-border:   #343858;
+  --hec-text:     #e8eaf6;
+  --hec-muted:    #8e94b5;
+  --hec-dim:      #5a6080;
+  --hec-code-bg:  #12151f;
 
-  --hec-success-faint: rgba(62,207,142,0.08);
-  --hec-warning-faint: rgba(244,166,66,0.08);
-  --hec-danger-faint:  rgba(224,90,90,0.08);
-  --hec-info-faint:    rgba(74,158,255,0.08);
-  --hec-success-border: rgba(62,207,142,0.25);
-  --hec-warning-border: rgba(244,166,66,0.25);
-  --hec-danger-border:  rgba(224,90,90,0.25);
-  --hec-info-border:    rgba(74,158,255,0.25);
+  --hec-success:        #3ecf8e;
+  --hec-warning:        #f4a642;
+  --hec-danger:         #e05a5a;
+  --hec-info:           #4a9eff;
 
-  --hec-primary-faint:  rgba(41,98,255,0.15);
-  --hec-primary-border: rgba(41,98,255,0.35);
+  --hec-success-faint:  rgba(62,207,142,0.10);
+  --hec-warning-faint:  rgba(244,166,66,0.10);
+  --hec-danger-faint:   rgba(224,90,90,0.10);
+  --hec-info-faint:     rgba(74,158,255,0.10);
+  --hec-success-border: rgba(62,207,142,0.28);
+  --hec-warning-border: rgba(244,166,66,0.28);
+  --hec-danger-border:  rgba(224,90,90,0.28);
+  --hec-info-border:    rgba(74,158,255,0.28);
 }
 
 /* ─── BASE ─────────────────────────────────────────────── */
-.hecras-modul {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--hec-text);
-  /* background sengaja tidak di-set — ikut body Wowchemy */
-}
+/* Tidak set background — ikut body Wowchemy sepenuhnya */
+.hecras-modul { font-size: 16px; line-height: 1.7; color: var(--hec-text); }
+.hecras-modul p      { color: var(--hec-muted); margin-bottom: 1rem; font-size: 15.5px; }
+.hecras-modul strong { color: var(--hec-text); font-weight: 600; }
+.hecras-modul h3     { font-size: 1.05rem; font-weight: 600; color: var(--hec-text); margin: 1.5rem 0 0.75rem; border: none; }
+.hecras-modul h4     { font-size: 0.95rem; font-weight: 600; color: var(--hec-muted); margin: 1.25rem 0 0.5rem; }
 
-/* ─── HERO ─────────────────────────────────────────────── */
-.hecras-modul .hec-hero {
-  background: var(--hec-bg-card);
-  border: 1px solid var(--hec-border);
-  border-radius: 14px;
-  padding: 2.5rem 2rem 2rem;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 2rem;
+/* ─── MODUL META STRIP ─────────────────────────────────── */
+/* Pengganti hero: strip tipis info modul di atas objectives */
+.hecras-modul .modul-meta {
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap; margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--hec-border);
 }
-.hecras-modul .hec-hero::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 280px; height: 280px;
-  background: radial-gradient(circle, var(--hec-primary-faint) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hecras-modul .hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.hecras-modul .modul-tag {
+  display: inline-flex; align-items: center; gap: 5px;
   background: var(--hec-primary-faint);
   border: 1px solid var(--hec-primary-border);
   color: var(--hec-primary);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 1rem;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+  letter-spacing: 0.4px; text-transform: uppercase;
 }
-.hecras-modul .hec-hero h1 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: var(--hec-text);
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-  border: none;
-  padding: 0;
+.hecras-modul .meta-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 13px; color: var(--hec-dim);
 }
-.hecras-modul .hec-hero > p {
-  color: var(--hec-muted);
-  font-size: 1rem;
-  max-width: 640px;
-  margin-bottom: 1.25rem;
+.hecras-modul .meta-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%; background: var(--hec-primary); flex-shrink: 0;
 }
-.hecras-modul .hero-meta    { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-.hecras-modul .meta-item    { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--hec-dim); }
-.hecras-modul .meta-dot     { width: 6px; height: 6px; border-radius: 50%; background: var(--hec-primary); flex-shrink: 0; }
 
 /* ─── LEARNING OBJECTIVES ──────────────────────────────── */
 .hecras-modul .objectives {
   background: var(--hec-primary-faint);
   border: 1px solid var(--hec-primary-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;
 }
 .hecras-modul .objectives-title {
-  font-size: 13px; font-weight: 600;
-  color: var(--hec-primary);
-  margin-bottom: 1rem;
-  text-transform: uppercase; letter-spacing: 0.5px;
+  font-size: 13px; font-weight: 700; color: var(--hec-primary);
+  margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;
 }
 .hecras-modul .objectives ul {
   list-style: none; padding: 0; margin: 0;
@@ -164,60 +127,42 @@ body.dark .hecras-modul {
 
 /* ─── SECTION HEADING ──────────────────────────────────── */
 .hecras-modul .section-heading {
-  display: flex; align-items: center; gap: 12px;
-  margin: 2.5rem 0 1.25rem;
+  display: flex; align-items: center; gap: 12px; margin: 2.5rem 0 1.25rem;
 }
 .hecras-modul .section-num {
   width: 32px; height: 32px;
   background: var(--hec-primary-faint);
   border: 1px solid var(--hec-primary-border);
-  border-radius: 8px;
+  border-radius: 8px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700;
-  color: var(--hec-primary); flex-shrink: 0;
+  font-size: 13px; font-weight: 700; color: var(--hec-primary);
 }
 .hecras-modul .section-heading h2 {
-  font-size: 1.25rem; font-weight: 600;
-  color: var(--hec-text);
+  font-size: 1.2rem; font-weight: 600; color: var(--hec-text);
   margin: 0; padding: 0; border: none;
 }
 
 /* ─── DIVIDER ──────────────────────────────────────────── */
-.hecras-modul .divider {
-  border: none;
-  border-top: 1px solid var(--hec-border);
-  margin: 2rem 0;
-}
-
-/* ─── PROSE ────────────────────────────────────────────── */
-.hecras-modul p      { color: var(--hec-muted); margin-bottom: 1rem; font-size: 15.5px; }
-.hecras-modul strong { color: var(--hec-text); font-weight: 600; }
-.hecras-modul h3     { font-size: 1.05rem; font-weight: 600; color: var(--hec-text); margin: 1.5rem 0 0.75rem; border: none; }
-.hecras-modul h4     { font-size: 0.95rem; font-weight: 600; color: var(--hec-muted); margin: 1.25rem 0 0.5rem; }
+.hecras-modul .divider { border: none; border-top: 1px solid var(--hec-border); margin: 2rem 0; }
 
 /* ─── LISTS ────────────────────────────────────────────── */
-.hecras-modul ul.prose-list,
-.hecras-modul ol.prose-list {
-  margin: 0.75rem 0 1rem 0;
-  padding-left: 1.25rem;
+.hecras-modul ul.prose-list, .hecras-modul ol.prose-list {
+  margin: 0.75rem 0 1rem; padding-left: 1.25rem;
   color: var(--hec-muted); font-size: 15px;
 }
-.hecras-modul ul.prose-list li,
-.hecras-modul ol.prose-list li { margin-bottom: 6px; line-height: 1.6; }
-.hecras-modul ul.prose-list    { list-style: none; padding-left: 0; }
+.hecras-modul ul.prose-list li, .hecras-modul ol.prose-list li { margin-bottom: 6px; line-height: 1.6; }
+.hecras-modul ul.prose-list { list-style: none; padding-left: 0; }
 .hecras-modul ul.prose-list li::before { content: '•'; color: var(--hec-primary); font-weight: bold; margin-right: 8px; }
 
 /* ─── INFO BOX ─────────────────────────────────────────── */
 .hecras-modul .info-box {
-  background: var(--hec-info-faint);
-  border: 1px solid var(--hec-info-border);
+  background: var(--hec-info-faint); border: 1px solid var(--hec-info-border);
   border-left: 3px solid var(--hec-info);
-  border-radius: 0 8px 8px 0;
-  padding: 1rem 1.25rem; margin: 1.25rem 0;
+  border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.25rem 0;
 }
 .hecras-modul .info-box.warning { background: var(--hec-warning-faint); border-color: var(--hec-warning-border); border-left-color: var(--hec-warning); }
 .hecras-modul .info-box.success { background: var(--hec-success-faint); border-color: var(--hec-success-border); border-left-color: var(--hec-success); }
-.hecras-modul .info-box.danger  { background: var(--hec-danger-faint);  border-color: var(--hec-danger-border);  border-left-color: var(--hec-danger); }
+.hecras-modul .info-box.danger  { background: var(--hec-danger-faint);  border-color: var(--hec-danger-border);  border-left-color: var(--hec-danger);  }
 .hecras-modul .info-box-label   { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--hec-info); margin-bottom: 6px; }
 .hecras-modul .info-box.warning .info-box-label { color: var(--hec-warning); }
 .hecras-modul .info-box.success .info-box-label { color: var(--hec-success); }
@@ -226,13 +171,11 @@ body.dark .hecras-modul {
 
 /* ─── CARDS ────────────────────────────────────────────── */
 .hecras-modul .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
   gap: 12px; margin: 1.25rem 0;
 }
 .hecras-modul .card {
-  background: var(--hec-bg-card);
-  border: 1px solid var(--hec-border);
+  background: var(--hec-bg-card); border: 1px solid var(--hec-border);
   border-radius: 10px; padding: 1.1rem 1.2rem;
 }
 .hecras-modul .card-icon  { font-size: 1.5rem; margin-bottom: 8px; display: block; }
@@ -243,19 +186,15 @@ body.dark .hecras-modul {
 .hecras-modul .steps { display: flex; flex-direction: column; gap: 0; margin: 1.25rem 0; }
 .hecras-modul .step  { display: flex; gap: 16px; position: relative; }
 .hecras-modul .step:not(:last-child)::after {
-  content: ''; position: absolute;
-  left: 19px; top: 40px; bottom: 0;
+  content: ''; position: absolute; left: 19px; top: 40px; bottom: 0;
   width: 2px; background: var(--hec-border);
 }
 .hecras-modul .step-num {
-  width: 38px; height: 38px;
-  background: var(--hec-bg-card2);
-  border: 2px solid var(--hec-border);
-  border-radius: 50%;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--hec-bg-card2); border: 2px solid var(--hec-border);
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700;
-  color: var(--hec-primary); flex-shrink: 0;
-  position: relative; z-index: 1;
+  font-size: 13px; font-weight: 700; color: var(--hec-primary);
+  flex-shrink: 0; position: relative; z-index: 1;
 }
 .hecras-modul .step-body  { padding-bottom: 1.5rem; flex: 1; }
 .hecras-modul .step-title { font-size: 15px; font-weight: 600; color: var(--hec-text); margin-bottom: 6px; padding-top: 7px; }
@@ -265,60 +204,51 @@ body.dark .hecras-modul {
 /* ─── TABLE ────────────────────────────────────────────── */
 .hecras-modul .file-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 1.25rem 0; }
 .hecras-modul .file-table th {
-  background: var(--hec-bg-card2);
-  color: var(--hec-muted);
-  font-size: 12px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.5px;
-  padding: 10px 14px; text-align: left;
-  border-bottom: 1px solid var(--hec-border);
+  background: var(--hec-bg-card2); color: var(--hec-muted);
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 10px 14px; text-align: left;
+  border-bottom: 2px solid var(--hec-border);
 }
 .hecras-modul .file-table td {
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--hec-border);
+  padding: 10px 14px; border-bottom: 1px solid var(--hec-border);
   color: var(--hec-muted); vertical-align: top;
 }
 .hecras-modul .file-table tr:last-child td { border-bottom: none; }
-.hecras-modul .file-table tr:hover td     { background: var(--hec-bg-card); }
-
-/* ─── CODE / BADGE ─────────────────────────────────────── */
+.hecras-modul .file-table tr:hover td { background: var(--hec-bg-card); }
 .hecras-modul .file-ext {
   font-family: 'Courier New', monospace;
-  background: var(--hec-code-bg);
-  color: var(--hec-primary);
+  background: var(--hec-code-bg); color: var(--hec-primary);
   padding: 2px 8px; border-radius: 4px; font-size: 13px;
 }
 
 /* ─── FLOW DIAGRAM ─────────────────────────────────────── */
 .hecras-modul .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 0; margin: 1.25rem 0; }
 .hecras-modul .flow-box {
-  background: var(--hec-bg-card);
-  border: 1px solid var(--hec-border);
+  background: var(--hec-bg-card); border: 1px solid var(--hec-border);
   border-radius: 8px; padding: 10px 14px;
-  font-size: 13.5px; color: var(--hec-muted);
+  font-size: 13px; color: var(--hec-muted);
   text-align: center; flex: 1; min-width: 90px;
 }
 .hecras-modul .flow-box.highlight {
   border-color: var(--hec-primary-border);
-  background: var(--hec-primary-faint);
-  color: var(--hec-text);
+  background: var(--hec-primary-faint); color: var(--hec-text);
 }
-.hecras-modul .flow-arrow { color: var(--hec-dim); font-size: 1.3rem; padding: 0 4px; flex-shrink: 0; }
+.hecras-modul .flow-arrow { color: var(--hec-dim); font-size: 1.2rem; padding: 0 4px; flex-shrink: 0; }
 
 /* ─── TAGS ─────────────────────────────────────────────── */
 .hecras-modul .tag { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 2px 10px; border-radius: 12px; margin-right: 4px; }
-.hecras-modul .tag-purple { background: var(--hec-primary-faint);   color: var(--hec-primary); border: 1px solid var(--hec-primary-border); }
-.hecras-modul .tag-green  { background: var(--hec-success-faint);   color: var(--hec-success); border: 1px solid var(--hec-success-border); }
-.hecras-modul .tag-orange { background: var(--hec-warning-faint);   color: var(--hec-warning); border: 1px solid var(--hec-warning-border); }
-.hecras-modul .tag-blue   { background: var(--hec-info-faint);      color: var(--hec-info);    border: 1px solid var(--hec-info-border);    }
+.hecras-modul .tag-purple { background: var(--hec-primary-faint); color: var(--hec-primary); border: 1px solid var(--hec-primary-border); }
+.hecras-modul .tag-green  { background: var(--hec-success-faint); color: var(--hec-success); border: 1px solid var(--hec-success-border); }
+.hecras-modul .tag-orange { background: var(--hec-warning-faint); color: var(--hec-warning); border: 1px solid var(--hec-warning-border); }
+.hecras-modul .tag-blue   { background: var(--hec-info-faint);    color: var(--hec-info);    border: 1px solid var(--hec-info-border);    }
 
 /* ─── SUMMARY ──────────────────────────────────────────── */
 .hecras-modul .summary-box {
-  background: var(--hec-primary-faint);
-  border: 1px solid var(--hec-primary-border);
+  background: var(--hec-primary-faint); border: 1px solid var(--hec-primary-border);
   border-radius: 12px; padding: 1.5rem; margin-top: 2.5rem;
 }
-.hecras-modul .summary-title { font-size: 14px; font-weight: 600; color: var(--hec-primary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.hecras-modul .summary-list  { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.hecras-modul .summary-title { font-size: 14px; font-weight: 700; color: var(--hec-primary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.hecras-modul .summary-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
 .hecras-modul .summary-list li { font-size: 14.5px; color: var(--hec-muted); padding-left: 16px; position: relative; }
 .hecras-modul .summary-list li::before { content: '→'; position: absolute; left: 0; color: var(--hec-primary); font-size: 12px; top: 1px; }
 
@@ -326,17 +256,34 @@ body.dark .hecras-modul {
 .hecras-modul .nav-modul { display: flex; gap: 10px; margin-top: 2rem; flex-wrap: wrap; }
 .hecras-modul .nav-modul a {
   flex: 1; min-width: 200px;
-  background: var(--hec-bg-card);
-  border: 1px solid var(--hec-border);
-  border-radius: 12px; padding: 1rem 1.25rem;
-  text-decoration: none;
-  display: flex; align-items: center; gap: 12px;
+  background: var(--hec-bg-card); border: 1px solid var(--hec-border);
+  border-radius: 10px; padding: 0.9rem 1.2rem;
+  text-decoration: none; display: flex; align-items: center; gap: 10px;
   transition: border-color 0.2s, background 0.2s;
 }
 .hecras-modul .nav-modul a:hover { border-color: var(--hec-primary-border); background: var(--hec-primary-faint); }
-.hecras-modul .nav-dir  { font-size: 11px; color: var(--hec-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+.hecras-modul .nav-dir  { font-size: 11px; color: var(--hec-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
 .hecras-modul .nav-name { font-size: 14px; font-weight: 600; color: var(--hec-text); }
-.hecras-modul .nav-icon { font-size: 1.3rem; color: var(--hec-primary); flex-shrink: 0; }
+.hecras-modul .nav-icon { font-size: 1.2rem; color: var(--hec-primary); flex-shrink: 0; }
+
+/* next/prev module (format lama) */
+.hecras-modul .next-module {
+  background: var(--hec-bg-card); border: 1px solid var(--hec-border);
+  border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; transition: border-color 0.2s;
+}
+.hecras-modul .next-module:hover { border-color: var(--hec-primary-border); background: var(--hec-primary-faint); }
+.hecras-modul .next-label { font-size: 11px; color: var(--hec-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+.hecras-modul .next-title { font-size: 14px; font-weight: 600; color: var(--hec-text); }
+.hecras-modul .next-arrow { font-size: 1.3rem; color: var(--hec-primary); }
+.hecras-modul .prev-module {
+  background: var(--hec-bg-card); border: 1px solid var(--hec-border);
+  border-radius: 10px; padding: 0.9rem 1.25rem; margin-top: 0.75rem;
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; transition: border-color 0.2s;
+}
+.hecras-modul .prev-module:hover { border-color: var(--hec-primary-border); background: var(--hec-primary-faint); }
 
 /* ─── FOOTNOTE ─────────────────────────────────────────── */
 .hecras-modul .footnote {
@@ -347,8 +294,7 @@ body.dark .hecras-modul {
 
 /* ─── LAYER BOX (Modul 2) ──────────────────────────────── */
 .hecras-modul .layer-box {
-  background: var(--hec-bg-card);
-  border: 1px solid var(--hec-border);
+  background: var(--hec-bg-card); border: 1px solid var(--hec-border);
   border-radius: 8px; padding: 0.85rem 1rem;
   margin-bottom: 6px; display: flex; align-items: flex-start; gap: 10px;
 }
@@ -360,55 +306,50 @@ body.dark .hecras-modul {
 
 /* ─── METHOD TABS (Modul 2) ────────────────────────────── */
 .hecras-modul .method-tabs {
-  display: flex; gap: 0;
-  margin: 1.5rem 0 0; border-radius: 10px;
-  overflow: hidden; border: 1px solid var(--hec-border);
+  display: flex; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--hec-border); margin: 1.5rem 0 0;
 }
 .hecras-modul .method-tab {
   flex: 1; padding: 0.85rem 1rem;
-  background: var(--hec-bg-card);
-  border: none; cursor: pointer;
-  font-family: inherit; font-size: 14px; font-weight: 600;
+  background: var(--hec-bg-card); border: none; cursor: pointer;
+  font-family: inherit; font-size: 13.5px; font-weight: 600;
   color: var(--hec-dim); transition: all 0.2s;
   border-right: 1px solid var(--hec-border); text-align: center;
 }
 .hecras-modul .method-tab:last-child { border-right: none; }
-.hecras-modul .method-tab.active     { background: var(--hec-success-faint); color: var(--hec-success); }
+.hecras-modul .method-tab.active { background: var(--hec-success-faint); color: var(--hec-success); }
 .hecras-modul .method-tab:hover:not(.active) { background: var(--hec-bg-card2); color: var(--hec-muted); }
-.hecras-modul .method-tab .mt-badge  { display: block; font-size: 11px; font-weight: 400; color: var(--hec-dim); margin-top: 2px; }
+.hecras-modul .method-tab .mt-badge { display: block; font-size: 11px; font-weight: 400; color: var(--hec-dim); margin-top: 2px; }
 .hecras-modul .method-tab.active .mt-badge { color: var(--hec-success); opacity: 0.7; }
-.hecras-modul .method-panel          { display: none; }
-.hecras-modul .method-panel.active   { display: block; }
+.hecras-modul .method-panel        { display: none; }
+.hecras-modul .method-panel.active { display: block; }
 
-/* ─── PERSONA CALLOUT (Modul 2) ───────────────────────── */
+/* ─── PERSONA (Modul 2) ────────────────────────────────── */
 .hecras-modul .persona-note {
-  background: var(--hec-bg-card2);
-  border: 1px solid var(--hec-border);
+  background: var(--hec-bg-card2); border: 1px solid var(--hec-border);
   border-radius: 10px; padding: 1rem 1.25rem;
   margin: 1.25rem 0; display: flex; gap: 12px; align-items: flex-start;
 }
 .hecras-modul .persona-avatar {
   width: 36px; height: 36px; border-radius: 50%;
-  background: var(--hec-success-faint);
-  border: 1px solid var(--hec-success-border);
+  background: var(--hec-success-faint); border: 1px solid var(--hec-success-border);
   flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1rem;
 }
 .hecras-modul .persona-name { font-size: 12px; font-weight: 700; color: var(--hec-success); margin-bottom: 4px; }
 .hecras-modul .persona-text { font-size: 14px; color: var(--hec-muted); line-height: 1.6; }
 
 /* ─── METHOD COMPARE (Modul 2) ─────────────────────────── */
-.hecras-modul .method-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 1.25rem 0; }
+.hecras-modul .method-compare { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 1.25rem 0; }
 .hecras-modul .mc-card   { background: var(--hec-bg-card); border: 1px solid var(--hec-border); border-radius: 10px; overflow: hidden; }
-.hecras-modul .mc-header { padding: 0.75rem 1rem; border-bottom: 1px solid var(--hec-border); }
+.hecras-modul .mc-header { padding: 0.75rem 1rem; border-bottom: 1px solid var(--hec-border); background: var(--hec-bg-card2); }
 .hecras-modul .mc-title  { font-size: 13px; font-weight: 700; color: var(--hec-text); }
 .hecras-modul .mc-sub    { font-size: 11px; color: var(--hec-dim); margin-top: 2px; }
 .hecras-modul .mc-body   { padding: 0.75rem 1rem; }
 .hecras-modul .mc-row    { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 5px; }
 .hecras-modul .mc-label  { color: var(--hec-dim); }
-.hecras-modul .mc-val    { font-weight: 600; }
-.hecras-modul .val-good  { color: var(--hec-success); }
-.hecras-modul .val-mid   { color: var(--hec-warning); }
-.hecras-modul .val-bad   { color: var(--hec-danger);  }
+.hecras-modul .val-good  { color: var(--hec-success); font-weight: 600; }
+.hecras-modul .val-mid   { color: var(--hec-warning); font-weight: 600; }
+.hecras-modul .val-bad   { color: var(--hec-danger);  font-weight: 600; }
 
 /* ─── METHOD BADGE (Modul 2) ───────────────────────────── */
 .hecras-modul .method-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.4px; }
@@ -426,26 +367,25 @@ body.dark .hecras-modul {
 .hecras-modul .video-caption { font-size: 12.5px; color: var(--hec-dim); text-align: center; margin-top: -0.5rem; margin-bottom: 1.25rem; }
 .hecras-modul .video-caption a { color: var(--hec-success); text-decoration: none; }
 
+/* ─── FORMULA (Modul 3/4/5) ────────────────────────────── */
+.hecras-modul .formula-box { background: var(--hec-bg-card2); border: 1px solid var(--hec-border); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+.hecras-modul .formula     { font-family: 'Courier New', monospace; font-size: 1rem; color: var(--hec-primary); text-align: center; font-weight: 600; margin-bottom: 0.75rem; }
+.hecras-modul .formula-var { font-size: 13px; color: var(--hec-dim); }
+.hecras-modul .formula-vars{ display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; }
+
 /* ─── DECISION BOX (Modul 5) ───────────────────────────── */
-.hecras-modul .decision-box   { background: var(--hec-bg-card); border: 1px solid var(--hec-border); border-radius: 10px; overflow: hidden; margin: 1.25rem 0; }
-.hecras-modul .decision-header{ background: var(--hec-bg-card2); padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--hec-border); font-size: 13px; font-weight: 600; color: var(--hec-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.hecras-modul .decision-row   { display: flex; align-items: flex-start; border-bottom: 1px solid var(--hec-border); }
+.hecras-modul .decision-box    { background: var(--hec-bg-card); border: 1px solid var(--hec-border); border-radius: 10px; overflow: hidden; margin: 1.25rem 0; }
+.hecras-modul .decision-header { background: var(--hec-bg-card2); padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--hec-border); font-size: 12px; font-weight: 700; color: var(--hec-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.hecras-modul .decision-row    { display: flex; border-bottom: 1px solid var(--hec-border); }
 .hecras-modul .decision-row:last-child { border-bottom: none; }
-.hecras-modul .decision-cond  { flex: 0 0 50%; padding: 10px 14px; font-size: 14px; color: var(--hec-muted); border-right: 1px solid var(--hec-border); }
-.hecras-modul .decision-result{ flex: 0 0 50%; padding: 10px 14px; font-size: 14px; font-weight: 600; }
+.hecras-modul .decision-cond   { flex: 0 0 55%; padding: 9px 14px; font-size: 14px; color: var(--hec-muted); border-right: 1px solid var(--hec-border); }
+.hecras-modul .decision-result { flex: 1; padding: 9px 14px; font-size: 14px; font-weight: 600; }
 .hecras-modul .use-1d  { color: var(--hec-info); }
 .hecras-modul .use-2d  { color: var(--hec-success); }
 .hecras-modul .either  { color: var(--hec-warning); }
 
-/* ─── FORMULA BOX (Modul 3, 4, 5) ─────────────────────── */
-.hecras-modul .formula-box { background: var(--hec-bg-card2); border: 1px solid var(--hec-border); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
-.hecras-modul .formula      { font-family: 'Courier New', monospace; font-size: 1rem; color: var(--hec-primary); text-align: center; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 0.75rem; }
-.hecras-modul .formula-vars { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; }
-.hecras-modul .formula-var  { font-size: 13px; color: var(--hec-dim); }
-
 /* ─── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .hecras-modul .hec-hero h1    { font-size: 1.5rem; }
   .hecras-modul .cards-grid     { grid-template-columns: 1fr; }
   .hecras-modul .method-compare { grid-template-columns: 1fr; }
   .hecras-modul .method-tabs    { flex-direction: column; }

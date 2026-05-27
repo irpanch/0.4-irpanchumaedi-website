@@ -302,17 +302,17 @@ design:
       <div class="kur-module-title">Pengantar HEC-RAS — Konsep & Interface</div>
       <div class="kur-module-desc">Apa itu HEC-RAS, kapan digunakan, dan bagaimana alur kerja dari data geometri hingga output profil muka air.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-persiapan-geometri/">
     <span class="kur-module-icon">📐</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Persiapan Data Geometri dari QGIS ke HEC-RAS</div>
       <div class="kur-module-desc">Workflow dari DEM dan data survei topografi ke geometri sungai di HEC-RAS — termasuk HEC-GeoRAS.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">🔁</span>

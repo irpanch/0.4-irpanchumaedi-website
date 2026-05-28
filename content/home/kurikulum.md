@@ -288,7 +288,7 @@ design:
 <div class="kur-phase-header" onclick="togglePhase(this)">
   <div class="kur-phase-num">4</div>
   <div class="kur-phase-info">
-    <div class="kur-phase-title">Pemodelan Hidrolika — HEC-RAS (2 dari 6) </div>
+    <div class="kur-phase-title">Pemodelan Hidrolika — HEC-RAS (5 dari 5) </div>
     <div class="kur-phase-sub">1D · 2D · Steady · Unsteady · Flood Mapping</div>
   </div>
   <span class="kur-phase-arrow">▼</span>

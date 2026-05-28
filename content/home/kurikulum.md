@@ -314,14 +314,14 @@ design:
     <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-steady-flow-1d/>
     <span class="kur-module-icon">🔁</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Simulasi Aliran Steady 1D</div>
       <div class="kur-module-desc">Profil muka air kondisi steady — input debit rancangan, kondisi batas, dan interpretasi output untuk desain.</div>
     </div>
     <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+  </a>
 
   <div class="kur-module">
     <span class="kur-module-icon">🌊</span>

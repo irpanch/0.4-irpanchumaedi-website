@@ -640,7 +640,7 @@ commentable: false
     </ul>
   </div>
 
-  <a href="/post/materi-steady-flow/" class="next-module">
+  <a href="/post/materi-steady-flow-1d/" class="next-module">
     <div>
       <div class="next-label">Modul Berikutnya →</div>
       <div class="next-title">Modul 3: Simulasi Aliran Steady 1D</div>

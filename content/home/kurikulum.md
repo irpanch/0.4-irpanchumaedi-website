@@ -314,32 +314,32 @@ design:
     <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <a class="kur-module" href="/post/materi-steady-flow-1d/>
+  <a class="kur-module" href="/post/materi-steady-flow-1d/">
     <span class="kur-module-icon">🔁</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Simulasi Aliran Steady 1D</div>
       <div class="kur-module-desc">Profil muka air kondisi steady — input debit rancangan, kondisi batas, dan interpretasi output untuk desain.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
   </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-unsteady-flood-mapping/">
     <span class="kur-module-icon">🌊</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Simulasi Banjir Unsteady & Flood Mapping</div>
       <div class="kur-module-desc">Penelusuran banjir (flood routing) dan pembuatan peta genangan — dari hidrograf masukan hingga peta risiko banjir.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
-  <div class="kur-module">
+  <a class="kur-module" href="/post/materi-pemodelan-2d-hecras/">
     <span class="kur-module-icon">🗾</span>
     <div class="kur-module-info">
       <div class="kur-module-title">Pemodelan 2D dengan HEC-RAS</div>
       <div class="kur-module-desc">Kapan 1D tidak cukup dan perlu 2D — setup mesh, kondisi batas, dan visualisasi hasil simulasi 2D.</div>
     </div>
-    <span class="kur-module-badge badge-soon">📅 Segera</span>
-  </div>
+    <span class="kur-module-badge badge-done">✅ Tersedia</span>
+  </a>
 
 </div>
 </div>

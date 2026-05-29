@@ -237,7 +237,7 @@ Hasil pengukuran topografi lapangan secara teristris menggunakan total station d
 | Lokasi | Panjang pengukuran | Skala | Peralatan | Format | Unduh |
 |--------|-----------|-------|-----------|--------|-------|
 | Sungai Siak — Riau (2023) | ± 500 (km) | 1:1.000 | Total Station | DWG, EXCEL | [Unduh](https://drive.google.com/drive/folders/1_T8GgchLglH24jEl1Q-Cy0JVR__lsy1O?usp=drive_link) |
-| Sungai Sutoyo — Banjarmasin | - | 1:1.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
+| Sungai Sutoyo — Banjarmasin (2026) | ± 500 (Ha) | 1:1.000 | Total Station | DWG | [Unduh](https://drive.google.com/drive/folders/1enEwJrrLydDnumlZscEX11r2-8StRjw_?usp=sharing) |
 | Sungai Mahakam — Kutai Barat | - | 1:2.000 | Total Station | DXF, PDF | <span class="badge-soon">Segera hadir</span> |
 
 **Data LiDAR**

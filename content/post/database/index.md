@@ -244,7 +244,8 @@ Hasil pengukuran topografi lapangan secara teristris menggunakan total station d
 
 | Lokasi | Resolusi | Cakupan | Format | Unduh |
 |--------|----------|---------|--------|-------|
-| Sungai Sail - Pekanbaru | 0.5 m | - | tiff | [Unduh](https://drive.google.com/drive/folders/1U559v4WqyskKILnbm1mdTI2JpJyfblOL?usp=sharing) |
+| Sungai Sail - Pekanbaru (2023) | 0.5 m | - | tiff | [Unduh](https://drive.google.com/drive/folders/1U559v4WqyskKILnbm1mdTI2JpJyfblOL?usp=sharing) |
+| Sungai Mahakam Hilir  (2024) | 5 m | 100 Km dari Muara | tiff | [Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgCLN623017hSaU4artNcXNmARwJ_tr2e5g6u9rA4JAu7BA?e=MElteM) |
 
 <small>*Catatan: Data topografi teristris merupakan hasil survei lapangan. Harap cantumkan sumber bila digunakan dalam perencanaan teknis atau publikasi ilmiah.*</small>
 

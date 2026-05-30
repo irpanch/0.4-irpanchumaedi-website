@@ -211,67 +211,171 @@ html {
 }
 
 // =====================================================================
-//  CUSTOM CSS - Irpan Chumaedi (www.irpanchumaedi.com)
-//  Perbaikan tampilan navigasi "Artikel Sebelumnya / Selanjutnya"
-//  pada mode gelap (dark mode).
+//  CUSTOM CSS — Irpan Chumaedi (www.irpanchumaedi.com)
+//  Perbaikan keterbacaan teks pada MODE GELAP (dark mode)
+//  Tema: starter-academic (Wowchemy / Hugo Academic)
+//
+//  Catatan:
+//  - Semua aturan dibungkus selector ".dark" agar HANYA berlaku
+//    di dark mode; tampilan light mode tidak terpengaruh.
+//  - "!important" diperlukan untuk menimpa inline style pada HTML.
+//  - Palet warna gelap yang dipakai (konsisten di seluruh file):
+//      #1a2332  -> navy gelap (header/caption)
+//      #2b3035  -> abu gelap (background kartu)
+//      #343a40  -> abu gelap (hover)
+//      #3a4046  -> garis tepi (border)
+//      #e9ecef / #f1f3f5 -> teks utama terang
+//      #adb5bd / #ced4da -> teks sekunder (label/satuan)
+//      #74a3f0 / #93c5fd -> aksen biru terang
 // =====================================================================
 
-// ---------------------------------------------------------------------
-//  1. KARTU NAVIGASI - redupkan background putih di dark mode
-// ---------------------------------------------------------------------
+
+// =====================================================================
+//  1. NAVIGASI ARTIKEL (Artikel Sebelumnya / Selanjutnya)
+// =====================================================================
+
+// Redupkan background kartu navigasi
 .dark .nav-link {
-  background-color: #2b3035 !important;   // abu gelap, tidak mencolok
+  background-color: #2b3035 !important;
   border: 1px solid #3a4046 !important;
 }
 
-// Efek saat kursor diarahkan ke kartu
 .dark .nav-link:hover {
   background-color: #343a40 !important;
 }
 
-// ---------------------------------------------------------------------
-//  2. TEKS JUDUL ARTIKEL - pastikan terbaca jelas di dark mode
-// ---------------------------------------------------------------------
+// Teks judul artikel
 .dark .nav-link-title {
-  color: #74a3f0 !important;   // biru terang, kontras di background gelap
+  color: #74a3f0 !important;
 }
 
-// Label kecil di atas judul ("ARTIKEL SEBELUMNYA", dst.)
+// Label kecil ("ARTIKEL SEBELUMNYA", dst.)
 .dark .nav-link-label {
-  color: #adb5bd !important;   // abu terang
+  color: #adb5bd !important;
 }
 
-// Tanda panah ← dan →
+// Tanda panah  <-  ->
 .dark .nav-link span {
   color: #74a3f0 !important;
 }
 
 
 // =====================================================================
-//  Perbaikan tabel "Panduan Pemilihan Metode" (#s4b) di dark mode
+//  2. SECTION #s3 — DATA DAERAH ALIRAN SUNGAI (DAS)
 // =====================================================================
 
-// Cell "Kadang" (biru) -> sub-teks #1e3a5f terlalu gelap, dibuat terang
-.dark #s4b td div[style*="#1e3a5f"] {
-  color: #93c5fd !important;
+// Paragraf pembuka (var(--gray-600) terlalu gelap)
+.dark #s3 p[style*="gray-600"] {
+  color: #ced4da !important;
 }
 
-// Sub-teks hijau "Metode utama" (#065f46) -> lebih terang di dark mode
-.dark #s4b td div[style*="#065f46"] {
-  color: #6ee7b7 !important;
+// --- Kartu parameter DAS (LUAS DAS, PANJANG SUNGAI, dst.) ---
+.dark .das-param {
+  background-color: #2b3035 !important;
 }
 
-// Sub-teks merah (#7f1d1d) -> lebih terang di dark mode
-.dark #s4b td div[style*="#7f1d1d"] {
-  color: #fca5a5 !important;
+// Label kartu (LUAS DAS, KEMIRINGAN DAS, dst.)
+.dark .das-param-name {
+  color: #adb5bd !important;
 }
 
-// Paragraf pembuka (var(--gray-600)) -> dinaikkan kontrasnya
+// Angka nilai (50, 10, 0.65, dst.) — dibuat menonjol
+.dark .das-param-val {
+  color: #f1f3f5 !important;
+}
+
+// Satuan (km², jam, m/m, dst.)
+.dark .das-param-unit {
+  color: #adb5bd !important;
+}
+
+// --- Kartu biasa di #s3 (Sumber Data DAS, Tools yang Digunakan) ---
+.dark #s3 .card {
+  background-color: #2b3035 !important;
+}
+
+.dark #s3 .card p,
+.dark #s3 .card .card-label,
+.dark #s3 .card strong {
+  color: #e9ecef !important;
+}
+
+
+// =====================================================================
+//  3. SECTION #s4b — PANDUAN PEMILIHAN METODE (tabel matriks)
+// =====================================================================
+
+// Paragraf pembuka
 .dark #s4b > p[style*="gray-600"] {
   color: #ced4da !important;
 }
 
-// Sumber di bawah tabel (var(--gray-400)) biarkan, tapi pastikan terbaca
+// --- Header caption tabel (background navy, teks putih) ---
+.dark #s4b div[style*="var(--navy)"],
+.dark #s4b div[style*="background:var(--navy)"] {
+  background-color: #1a2332 !important;
+  color: #f1f3f5 !important;
+}
+
+.dark #s4b div[style*="var(--navy)"] span {
+  color: #f1f3f5 !important;
+}
+
+// --- Sub-teks di dalam cell tabel ---
+// Cell "Kadang" (biru) — teks #1e3a5f terlalu gelap
+.dark #s4b td div[style*="#1e3a5f"] {
+  color: #93c5fd !important;
+}
+
+// Cell "Biasanya" (hijau) — sub-teks #065f46
+.dark #s4b td div[style*="#065f46"] {
+  color: #6ee7b7 !important;
+}
+
+// Cell "Tidak Berlaku" (merah) — sub-teks #7f1d1d
+.dark #s4b td div[style*="#7f1d1d"] {
+  color: #fca5a5 !important;
+}
+
+// Keterangan sumber di bawah tabel (var(--gray-400))
 .dark #s4b div[style*="gray-400"] {
   color: #adb5bd !important;
+}
+
+
+// =====================================================================
+//  4. POLA UMUM — kartu background putih (#fff) di seluruh halaman
+//     Menangani section lain yang memakai pola serupa secara otomatis.
+//     (Jika ada section yang TIDAK ingin terpengaruh, beri tahu agar
+//      dibuatkan pengecualian.)
+// =====================================================================
+
+// Paragraf abu redup di mana pun (var(--gray-600))
+.dark p[style*="gray-600"] {
+  color: #ced4da !important;
+}
+
+// Teks abu sangat redup (var(--gray-400) / var(--gray-500))
+.dark [style*="gray-400"],
+.dark [style*="gray-500"] {
+  color: #adb5bd !important;
+}
+
+// =====================================================================
+//  Hilangkan kotak background di sekeliling menu navigasi (desktop)
+// =====================================================================
+#navbar-content.main-menu-item {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+// Hilangkan garis/border pemisah antar item menu
+.navbar-nav .nav-item,
+.navbar-nav .nav-link {
+  border: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
 }

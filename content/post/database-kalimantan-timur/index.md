@@ -15,7 +15,7 @@ featured: false
 
 | Stasiun | Kab/Kota | Periode | Parameter | Format | Unduh |
 |---------|----------|---------|-----------|--------|-------|
-| Kutai Barat | Kab. Kutai Barat | - | CH harian | Excel | Segera hadir |
+| 18 stasiun hujan | - | (2014-2023) | CH harian | Excel | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgD_zVqU2ljzQaB6zAcorK3qAdQbjqA2AEuQYNto1oYmrIc?e=u3C8yR) |
 
 ---
 

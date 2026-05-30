@@ -9484,3 +9484,34 @@ html {
   transition: none !important;
   display: inline !important;
   animation: none !important; }
+
+.dark .nav-link {
+  background-color: #2b3035 !important;
+  border: 1px solid #3a4046 !important; }
+
+.dark .nav-link:hover {
+  background-color: #343a40 !important; }
+
+.dark .nav-link-title {
+  color: #74a3f0 !important; }
+
+.dark .nav-link-label {
+  color: #adb5bd !important; }
+
+.dark .nav-link span {
+  color: #74a3f0 !important; }
+
+.dark #s4b td div[style*="#1e3a5f"] {
+  color: #93c5fd !important; }
+
+.dark #s4b td div[style*="#065f46"] {
+  color: #6ee7b7 !important; }
+
+.dark #s4b td div[style*="#7f1d1d"] {
+  color: #fca5a5 !important; }
+
+.dark #s4b > p[style*="gray-600"] {
+  color: #ced4da !important; }
+
+.dark #s4b div[style*="gray-400"] {
+  color: #adb5bd !important; }

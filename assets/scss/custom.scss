@@ -209,3 +209,69 @@ html {
   display: inline !important;
   animation: none !important;
 }
+
+// =====================================================================
+//  CUSTOM CSS - Irpan Chumaedi (www.irpanchumaedi.com)
+//  Perbaikan tampilan navigasi "Artikel Sebelumnya / Selanjutnya"
+//  pada mode gelap (dark mode).
+// =====================================================================
+
+// ---------------------------------------------------------------------
+//  1. KARTU NAVIGASI - redupkan background putih di dark mode
+// ---------------------------------------------------------------------
+.dark .nav-link {
+  background-color: #2b3035 !important;   // abu gelap, tidak mencolok
+  border: 1px solid #3a4046 !important;
+}
+
+// Efek saat kursor diarahkan ke kartu
+.dark .nav-link:hover {
+  background-color: #343a40 !important;
+}
+
+// ---------------------------------------------------------------------
+//  2. TEKS JUDUL ARTIKEL - pastikan terbaca jelas di dark mode
+// ---------------------------------------------------------------------
+.dark .nav-link-title {
+  color: #74a3f0 !important;   // biru terang, kontras di background gelap
+}
+
+// Label kecil di atas judul ("ARTIKEL SEBELUMNYA", dst.)
+.dark .nav-link-label {
+  color: #adb5bd !important;   // abu terang
+}
+
+// Tanda panah ← dan →
+.dark .nav-link span {
+  color: #74a3f0 !important;
+}
+
+
+// =====================================================================
+//  Perbaikan tabel "Panduan Pemilihan Metode" (#s4b) di dark mode
+// =====================================================================
+
+// Cell "Kadang" (biru) -> sub-teks #1e3a5f terlalu gelap, dibuat terang
+.dark #s4b td div[style*="#1e3a5f"] {
+  color: #93c5fd !important;
+}
+
+// Sub-teks hijau "Metode utama" (#065f46) -> lebih terang di dark mode
+.dark #s4b td div[style*="#065f46"] {
+  color: #6ee7b7 !important;
+}
+
+// Sub-teks merah (#7f1d1d) -> lebih terang di dark mode
+.dark #s4b td div[style*="#7f1d1d"] {
+  color: #fca5a5 !important;
+}
+
+// Paragraf pembuka (var(--gray-600)) -> dinaikkan kontrasnya
+.dark #s4b > p[style*="gray-600"] {
+  color: #ced4da !important;
+}
+
+// Sumber di bawah tabel (var(--gray-400)) biarkan, tapi pastikan terbaca
+.dark #s4b div[style*="gray-400"] {
+  color: #adb5bd !important;
+}

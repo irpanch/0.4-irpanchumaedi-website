@@ -1111,20 +1111,20 @@ ggplot(df_hydro, <span class="fn">aes</span>(x = t, y = Q, color = T_yr)) <span 
   <div class="info-box"><span class="box-icon">🔗</span><span>Rantai lengkap analisis hidrologi: <strong>Data Hujan → Analisa Frekuensi → Curah Hujan Rencana → Debit Banjir Rencana → HEC-RAS → Profil Muka Air → Desain Infrastruktur</strong>. Setiap langkah membangun di atas hasil langkah sebelumnya — kesalahan di langkah awal akan menjalar ke semua output hilir.</span></div>
   <div style="margin-top:1.5rem;">
     <div class="card-label" style="font-size:11px;margin-bottom:10px;">ARTIKEL TERKAIT</div>
-    <a href="analisa-frekuensi-curah-hujan.html" class="nav-link">
+    <a href="/post/materi-analisa-frekuensi-hujan/" class="nav-link">
       <span style="font-size:1.2rem;color:var(--gray-400);">←</span>
       <div>
         <div class="nav-link-label">Artikel Sebelumnya</div>
-        <div class="nav-link-title">Analisa Frekuensi Curah Hujan: Panduan Lengkap</div>
+        <div class="nav-link-title" style="color:var(--text-color,inherit);">Analisa Frekuensi Curah Hujan: Panduan Lengkap</div>
       </div>
     </a>
-    <div class="nav-link nav-link-dim">
+    <a href="/post/materi-pengantar-hecras/" class="nav-link">
       <span style="font-size:1.2rem;color:var(--gray-400);">→</span>
       <div>
-        <div class="nav-link-label">Segera Hadir</div>
-        <div class="nav-link-title">Pemodelan HEC-RAS: Dari Debit ke Profil Muka Air</div>
+        <div class="nav-link-label">Artikl Selanjutnya</div>
+        <div class="nav-link-title" style="color:var(--text-color,inherit);">Pemodelan HEC-RAS: Dari Debit ke Profil Muka Air</div>
       </div>
-    </div>
+    </a>
   </div>
   <p style="font-size:12px;color:var(--gray-400);margin-top:2rem;border-top:1px solid var(--gray-200);padding-top:1rem;">
     Semua rumus mengikuti <strong>SNI 2415:2016</strong>. Referensi: Sri Harto (1993), Triatmodjo (2008), Soemarto (1995), Nakayasu (1950), Kirpich (1940). Kode R menggunakan paket: <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>.

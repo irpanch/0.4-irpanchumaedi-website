@@ -17,6 +17,13 @@ featured: false
 |---------|----------|---------|-----------|--------|-------|
 | 18 stasiun hujan | - | (2014-2023) | CH harian | Excel | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgD_zVqU2ljzQaB6zAcorK3qAdQbjqA2AEuQYNto1oYmrIc?e=u3C8yR) |
 
+
+## **Data LiDAR**
+
+| Lokasi | Resolusi | Cakupan | Format | Unduh |
+|--------|----------|---------|--------|-------|
+| Sungai Mahakam Hilir  (2024) | 5 m | 100 Km dari Muara | tiff | [Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgCLN623017hSaU4artNcXNmARwJ_tr2e5g6u9rA4JAu7BA?e=MElteM) |
+
 ---
 
 > 💡 Data wilayah Kalimantan Timur sedang dalam proses pengumpulan. Kunjungi kembali halaman ini secara berkala untuk pembaruan.

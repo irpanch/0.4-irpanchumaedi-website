@@ -201,6 +201,7 @@ Data yang dikelompokkan berdasarkan wilayah — cocok untuk mencari data spesifi
   <div class="province-card-desc">Bandung & sekitarnya</div>
   <div class="province-card-tags">
     <span class="province-tag">🕐 Data Hujan</span>
+    <span class="province-tag">🕐 DEMNAS</span>
   </div>
 </a>
 

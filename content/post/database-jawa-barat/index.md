@@ -19,6 +19,15 @@ featured: false
 
 ---
 
+## 🏔️ Data Terrain (DEMNAS)
+
+Data DEMNAS satu pulau jawa bisa diunduh [disini.](https://1drv.ms/f/c/22f5ef4527203c63/IgBTSAvgAQn8QIz-iYlqms__AQdf2GtIHQx6fN0nWs_71xI?e=RJIl5x)
+
+Jika bingung akan penomoran peta dan wilayah dapat dilihat di [laman ini.](/post/database-terrain-jawa)
+
+---
+
+
 > 💡 Data wilayah Jawa Barat sedang dalam proses pengumpulan. Kunjungi kembali halaman ini secara berkala untuk pembaruan.
 
 ---

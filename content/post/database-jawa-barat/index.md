@@ -16,6 +16,7 @@ featured: false
 | Stasiun | Kab/Kota | Periode | Parameter | Format | Unduh |
 |---------|----------|---------|-----------|--------|-------|
 | Geofisika Bandung | Kota Bandung | 2000-2025 | CH harian | Excel | [Download](https://1drv.ms/x/c/22f5ef4527203c63/IQCF8XwJQ0FlSbOszk5HB-tMAblXsphp4gsBaUdwiihCZ1c?e=wtUfab) |
+| AWS Bojongmangu | Kab. Bekasi | 2005-2025 | CH harian | Excel | [Download](https://1drv.ms/x/c/22f5ef4527203c63/IQDHwJKe_3D1RIIyfdI7q1tXAWBeQ0eWMMogFPUuTHZSJ10?e=yTX5wt) |
 
 ---
 

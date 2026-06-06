@@ -287,6 +287,7 @@ Data curah hujan harian dari stasiun observasi BMKG dan BWS, serta data satelit 
 | Kalimantan Barat | 2 stasiun (2006-2018) | ✅ Tersedia | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAiDWUAAAAAAS45mld21rwzDe9KK86s1-0?e=qHDyIJ) |
 | Papua | 2 stasiun (2004-2018) | ✅ Tersedia | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAiEGUAAAAAAd1TLKZsg7gWwIF_1E1kUH8?e=vQEimu) |
 | Sumatera Selatan | 2 stasiun (2004-2018) | ✅ Tersedia | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgBjPCAnRe_1IIAiEWUAAAAAAWGbO3ZBldiaxHxayJSKiyc?e=IQnM2D) |
+| Maluku Utara | 1 stasiun (2015-2025) | ✅ Tersedia | [→ Lihat & Unduh](https://1drv.ms/f/c/22f5ef4527203c63/IgAzVSH_De5IQJUAanOqjrLuAX5ZeoNRAeYWOh4zt1lw_gk?e=aJQHoH) |
 
 
 
